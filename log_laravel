@@ -28,19 +28,3 @@ Running scheduled command: '/opt/alt/php73/usr/bin/php' 'artisan' cron:statement
 Running scheduled command: '/opt/alt/php73/usr/bin/php' 'artisan' cron:statement:upgrade > '/dev/null' 2>&1
 Running scheduled command: '/opt/alt/php73/usr/bin/php' 'artisan' cron:statement:matching > '/dev/null' 2>&1
 Running scheduled command: '/opt/alt/php73/usr/bin/php' 'artisan' cron:statement:incentive > '/dev/null' 2>&1
-Running scheduled command: '/opt/alt/php73/usr/bin/php' 'artisan' cron:statement:upgrade > '/dev/null' 2>&1
-Running scheduled command: '/opt/alt/php73/usr/bin/php' 'artisan' cron:statement:matching > '/dev/null' 2>&1
-Running scheduled command: '/opt/alt/php73/usr/bin/php' 'artisan' cron:statement:incentive > '/dev/null' 2>&1
-No scheduled commands are ready to run.
-Running scheduled command: '/opt/alt/php73/usr/bin/php' 'artisan' cron:statement:matching > '/dev/null' 2>&1
-Running scheduled command: '/opt/alt/php73/usr/bin/php' 'artisan' cron:statement:incentive > '/dev/null' 2>&1
-Running scheduled command: '/opt/alt/php73/usr/bin/php' 'artisan' cron:statement:matching > '/dev/null' 2>&1
-Running scheduled command: '/opt/alt/php73/usr/bin/php' 'artisan' cron:statement:incentive > '/dev/null' 2>&1
-Running scheduled command: '/opt/alt/php73/usr/bin/php' 'artisan' cron:statement:matching > '/dev/null' 2>&1
-Running scheduled command: '/opt/alt/php73/usr/bin/php' 'artisan' cron:statement:incentive > '/dev/null' 2>&1
-Running scheduled command: '/opt/alt/php73/usr/bin/php' 'artisan' cron:statement:matching > '/dev/null' 2>&1
-Running scheduled command: '/opt/alt/php73/usr/bin/php' 'artisan' cron:statement:incentive > '/dev/null' 2>&1
-Running scheduled command: '/opt/alt/php73/usr/bin/php' 'artisan' cron:statement:matching > '/dev/null' 2>&1
-Running scheduled command: '/opt/alt/php73/usr/bin/php' 'artisan' cron:statement:incentive > '/dev/null' 2>&1
-Running scheduled command: '/opt/alt/php73/usr/bin/php' 'artisan' cron:statement:matching > '/dev/null' 2>&1
-Running scheduled command: '/opt/alt/php73/usr/bin/php' 'artisan' cron:statement:incentive > '/dev/null' 2>&1

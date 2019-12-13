@@ -21,10 +21,8 @@
 		}
 		
 		public function UserTopupTransfer(Request $request){
-			
-			$topupReport = $this->AvaliableTopupBalanceByUser();
             
-            if( $topupReport->topup_avaliable < $request->transfer_amount){
+            if($this->AvaliableTopupBalanceByUser()->topup_avaliable < $request->transfer_amount){
                 return response()->json([
                 'status' => 'errors',
                 'message' => "You don't have sufficient TopUp balance for Transfer"
@@ -52,19 +50,6 @@
 				],422);
 			}
 			
-			if(!Auth::user()->hasRole('accountant') && Auth::user()->hasRole('dealer')){
-				
-				$OrderAmount = Orders::where("order_delivery_from_user_id", Auth::User()->id)
-				->whereNull('is_dealer_order')
-				->sum("order_net_amount")
-				->first();
-				
-				return response()->json([
-				'status' => 'errors',
-				'message' => 'Your transfer exceeds the maximum amount allowed'
-				],422);
-			}
-			
             
 			TopupBalance::create([
 			'user_id' => Auth::User()->id,
@@ -87,7 +72,7 @@
 			'topup_generate_by' => Auth::User()->id,
 			'topup_status' => 'active'
 			]);
-			
+		
             
             return response()->json([
             'status' => 'success',
@@ -100,10 +85,9 @@
         {
             $data = TopupBalance::select('topup_amount','topup_flow','topup_details','created_at','topup_status')->where('user_id',Auth::user()->id);
             return Datatables::of($data)
-		->order(function ($query) {
-		$query->orderBy('id', 'desc');
-		})
-		->toJson();
+            ->order(function ($query) {
+                $query->orderBy('id', 'desc');
+			})
+            ->toJson();
 		}
-		}
-				
+	}

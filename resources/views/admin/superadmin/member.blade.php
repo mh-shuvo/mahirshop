@@ -6,35 +6,22 @@
 @endsection
 
 @section('content')
-<div class="row">
-	<div class="col-sm-12">
-		<div class="card">
-			<div class="card-header">
+<div class="block">
+	<div class="block-header">
+		<div class="row">
+			<div class="col-sm-12">
 				<a href="{{route('admin.superadmin.member.create')}}" class="btn btn-primary btn-sm pull-right"> <i class="fa fa-plus"></i> New Member</a>
-			</div>
-    		<div class="card-body">
-    			<div class="table-responsive">
-					<table class="table dataTable no-footer dtr-inline MembersTable"></table>
-				</div>
-    		</div>
-    	</div>
-    </div>
-</div>
-{{-- 
-<div class="content-container">
-	<div class="row">
-		<div class="col-sm-12">
-			<a href="{{route('admin.superadmin.member.create')}}" class="btn btn-primary btn-sm pull-right"> <i class="fa fa-plus"></i> New Member</a>
-		</div>
-		<div class="col-sm-12">
-			<div class="table-responsive">
-				<table class="table dataTable no-footer dtr-inline MembersTable">
-				</table>
 			</div>
 		</div>
 	</div>
-</div>	
- --}}
+	<div class="block-content">
+		<div class="dt-responsive table-responsive">
+			<table id="base-style" class="table table-striped table-bordered nowrap text-center MembersTable">
+			</table>
+		</div>
+	</div>
+</div>
+
 <!-- Add Modal -->
 <div class="modal fade" id="Member" tabindex="-1" role="dialog">
 	<div class="modal-dialog modal-lg" role="document">
@@ -308,7 +295,7 @@
 			let Id = $(this).data('id');
 			$.ajax({
 				type: 'get',
-				url: '{{ url('/superadmin/member/data/') }}/'+Id ,
+				url: '{{ url('admin/superadmin/member/data/') }}/'+Id ,
 				success: function(data){
 					$("#user_id").val(data.id);
 					$("#name").val(data.name);
@@ -342,7 +329,7 @@
 					id:Id
 				},
 				success: function(data){
-					$(".MembersTable").DataTable().draw(true);
+					$(".MembersTable").DataTable().draw(true)
 				}
 			});
 		});
@@ -356,7 +343,7 @@
 					id:Id
 				},
 				success: function(data){
-					$(".MembersTable").DataTable().draw(true);
+					$(".MembersTable").DataTable().draw(true)
 				}
 			});
 		});

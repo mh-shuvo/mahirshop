@@ -3,7 +3,7 @@
 @section('content')
 <div class="block block-themed block-transparent mb-0">
     <div class="block-header bg-primary-dark row">
-		<div class="col-sm-7">
+		<div class="col-sm-8">
 			<h3 class="block-title center text-white">Order Information</h3>
 		</div>
 		@hasanyrole('admin|accountant|manager')
@@ -41,11 +41,6 @@
 			<input type="hidden" name="order_id" id="order_id" value="{{$order->id}}">
 		</div>
 		@endhasanyrole
-		<div class="col-sm-1">
-			<a class="btn btn-default btn-block btn-sm" href="{{url('admin/order-print/')}}/{{$order->id}}" style="color:white;">
-					<i class="fa fa-print"></i> Print
-				</a>
-		</div>
 	</div>
     <div class="block-content font-size-sm">
 		

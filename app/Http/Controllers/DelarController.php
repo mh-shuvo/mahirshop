@@ -182,7 +182,7 @@
 				$newDealer->save();
 			}
 			
-			new SendSmsController([$newUser->phone],'Welcome to Me Global Marketing Private Limited. Your '.$request->signup_type.' registration has been successfully and Username is : '.$newUser->username,'Sign-up');
+			new SendSmsController([$newUser->phone],'Welcome to Me Global Private Limited. Your '.$request->signup_type.' registration has been successfully and Username is : '.$newUser->username,'Sign-up');
 			
 			
 			return response()->json([

@@ -9,131 +9,102 @@
         <meta name="description" content="OneUI - Bootstrap 4 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
         <meta name="author" content="Syllo System Ltd.">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-		<link rel="shortcut icon" type="image/x-icon" href="../assets/favicon.ico" />
-
-	    <link href="https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700italic,700,900,900italic" rel="stylesheet">
-
-	    <!-- STYLESHEETS -->
-	    <style type="text/css">
-	            [fuse-cloak],
-	            .fuse-cloak {
-	                display: none !important;
-	            }
-	        </style>
-
-	    <!-- Icons.css -->
-	    <link type="text/css" rel="stylesheet" href="{{asset('public/assets/icons/fuse-icon-font/style.css')}}">
-	    <!-- Animate.css -->
-	    <link type="text/css" rel="stylesheet" href="{{asset('public/assets/node_modules/animate.css/animate.min.css')}}">
-	    <!-- PNotify -->
-	    <link type="text/css" rel="stylesheet" href="{{asset('public/assets/node_modules/pnotify/dist/PNotifyBrightTheme.css')}}">
-	    <!-- Nvd3 - D3 Charts -->
-	    <link type="text/css" rel="stylesheet" href="{{asset('public/assets/node_modules/nvd3/build/nv.d3.min.css')}}"/>
-	    <!-- Perfect Scrollbar -->
-	    <link type="text/css" rel="stylesheet" href="{{asset('public/assets/node_modules/perfect-scrollbar/css/perfect-scrollbar.css')}}"/>
-	    <!-- Fuse Html -->
-	    <link type="text/css" rel="stylesheet" href="{{asset('public/assets/fuse-html/fuse-html.min.css')}}"/>
-	    <!-- Main CSS -->
-	    <link type="text/css" rel="stylesheet" href="{{asset('public/assets/css/main.css')}}">
+		
+        <link rel="shortcut icon" href="{{asset('public/backend/assets/media/favicons/favicon.png')}}">
+        <link rel="icon" type="image/png" sizes="192x192" href="{{asset('public/backend/assets/media/favicons/favicon-192x192.png')}}">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{asset('public/backend/assets/media/favicons/apple-touch-icon-180x180.png')}}">
+        <!-- END Icons -->
+        <!-- Fonts and OneUI framework -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600,700%7COpen+Sans:300,400,400italic,600,700">
+        <link rel="stylesheet" id="css-main" href="{{asset('public/backend/assets/css/oneui.min.css')}}">
 	</head>
-    <body id="login">
-        <div class="layout layout-vertical layout-left-navigation layout-above-toolbar layout-above-footer">
-			<main>
-				<div class="wrapper">
-					
-            <div class="content-wrapper">
-                <div class="content custom-scrollbar">
-
-                    <div class="p-8">
-
-                        <div class="form-wrapper md-elevation-8 p-8">
-
-                            <div class="logo bg-secondary">
-                                <span>MS</span>
-                            </div>
-
-                            <div class="title mt-4 mb-8">Log in to your account</div>
-
-                            <form action="{{route('login') }}" method="POST">
-                            	@csrf
-                                <div class="form-group mb-4">
-										<input id="username" type="text" class="form-control form-control-alt text-default form-control-lg @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
+    <body>
+        <div id="page-container">
+			
+            <!-- Main Container -->
+            <main id="main-container">
+				
+                <!-- Page Content -->
+                <div class="bg-image" style="background-image: url('{{asset("public/backend/assets/media/photos/photo6@2x.jpg")}}');">
+				<div class="hero-static bg-white-95">
+				<div class="content">
+				<div class="row justify-content-center">
+				<div class="col-md-8 col-lg-6 col-xl-4">
+				<!-- Sign In Block -->
+				<div class="block block-themed block-fx-shadow mb-0">
+					<div class="block-header">
+						<h3 class="block-title">Sign In</h3>
+						<div class="block-options">
+							<a class="btn-block-option font-size-sm" href="op_auth_reminder.html">Forgot Password?</a>
+							
+						</div>
+					</div>
+					<div class="block-content">
+						<div class="p-sm-3 px-lg-4 py-lg-5">
+							<h1 class="mb-2">MeGlobal Ltd.</h1>
+							<p>Welcome, please login.</p>
+							<form class="js-validation-signin" action="{{route('login') }}" method="POST">
+								@csrf
+								<div class="py-3">
+									<div class="form-group">
+										<input id="username" type="text" class="form-control form-control-alt form-control-lg @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" placeholder="Username" required autocomplete="username" autofocus>
 										@error('username')
 										<span class="invalid-feedback" role="alert">
 											<strong>{{ $message }}</strong>
 										</span>
 										@enderror
-										<label for="username">Username</label>
 									</div>
-									<div class="form-group mb-4">
-										<input id="password" type="password" class="form-control form-control-alt form-control-lg @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+									<div class="form-group">
+										<input id="password" type="password" class="form-control form-control-alt form-control-lg @error('password') is-invalid @enderror" name="password" placeholder="Password" required autocomplete="current-password">
 										@error('password')
 										<span class="invalid-feedback" role="alert">
 											<strong>{{ $message }}</strong>
 										</span>
 										@enderror
-										<label for="password">Password</label>
 									</div>
-
-                                <div class="remember-forgot-password row no-gutters align-items-center justify-content-between pt-4">
-
-                                    <div class="form-check remember-me mb-4">
-                                        <label class="form-check-label">
-                                            <input type="checkbox" class="form-check-input" aria-label="Remember Me" />
-                                            <span class="checkbox-icon"></span>
-                                            <span class="form-check-description">Remember Me</span>
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <button type="submit" class="submit-button btn btn-block btn-secondary my-4 mx-auto" aria-label="LOG IN">
-                                    LOG IN
-                                </button>
-
-                            </form>
-
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+									<div class="form-group">
+										<div class="custom-control custom-checkbox">
+											<input type="checkbox" class="custom-control-input" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+											<label class="custom-control-label font-w400" for="remember">{{ __('Remember Me') }}</label>
+										</div>
+									</div>
+								</div>
+								<div class="form-group row">
+									<div class="col-md-6 col-xl-5">
+										<button type="submit" class="btn btn-block btn-primary">
+											<i class="fa fa-fw fa-sign-in-alt mr-1"></i> Sign In
+										</button>
+									</div>
+								</div>
+							</form>
+							<!-- END Sign In Form -->
+						</div>
+					</div>
 				</div>
-			</main>
+				<!-- END Sign In Block -->
+			</div>
 		</div>
-		<!-- JAVASCRIPT -->
-	    <!-- jQuery -->
-	    <script type="text/javascript" src="{{asset('public/assets/node_modules/jquery/dist/jquery.min.js')}}"></script>
-	    <!-- Mobile Detect -->
-	    <script type="text/javascript" src="{{asset('public/assets/node_modules/mobile-detect/mobile-detect.min.js')}}"></script>
-	    <!-- Perfect Scrollbar -->
-	    <script type="text/javascript" src="{{asset('public/assets/node_modules/perfect-scrollbar/dist/perfect-scrollbar.min.js')}}"></script>
-	    <!-- Popper.js -->
-	    <script type="text/javascript" src="{{asset('public/assets/node_modules/popper.js/dist/umd/popper.min.js')}}"></script>
-	    <!-- Bootstrap -->
-	    <script type="text/javascript" src="{{asset('public/assets/node_modules/bootstrap/dist/js/bootstrap.min.js')}}"></script>
-	    <!-- Nvd3 - D3 Charts -->
-	    <script type="text/javascript" src="{{asset('public/assets/node_modules/d3/d3.min.js')}}"></script>
-	    <script type="text/javascript" src="{{asset('public/assets/node_modules/nvd3/build/nv.d3.min.js')}}"></script>
-	    <!-- Data tables -->
-	    <script type="text/javascript" src="{{asset('public/assets/node_modules/datatables.net/js/jquery.dataTables.js')}}"></script>
-	    <script type="text/javascript" src="{{asset('public/assets/node_modules/datatables-responsive/js/dataTables.responsive.js')}}"></script>
-	    <!-- PNotify -->
-	    <script type="text/javascript" src="{{asset('public/assets/node_modules/pnotify/dist/iife/PNotify.js')}}"></script>
-	    <script type="text/javascript" src="{{asset('public/assets/node_modules/pnotify/dist/iife/PNotifyStyleMaterial.js')}}"></script>
-	    <script type="text/javascript" src="{{asset('public/assets/node_modules/pnotify/dist/iife/PNotifyButtons.js')}}"></script>
-	    <script type="text/javascript" src="{{asset('public/assets/node_modules/pnotify/dist/iife/PNotifyCallbacks.js')}}"></script>
-	    <script type="text/javascript" src="{{asset('public/assets/node_modules/pnotify/dist/iife/PNotifyMobile.js')}}"></script>
-	    <script type="text/javascript" src="{{asset('public/assets/node_modules/pnotify/dist/iife/PNotifyHistory.js')}}"></script>
-	    <script type="text/javascript" src="{{asset('public/assets/node_modules/pnotify/dist/iife/PNotifyDesktop.js')}}"></script>
-	    <script type="text/javascript" src="{{asset('public/assets/node_modules/pnotify/dist/iife/PNotifyConfirm.js')}}"></script>
-	    <script type="text/javascript" src="{{asset('public/assets/node_modules/pnotify/dist/iife/PNotifyReference.js')}}"></script>
-	    <!-- Fuse Html -->
-	    <script type="text/javascript" src="{{asset('public/assets/fuse-html/fuse-html.min.js')}}"></script>
-	    <!-- Main JS -->
-	    <script type="text/javascript" src="{{asset('public/assets/js/main.js')}}"></script>
-		
-		<script src="{{ asset('public') }}/js/form.js" ></script>
-		<script src="{{ asset('public') }}/js/custom.js" ></script>
+	</div>
+	<div class="content content-full font-size-sm text-muted text-center">
+		<strong>MeGlobal</strong> &copy; <span data-toggle="year-copy">2019</span>
+	</div>
+</div>
+</div>
+<!-- END Page Content -->
+
+</main>
+<!-- END Main Container -->
+</div>
+<!-- END Page Container -->
+<script src="{{asset('public/backend/assets/js/oneui.core.min.js')}}"></script>
+<script src="{{asset('public/backend/assets/js/oneui.app.min.js')}}"></script>
+
+<script src="{{asset('public/backend/assets/js/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
+<!-- Page JS Code -->
+<script src="{{asset('public/backend/assets/js/pages/op_auth_signin.min.js')}}"></script>
+<!-- DataTables -->
+<script src="{{ asset('public') }}/js/form.js" ></script>
+<script src="{{ asset('public') }}/js/custom.js" ></script>
 
 </body>
 </html>

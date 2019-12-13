@@ -425,18 +425,16 @@
 						}
 					}
 					
-					if($companyBonus > 0 ){
-    					$getCompany = Dealer::where('dealer_type','company')->first();
-    					$companyBonusData = new MemberBonus();
-    					$companyBonusData->bonus_type = 'stockist';
-    					$companyBonusData->user_id = $getCompany->user_id;
-    					$companyBonusData->from_user_id = $orderData->order_delivery_from_user_id;
-    					$companyBonusData->amount = $companyBonus;
-    					$companyBonusData->bonus_pv = $newStockistPV;
-    					$companyBonusData->status = 'active';
-    					$companyBonusData->details = 'You have received '.$companyBonus.' TK Stockist Bonus for '.$newStockistPV.' PV Sales Commission from '.Auth::User()->username.' dealer';
-    					$companyBonusData->save();
-					}
+					$getCompany = Dealer::where('dealer_type','company')->first();
+					$companyBonusData = new MemberBonus();
+					$companyBonusData->bonus_type = 'stockist';
+					$companyBonusData->user_id = $getCompany->user_id;
+					$companyBonusData->from_user_id = $orderData->order_delivery_from_user_id;
+					$companyBonusData->amount = $companyBonus;
+					$companyBonusData->bonus_pv = $newStockistPV;
+					$companyBonusData->status = 'active';
+					$companyBonusData->details = 'You have received '.$companyBonus.' TK Stockist Bonus for '.$newStockistPV.' PV Sales Commission from '.Auth::User()->username.' dealer';
+					$companyBonusData->save();
 				}
 				
 				Point::create([

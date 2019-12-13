@@ -1,188 +1,152 @@
 @extends('layouts.backend') @section('title','Sign Up') @section('content')
-<div class="row">
-	<div class="col-sm-12">
-		<div class="card">
-    		<div class="card-body">
-				<form id="NewMemberForm" action="{{route('admin.superadmin.member.store')}}" method="post" enctype="multipart/form-data">
-					<div class="row">
-						<div class="form-group col-sm-6">
-							
-							<input type="text" name="sponsor_id" id="sponsor_id" class="form-control form-control-sm" autocomplete="off">
-							<label class="control-label ml-4" for="sponsor_id"> Sponsor Username</label>
-							<span class="col-form-label sponsor_check_status"></span>
-						</div>
-						<div class="form-group col-sm-6">
-							
-							<input type="text" name="name" id="name" class="form-control form-control-sm">
-							<label class="control-label ml-4" for="name">Name</label>
-						</div>
-						<div class="form-group col-sm-6">
-							
-							<input type="text" name="placement_id" id="placement_id" class="form-control form-control-sm" autocomplete="off">
-							<label class="control-label ml-4" for="placement_id">Placement Username</label>
-							<span class="col-form-label placement_check_status"></span>
-						</div>
-						
-						<div class="form-group col-sm-6">
-							
-							<input type="text" name="email" id="email" class="form-control form-control-sm" >
-							<label class="control-label ml-4" for="email">Email</label>
-						</div>
-						
-						<div class="form-group col-sm-6">
-							<label class="control-label"> Team Select</label>
-							{{-- <div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" name="placement_position" id="placement_position" value="A">
-								<label class="form-check-label" for="placement_position">Team A</label>
-							</div>
-							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" name="placement_position" id="placement_position" value="B">
-								<label class="form-check-label" for="placement_position">Team B</label>
-							</div> --}}
-
-							<div class="form-check form-check-inline">
-							    <label class="form-check-label">
-							        <input class="form-check-input" type="radio" name="placement_position" id="inlineRadio1" value="A">
-							        <span class="radio-icon fuse-ripple-ready"></span>
-							        <span class="form-check-description">Team A</span>
-							    </label>
-							    <label class="form-check-label">
-							        <input class="form-check-input" type="radio" name="placement_position" id="inlineRadio2" value="B">
-							        <span class="radio-icon fuse-ripple-ready"></span>
-							        <span class="form-check-description">Team B</span>
-							    </label>
-							</div>
-
-						</div>
-
-
-						
-						
-						<div class="form-group col-sm-6">
-							
-							<input type="text" name="phone" id="phone" class="form-control form-control-sm" >
-							<label class="control-label ml-4" for="phone">Phone</label>
-						</div>
-						
-						<div class="form-group col-sm-6">
-							
-							<input type="password" name="user_txn_pin" id="user_txn_pin" class="form-control form-control-sm" autocomplete="off">
-							<label class="control-label ml-4" for="user_txn_pin">New Transaction Pin</label>
-						</div>
-						
-						<div class="form-group col-sm-6">
-							
-							<input type="text" name="national_id" id="national_id" class="form-control form-control-sm">
-							<label class="control-label ml-4" for="national_id">National Id </label>
-						</div>
-						<div class="form-group col-sm-6">
-							
-							<input type="text" name="father_name" id="father_name" class="form-control form-control-sm">
-							<label class="control-label ml-4" for="father_name">Father Name</label>
-						</div>
-						<div class="form-group col-sm-6">
-							
-							<input type="text" name="mother_name" id="mother_name" class="form-control form-control-sm">
-							<label class="control-label ml-4" for="mother_name">Mother Name</label>
-						</div>
-						<div class="form-group col-sm-6">
-							
-							<input type="text" name="nomine_name" id="nomine_name" class="form-control form-control-sm">
-							<label class="control-label ml-4" for="nomine_name">Nomine Name</label>
-						</div>
-						
-						<div class="form-group col-sm-6">
-							
-							<input type="password" class="form-control" name="txn_pin" id="txn_pin" autocomplete="off">
-							<label class="control-label ml-4" for="txn_pin">Sponsor Transaction Pin:</label>
-						</div>
-						
-						<div class="form-group col-sm-6">
-							
-							<textarea class="form-control form-control-sm" name="address" id="address" class="form-control form-control-sm"></textarea>
-							<label class="control-label ml-4" for="address">Address</label>
-						</div>
-
-						<div class="form-group col-sm-6">
-						    <input type="file" class="custom-file-input" name="profile_picture" id="profile_picture">
-						    <label class="custom-file-label ml-5" for="profile_picture">Profile Picture</label>
-						</div>
-						
-						<div class="form-group col-sm-6">
-							
-							<select class="form-control form-control-sm" name="country" id="country">
-								<option>Select </option>
-								@foreach($countrys as $country)
-								<option value="{{$country->id}}">{{$country->name}}</option>
-								@endforeach
-							</select>
-						</div>
-						
-						
-						
-						<div class="col-sm-6">
-							<div class="form-group">
-								
-								<input type="text" name="username" id="username" class="form-control form-control-sm" autocomplete="off">
-								<label class="control-label ml-4" for="username">Username</label>
-							</div>
-						</div>
-						<div class="form-group col-sm-6">
-							
-							<select class="form-control form-control-sm" name="state" id="state">
-								<option>Select division</option>
-								@foreach($divisions as $division)
-								<option value="{{$division->id}}">{{$division->name}}</option>
-								@endforeach
-							</select>
-						</div>
-						
-						<div class="col-sm-6">
-							<div class="form-group">
-								
-								<input type="password" id="password" name="password" class="form-control form-control-sm" autocomplete="off">
-								<label class="control-label ml-4" for="password">Password</label>
-							</div>
-						</div>
-						
-						<div class="form-group col-sm-6">
-							
-							<select class="form-control form-control-sm" name="city" id="city">
-								<option>Select district</option>
-								@foreach($districts as $district)
-								<option value="{{$district->id}}">{{$district->name}}</option>
-								@endforeach
-							</select>
-						</div>
-						
-						<div class="col-sm-6">
-							<div class="form-group">
-								
-								<input type="password" name="retype_password" id="retype_password" class="form-control form-control-sm" autocomplete
-								="off">
-								<label class="control-label ml-4" for="retype_password">Retype Password</label>
-							</div>
-						</div>
-						
-						
-						<div class="form-group col-sm-6">
-							<input type="text" id="post_code" name="post_code" class="form-control form-control-sm" >
-							<label for="post_code" class="control-label ml-4">Post Code</label>
-						</div>
-						
-						
-						
-					</div>			
-					<div class="row">
-						<div class="col-sm-2 offset-sm-5">
-							<div class="form-group">
-								<button class="btn btn-info btn-block btn-round" type="submit"> Submit </button>
-							</div>
-						</div>
+<div class="block" style="margin-top: -30px;">
+	<div class="block-content">
+		<form id="NewMemberForm" action="{{route('admin.superadmin.member.store')}}" method="post" enctype="multipart/form-data">
+			<div class="row">
+				<div class="form-group col-sm-6">
+					<label class="control-label"> Sponsor Username</label>
+					<input type="text" name="sponsor_id" class="form-control form-control-sm" placeholder="Sponsor Username" autocomplete="off">
+					<span class="col-form-label sponsor_check_status"></span>
+				</div>
+				<div class="form-group col-sm-6">
+					<label class="control-label">Name</label>
+					<input type="text" name="name" class="form-control form-control-sm" placeholder="Name">
+				</div>
+				<div class="form-group col-sm-6">
+					<label class="control-label">Placement Username</label>
+					<input type="text" name="placement_id" class="form-control form-control-sm" placeholder="Placement Username" autocomplete="off">
+					<span class="col-form-label placement_check_status"></span>
+				</div>
+				
+				<div class="form-group col-sm-6">
+					<label class="control-label">Email</label>
+					<input type="text" name="email" class="form-control form-control-sm" placeholder="Email">
+				</div>
+				
+				<div class="form-group col-sm-6">
+					<label class="control-label"> Team Select</label>
+					<br>
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio" name="placement_position" id="placement_position" value="A">
+						<label class="form-check-label" for="placement_position">Team A</label>
 					</div>
-				</form>
-		</div>
-	</div>
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio" name="placement_position" id="placement_position" value="B">
+						<label class="form-check-label" for="placement_position">Team B</label>
+					</div>
+				</div>
+				
+				
+				<div class="form-group col-sm-6">
+					<label class="control-label">Phone</label>
+					<input type="text" name="phone" class="form-control form-control-sm" placeholder="Phone">
+				</div>
+				
+				<div class="form-group col-sm-6">
+					<label class="control-label">New Transaction Pin</label>
+					<input type="password" name="user_txn_pin" class="form-control form-control-sm" placeholder="Transaction Pin" autocomplete="off">
+				</div>
+				
+				<div class="form-group col-sm-6">
+					<label class="control-label">National Id </label>
+					<input type="text" name="national_id" class="form-control form-control-sm" placeholder="National Id">
+				</div>
+				<div class="form-group col-sm-6">
+					<label class="control-label">Father Name</label>
+					<input type="text" name="father_name" class="form-control form-control-sm" placeholder="Father Name">
+				</div>
+				<div class="form-group col-sm-6">
+					<label class="control-label">Mother Name</label>
+					<input type="text" name="mother_name" class="form-control form-control-sm" placeholder="Mother Name">
+				</div>
+				<div class="form-group col-sm-6">
+					<label class="control-label">Nomine Name</label>
+					<input type="text" name="nomine_name" class="form-control form-control-sm" placeholder="Nomine Name">
+				</div>
+				
+				<div class="form-group col-sm-6">
+					<label class="control-label">Sponsor Transaction Pin:</label>
+					<input type="password" class="form-control" name="txn_pin" placeholder="Transaction Pin" autocomplete="off">
+				</div>
+				
+				<div class="form-group col-sm-6">
+					<label class="control-label">Address</label>
+					<textarea class="form-control form-control-sm" name="address" class="form-control form-control-sm"></textarea>
+				</div>
+				
+				<div class="form-group col-sm-6">
+					<label class="control-label">Profile Picture</label>
+					<input type="file" name="profile_picture" class="form-control form-control-sm form-control form-control-sm-file" accept="">
+				</div>
+				
+				<div class="form-group col-sm-6">
+					<label class="control-label">Country</label>
+					<select class="form-control form-control-sm" name="country">
+						<option>Select </option>
+						@foreach($countrys as $country)
+						<option value="{{$country->id}}">{{$country->name}}</option>
+						@endforeach
+					</select>
+				</div>
+				
+				
+				
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="control-label">Username</label>
+						<input type="text" name="username" class="form-control form-control-sm" placeholder="Username" autocomplete="off">
+					</div>
+				</div>
+				<div class="form-group col-sm-6">
+					<label class="control-label">Division</label>
+					<select class="form-control form-control-sm" name="state">
+						<option>Select division</option>
+						@foreach($divisions as $division)
+						<option value="{{$division->id}}">{{$division->name}}</option>
+						@endforeach
+					</select>
+				</div>
+				
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="control-label">Password</label>
+						<input type="password" name="password" class="form-control form-control-sm" placeholder="Password" autocomplete="off">
+					</div>
+				</div>
+				
+				<div class="form-group col-sm-6">
+					<label class="control-label">District</label>
+					<select class="form-control form-control-sm" name="city">
+						<option>Select district</option>
+						@foreach($districts as $district)
+						<option value="{{$district->id}}">{{$district->name}}</option>
+						@endforeach
+					</select>
+				</div>
+				
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="control-label">Retype Password</label>
+						<input type="password" name="retype_password" class="form-control form-control-sm" placeholder="Retype Password" autocomplete="off">
+					</div>
+				</div>
+				
+				
+				<div class="form-group col-sm-6">
+					<label class="control-label">Post Code</label>
+					<input type="text" name="post_code" class="form-control form-control-sm" placeholder="Post Code">
+				</div>
+				
+				
+			</div>			
+			<div class="row">
+				<div class="col-sm-2 offset-sm-5">
+					<div class="form-group">
+						<button class="btn btn-info btn-block btn-round" type="submit"> Submit </button>
+					</div>
+				</div>
+			</div>
+		</form>
 	</div>
 </div>
 
