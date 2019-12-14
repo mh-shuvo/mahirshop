@@ -6,8 +6,8 @@
 @endsection
 
 @section('content')
-<div class="block">
-	<div class="block-content">
+<div class="card">
+	<div class="card-body">
 		<div class="table-responsive">
 			<table id="productTable" class="table table-bordered table-striped table-vcenter"></table>
 		</div>

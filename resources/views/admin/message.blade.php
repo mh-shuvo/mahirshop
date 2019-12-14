@@ -6,16 +6,14 @@
 @endsection
 
 @section('content')
-	<div class="block">
-		<div class="block-content">
-			<div class="card">
-		<div class="card-body">
+	<div class="card">
+		<div class="card-header">
 		
 				<div class="dropdown-info dropdown open float-right m-b-15 mb-3">
 					<button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#send-massage">Send Message</button>
 				</div>
 	
-			<div class="card-block table-border-style">
+			<div class="card-body table-border-style">
 					<div class="table-responsive">
 						<table class="table table-bordered table-hover table-striped text-center table-sm">
 			
@@ -90,8 +88,7 @@
             </div>
         </div>
     </div>	
-		</div>
-	</div>
+
 @endsection
 
 @section('js')

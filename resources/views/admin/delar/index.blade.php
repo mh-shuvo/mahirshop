@@ -6,8 +6,6 @@
 @endsection
 
 @section('content')
-<div class="block">
-	<div class="block-content">
 		<div class="card">
 		    <div class="card-header">
 		        <h5>Review All Dealer</h5>
@@ -186,8 +184,6 @@
 			</div>
 		</div>
 		
-	</div>
-</div>
 @endsection
 @extends('admin.modal.new-user')
 @section('js')

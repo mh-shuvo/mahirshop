@@ -1,6 +1,6 @@
 @extends('layouts.backend') @section('title','Sign Up') @section('content')
-<div class="block" style="margin-top: -30px;">
-	<div class="block-content">
+<div class="card">
+	<div class="card-body">
 		<form id="NewMemberForm" action="{{route('admin.superadmin.member.store')}}" method="post" enctype="multipart/form-data">
 			<div class="row">
 				<div class="form-group col-sm-6">

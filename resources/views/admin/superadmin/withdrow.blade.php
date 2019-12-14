@@ -6,11 +6,11 @@
 @endsection
 
 @section('content')
-<div class="block">
-	<div class="block-header">
+<div class="card">
+	<div class="card-header">
 		<button class="btn btn-primary btn-sm pull-right" id="addWithdraw"> <i class="fa fa-plus"></i>Withdraw</button>
 	</div>
-	<div class="block-content">
+	<div class="card-body">
 		<div class="dt-responsive table-responsive">
 			<table id="WithdrawTable" class="table table-striped table-bordered nowrap text-center"></table>
 		</div>

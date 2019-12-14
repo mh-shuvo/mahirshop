@@ -6,14 +6,14 @@
 @endsection
 
 @section('content')
-<div class="block">
-	<div class="block-header">
-		<h3 class="block-title">Brand List</h3>
-		<div class="block-options">
+<div class="card">
+	<div class="card-header">
+		<h3 class="card-title">Brand List</h3>
+		<div class="card-options">
 			<button type="button" class="btn btn-sm btn-outline-primary add_brand">Add Brand</button>
 		</div>
 	</div>
-	<div class="block-content">
+	<div class="card-body">
 		<div class="table-responsive">
 			<table id="BrandTable" class="table table-bordered table-striped table-vcenter"> </table>
 		</div>

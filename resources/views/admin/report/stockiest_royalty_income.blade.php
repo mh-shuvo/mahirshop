@@ -4,8 +4,8 @@
 
 @endsection
 @section('content')
-<div class="block">
-	<div class="block-content">
+<div class="card">
+	<div class="card-body">
 		<table id="stockiestRoyaltyIncomeTable" class="table table-striped table-bordered text-center"></table>
 	</div>
 </div>

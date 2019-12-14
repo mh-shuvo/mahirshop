@@ -5,7 +5,7 @@
 
     <div class="col-lg-8">
         <!-- Block Tabs Default Style -->
-        <div class="block">
+        <div class="card">
             <ul class="nav nav-tabs nav-tabs-block js-tabs-enabled" data-toggle="tabs" role="tablist">
                 <li class="nav-item active show">
                     <a class="nav-link" data-toggle="tab" href="#profile1" role="tab" aria-selected="false">Update Profile</a>
@@ -17,7 +17,7 @@
                     <a class="nav-link" data-toggle="tab" href="#settings1" role="tab" aria-selected="true">Transaction Password</a>
                 </li>
             </ul>
-            <div class="block-content tab-content">
+            <div class="card-body tab-content">
                 <div class="tab-pane active show" id="profile1" role="tabpanel">
                     <h4 class="font-w400">Update Profile Information</h4>
                     <div class="row">

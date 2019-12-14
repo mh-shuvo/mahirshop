@@ -6,8 +6,8 @@
 @endsection
 
 @section('content')
-<div class="block">
-	<div class="block-content">
+<div class="card">
+	<div class="card-body">
 		<div class="row">
 			<div class="col-sm-4 offset-sm-4">
 				<input type="text" class="form-control" id="searchTeam" name="searchTeam">

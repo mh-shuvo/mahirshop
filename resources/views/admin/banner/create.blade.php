@@ -6,8 +6,8 @@
 @endsection
 
 @section('content')
-<div class="block">
-		<div class="block-content">
+<div class="card">
+		<div class="card-body">
             <form id="bannerForm" method="post" action="{{route('add.banner')}}" novalidate>
                 @isset($data)
                      <input type="hidden" name="id" value="@isset($data){{$data->id}}@endisset">

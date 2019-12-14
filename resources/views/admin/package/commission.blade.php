@@ -10,7 +10,7 @@
 	    <div class="card-header">
 	        <h5>Package List</h5>
 	    </div>
-	    <div class="card-block">
+	    <div class="card-body">
 	        <div class="dt-responsive table-responsive">
 	            <table id="base-style" class="table table-striped table-bordered nowrap text-center">
 	                <thead>

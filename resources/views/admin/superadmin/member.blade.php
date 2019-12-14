@@ -6,15 +6,15 @@
 @endsection
 
 @section('content')
-<div class="block">
-	<div class="block-header">
+<div class="card">
+	<div class="card-header">
 		<div class="row">
 			<div class="col-sm-12">
 				<a href="{{route('admin.superadmin.member.create')}}" class="btn btn-primary btn-sm pull-right"> <i class="fa fa-plus"></i> New Member</a>
 			</div>
 		</div>
 	</div>
-	<div class="block-content">
+	<div class="card-body">
 		<div class="dt-responsive table-responsive">
 			<table id="base-style" class="table table-striped table-bordered nowrap text-center MembersTable">
 			</table>

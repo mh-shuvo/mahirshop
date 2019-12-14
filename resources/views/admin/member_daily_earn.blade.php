@@ -6,13 +6,11 @@
 @endsection
 
 @section('content')
-	<div class="block">
-		<div class="block-content">
-			<div class="card">
+	<div class="card">
 	    <div class="card-header">
 	        <h5>Total Member In Sponsor,Generation,Matching Income</h5>
 	    </div>
-        <div class="card-block pb-0">
+        <div class="card-body pb-0">
         	<form id="main" method="post" action="">
         		<div class="form-row">
     	    	    <div class="form-group col-sm-3">
@@ -95,8 +93,7 @@
 	        </div>
 	    </div>
 	</div>
-		</div>
-	</div>
+		
 @endsection
 
 @section('js')

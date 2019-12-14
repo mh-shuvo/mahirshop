@@ -6,14 +6,14 @@
 @endsection
 
 @section('content')
-	<div class="block">
-		<div class="block-header">
-		    <h3 class="block-title">Unit List</h3>
-		    <div class="block-options">
+	<div class="card">
+		<div class="card-card">
+		    <h3 class="card-title">Unit List</h3>
+		    <div class="card-options">
 		        <button type="button" class="btn btn-sm btn-outline-primary add_unit">Add Unit</button>
 		    </div>
 		</div>
-		<div class="block-content">
+		<div class="card-body">
 			
 			<div class="table-responsive">
 			 <table id="UnitTable" class="table table-bordered table-striped table-vcenter"> </table>

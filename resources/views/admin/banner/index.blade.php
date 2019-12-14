@@ -6,11 +6,11 @@
 @endsection
 
 @section('content')
-<div class="block">
-		<div class="block-header">
+<div class="card">
+		<div class="card-header">
 		<a href="{{route('admin.banner.create')}}" class="btn btn-sm btn-primary"> <i class="fa fa-plus"></i> Banner</a>
 		</div>
-		<div class="block-content">
+		<div class="card-body">
 			<div class="table-responsive">
 					<table class="table table-striped table-bordered BannerTable"></table>
 			</div>

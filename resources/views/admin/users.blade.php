@@ -6,14 +6,12 @@
 @endsection
 
 @section('content')
-<div class="block">
-	<div class="block-content">
 		<div class="card">
 		    <div class="card-header">
 		        <h5>Review All User</h5>
 		        <button class="btn btn-sm btn-primary float-right mb-4 NewUser">Add New User</button>
 			</div>
-		    <div class="card-block">
+		    <div class="card-body">
 		        <div class="dt-responsive table-responsive">
 		            <table id="DealersTable" class="table table-striped table-bordered nowrap text-center"></table>
 				</div>
@@ -187,8 +185,7 @@
 			</div>
 		</div>
 		
-	</div>
-</div>
+
 @endsection
 @extends('admin.modal.new-user')
 @section('js')

@@ -1,8 +1,8 @@
 @extends('layouts.backend')
 @section('title','Order')
 @section('content')
-    <div class="block">
-        <div class="block-content">
+    <div class="card">
+        <div class="card-body">
                 @if (Session::has('status'))
                 <div class="alert alert-success">
                     {{ Session('status') }}

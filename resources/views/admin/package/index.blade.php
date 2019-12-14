@@ -11,7 +11,7 @@
 	        <h5>Package List</h5>
 	        <button class="btn btn-sm btn-primary float-right mb-4" data-toggle="modal" data-target="#PackageModal">Add New Dealer</button>
 	    </div>
-	    <div class="card-block">
+	    <div class="card-body">
 	        <div class="dt-responsive table-responsive">
 	            <table id="PackageTable" class="table table-striped table-bordered nowrap text-center"></table>
 	        </div>

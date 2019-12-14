@@ -6,11 +6,11 @@
 @endsection
 
 @section('content')
-<div class="block">
-	<div class="block-header">
+<div class="card">
+	<div class="card-header">
 		<button class="btn btn-primary btn-sm pull-right newTopup"> <i class="fa fa-plus"></i> New Topup</button>
 	</div>
-	<div class="block-content">
+	<div class="card-body">
 		<div class="dt-responsive table-responsive">
 			<table id="TopupTable" class="table table-striped table-bordered nowrap text-center"></table>
 		</div>

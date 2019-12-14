@@ -6,8 +6,8 @@
 @endsection
 
 @section('content')
-	<div class="block">
-		<div class="block-content">
+	<div class="card">
+		<div class="card-body">
 			<p>
 					content here
 			</p>

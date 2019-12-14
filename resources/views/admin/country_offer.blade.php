@@ -6,14 +6,12 @@
 @endsection
 
 @section('content')
-	<div class="block">
-		<div class="block-content">
-			<div class="card">
+	<div class="card">
 	    <div class="card-header ">
 	        <h5>Offer List</h5>
 	        <button class="btn btn-sm btn-primary float-right waves-effect waves-light mb-4" data-toggle="modal" data-target="#CountryOffer">Add New Offer</button>
 	    </div>
-	    <div class="card-block">
+	    <div class="card-body">
 	        <div class="dt-responsive table-responsive">
 	            <table id="base-style" class="table table-striped table-bordered nowrap text-center">
 	                <thead>
@@ -120,8 +118,7 @@
 	        </div>
 	    </div>
 	</div>
-		</div>
-	</div>
+
 @endsection
 
 @section('js')

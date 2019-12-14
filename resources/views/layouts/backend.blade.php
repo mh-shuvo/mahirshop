@@ -17,6 +17,7 @@
 		<!-- Custom CSS -->
 		<link href="{{asset('public/assets/dist/css/style.min.css')}}" rel="stylesheet">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <link rel="stylesheet" type="text/css" href="{{asset('public/sweetalert/sweetalert.css')}}">
 
 		<style>
 			.hide{
@@ -411,7 +412,7 @@
 		<!-- DataTables -->
 		<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 
-		<script type="text/javascript" src="{{asset('public/assets/public/sweetalert/sweetalert.min.js')}}"></script>
+		<script type="text/javascript" src="{{asset('public/sweetalert/sweetalert.min.js')}}"></script>
 
 		<script src="{{ asset('public') }}/js/form.js" ></script>
 		<script src="{{ asset('public') }}/js/custom.js" ></script>

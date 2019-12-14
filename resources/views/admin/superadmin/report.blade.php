@@ -4,8 +4,8 @@
 
 @endsection
 @section('content')
-<div class="block">
-	<div class="block-content">
+<div class="card">
+	<div class="card-body">
 		<div class="row">
 			<div class="col-sm-3">
 				<div class="form-group">

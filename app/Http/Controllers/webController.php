@@ -275,9 +275,9 @@
 			$order->order_status = 'complete';
 			
 			if($request->delivery_from == 'company'){
-				$order ->order_delivery_from_user_id = $getCompany->user_id;
+				$order->order_delivery_from_user_id = $getCompany->user_id;
 				}elseif($request->delivery_from == 'dealer'){
-				$order ->order_delivery_from_user_id = $request->dealer_list;
+				$order->order_delivery_from_user_id = $request->dealer_list;
 				}else if($request->delivery_from == 'user'){
 				$order->order_delivery_name	 = $request->user_name;
 				$order->order_delivery_phone	 = $request->user_phone;
@@ -299,6 +299,17 @@
 			'topup_type' => 'user',
 			'topup_flow' => 'out',
 			'topup_details' => 'You have purchase '.$order->getRouteKey().' this order with '.$cartTotal['price_subtotal'].' Tk TopUp balance.',
+			'topup_generate_by' => Auth::User()->id,
+			'topup_status' => 'active'
+			]);
+			
+			TopupBalance::create([
+			'user_id' => $order->order_delivery_from_user_id,
+			'from_user_id' =>  Auth::User()->id,
+			'topup_amount' => $cartTotal['price_subtotal'],
+			'topup_type' => 'user',
+			'topup_flow' => 'in',
+			'topup_details' => 'You have received '.$cartTotal['price_subtotal'].' Tk TopUp balance for delivered '.$order->getRouteKey().' this order from '.Auth::User()->username.' .',
 			'topup_generate_by' => Auth::User()->id,
 			'topup_status' => 'active'
 			]);
@@ -342,15 +353,17 @@
 			$getMember = MemberTree::where('user_id',Auth::User()->id)->first();
 			$sponsorBonusPerPV = config('mlm.sponsor_bonus') / 25;
 			$sponsorBonus = $sponsorBonusPerPV * $cartTotal['point_subtotal'];
-			
-			$sponsorBonusData = new MemberBonus();
-			$sponsorBonusData->user_id = $getMember->sponsor_id;
-			$sponsorBonusData->from_user_id = $getMember->user_id;
-			$sponsorBonusData->bonus_type = 'sponsor';
-			$sponsorBonusData->amount = $sponsorBonus;
-			$sponsorBonusData->details = 'You have received '.$sponsorBonus.' Tk Sponsor bonus for '.$cartTotal['point_subtotal'].' PV sales commission from '.$getMember->Users->username;
-			$sponsorBonusData->status = 'active';
-			$sponsorBonusData->save();
+			 
+			if(Auth::user()->hasRole('user')){
+    			$sponsorBonusData = new MemberBonus();
+    			$sponsorBonusData->user_id = $getMember->sponsor_id;
+    			$sponsorBonusData->from_user_id = $getMember->user_id;
+    			$sponsorBonusData->bonus_type = 'sponsor';
+    			$sponsorBonusData->amount = $sponsorBonus;
+    			$sponsorBonusData->details = 'You have received '.$sponsorBonus.' Tk Sponsor bonus for '.$cartTotal['point_subtotal'].' PV sales commission from '.$getMember->Users->username;
+    			$sponsorBonusData->status = 'active';
+    			$sponsorBonusData->save();
+			}
 			
 			$checkUpdate = false;
 			if($availablePV->point_available > 0){

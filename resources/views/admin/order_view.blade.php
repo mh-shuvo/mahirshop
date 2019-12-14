@@ -1,10 +1,10 @@
 @extends('layouts.backend')
 @section('title','Order View')
 @section('content')
-<div class="block block-themed block-transparent mb-0">
-    <div class="block-header bg-primary-dark row">
+<div class="card mb-0">
+    <div class="card-header bg-primary-dark row">
 		<div class="col-sm-10">
-			<h3 class="block-title center text-white">Order Information</h3>
+			<h3 class="card-title center text-white">Order Information</h3>
 		</div>
 		<div class="col-sm-1">
 			<a class="btn btn-default btn-block btn-sm" href="{{url('admin/order-print/')}}/{{$order->id}}">
@@ -12,7 +12,7 @@
 				</a>
 		</div>
 	</div>
-    <div class="block-content font-size-sm">
+    <div class="card-body font-size-sm">
 		
         <div class="row">
 			
