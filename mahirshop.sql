@@ -2,10 +2,10 @@
 -- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Nov 14, 2019 at 08:11 PM
--- Server version: 5.6.41-84.1-log
--- PHP Version: 7.2.7
+-- Host: 127.0.0.1
+-- Generation Time: Dec 14, 2019 at 07:48 AM
+-- Server version: 10.1.35-MariaDB
+-- PHP Version: 7.2.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `meglobal_db`
+-- Database: `mahirshop`
 --
 
 -- --------------------------------------------------------
@@ -47,7 +47,9 @@ CREATE TABLE `banners` (
 --
 
 INSERT INTO `banners` (`id`, `user_id`, `banner_name`, `banner_des`, `banner_image`, `banner_sort`, `banner_type`, `banner_status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(3, 2, 'Me Logo', 'Me Base Baner', 'upload/banner/1573726871.png', '10', 'Slide', 'Active', '2019-11-14 10:21:11', '2019-11-14 10:21:11', NULL);
+(1, 1, 'Banner 1', 'Test Banner', 'upload/banner/1576046543.jpg', '1', 'Slide', 'Active', '2019-11-04 06:48:37', '2019-12-11 06:42:24', NULL),
+(2, 1, 'Test Slide', 'Test Slide For Me Global Ltd', 'upload/banner/1576046600.jpg', '2', 'Slide', 'Active', '2019-11-14 11:37:28', '2019-12-11 06:43:21', NULL),
+(3, 1, 'Lorem ipsum', 'Lorem Ipsum', 'upload/banner/1574668749.png', '1', 'Slide', 'Inactive', '2019-11-25 07:59:09', '2019-12-11 06:43:37', NULL);
 
 -- --------------------------------------------------------
 
@@ -71,16 +73,13 @@ CREATE TABLE `brands` (
 --
 
 INSERT INTO `brands` (`id`, `user_id`, `brand_name`, `brand_sort`, `brand_status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 'Tecno', '1', 'Active', '2019-10-28 21:37:19', '2019-11-11 05:06:39', NULL),
-(2, 1, 'Nike', '2', 'Active', '2019-10-28 21:40:26', '2019-11-11 05:06:45', NULL),
-(3, 1, 'DELL', '3', 'Active', '2019-10-28 21:40:36', '2019-11-11 05:06:48', NULL),
+(1, 1, 'Tecno', '1', 'Active', '2019-10-28 21:37:19', '2019-10-28 21:40:01', NULL),
+(2, 1, 'Nike', '2', 'Active', '2019-10-28 21:40:26', '2019-10-28 21:40:26', NULL),
+(3, 1, 'DELL', '3', 'Active', '2019-10-28 21:40:36', '2019-10-28 21:41:34', NULL),
 (4, 1, 'Easy', '4', 'Active', '2019-10-28 21:41:55', '2019-10-28 21:42:04', NULL),
 (5, 1, 'Symphony', '5', 'Active', '2019-10-28 21:42:13', '2019-10-28 21:42:13', NULL),
 (6, 1, 'Samsung', '6', 'Active', '2019-10-31 00:27:09', '2019-10-31 00:27:09', NULL),
-(7, 1, 'Banglalion', '7', 'Active', '2019-11-02 17:35:11', '2019-11-02 17:35:11', NULL),
-(8, 1, 'Me Beauty', '1', 'Active', '2019-11-11 05:05:41', '2019-11-14 09:49:59', NULL),
-(9, 1, 'Shine', '2', 'Active', '2019-11-11 06:34:10', '2019-11-11 06:34:10', NULL),
-(10, 1, 'Me Health', '3', 'Active', '2019-11-11 14:42:50', '2019-11-11 14:42:50', NULL);
+(7, 1, 'Banglalion', '7', 'Active', '2019-11-02 17:35:11', '2019-11-02 17:35:11', NULL);
 
 -- --------------------------------------------------------
 
@@ -108,10 +107,7 @@ INSERT INTO `categories` (`id`, `user_id`, `category_name`, `category_sort`, `ca
 (1, 1, 'Technology', '1', 'True', 'Active', '2019-10-28 22:50:24', '2019-10-28 22:50:24', NULL),
 (2, 1, 'Accessories', '2', 'True', 'Active', '2019-10-28 22:50:37', '2019-10-29 16:03:22', '2019-10-29 16:03:22'),
 (3, 1, 'Stationary', '3', 'False', 'Active', '2019-10-28 22:50:53', '2019-10-28 22:51:55', '2019-10-28 22:51:55'),
-(4, 1, 'Accessories', '2', 'True', 'Active', '2019-10-29 16:13:03', '2019-10-29 16:13:03', NULL),
-(5, 1, 'Cosmetics', '3', 'True', 'Active', '2019-11-11 05:01:33', '2019-11-11 05:01:33', NULL),
-(6, 1, 'Health', '4', 'True', 'Active', '2019-11-11 14:43:40', '2019-11-11 14:43:40', NULL),
-(7, 1, 'Consumer', '4', 'True', 'Active', '2019-11-14 10:07:50', '2019-11-14 10:07:50', NULL);
+(4, 1, 'Accessories', '2', 'True', 'Active', '2019-10-29 16:13:03', '2019-10-29 16:13:03', NULL);
 
 -- --------------------------------------------------------
 
@@ -415,7 +411,7 @@ CREATE TABLE `cupon_codes` (
 CREATE TABLE `dealers` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `user_id` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `dealer_type` enum('company','division','district','upazila','union') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `dealer_type` enum('company','division','district','upazila','union','admin') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `district_id` bigint(100) DEFAULT NULL,
   `division_id` bigint(100) DEFAULT NULL,
   `upazila_id` bigint(100) DEFAULT NULL,
@@ -435,6 +431,17 @@ CREATE TABLE `dealers` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `dealers`
+--
+
+INSERT INTO `dealers` (`id`, `user_id`, `dealer_type`, `district_id`, `division_id`, `upazila_id`, `dealer_union`, `dealer_delivery_address`, `dealer_delivery_phone`, `dealer_delivery_email`, `dealer_delivery_name`, `dealer_delivery_city`, `dealer_delivery_state`, `dealer_delivery_country`, `dealer_delivery_postcode`, `dealer_bonus`, `dealer_ref_bonus`, `dealer_status`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, '1', 'admin', 1, 5, 116, 'New Union', 'fdsfsd', '0171145', 'info@megloballtd.com', 'Test Account User', '38', '5', '18', '4655', NULL, NULL, NULL, '2019-11-14 06:21:18', '2019-11-14 06:21:18', NULL),
+(3, '7', 'company', 1, 5, 116, 'New Union', 'fdsfsd', '0171145', 'info@megloballtd.com', 'Test Account User', '38', '5', '18', '4655', NULL, NULL, NULL, '2019-11-14 06:21:18', '2019-11-14 06:21:18', NULL),
+(4, '8', 'district', 1, 3, 164, 'New Union56', 'gfdgdgd', '019114236745', 'admin@addmin.com', 'S M Rifat', '1', '3', '18', NULL, NULL, NULL, NULL, '2019-11-14 06:28:31', '2019-11-14 06:28:31', NULL),
+(5, '9', 'upazila', 1, 3, 164, 'Upazila Union', NULL, '6456456', 'infodf@megloballtd.com', 'Test Upazilla', '1', '3', '18', NULL, NULL, NULL, NULL, '2019-11-14 11:27:23', '2019-11-14 11:27:23', NULL),
+(6, '10', 'union', 1, 3, 164, 'union', NULL, '234234', 'info2342@megloballtd.com', 'Test Union', '1', '3', '18', '5675', NULL, NULL, NULL, '2019-11-14 11:28:44', '2019-11-14 11:28:44', NULL);
 
 -- --------------------------------------------------------
 
@@ -628,6 +635,7 @@ CREATE TABLE `member_bonuses` (
   `from_user_id` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `amount` decimal(20,2) DEFAULT NULL,
   `bonus_type` enum('achiever','chairman_club','nsm_royalty','ed_royalty','stockist_royalty','matching','mega_matching','sponsor','stockist_sponsor','stockist') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `incentive_type` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `bonus_pv` decimal(20,2) DEFAULT NULL,
   `details` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -635,6 +643,21 @@ CREATE TABLE `member_bonuses` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `member_bonuses`
+--
+
+INSERT INTO `member_bonuses` (`id`, `user_id`, `from_user_id`, `amount`, `bonus_type`, `incentive_type`, `bonus_pv`, `details`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, '1', '3', '288.00', 'sponsor', NULL, NULL, 'You have received 288 Tk Sponsor bonus for 24 PV sales commission from rifat', 'active', '2019-12-05 12:16:56', '2019-12-05 12:16:56', NULL),
+(2, '1', '3', '18.00', 'sponsor', NULL, NULL, 'You have received 18 Tk Sponsor bonus for 1.5 PV sales commission from rifat', 'active', '2019-12-05 12:19:01', '2019-12-05 12:19:01', NULL),
+(3, '2', '4', '438.00', 'sponsor', NULL, NULL, 'You have received 438 Tk Sponsor bonus for 36.5 PV sales commission from rishad', 'active', '2019-12-05 12:25:37', '2019-12-05 12:25:37', NULL),
+(4, '7', '7', '0.00', 'stockist', NULL, '0.00', 'You have received 0 TK Stockist Bonus for 0 PV Sales Commission from testcompany dealer', 'active', '2019-12-05 12:27:35', '2019-12-05 12:27:35', NULL),
+(5, '1', '7', '50.00', 'stockist_sponsor', NULL, NULL, 'You have received 50 TK Stockist Sponsor Bonus for 25 PV sales commission from testcompany dealer.', 'active', '2019-12-05 12:27:42', '2019-12-05 12:27:42', NULL),
+(6, '7', '7', '300.00', 'stockist', NULL, '25.00', 'You have received 300 TK Stockist Bonus for 25 PV Sales Commission from testcompany dealer', 'active', '2019-12-05 12:27:42', '2019-12-05 12:27:42', NULL),
+(7, '1', '7', '50.00', 'stockist_sponsor', NULL, NULL, 'You have received 50 TK Stockist Sponsor Bonus for 25 PV sales commission from testcompany dealer.', 'active', '2019-12-05 12:27:50', '2019-12-05 12:27:50', NULL),
+(8, '7', '7', '300.00', 'stockist', NULL, '25.00', 'You have received 300 TK Stockist Bonus for 25 PV Sales Commission from testcompany dealer', 'active', '2019-12-05 12:27:50', '2019-12-05 12:27:50', NULL),
+(9, '1', NULL, '250.00', 'matching', NULL, NULL, 'You have received 250 TK for 1 Matching Bonus', NULL, '2019-12-05 12:28:26', '2019-12-05 12:28:26', NULL);
 
 -- --------------------------------------------------------
 
@@ -655,6 +678,9 @@ CREATE TABLE `member_trees` (
   `l_point` decimal(20,2) DEFAULT NULL,
   `r_point` decimal(20,2) DEFAULT NULL,
   `is_premium` timestamp NULL DEFAULT NULL,
+  `is_valid` timestamp NULL DEFAULT NULL,
+  `l_matching` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `r_matching` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `total_matching` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `paid_matching` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `total_matching_pv` decimal(20,2) DEFAULT NULL,
@@ -673,8 +699,16 @@ CREATE TABLE `member_trees` (
 -- Dumping data for table `member_trees`
 --
 
-INSERT INTO `member_trees` (`id`, `user_id`, `sponsor_id`, `designation`, `l_id`, `r_id`, `l_member`, `r_member`, `p_point`, `l_point`, `r_point`, `is_premium`, `total_matching`, `paid_matching`, `total_matching_pv`, `paid_matching_pv`, `last_matching`, `last_incentive`, `last_royalty_incentive`, `incentive_start_from`, `extra_data`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `member_trees` (`id`, `user_id`, `sponsor_id`, `designation`, `l_id`, `r_id`, `l_member`, `r_member`, `p_point`, `l_point`, `r_point`, `is_premium`, `is_valid`, `l_matching`, `r_matching`, `total_matching`, `paid_matching`, `total_matching_pv`, `paid_matching_pv`, `last_matching`, `last_incentive`, `last_royalty_incentive`, `incentive_start_from`, `extra_data`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, '1', NULL, NULL, '2', '4', '4', '4', NULL, NULL, NULL, '2019-12-04 18:00:00', NULL, '1', '1', '1', '1', NULL, NULL, '2019-12-05', NULL, NULL, NULL, '{\"total_member\":{\"premium_l\":1,\"premium_r\":1,\"premium\":2,\"free_l\":3,\"free_r\":3,\"free\":6,\"total\":8},\"total\":{\"tso\":0,\"asm\":0,\"rsm\":0,\"zsm\":0,\"dsm\":0,\"nsm\":0,\"agm\":0,\"gm\":0,\"ed\":0},\"member_designation\":null,\"is_premium\":\"2019-12-05 00:00:00\",\"is_valid\":null,\"matching\":{\"matching_total\":2,\"matching_l\":1,\"matching_r\":1}}', NULL, '2019-12-05 12:38:03', NULL),
+(2, '2', '1', NULL, '11', '3', '1', '2', NULL, NULL, NULL, NULL, NULL, NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{\"total_member\":{\"premium_l\":0,\"premium_r\":1,\"premium\":1,\"free_l\":1,\"free_r\":1,\"free\":2,\"total\":3},\"total\":{\"tso\":0,\"asm\":0,\"rsm\":0,\"zsm\":0,\"dsm\":0,\"nsm\":0,\"agm\":0,\"gm\":0,\"ed\":0},\"member_designation\":null,\"is_premium\":null,\"is_valid\":null,\"matching\":{\"matching_total\":1,\"matching_l\":0,\"matching_r\":1}}', '2019-11-07 10:58:37', '2019-12-05 12:19:45', NULL),
+(3, '3', '1', NULL, '10', NULL, '1', NULL, NULL, NULL, NULL, '2019-12-05 12:19:01', '2019-12-05 12:19:01', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{\"total_member\":{\"premium_l\":0,\"premium_r\":0,\"premium\":0,\"free_l\":1,\"free_r\":0,\"free\":1,\"total\":1},\"total\":{\"tso\":0,\"asm\":0,\"rsm\":0,\"zsm\":0,\"dsm\":0,\"nsm\":0,\"agm\":0,\"gm\":0,\"ed\":0},\"member_designation\":null,\"is_premium\":\"2019-12-05 18:19:01\",\"is_valid\":\"2019-12-05 18:19:01\",\"matching\":{\"matching_total\":0,\"matching_l\":0,\"matching_r\":0}}', '2019-11-07 12:37:30', '2019-12-05 12:19:45', NULL),
+(4, '4', '2', NULL, NULL, '7', NULL, '3', NULL, NULL, NULL, '2019-12-05 12:25:37', '2019-12-05 12:25:37', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{\"total_member\":{\"premium_l\":0,\"premium_r\":0,\"premium\":0,\"free_l\":0,\"free_r\":3,\"free\":3,\"total\":3},\"total\":{\"tso\":0,\"asm\":0,\"rsm\":0,\"zsm\":0,\"dsm\":0,\"nsm\":0,\"agm\":0,\"gm\":0,\"ed\":0},\"member_designation\":null,\"is_premium\":\"2019-12-05 18:25:37\",\"is_valid\":\"2019-12-05 18:25:37\",\"matching\":{\"matching_total\":0,\"matching_l\":0,\"matching_r\":0}}', '2019-11-07 12:50:58', '2019-12-05 12:38:03', NULL),
+(6, '7', '1', NULL, '8', '9', '1', '1', NULL, NULL, NULL, '2019-12-10 18:00:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{\"total_member\":{\"premium_l\":0,\"premium_r\":0,\"premium\":0,\"free_l\":1,\"free_r\":1,\"free\":2,\"total\":2},\"total\":{\"tso\":0,\"asm\":0,\"rsm\":0,\"zsm\":0,\"dsm\":0,\"nsm\":0,\"agm\":0,\"gm\":0,\"ed\":0},\"member_designation\":null,\"is_premium\":null,\"is_valid\":null,\"matching\":{\"matching_total\":0,\"matching_l\":0,\"matching_r\":0}}', '2019-11-14 06:21:18', '2019-12-05 12:38:03', NULL),
+(7, '8', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-10 18:00:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-11-14 06:28:31', '2019-11-14 06:28:31', NULL),
+(8, '9', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-11-14 11:27:23', '2019-11-14 11:27:23', NULL),
+(9, '10', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-11-14 11:28:44', '2019-11-14 11:28:44', NULL),
+(10, '11', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-12-03 11:13:26', '2019-12-03 11:13:26', NULL);
 
 -- --------------------------------------------------------
 
@@ -751,8 +785,10 @@ CREATE TABLE `orders` (
   `order_vat` decimal(20,2) DEFAULT NULL,
   `order_net_amount` decimal(20,2) DEFAULT NULL,
   `order_total_point` decimal(20,2) DEFAULT NULL,
+  `is_dealer_order` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `is_order` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `order_delivery_type` enum('cod','self') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `order_delivery_from` enum('office','dealer','user','admin') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `order_delivery_from` enum('company','dealer','user','admin') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `order_delivery_from_user_id` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `order_delivery_name` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `order_delivery_address` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -761,12 +797,22 @@ CREATE TABLE `orders` (
   `order_delivery_phone` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `order_delivery_mobile` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `order_delivery_company` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `order_delivery_status` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `order_status` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `order_delivery_status` enum('Pending','Delivered','Cancel') COLLATE utf8mb4_unicode_ci DEFAULT 'Pending',
+  `order_status` enum('Pending','Complete','Cancel') COLLATE utf8mb4_unicode_ci DEFAULT 'Pending',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `user_id`, `order_amount`, `order_discount`, `order_charge`, `order_vat`, `order_net_amount`, `order_total_point`, `is_dealer_order`, `is_order`, `order_delivery_type`, `order_delivery_from`, `order_delivery_from_user_id`, `order_delivery_name`, `order_delivery_address`, `order_district`, `order_postcode`, `order_delivery_phone`, `order_delivery_mobile`, `order_delivery_company`, `order_delivery_status`, `order_status`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(2, '7', '1200.00', NULL, NULL, NULL, '1200.00', '730.00', '1', NULL, 'self', 'admin', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Delivered', 'Complete', '2019-12-05 10:52:00', '2019-12-05 10:52:16', NULL),
+(11, '3', '160.00', NULL, NULL, NULL, '160.00', '24.00', NULL, NULL, 'self', 'company', '7', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Delivered', 'Complete', '2019-12-05 12:16:56', '2019-12-05 12:27:35', NULL),
+(12, '3', '10.00', NULL, NULL, NULL, '10.00', '1.50', NULL, NULL, 'self', 'company', '7', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Delivered', 'Complete', '2019-12-05 12:19:01', '2019-12-05 12:27:42', NULL),
+(13, '4', '60.00', NULL, NULL, NULL, '60.00', '36.50', NULL, NULL, 'self', 'company', '7', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Delivered', 'Complete', '2019-12-05 12:25:37', '2019-12-05 12:27:50', NULL);
 
 -- --------------------------------------------------------
 
@@ -786,6 +832,14 @@ CREATE TABLE `packages` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `packages`
+--
+
+INSERT INTO `packages` (`id`, `user_id`, `title`, `package_value`, `package_details`, `is_default`, `package_status`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, '1', 'Test Package ', '25', 'Package Details', 'True', 'Active', NULL, NULL, NULL),
+(3, '1', 'Package Title', '100', 'fgdf', 'False', 'Inactive', '2019-11-07 03:42:33', '2019-11-07 03:51:56', NULL);
 
 -- --------------------------------------------------------
 
@@ -849,6 +903,7 @@ CREATE TABLE `points` (
   `user_id` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `from_user_id` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `point_amount` decimal(20,2) DEFAULT NULL,
+  `is_order` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `point_flow` enum('in','out') COLLATE utf8mb4_unicode_ci NOT NULL,
   `point_details` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `point_status` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -856,6 +911,27 @@ CREATE TABLE `points` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `points`
+--
+
+INSERT INTO `points` (`id`, `user_id`, `from_user_id`, `point_amount`, `is_order`, `point_flow`, `point_details`, `point_status`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, '1', '1', '500.00', NULL, 'in', 'You have received 500 PV for new stock of Samsung V2 and product quantity is 50', 'active', '2019-12-05 10:44:48', '2019-12-05 10:44:48', NULL),
+(2, '1', '1', '1750.00', NULL, 'in', 'You have received 1750 PV for new stock of Symphony V47 and product quantity is 50', 'active', '2019-12-05 10:44:54', '2019-12-05 10:44:54', NULL),
+(3, '1', '1', '75.00', NULL, 'in', 'You have received 75 PV for new stock of Full Shirt and product quantity is 50', 'active', '2019-12-05 10:45:02', '2019-12-05 10:45:02', NULL),
+(4, '1', '1', '200.00', NULL, 'in', 'You have received 200 PV for new stock of Shirt and product quantity is 20', 'active', '2019-12-05 10:45:07', '2019-12-05 10:45:07', NULL),
+(5, '1', '1', '5000.00', NULL, 'in', 'You have received 5000 PV for new stock of Tecno Spark 4 air and product quantity is 50', 'active', '2019-12-05 10:45:12', '2019-12-05 10:45:12', NULL),
+(8, '7', '7', '730.00', NULL, 'in', 'You have received 730 PV for order 2033899500', 'active', '2019-12-05 10:52:00', '2019-12-05 10:52:00', NULL),
+(9, '1', '7', '730.00', NULL, 'out', 'You have transfer 730.00 PV for delivery order 2 to testcompany', 'active', '2019-12-05 10:52:16', '2019-12-05 10:52:16', NULL),
+(19, '3', '3', '24.00', '1', 'in', 'You have received 24 PV for order 1318237993', 'active', '2019-12-05 12:16:56', '2019-12-05 12:16:56', NULL),
+(20, '3', '3', '1.50', '1', 'in', 'You have received 1.5 PV for order 792742922', 'active', '2019-12-05 12:19:01', '2019-12-05 12:19:01', NULL),
+(21, '3', '3', '25.00', NULL, 'out', 'Your account auto upgraded to Premium with 25 PV', 'active', '2019-12-05 12:19:01', '2019-12-05 12:19:01', NULL),
+(22, '4', '4', '36.50', '1', 'in', 'You have received 36.5 PV for order 221111663', 'active', '2019-12-05 12:25:37', '2019-12-05 12:25:37', NULL),
+(23, '4', '4', '25.00', NULL, 'out', 'Your account auto upgraded to Premium with 25 PV', 'active', '2019-12-05 12:25:37', '2019-12-05 12:25:37', NULL),
+(24, '7', '3', '24.00', NULL, 'out', 'You have transfer 24.00 PV for delivery order 11 to rifat', 'active', '2019-12-05 12:27:35', '2019-12-05 12:27:35', NULL),
+(25, '7', '3', '1.50', NULL, 'out', 'You have transfer 1.50 PV for delivery order 12 to rifat', 'active', '2019-12-05 12:27:42', '2019-12-05 12:27:42', NULL),
+(26, '7', '4', '36.50', NULL, 'out', 'You have transfer 36.50 PV for delivery order 13 to rishad', 'active', '2019-12-05 12:27:50', '2019-12-05 12:27:50', NULL);
 
 -- --------------------------------------------------------
 
@@ -890,17 +966,11 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `category_id`, `brand_id`, `unit_id`, `user_id`, `product_name`, `product_code`, `product_des`, `product_base_price`, `product_discount_price`, `product_vat`, `product_point`, `product_image`, `product_featured`, `product_type`, `product_status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(6, 5, 8, 1, 1, 'Me Neem Tulsi Face Wash', 'Me0001', 'Beauty product', '200', '170', '0', '1', 'upload/product/Me Neem Tulsi Face Wash1573739671.png', NULL, 'Single', NULL, '2019-11-11 05:41:08', '2019-11-14 13:54:31', NULL),
-(7, 6, 10, 1, 1, 'Me Soy Protein Gold', 'MeH001', '***Me SOY _PROTEIN_GOLD***\r\nউপকারিতা: *ওজন বা মেদ-ভুড়ি কমাতে অদ্বিতীয়, * হৃদরোগ প্রতিরোধে কার্যকরী, * কোলেষ্টেরল নিয়ন্ত্রনে কার্যকরী,* হাড়ক্ষয় রোধ করে, * রক্তের কোলেষ্টেরল কমায়,* আকর্ষনীয় দেহ নিশ্চিত করে, সোন্দর্য্য বৃদ্ধি করে।\r\nউপাদান: উতকৃষ্টমানের ফার্মেন্টেড সয়া প্রোটিন, হোয়াইট ওট, বেঙ্গলল গ্রাম, গ্রীন গ্রাম, বিভিন্ন প্রকার বীনস ও রাইস ব্রান।\r\nসেবন বিধি: ৪ চামচ পাউডার ঠান্ডা ও বিভিন্ন প্রকার পাকা ফল বা ফলের রস/লেবু/ কমলার রস, এর সহিত ব্লেন্ডিং করে পানি শরবত, পরিবর্তিত খাদ্য রূপে পরামর্শ অনুযায়ী দিনে ১বা ২ বার সেব্য।\r\n\r\nপ্যাক সাইজ : ৫০০গ্রাম\r\n\r\nসতর্কতা: কিডনী, স্কীন এলার্জি ও থাইরোয়েড সমস্যা যুক্ত রোগিদের ক্ষেত্রে পরামর্শ ছাড়া সয়া প্রোটিন সেবন নিষেধ।', '800.00', '700.00', '0', '2.50', 'upload/product/Me Soy Protein Gold1573721664.png', 'True', 'Single', 'Active', '2019-11-14 08:54:25', '2019-11-14 08:54:25', NULL),
-(8, 6, 10, 1, 1, 'Me Female Care', 'MeHoo2', 'Me_Female_Care_Gold.\r\nউপকারীতা: আমাদের দেশের মহিলারা সাধারণত সংসারের সকল কাজকর্ম ও স্বামী সন্তানের সেবা সম্পাদনে ব্যস্ত থাকায় নিজের স্বাস্থ্যের প্রতি উদাসীন থাকে, ফলে পূষ্টিহীনতার কারনে দেহ শীর্নতায় অথবা চর্বিবহুল হয়ে পরে, ফলে নানা প্রকার স্ত্রীরোগ, তথা শ্বেতপ্রদর, অকাল রক্তপ্রদর, সিষ্ট/টিউমার, মাসিকের গোলযোগ, অকাল ঋতুবন্ধ ও অল্প বয়সে দেহের সোন্দর্য্য চর্মে বৃদ্ধার ছাপ পরিলক্ষিত হয়। এ সকল ক্ষেত্রে \"\"ফিমেল কেয়ার গোল্ড\"\" একটি উতকৃষ্ট সুফলদায়ক পুষ্টি টনিক হিসেবে প্রমানিত হয়েছে, নিয়মিত সেবনে মাথার চুল থেকে হাত-পায়ের নখের ও বক্ষের সোন্দর্য বৃদ্ধি, মুখমন্ডলের লাবন্যতা, প্রান চঞ্চলতা, কর্মশক্তি ও মানসিক প্রশান্তি বৃদ্ধি পায়। অকাল ঋতু বন্ধের কারন দূরিভূত হয়ে যৌবন দীর্ঘায়ীত হয়।\r\nসেবন বিধি: ১ বা ২ চামচ পাউডার ১গ্লাস ঠান্ডা পানির সহিত সকাল ও বিকাল খালি পেটে সেব্য।\r\nপ্যাক সাইজ: 400 গ্রাম', '800.00', '700.00', '0', '2.50', 'upload/product/Me Female Care1573724582.png', NULL, 'Single', 'Active', '2019-11-14 09:01:23', '2019-11-14 09:43:03', NULL),
-(9, 6, 10, 1, 1, 'Me Triphala Powder', 'MeH003', 'ME_ত্রিফলা পাউডার::#হজম শক্তি বৃদ্ধি করে, কোষ্ঠকাঠিন্য দূর করে।\r\n\r\nকার্যকারিতা :: হজম শক্তি, দুর্বলতা, কোষ্ঠকাঠিন্যতা, গ্যাস্ট্রাইটিস ও পুরাতন আমাশয় রোগের অদ্বিতীয় কার্যকরী।\r\n\r\nসেবন বিধি:: ১ চা চামচ পাউডার ১ গ্লাস পানির সহিত সকালে নাস্তার পর ও রাতে শোয়ার আগে ১ গ্লাস কুসুম গরম পানির সহিত সেব্য।\r\n\r\nপ্যাক সাইজ::১০০ গ্রাম', '450', '400', '0', '1.00', 'upload/product/Me Triphala Powder1573722565.png', 'True', 'Single', 'Active', '2019-11-14 09:09:25', '2019-11-14 09:09:25', NULL),
-(10, 6, 10, 1, 1, 'Me Power Source', 'MeH004', 'Me Power Source পুরুষ ও মহিলাদের গোপন শক্তি বর্ধক খাদ্য কার্যকারিতাঃ *সাধারন বল কারক, *শক্তি বর্ধক, *মহিলা ও পুরুষের হর্মোন ব্যালেন্স ফিরিয়ে আনে, *শুক্রানু বৃদ্ধি করে এবং বন্ধ্যাত্ব দূরীকরনে সহায়তা করে, *দাম্পত্য জীবনকে আনন্দদায়ক করে ।Ingredients: Korean Red Ginseng, White Oat, Mashroom, Damiana, Alfalfa Leaf, Tribulus, Aswaganda, Crocas sat, Velvet bean, Soya protein . সেবন বিধিঃ প্রয়োজন অনুসারে দুপুরের/রাতের খাবারের ১ ঘন্টা পরে হাফ/১ চা চামচ পাউডার কুসুম গরম পানি/চা দুধের সাথে মিশিয়ে সেব্য । প্যাক \r\n\r\nসাইজঃ ১০০ গ্রাম,', '800.00', '700.00', NULL, '2.50', 'upload/product/Me Power Source1573724057.png', 'True', 'Single', 'Active', '2019-11-14 09:34:18', '2019-11-14 09:34:18', NULL),
-(11, 6, 10, 1, 1, 'Me Tulsi Dry Juice', 'MeH005', '✔️ME_তুলসি_ড্রাই_জুস \r\n★★ তুলসি_ড্রাই_জুস কেন খাবেন???\r\n★★ উপকারিতাঃ\r\nশীতলকারক পানীয় হিসাবে পান করা যায়। অন্যান্য শরবত, লেবু পানি ও ফালুদার সাথে ব্যবহার করা যায়। ঠান্ডা, কাশি ও শ্বাসতন্ত্রের জন্য উপকারী পানীয়। হজমে সাহায্য করে ও কোষ্ঠকাঠিন্য উপকারী ভেষজ পানীয়। শরীরের ক্লান্তি দুর করে ও দেহ-মন সতেজ রাখে।\r\n★★ উপকরণঃ\r\nতুলসি বীজ, স্টেভিয়া, ইসুবগুল,ভিটামিন সি ও অন্যান্য হারবাল উপাদানের মিশ্রণ।\r\n★★ জুস তৈরির নিয়মঃ\r\n১ গ্লাস পানির মধ্যে ১ টি প্যাকেট ড্রাই জুস ঢেলে চামচ দিয়ে নেঢ়ে ২ মিনিট পর পান করুন।\r\nওজনঃ ১বক্স 30 পিছ স্যাসেট,150 গ্রাম।', '450', '400', '0', '1.00', 'upload/product/Me Tulsi Dry Juice1573724382.png', 'True', 'Single', 'Active', '2019-11-14 09:39:43', '2019-11-14 09:39:43', NULL),
-(12, 5, 8, 1, 1, 'Me Strawbery Face Wash', 'Me0002', 'Beauty Product', '220', '190', '0', '1.00', 'upload/product/Me Strawbery Face Wash1573725254.png', 'True', 'Single', 'Active', '2019-11-14 09:54:14', '2019-11-14 09:54:14', NULL),
-(13, 5, 8, 1, 1, 'Me Night Fairness Skin Cream', 'Me0004', 'Beauty Producr', '300', '250', '0', '1.00', 'upload/product/Me Night Fairness Skin Cream1573725459.png', 'True', 'Single', 'Active', '2019-11-14 09:57:40', '2019-11-14 09:57:40', NULL),
-(14, 5, 8, 1, 1, 'Me Spot Out Skin Cream', 'Me0005', 'Beauty Product', '300', '250', '0', '1.00', 'upload/product/Me Spot Out Skin Cream1573725637.png', 'True', 'Single', 'Active', '2019-11-14 10:00:38', '2019-11-14 10:00:38', NULL),
-(15, 5, 8, 1, 1, 'Monpori Active Gold Mehadi', 'Me0006', '4 PCS', '50.00', '35.00', NULL, '.25', 'upload/product/Monpori Active Gold Mehadi1573725857.png', 'True', 'Bundle', 'Active', '2019-11-14 10:04:17', '2019-11-14 10:04:17', NULL),
-(16, 7, 9, 1, 1, 'Shine Detergent Powder', 'MeS001', '2 Pcs', '130', '120', '0', '0.25', 'upload/product/Shine Detergent Powder1573726269.png', 'True', 'Bundle', 'Active', '2019-11-14 10:11:10', '2019-11-14 10:11:10', NULL);
+(1, 4, 1, 1, 1, 'Shirt', 'PRO147852', 'Product for Testing purpose', '10500', '1200', '10', '10', 'upload/product/Shirt1572413810.jpg', 'True', NULL, 'Active', '2019-10-29 16:17:51', '2019-10-29 22:59:10', NULL),
+(2, 1, 1, 1, 1, 'Tecno Spark 4 air', 'PRO147853', 'Techno Spark 4 Air\r\n3GB Ram, 32GB ROM, 15mp CamperaTecno Spark 4 Air Summary\r\nTecno Spark 4 Air smartphone was launched on 29th August 2019. The phone comes with a 6.10-inch touchscreen display and an aspect ratio of 19.5:9.\r\n\r\nTecno Spark 4 Air is powered by a 2GHz quad-core MediaTek Helio A22 processor. It comes with 3GB of RAM.\r\n\r\nThe Tecno Spark 4 Air runs Android 9 Pie and is powered by a 3000mAh battery.\r\n\r\nAs far as the cameras are concerned, the Tecno Spark 4 Air on the rear packs a 13-megapixel primary camera with an f/1.8 aperture and a second 0.3-megapixel camera. It sports a 5-megapixel camera on the front for selfies.\r\n\r\nThe Tecno Spark 4 Air runs HiOS 5.0 based on Android 9 Pie and packs 32GB of inbuilt storage that can be expanded via microSD card (up to 256GB) with a dedicated slot. The Tecno Spark 4 Air is a dual-SIM (GSM and GSM) smartphone that accepts Nano-SIM and Nano-SIM cards.\r\n\r\nConnectivity options on the Tecno Spark 4 Air include Wi-Fi, GPS, 3G, and 4G. Sensors on the phone include accelerometer and fingerprint sensor. The Tecno Spark 4 Air supports face unlock.\r\n\r\nIt was launched in Nebula Black and Royal Purple colours.', '10500', NULL, '100', '100', 'upload/product/Tecno Spark 4 air1572427890.png', 'True', 'Single', 'Active', '2019-10-29 21:31:31', '2019-10-29 21:31:31', NULL),
+(3, 1, 1, 1, 2, 'Symphony V47', '2012536985', 'Description', '350', '50', '10', '35', 'upload/product/Symphony V471571664080.png', 'True', 'Single', 'Active', '2019-10-20 19:21:21', '2019-10-20 19:21:21', NULL),
+(4, 4, 2, 1, 2, 'Full Shirt', '65465465445', 'sdfd', '150', '10', '5', '1.5', 'upload/product/Full Shirt1571664115.jpeg', 'True', 'Single', 'Active', '2019-10-20 19:21:55', '2019-10-20 19:21:55', NULL),
+(5, 1, 6, 1, 2, 'Samsung V2', '1012', 'samsung', '1500', '1000', '0', '10', 'upload/product/Samsung V21571901420.png', 'True', 'Single', 'Active', '2019-10-23 13:17:00', '2019-10-23 13:17:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -945,16 +1015,16 @@ CREATE TABLE `role_has_permissions` (
 
 INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (1, 1),
-(2, 1),
-(3, 1),
-(4, 2),
-(5, 2),
-(6, 2),
 (1, 3),
+(2, 1),
 (2, 3),
+(3, 1),
 (3, 3),
+(4, 2),
 (4, 3),
+(5, 2),
 (5, 3),
+(6, 2),
 (6, 3),
 (7, 3),
 (8, 3),
@@ -963,17 +1033,49 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (11, 3),
 (12, 3),
 (13, 3),
-(14, 3),
-(15, 3),
-(16, 3),
-(17, 3),
-(18, 3),
 (13, 4),
+(14, 3),
 (14, 4),
+(15, 3),
 (15, 4),
+(16, 3),
 (16, 6),
+(17, 3),
 (17, 6),
+(18, 3),
 (18, 6);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sms_logs`
+--
+
+CREATE TABLE `sms_logs` (
+  `id` int(100) NOT NULL,
+  `sender` varchar(100) DEFAULT NULL,
+  `action` varchar(100) DEFAULT NULL,
+  `massage` mediumtext,
+  `to` varchar(100) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `status` varchar(100) DEFAULT NULL,
+  `status_details` text
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `sms_logs`
+--
+
+INSERT INTO `sms_logs` (`id`, `sender`, `action`, `massage`, `to`, `created_at`, `updated_at`, `status`, `status_details`) VALUES
+(11, 'nomask', 'cart-order', 'You have received 24 PV for order 184056211', '01911423670', '2019-12-05 12:07:05', '2019-12-05 12:07:05', 'insufficient balance', '{\"code\":402,\"status\":\"insufficient balance\",\"message\":\"Insufficient balance, please recharge.\"}'),
+(12, 'nomask', 'upgrade', 'Your account successfully  auto upgrade to Premium with 25 PV', '01911423670', '2019-12-05 12:08:31', '2019-12-05 12:08:31', 'insufficient balance', '{\"code\":402,\"status\":\"insufficient balance\",\"message\":\"Insufficient balance, please recharge.\"}'),
+(13, 'nomask', 'cart-order', 'You have received 24 PV for order 1755651828', '01911423670', '2019-12-05 12:08:31', '2019-12-05 12:08:31', 'insufficient balance', '{\"code\":402,\"status\":\"insufficient balance\",\"message\":\"Insufficient balance, please recharge.\"}'),
+(14, 'nomask', 'cart-order', 'You have received 24 PV for order 1318237993', '01911423670', '2019-12-05 12:16:57', '2019-12-05 12:16:57', 'success', '{\"code\":200,\"status\":\"success\",\"count\":1}'),
+(15, 'nomask', 'upgrade', 'Your account successfully  auto upgrade to Premium with 25 PV', '01911423670', '2019-12-05 12:19:02', '2019-12-05 12:19:02', 'success', '{\"code\":200,\"status\":\"success\",\"count\":1}'),
+(16, 'nomask', 'cart-order', 'You have received 1.5 PV for order 792742922', '01911423670', '2019-12-05 12:19:02', '2019-12-05 12:19:02', 'success', '{\"code\":200,\"status\":\"success\",\"count\":1}'),
+(17, 'nomask', 'upgrade', 'Your account successfully  auto upgrade to Premium with 25 PV', '4564563', '2019-12-05 12:25:37', '2019-12-05 12:25:37', 'success', '{\"code\":200,\"status\":\"success\",\"count\":0}'),
+(18, 'nomask', 'cart-order', 'You have received 36.5 PV for order 221111663', '4564563', '2019-12-05 12:25:37', '2019-12-05 12:25:37', 'success', '{\"code\":200,\"status\":\"success\",\"count\":0}');
 
 -- --------------------------------------------------------
 
@@ -989,11 +1091,28 @@ CREATE TABLE `stock_managers` (
   `order_id` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `product_qty` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `stock_flow` enum('in','out') COLLATE utf8mb4_unicode_ci NOT NULL,
-  `stock_status` enum('ordered','delivered','hold','cancel') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `stock_status` enum('Ordered','Delivered','Hold','Cancel','Pending') COLLATE utf8mb4_unicode_ci DEFAULT 'Ordered',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `stock_managers`
+--
+
+INSERT INTO `stock_managers` (`id`, `user_id`, `delivery_user_id`, `product_id`, `order_id`, `product_qty`, `stock_flow`, `stock_status`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, '1', NULL, '5', NULL, '50', 'in', 'Delivered', '2019-12-05 10:44:48', '2019-12-05 10:44:48', NULL),
+(2, '1', NULL, '3', NULL, '50', 'in', 'Delivered', '2019-12-05 10:44:54', '2019-12-05 10:44:54', NULL),
+(3, '1', NULL, '4', NULL, '50', 'in', 'Delivered', '2019-12-05 10:45:02', '2019-12-05 10:45:02', NULL),
+(4, '1', NULL, '1', NULL, '20', 'in', 'Delivered', '2019-12-05 10:45:07', '2019-12-05 10:45:07', NULL),
+(5, '1', NULL, '2', NULL, '50', 'in', 'Delivered', '2019-12-05 10:45:12', '2019-12-05 10:45:12', NULL),
+(7, '7', 1, '4', '2', '20', 'in', 'Delivered', '2019-12-05 10:52:00', '2019-12-05 10:52:16', NULL),
+(8, '7', 1, '3', '2', '20', 'in', 'Delivered', '2019-12-05 10:52:00', '2019-12-05 10:52:16', NULL),
+(16, '3', 7, '4', '11', '16', 'out', 'Delivered', '2019-12-05 12:16:56', '2019-12-05 12:27:35', NULL),
+(17, '3', 7, '4', '12', '1', 'out', 'Delivered', '2019-12-05 12:19:01', '2019-12-05 12:27:42', NULL),
+(18, '4', 7, '4', '13', '1', 'out', 'Delivered', '2019-12-05 12:25:37', '2019-12-05 12:27:50', NULL),
+(19, '4', 7, '3', '13', '1', 'out', 'Delivered', '2019-12-05 12:25:37', '2019-12-05 12:27:50', NULL);
 
 -- --------------------------------------------------------
 
@@ -1015,6 +1134,31 @@ CREATE TABLE `topup_balances` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `topup_balances`
+--
+
+INSERT INTO `topup_balances` (`id`, `user_id`, `from_user_id`, `topup_amount`, `topup_type`, `topup_flow`, `topup_generate_by`, `topup_details`, `topup_status`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, '1', '1', '5000.00', 'admin', 'in', '1', 'You Received 5000 Tk TopUp Balance From System Administrator', 'active', '2019-11-07 10:52:53', '2019-11-07 10:52:53', NULL),
+(35, '1', '4', '2000.00', 'user', 'out', '1', 'You have transfer 2000 Tk TopUp balance to rishad .', 'active', '2019-12-05 10:47:05', '2019-12-05 10:47:05', NULL),
+(36, '4', '1', '2000.00', 'user', 'in', '1', 'You have received 2000 Tk TopUp balance From admin .', 'active', '2019-12-05 10:47:05', '2019-12-05 10:47:05', NULL),
+(37, '4', '4', '150.00', 'user', 'out', '4', 'You have purchase 458047115 this order with 150 Tk TopUp balance.', 'active', '2019-12-05 10:47:19', '2019-12-05 10:47:19', NULL),
+(38, '1', '3', '2000.00', 'user', 'out', '1', 'You have transfer 2000 Tk TopUp balance to rifat .', 'active', '2019-12-05 10:48:50', '2019-12-05 10:48:50', NULL),
+(39, '3', '1', '2000.00', 'user', 'in', '1', 'You have received 2000 Tk TopUp balance From admin .', 'active', '2019-12-05 10:48:50', '2019-12-05 10:48:50', NULL),
+(40, '1', '1', '10000.00', 'admin', 'in', '1', 'You Received 10000 Tk TopUp Balance From System Administrator', 'active', '2019-12-05 10:50:12', '2019-12-05 10:50:12', NULL),
+(41, '1', '7', '5000.00', 'user', 'out', '1', 'You have transfer 5000 Tk TopUp balance to testcompany .', 'active', '2019-12-05 10:50:28', '2019-12-05 10:50:28', NULL),
+(42, '7', '1', '5000.00', 'user', 'in', '1', 'You have received 5000 Tk TopUp balance From admin .', 'active', '2019-12-05 10:50:28', '2019-12-05 10:50:28', NULL),
+(43, '7', '7', '1200.00', 'user', 'out', '7', 'You have purchase 2033899500 this order with 1200 Tk TopUp balance.', 'active', '2019-12-05 10:52:00', '2019-12-05 10:52:00', NULL),
+(48, '3', '3', '160.00', 'user', 'out', '3', 'You have purchase 1318237993 this order with 160 Tk TopUp balance.', 'active', '2019-12-05 12:16:56', '2019-12-05 12:16:56', NULL),
+(49, '3', '3', '10.00', 'user', 'out', '3', 'You have purchase 792742922 this order with 10 Tk TopUp balance.', 'active', '2019-12-05 12:19:01', '2019-12-05 12:19:01', NULL),
+(50, '3', '4', '1000.00', 'user', 'out', '3', 'You have transfer 1000 Tk TopUp balance to rishad .', 'active', '2019-12-05 12:20:43', '2019-12-05 12:20:43', NULL),
+(51, '4', '3', '1000.00', 'user', 'in', '3', 'You have received 1000 Tk TopUp balance From rifat .', 'active', '2019-12-05 12:20:43', '2019-12-05 12:20:43', NULL),
+(52, '4', '4', '60.00', 'user', 'out', '4', 'You have purchase 221111663 this order with 60 Tk TopUp balance.', 'active', '2019-12-05 12:25:37', '2019-12-05 12:25:37', NULL),
+(53, '1', '3', '100.00', 'user', 'out', '1', 'You have transfer 100 Tk TopUp balance to rifat .', 'active', '2019-12-11 10:08:13', '2019-12-11 10:08:13', NULL),
+(54, '3', '1', '100.00', 'user', 'in', '1', 'You have received 100 Tk TopUp balance From admin .', 'active', '2019-12-11 10:08:13', '2019-12-11 10:08:13', NULL),
+(55, '1', '8', '2000.00', 'user', 'out', '1', 'You have transfer 2000 Tk TopUp balance to testdistrict .', 'active', '2019-12-11 10:53:38', '2019-12-11 10:53:38', NULL),
+(56, '8', '1', '2000.00', 'user', 'in', '1', 'You have received 2000 Tk TopUp balance From admin .', 'active', '2019-12-11 10:53:38', '2019-12-11 10:53:38', NULL);
 
 -- --------------------------------------------------------
 
@@ -1566,19 +1710,24 @@ CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `username` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
   `address` text COLLATE utf8mb4_unicode_ci,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `position` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `city` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `state` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `country` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `upazila` int(10) DEFAULT NULL,
+  `user_union` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `post_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `father_name` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mother_name` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nomine_name` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `txn_pin` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `national_id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `national_id` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `register_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `profile_picture` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `user_type` enum('admin','accountant','user','free','manager','dealer') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'free',
+  `user_type` enum('admin','accountant','user','free','manager','dealer') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'user',
   `is_signup_without_payment` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `is_premium` timestamp NULL DEFAULT NULL,
   `is_banned` timestamp NULL DEFAULT NULL,
@@ -1594,8 +1743,16 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `username`, `phone`, `address`, `email`, `position`, `city`, `state`, `country`, `post_code`, `txn_pin`, `national_id`, `register_by`, `profile_picture`, `user_type`, `is_signup_without_payment`, `is_premium`, `is_banned`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'ME Global', 'meadmin', '01711270279', 'Rajshahi', 'mecosmeticspvtltd@gmail.com', 'Admin', NULL, NULL, '18', NULL, '123321', '123456789', '1', NULL, 'admin', NULL, NULL, NULL, NULL, '$2y$10$8iPliL8kjSHW.Z1Undf2rOQrOMF5ua1SzUPfYnRRn5l.MiKldO2gG', 'A9ReU8tQx3NUc51ZVnn0WrEMQbS1adOIa0W7LvXGfv5eGfHfuSifYJrxdlFR', '2019-11-15 00:00:00', '2019-11-15 01:57:07', NULL);
+INSERT INTO `users` (`id`, `name`, `username`, `phone`, `address`, `email`, `position`, `city`, `state`, `country`, `upazila`, `user_union`, `post_code`, `father_name`, `mother_name`, `nomine_name`, `txn_pin`, `national_id`, `register_by`, `profile_picture`, `user_type`, `is_signup_without_payment`, `is_premium`, `is_banned`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Rishaf', 'admin', '01911', 'Dhaka bangladesh', 'rishad.black@gmail.com', NULL, '1', '1', '1', 1, 'Lebanon', NULL, 'father', 'Mother', 'Nomine', '123321', '123456789', '123456789', 'admin.png', 'admin', NULL, NULL, NULL, NULL, '$2y$10$8iPliL8kjSHW.Z1Undf2rOQrOMF5ua1SzUPfYnRRn5l.MiKldO2gG', NULL, NULL, '2019-11-26 08:08:27', NULL),
+(2, 'Admin', 'mehedi', '34543534', 'fadsfs', 'admin@adddmin.com', NULL, '15', '7', '18', NULL, NULL, '1234563', 'Abdul Khalek', NULL, NULL, '123456', '415646', '415646', 'mehedi.jpg', 'user', NULL, '2019-11-06 18:00:00', NULL, NULL, '$2y$10$DMBPNP7XjdJMIFfrCNlaY.xMoLEo12aQes802Uay2NROYZxEpsROO', NULL, '2019-11-07 10:58:37', '2019-12-12 11:58:50', NULL),
+(3, 'Rifat', 'rifat', '01911423670', 'dgdfg', 'rifatsdfsd@gmail.com', NULL, '1', '3', '18', NULL, NULL, '23453245', NULL, NULL, NULL, '123456', '43534543', '43534543', 'rifat.png', 'user', NULL, '2019-11-06 18:00:00', NULL, NULL, '$2y$10$0RWxUWwHmPBrSd8OnWY8nOS.YKIxdd1gZ8ftDx1DJi9YMDWIGuTei', NULL, '2019-11-07 12:37:29', '2019-11-12 11:53:24', NULL),
+(4, 'Rishad', 'rishad', '4564563', 'dfgdgd', 'adminpdsfa@admin.com', NULL, '16', '3', '18', NULL, NULL, '7567', 'Father', 'Mother', 'Nomine', '123456', '9876543', '9876543', 'rishad.png', 'user', NULL, '2019-11-06 18:00:00', NULL, NULL, '$2y$10$SJct.AX0MjFW25fG12EWxO6BXOLyxuP6sFCja187bRFHWPe6fkwe.', NULL, '2019-11-07 12:50:58', '2019-11-25 10:57:34', NULL),
+(7, 'Test Account User', 'testcompany', '0171145', 'fdsfsd', 'info@megloballtd.com', NULL, '38', '5', '18', NULL, NULL, '4655', NULL, NULL, NULL, '123456', '456456', '1', NULL, 'dealer', NULL, '2019-12-10 18:00:00', NULL, NULL, '$2y$10$enPJ8LyIziTYEFIUN.y1U.BV..4QBLLXSMJt3miC..qhddHWc4O/m', NULL, '2019-11-14 06:21:18', '2019-11-14 06:21:18', NULL),
+(8, 'S M Rifat', 'testdistrict', '01911423674', 'gfdgdgd', 'admin@addmin.com', NULL, '1', '3', '18', NULL, NULL, NULL, NULL, NULL, NULL, '123456', '123123', '1', NULL, 'dealer', NULL, '2019-12-10 18:00:00', NULL, NULL, '$2y$10$zONDgAFHJLElrjBApcJ23eTEPHBBPr8xwiw/zElTDydx7WoL.gaJu', NULL, '2019-11-14 06:28:31', '2019-11-14 06:28:31', NULL),
+(9, 'Test Upazilla', 'testupazila', '6456456', NULL, 'infodf@megloballtd.com', NULL, '1', '3', '18', NULL, NULL, NULL, NULL, NULL, NULL, '123456', '556456', '1', NULL, 'dealer', NULL, '2019-12-10 18:00:00', NULL, NULL, '$2y$10$167m2iqOr6kMH1OhOsNHeeLOMlGG4tRbE4g5pvANVIR73wbU7A7Fe', NULL, '2019-11-14 11:27:23', '2019-11-14 11:27:23', NULL),
+(10, 'Test Union', 'testunion', '234234', NULL, 'info2342@megloballtd.com', NULL, '1', '3', '18', NULL, NULL, '5675', NULL, NULL, NULL, '123456', '675477', '1', NULL, 'dealer', NULL, '2019-12-10 18:00:00', NULL, NULL, '$2y$10$d4ndW5U4blKz27RWoXy8ceWjeSxY02l4qLC5Y7tJ1sbzfekjIZx9y', NULL, '2019-11-14 11:28:43', '2019-11-14 11:28:43', NULL),
+(11, 'test user', 'testadmin', '01672130499', 'dsafsdf', 'dfgdf@fdgd.dh', NULL, '1', '3', '18', NULL, NULL, '45343', 'test', 'fdgdfg', 'sdfgdsf', '123456', '3534534', '1', NULL, 'user', NULL, NULL, NULL, NULL, '$2y$10$C5iSK51H.dCjbOTCnjgXO.HNTDVRt8A3w1TmU4FojZ5HkITV.t4V6', NULL, '2019-12-03 11:13:26', '2019-12-03 11:13:26', NULL);
 
 -- --------------------------------------------------------
 
@@ -1626,7 +1783,16 @@ CREATE TABLE `user_has_roles` (
 --
 
 INSERT INTO `user_has_roles` (`role_id`, `model_type`, `user_id`) VALUES
-(3, 'App\\User', 1);
+(1, 'App\\User', 7),
+(3, 'App\\User', 1),
+(4, 'App\\User', 3),
+(4, 'App\\User', 4),
+(4, 'App\\User', 11),
+(6, 'App\\User', 2),
+(6, 'App\\User', 7),
+(6, 'App\\User', 8),
+(6, 'App\\User', 9),
+(6, 'App\\User', 10);
 
 -- --------------------------------------------------------
 
@@ -1651,6 +1817,14 @@ CREATE TABLE `withdrawals` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `withdrawals`
+--
+
+INSERT INTO `withdrawals` (`id`, `user_id`, `pay_by_user_id`, `withdrawal_amount`, `payment_method`, `payment_method_details`, `withdrawal_charge`, `vat_amount`, `insurance_amount`, `total_withdrawal_amount`, `withdrawal_details`, `withdrawal_status`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, '1', NULL, '200.00', NULL, NULL, '22.00', '20.00', '2.00', '178.00', 'test', 'paid', '2019-11-07 12:58:53', '2019-11-26 09:34:08', NULL),
+(2, '1', NULL, '100.00', NULL, NULL, '11.00', '10.00', '1.00', '89.00', 'fddg', 'paid', '2019-12-05 08:24:28', '2019-12-05 08:24:28', NULL);
 
 --
 -- Indexes for dumped tables
@@ -1790,6 +1964,12 @@ ALTER TABLE `role_has_permissions`
   ADD KEY `role_has_permissions_role_id_foreign` (`role_id`);
 
 --
+-- Indexes for table `sms_logs`
+--
+ALTER TABLE `sms_logs`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `stock_managers`
 --
 ALTER TABLE `stock_managers`
@@ -1856,13 +2036,13 @@ ALTER TABLE `banners`
 -- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `countries`
@@ -1880,7 +2060,7 @@ ALTER TABLE `cupon_codes`
 -- AUTO_INCREMENT for table `dealers`
 --
 ALTER TABLE `dealers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `designations`
@@ -1910,13 +2090,13 @@ ALTER TABLE `incentive_settings`
 -- AUTO_INCREMENT for table `member_bonuses`
 --
 ALTER TABLE `member_bonuses`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `member_trees`
 --
 ALTER TABLE `member_trees`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -1934,13 +2114,13 @@ ALTER TABLE `notices`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `packages`
 --
 ALTER TABLE `packages`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `permissions`
@@ -1952,13 +2132,13 @@ ALTER TABLE `permissions`
 -- AUTO_INCREMENT for table `points`
 --
 ALTER TABLE `points`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -1967,16 +2147,22 @@ ALTER TABLE `roles`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT for table `sms_logs`
+--
+ALTER TABLE `sms_logs`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
 -- AUTO_INCREMENT for table `stock_managers`
 --
 ALTER TABLE `stock_managers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `topup_balances`
 --
 ALTER TABLE `topup_balances`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `units`
@@ -1994,13 +2180,13 @@ ALTER TABLE `upazilas`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `withdrawals`
 --
 ALTER TABLE `withdrawals`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
