@@ -191,7 +191,7 @@
                         </li>
                         
                         
-                        <li class="sidebar-item">
+                        <!--li class="sidebar-item">
                             <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
                                 <i class="mdi mdi-av-timer"></i>
                                 <span class="hide-menu">Ecommerce </span>
@@ -235,7 +235,7 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li-->
                         <li class="sidebar-item">
                             <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
                                 <i class="mdi mdi-av-timer"></i>
@@ -321,6 +321,12 @@
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('admin.superadmin.order')}}" aria-expanded="false">
                                 <i class="mdi mdi-cube-send"></i>
                                 <span class="hide-menu">Receive Orders</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('packages')}}" aria-expanded="false">
+                                <i class="mdi mdi-cube-send"></i>
+                                <span class="hide-menu">Package</span>
                             </a>
                         </li>
 
