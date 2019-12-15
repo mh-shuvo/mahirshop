@@ -99,7 +99,12 @@
 			Route::get('/superadmin/topup','SuperadminController@topup')->name('admin.superadmin.topup');
 			Route::get('/superadmin/topup/data','SuperadminController@topupData')->name('admin.superadmin.topup.data');
 			Route::post('/superadmin/topup/store','SuperadminController@topupStore')->name('admin.superadmin.topup.store');
+			Route::get('packages', 'PackageController@Packages')->name('packages');
+			Route::post('add/package','PackageController@AddPackage')->name('add.package');
+			Route::get('package-list', 'PackageController@PackageList')->name('list.package');
+			Route::get('package/delete/{id}', 'PackageController@PackageDelete')->name('delete.package');
 		});
+		Route::post('package/upgrade','PackageController@upgrade')->name('package.upgrade');
 
 		Route::group(['middleware' => ['permission:view order|view account|view dealer_management']], function () {
 			Route::get('/order-received/','SuperadminController@Order')->name('admin.superadmin.order');

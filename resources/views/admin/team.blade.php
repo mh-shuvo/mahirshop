@@ -6,33 +6,34 @@
 @endsection
 
 @section('content')
+<div class="row">
+	<div class="col-sm-4 offset-sm-4">
+		<input type="text" class="form-control" id="searchTeam" name="searchTeam" placeholder="Search here..">
+		<span class="col-form-label username_check_status"></span>
+	</div>
+</div>
 <div class="card">
+	<div class="card-header">
+		<h3 class="card-title">Gen1</h3>
+	</div>
 	<div class="card-body">
-		<div class="row">
-			<div class="col-sm-4 offset-sm-4">
-				<input type="text" class="form-control" id="searchTeam" name="searchTeam">
-				<span class="col-form-label username_check_status"></span>
-			</div>
-		</div>
-		<br>
-		<div class="dt-responsive table-responsive">
-			<table id="TeamTable" class="table table-striped table-bordered nowrap text-center">
-				<thead>
-					<tr>
-						<th>Member</th>
-						<th>Team A</th>
-						<th>Team B</th>
-					</tr>
-				</thead>
-				
-				<tbody id="TeamTableTbody">
-					
-				</tbody>
-				
-			</table>
-			<!--div id="backButton"></div-->
-			<button class="btn btn-danger btn-sm backId" type="button">Back</button>
-		</div>
+		<button class="btn btn-primary btn-sm">Mehedi Hasan Shuvo</button>
+	</div>
+</div>
+<div class="card">
+	<div class="card-header">
+		<h3 class="card-title">Gen2</h3>
+	</div>
+	<div class="card-body">
+		<button class="btn btn-primary btn-sm">Mehedi Hasan Shuvo</button>
+	</div>
+</div>
+<div class="card">
+	<div class="card-header">
+		<h3 class="card-title">Gen3</h3>
+	</div>
+	<div class="card-body">
+		<button class="btn btn-primary btn-sm">Mehedi Hasan Shuvo</button>
 	</div>
 </div>
 @endsection
