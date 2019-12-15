@@ -57,7 +57,11 @@
             $data['user_txn_pin'] = $request->user_txn_pin;
             $data['password'] = $request->password;
 			
-			return BoardPlan::where("board_user_id",$data['sponsor_id'])->count();
+			
+			
+			return MemberTree::whereNotNull('is_premium')->where("sponsor_id",$data['sponsor_id'])->count();
+			
+			// return BoardPlan::where("board_user_id",$data['sponsor_id'])->count();
 			
 			if(!Auth::User()->is_signup_without_payment){
 				if($this->AvaliableTopupBalanceByUser()->topup_avaliable < config('mlm.registration_charge')){
