@@ -94,215 +94,456 @@
 	<div class="row">
 		@hasanyrole('user|admin')
 		<div class="col-6 col-md-3 col-lg-6 col-xl-3">
-			<a class="block block-rounded block-link-pop border-left border-primary border-4x" href="javascript:void(0)">
-				<div class="block-content block-content-full">
-					<div class="font-size-sm font-w600 text-uppercase text-muted">Total Earning</div>
-					<div class="font-size-h3 font-w400 text-dark">{{$totalBonus->total_bonus}} <small>Tk</small></div>
-				</div>
-			</a>
+			<div class="card">
+                <div class="card-body">
+                    <div class="d-flex no-block align-items-center">
+                        <div>
+                            <i class="mdi mdi-emoticon font-20 text-muted"></i>
+                            <p class="font-16 m-b-5">Total Earning</p>
+                        </div>
+                        <div class="ml-auto">
+                            <h1 class="font-light text-right">{{$totalBonus->total_bonus}} <small>Tk</small></h1>
+                        </div>
+                    </div>
+                               
+                </div>
+            </div>
 		</div>
 		@endhasanyrole
+		
 		<div class="col-6 col-md-3 col-lg-6 col-xl-3">
-			<a class="block block-rounded block-link-pop border-left border-primary border-4x" href="javascript:void(0)">
-				<div class="block-content block-content-full">
-					<div class="font-size-sm font-w600 text-uppercase text-muted">TopUp Balance</div>
-					<div class="font-size-h3 font-w400 text-dark">{{$totalTopup->topup_avaliable}} <small>Tk</small></div>
-				</div>
-			</a>
+			<div class="card">
+                <div class="card-body">
+                    <div class="d-flex no-block align-items-center">
+                        <div>
+                            <i class="mdi mdi-emoticon font-20 text-muted"></i>
+                            <p class="font-16 m-b-5">TopUp Balance</p>
+                        </div>
+                        <div class="ml-auto">
+                            <h1 class="font-light text-right">{{$totalTopup->topup_avaliable}} <small>Tk</small></h1>
+                        </div>
+                    </div>
+                               
+                </div>
+            </div>
 		</div>
+		
+		
 		<div class="col-6 col-md-3 col-lg-6 col-xl-3">
-			<a class="block block-rounded block-link-pop border-left border-primary border-4x" href="javascript:void(0)">
-				<div class="block-content block-content-full">
-					<div class="font-size-sm font-w600 text-uppercase text-muted">Current PV</div>
-					@if($memberTree->is_premium) 
-					<div class="font-size-h3 font-w400 text-dark">{{$totalPoint->point_available}} <small>PV</small></div>
-					@else 
-					<div class="font-size-h3 font-w400 text-dark">{{$totalPoint->point_available}} <small>PV</small></div>
-					@endif
-				</div>
-			</a>
+			<div class="card">
+                <div class="card-body">
+                    <div class="d-flex no-block align-items-center">
+                        <div>
+                            <i class="mdi mdi-emoticon font-20 text-muted"></i>
+                            <p class="font-16 m-b-5">Current PV</p>
+                        </div>
+                        <div class="ml-auto">
+                            <h1 class="font-light text-right">{{$totalPoint->point_available}} <small>PV</small></h1>
+                        </div>
+                    </div>
+                               
+                </div>
+            </div>
 		</div>
+		
+		
 		<div class="col-6 col-md-3 col-lg-6 col-xl-3">
-			<a class="block block-rounded block-link-pop border-left border-primary border-4x" href="javascript:void(0)">
-				<div class="block-content block-content-full">
-					<div class="font-size-sm font-w600 text-uppercase text-muted">Current Balance</div>
-					<div class="font-size-h3 font-w400 text-dark">{{$withdrawal->current_balance}} <small>Tk</small></div>
-				</div>
-			</a>
+			<div class="card">
+                <div class="card-body">
+                    <div class="d-flex no-block align-items-center">
+                        <div>
+                            <i class="mdi mdi-emoticon font-20 text-muted"></i>
+                            <p class="font-16 m-b-5">Current Balance</p>
+                        </div>
+                        <div class="ml-auto">
+                            <h1 class="font-light text-right">{{$withdrawal->current_balance}} <small>Tk</small></h1>
+                        </div>
+                    </div>
+                               
+                </div>
+            </div>
 		</div>
 	</div>
 	@hasanyrole('user|admin')
 	<div class="row">
+		
+		
 		<div class="col-6 col-md-3 col-lg-6 col-xl-3">
-			<a class="block block-rounded block-link-pop border-left border-primary border-4x" href="javascript:void(0)">
-				<div class="block-content block-content-full">
-					<div class="font-size-sm font-w600 text-uppercase text-muted">Total Matching</div>
-					<div class="font-size-h3 font-w400 text-dark">@if($memberTree->total_matching) {{$memberTree->total_matching}} @else 0 @endif</div>
-				</div>
-			</a>
+			<div class="card">
+                <div class="card-body">
+                    <div class="d-flex no-block align-items-center">
+                        <div>
+                            <i class="mdi mdi-emoticon font-20 text-muted"></i>
+                            <p class="font-16 m-b-5">Total Matching</p>
+                        </div>
+                        <div class="ml-auto">
+                            <h1 class="font-light text-right">@if($memberTree->total_matching) {{$memberTree->total_matching}} @else 0 @endif</h1>
+                        </div>
+                    </div>
+                               
+                </div>
+            </div>
 		</div>
+		
+		
+		
 		<div class="col-6 col-md-3 col-lg-6 col-xl-3">
-			<a class="block block-rounded block-link-pop border-left border-primary border-4x" href="javascript:void(0)">
-				<div class="block-content block-content-full">
-					<div class="font-size-sm font-w600 text-uppercase text-muted">Team A</div>
-					<div class="font-size-h3 font-w400 text-dark">@if($memberTree->l_matching) {{$memberTree->l_matching}} @else 0 @endif</div>
-				</div>
-			</a>
+			<div class="card">
+                <div class="card-body">
+                    <div class="d-flex no-block align-items-center">
+                        <div>
+                            <i class="mdi mdi-emoticon font-20 text-muted"></i>
+                            <p class="font-16 m-b-5">Team A</p>
+                        </div>
+                        <div class="ml-auto">
+                            <h1 class="font-light text-right">@if($memberTree->l_matching) {{$memberTree->l_matching}} @else 0 @endif</h1>
+                        </div>
+                    </div>
+                               
+                </div>
+            </div>
 		</div>
+		
+		
+		
 		<div class="col-6 col-md-3 col-lg-6 col-xl-3">
-			<a class="block block-rounded block-link-pop border-left border-primary border-4x" href="javascript:void(0)">
-				<div class="block-content block-content-full">
-					<div class="font-size-sm font-w600 text-uppercase text-muted">Team B</div>
-					<div class="font-size-h3 font-w400 text-dark">@if($memberTree->r_matching) {{$memberTree->r_matching}} @else 0 @endif</div>
-				</div>
-			</a>
+			<div class="card">
+                <div class="card-body">
+                    <div class="d-flex no-block align-items-center">
+                        <div>
+                            <i class="mdi mdi-emoticon font-20 text-muted"></i>
+                            <p class="font-16 m-b-5">Team B</p>
+                        </div>
+                        <div class="ml-auto">
+                            <h1 class="font-light text-right">@if($memberTree->r_matching) {{$memberTree->r_matching}} @else 0 @endif</h1>
+                        </div>
+                    </div>
+                               
+                </div>
+            </div>
 		</div>
+		
+		
+		
 		<div class="col-6 col-md-3 col-lg-6 col-xl-3">
-			<a class="block block-rounded block-link-pop border-left border-primary border-4x" href="javascript:void(0)">
-				<div class="block-content block-content-full">
-					<div class="font-size-sm font-w600 text-uppercase text-muted">Carry Forward</div>
-					<div class="font-size-h3 font-w400 text-dark">{{abs($memberTree->l_matching - $memberTree->r_matching)}}</div>
-				</div>
-			</a>
+			<div class="card">
+                <div class="card-body">
+                    <div class="d-flex no-block align-items-center">
+                        <div>
+                            <i class="mdi mdi-emoticon font-20 text-muted"></i>
+                            <p class="font-16 m-b-5">Carry Forward</p>
+                        </div>
+                        <div class="ml-auto">
+                            <h1 class="font-light text-right">{{abs($memberTree->l_matching - $memberTree->r_matching)}}</h1>
+                        </div>
+                    </div>
+                               
+                </div>
+            </div>
 		</div>
+		
 	</div>
 	<div class="row">
 		@endhasanyrole
 		@hasanyrole('user|admin|dealer')
+		
+		
 		<div class="col-6 col-md-3 col-lg-6 col-xl-3">
-			<a class="block block-rounded block-link-pop border-left border-primary border-4x" href="javascript:void(0)">
-				<div class="block-content block-content-full">
-					<div class="font-size-sm font-w600 text-uppercase text-muted">Total Withdrawal</div>
-					<div class="font-size-h4 font-w400 text-dark">{{$withdrawal->withdrawal_amount}} <small>Tk</small></div>
-				</div>
-			</a>
+			<div class="card">
+                <div class="card-body">
+                    <div class="d-flex no-block align-items-center">
+                        <div>
+                            <i class="mdi mdi-emoticon font-20 text-muted"></i>
+                            <p class="font-16 m-b-5">Total Withdrawal</p>
+                        </div>
+                        <div class="ml-auto">
+                            <h1 class="font-light text-right">{{$withdrawal->withdrawal_amount}} <small>Tk</small></h1>
+                        </div>
+                    </div>
+                               
+                </div>
+            </div>
 		</div>
+		
 		@endhasanyrole
 		@hasanyrole('user|admin')
+		
+		
 		<div class="col-6 col-md-3 col-lg-6 col-xl-3">
-			<a class="block block-rounded block-link-pop border-left border-primary border-4x" href="javascript:void(0)">
-				<div class="block-content block-content-full">
-					<div class="font-size-sm font-w600 text-uppercase text-muted">Sponsor Income</div>
-					<div class="font-size-h4 font-w400 text-dark">{{$totalBonus->sponsor}} <small>Tk</small></div>
-				</div>
-			</a>
+			<div class="card">
+                <div class="card-body">
+                    <div class="d-flex no-block align-items-center">
+                        <div>
+                            <i class="mdi mdi-emoticon font-20 text-muted"></i>
+                            <p class="font-16 m-b-5">Sponsor Income</p>
+                        </div>
+                        <div class="ml-auto">
+                            <h1 class="font-light text-right">{{$totalBonus->sponsor}} <small>Tk</small></h1>
+                        </div>
+                    </div>
+                               
+                </div>
+            </div>
 		</div>
+		
+		
+		
 		<div class="col-6 col-md-3 col-lg-6 col-xl-3">
-			<a class="block block-rounded block-link-pop border-left border-primary border-4x" href="javascript:void(0)">
-				<div class="block-content block-content-full">
-					<div class="font-size-sm font-w600 text-uppercase text-muted">Matching Income</div>
-					<div class="font-size-h4 font-w400 text-dark">{{$totalBonus->matching}} <small>Tk</small></div>
-				</div>
-			</a>
+			<div class="card">
+                <div class="card-body">
+                    <div class="d-flex no-block align-items-center">
+                        <div>
+                            <i class="mdi mdi-emoticon font-20 text-muted"></i>
+                            <p class="font-16 m-b-5">Matching Income</p>
+                        </div>
+                        <div class="ml-auto">
+                            <h1 class="font-light text-right">{{$totalBonus->matching}} <small>Tk</small></h1>
+                        </div>
+                    </div>
+                               
+                </div>
+            </div>
 		</div>
+		
+		
 		<div class="col-6 col-md-3 col-lg-6 col-xl-3">
-			<a class="block block-rounded block-link-pop border-left border-primary border-4x" href="javascript:void(0)">
-				<div class="block-content block-content-full">
-					<div class="font-size-sm font-w600 text-uppercase text-muted">Achiever Royalty Income</div>
-					<div class="font-size-h4 font-w400 text-dark">{{$totalBonus->achiever}} <small>Tk</small></div>
-				</div>
-			</a>
+			<div class="card">
+                <div class="card-body">
+                    <div class="d-flex no-block align-items-center">
+                        <div>
+                            <i class="mdi mdi-emoticon font-20 text-muted"></i>
+                            <p class="font-16 m-b-5">Achiever Royalty Income</p>
+                        </div>
+                        <div class="ml-auto">
+                            <h1 class="font-light text-right">{{$totalBonus->achiever}} <small>Tk</small></h1>
+                        </div>
+                    </div>
+                               
+                </div>
+            </div>
 		</div>
+		
 	</div>
 	<div class="row">
+		
+		
 		<div class="col-6 col-md-3 col-lg-6 col-xl-3">
-			<a class="block block-rounded block-link-pop border-left border-primary border-4x" href="javascript:void(0)">
-				<div class="block-content block-content-full">
-					<div class="font-size-sm font-w600 text-uppercase text-muted">Chairman Club Income</div>
-					<div class="font-size-h4 font-w400 text-dark">{{$totalBonus->chairman_club}} <small>Tk</small></div>
-				</div>
-			</a>
+			<div class="card">
+                <div class="card-body">
+                    <div class="d-flex no-block align-items-center">
+                        <div>
+                            <i class="mdi mdi-emoticon font-20 text-muted"></i>
+                            <p class="font-16 m-b-5">Chairman Club Income</p>
+                        </div>
+                        <div class="ml-auto">
+                            <h1 class="font-light text-right">{{$totalBonus->chairman_club}} <small>Tk</small></h1>
+                        </div>
+                    </div>
+                               
+                </div>
+            </div>
 		</div>
+		
+		
+		
 		<div class="col-6 col-md-3 col-lg-6 col-xl-3">
-			<a class="block block-rounded block-link-pop border-left border-primary border-4x" href="javascript:void(0)">
-				<div class="block-content block-content-full">
-					<div class="font-size-sm font-w600 text-uppercase text-muted">N.S.M Royalty Income</div>
-					<div class="font-size-h4 font-w400 text-dark">{{$totalBonus->nsm_royalty}} <small>Tk</small></div>
-				</div>
-			</a>
+			<div class="card">
+                <div class="card-body">
+                    <div class="d-flex no-block align-items-center">
+                        <div>
+                            <i class="mdi mdi-emoticon font-20 text-muted"></i>
+                            <p class="font-16 m-b-5">N.S.M Royalty Income</p>
+                        </div>
+                        <div class="ml-auto">
+                            <h1 class="font-light text-right">{{$totalBonus->nsm_royalty}} <small>Tk</small></h1>
+                        </div>
+                    </div>
+                               
+                </div>
+            </div>
 		</div>
+		
+		
+		
 		<div class="col-6 col-md-3 col-lg-6 col-xl-3">
-			<a class="block block-rounded block-link-pop border-left border-primary border-4x" href="javascript:void(0)">
-				<div class="block-content block-content-full">
-					<div class="font-size-sm font-w600 text-uppercase text-muted">E.D Royalty Income</div>
-					<div class="font-size-h4 font-w400 text-dark">{{$totalBonus->ed_royalty}} <small>Tk</small></div>
-				</div>
-			</a>
+			<div class="card">
+                <div class="card-body">
+                    <div class="d-flex no-block align-items-center">
+                        <div>
+                            <i class="mdi mdi-emoticon font-20 text-muted"></i>
+                            <p class="font-16 m-b-5">E.D Royalty Income</p>
+                        </div>
+                        <div class="ml-auto">
+                            <h1 class="font-light text-right">{{$totalBonus->ed_royalty}} <small>Tk</small></h1>
+                        </div>
+                    </div>
+                               
+                </div>
+            </div>
 		</div>
+		
+		
+		
 		<div class="col-6 col-md-3 col-lg-6 col-xl-3">
-			<a class="block block-rounded block-link-pop border-left border-primary border-4x" href="javascript:void(0)">
-				<div class="block-content block-content-full">
-					<div class="font-size-sm font-w600 text-uppercase text-muted">Stockist Sponsor Bonus</div>
-					<div class="font-size-h4 font-w400 text-dark">{{$totalBonus->stockist_sponsor}} <small>Tk</small></div>
-				</div>
-			</a>
+			<div class="card">
+                <div class="card-body">
+                    <div class="d-flex no-block align-items-center">
+                        <div>
+                            <i class="mdi mdi-emoticon font-20 text-muted"></i>
+                            <p class="font-16 m-b-5">Stockist Sponsor Bonus</p>
+                        </div>
+                        <div class="ml-auto">
+                            <h1 class="font-light text-right">{{$totalBonus->stockist_sponsor}} <small>Tk</small></h1>
+                        </div>
+                    </div>
+                               
+                </div>
+            </div>
 		</div>
+		
 	</div>
 	@endhasanyrole
 	@hasanyrole('user|admin|dealer')
 	<div class="row">
 		@hasanyrole('admin|user')
+		
+		
 		<div class="col-6 col-md-3 col-lg-6 col-xl-3">
-			<a class="block block-rounded block-link-pop border-left border-primary border-4x" href="javascript:void(0)">
-				<div class="block-content block-content-full">
-					<div class="font-size-sm font-w600 text-uppercase text-muted">Matching Royalty Income</div>
-					<div class="font-size-h4 font-w400 text-dark">{{$totalBonus->mega_matching}} <small>Tk</small></div>
-				</div>
-			</a>
+			<div class="card">
+                <div class="card-body">
+                    <div class="d-flex no-block align-items-center">
+                        <div>
+                            <i class="mdi mdi-emoticon font-20 text-muted"></i>
+                            <p class="font-16 m-b-5">Matching Royalty Income</p>
+                        </div>
+                        <div class="ml-auto">
+                            <h1 class="font-light text-right">{{$totalBonus->mega_matching}} <small>Tk</small></h1>
+                        </div>
+                    </div>
+                               
+                </div>
+            </div>
 		</div>
+		
 		@endhasanyrole
+		
+		
 		<div class="col-6 col-md-3 col-lg-6 col-xl-3">
-			<a class="block block-rounded block-link-pop border-left border-primary border-4x" href="javascript:void(0)">
-				<div class="block-content block-content-full">
-					<div class="font-size-sm font-w600 text-uppercase text-muted">Stockist Royalty Bonus</div>
-					<div class="font-size-h4 font-w400 text-dark">{{$totalBonus->stockist_royalty}} <small>Tk</small></div>
-				</div>
-			</a>
+			<div class="card">
+                <div class="card-body">
+                    <div class="d-flex no-block align-items-center">
+                        <div>
+                            <i class="mdi mdi-emoticon font-20 text-muted"></i>
+                            <p class="font-16 m-b-5">Stockist Royalty Bonus</p>
+                        </div>
+                        <div class="ml-auto">
+                            <h1 class="font-light text-right">{{$totalBonus->stockist_royalty}} <small>Tk</small></h1>
+                        </div>
+                    </div>
+                               
+                </div>
+            </div>
 		</div>
+		
+		
+		
 		<div class="col-6 col-md-3 col-lg-6 col-xl-3">
-			<a class="block block-rounded block-link-pop border-left border-primary border-4x" href="javascript:void(0)">
-				<div class="block-content block-content-full">
-					<div class="font-size-sm font-w600 text-uppercase text-muted">Stockist  Bonus</div>
-					<div class="font-size-h4 font-w400 text-dark">{{$totalBonus->stockist}}<small>Tk</small></div>
-				</div>
-			</a>
+			<div class="card">
+                <div class="card-body">
+                    <div class="d-flex no-block align-items-center">
+                        <div>
+                            <i class="mdi mdi-emoticon font-20 text-muted"></i>
+                            <p class="font-16 m-b-5">Stockist  Bonus</p>
+                        </div>
+                        <div class="ml-auto">
+                            <h1 class="font-light text-right">{{$totalBonus->stockist}}<small>Tk</small></h1>
+                        </div>
+                    </div>
+                               
+                </div>
+            </div>
 		</div>
+		
 	</div>
 	@endhasanyrole
 	@hasanyrole('user|admin')
 	<div class="row">
+		
+		
 		<div class="col-6 col-md-3 col-lg-6 col-xl-3">
-			<a class="block block-rounded block-link-pop border-left border-primary border-4x" href="javascript:void(0)">
-				<div class="block-content block-content-full">
-					<div class="font-size-sm font-w600 text-uppercase text-muted">Total Member</div>
-					<div class="font-size-h4 font-w400 text-dark">{{($memberTree->r_member + $memberTree->l_member)}}</div>
-				</div>
-			</a>
+			<div class="card">
+                <div class="card-body">
+                    <div class="d-flex no-block align-items-center">
+                        <div>
+                            <i class="mdi mdi-emoticon font-20 text-muted"></i>
+                            <p class="font-16 m-b-5">Total Member</p>
+                        </div>
+                        <div class="ml-auto">
+                            <h1 class="font-light text-right">{{($memberTree->r_member + $memberTree->l_member)}}</h1>
+                        </div>
+                    </div>
+                               
+                </div>
+            </div>
 		</div>
+		
+		
+		
 		<div class="col-6 col-md-3 col-lg-6 col-xl-3">
-			<a class="block block-rounded block-link-pop border-left border-primary border-4x" href="javascript:void(0)">
-				<div class="block-content block-content-full">
-					<div class="font-size-sm font-w600 text-uppercase text-muted">Premium Member</div>
-					<div class="font-size-h4 font-w400 text-dark">@if($extraData['total_member']['premium']) {{$extraData['total_member']['premium']}} @else 0 @endif</div>
-				</div>
-			</a>
+			<div class="card">
+                <div class="card-body">
+                    <div class="d-flex no-block align-items-center">
+                        <div>
+                            <i class="mdi mdi-emoticon font-20 text-muted"></i>
+                            <p class="font-16 m-b-5">Premium Member</p>
+                        </div>
+                        <div class="ml-auto">
+                            <h1 class="font-light text-right">@if($extraData['total_member']['premium']) {{$extraData['total_member']['premium']}} @else 0 @endif</h1>
+                        </div>
+                    </div>
+                               
+                </div>
+            </div>
 		</div>
+		
+		
+		
 		<div class="col-6 col-md-3 col-lg-6 col-xl-3">
-			<a class="block block-rounded block-link-pop border-left border-primary border-4x" href="javascript:void(0)">
-				<div class="block-content block-content-full">
-					<div class="font-size-sm font-w600 text-uppercase text-muted">Team A Premium</div>
-					<div class="font-size-h4 font-w400 text-dark">@if($extraData['total_member']['premium_l']) {{$extraData['total_member']['premium_l']}} @else 0 @endif</div>
-				</div>
-			</a>
+			<div class="card">
+                <div class="card-body">
+                    <div class="d-flex no-block align-items-center">
+                        <div>
+                            <i class="mdi mdi-emoticon font-20 text-muted"></i>
+                            <p class="font-16 m-b-5">Team A Premium</p>
+                        </div>
+                        <div class="ml-auto">
+                            <h1 class="font-light text-right">@if($extraData['total_member']['premium_l']) {{$extraData['total_member']['premium_l']}} @else 0 @endif</h1>
+                        </div>
+                    </div>
+                               
+                </div>
+            </div>
 		</div>
+		
+		
+		
 		<div class="col-6 col-md-3 col-lg-6 col-xl-3">
-			<a class="block block-rounded block-link-pop border-left border-primary border-4x" href="javascript:void(0)">
-				<div class="block-content block-content-full">
-					<div class="font-size-sm font-w600 text-uppercase text-muted">Team B Premium</div>
-					<div class="font-size-h4 font-w400 text-dark">@if($extraData['total_member']['premium_r']) {{$extraData['total_member']['premium_r']}} @else 0 @endif</div>
-				</div>
-			</a>
+			<div class="card">
+                <div class="card-body">
+                    <div class="d-flex no-block align-items-center">
+                        <div>
+                            <i class="mdi mdi-emoticon font-20 text-muted"></i>
+                            <p class="font-16 m-b-5">Team B Premium</p>
+                        </div>
+                        <div class="ml-auto">
+                            <h1 class="font-light text-right">@if($extraData['total_member']['premium_r']) {{$extraData['total_member']['premium_r']}} @else 0 @endif</h1>
+                        </div>
+                    </div>
+                               
+                </div>
+            </div>
 		</div>
+		
 	</div>
 	@endhasanyrole
 </div>
