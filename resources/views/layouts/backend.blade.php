@@ -375,8 +375,7 @@
             <!-- footer -->
             <!-- ============================================================== -->
             <footer class="footer text-center">
-                All Rights Reserved by MahirShop. Designed and Developed by
-                <a href="https://quickoutsourceit.com">Quick Outsource IT</a>.
+                All Rights Reserved by {{config('app.name')}}.
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->

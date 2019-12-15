@@ -5,7 +5,7 @@
 	use Illuminate\Database\Eloquent\Model;
 	use Illuminate\Database\Eloquent\SoftDeletes;
 	
-	class Withdrawal extends Model
+	class BoardPlan extends Model
 	{
 		public $timestamps = true;
 		
