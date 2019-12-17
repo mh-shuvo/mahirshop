@@ -149,3 +149,15 @@
 [22-Nov-2019 00:00:03 Etc/GMT] PHP Warning:  array_shift() expects parameter 1 to be array, null given in /home/meglobal/public_html/vendor/symfony/console/Input/ArgvInput.php on line 57
 [23-Nov-2019 00:00:03 Etc/GMT] PHP Notice:  Undefined index: argv in /home/meglobal/public_html/vendor/symfony/console/Input/ArgvInput.php on line 53
 [23-Nov-2019 00:00:03 Etc/GMT] PHP Warning:  array_shift() expects parameter 1 to be array, null given in /home/meglobal/public_html/vendor/symfony/console/Input/ArgvInput.php on line 57
+[17-Dec-2019 06:07:19 Etc/GMT] PHP Warning:  require(/home/mahirsho/public_html/vendor/autoload.php): failed to open stream: No such file or directory in /home/mahirsho/public_html/index.php on line 24
+[17-Dec-2019 06:07:19 Etc/GMT] PHP Warning:  require(/home/mahirsho/public_html/vendor/autoload.php): failed to open stream: No such file or directory in /home/mahirsho/public_html/index.php on line 24
+[17-Dec-2019 06:07:19 Etc/GMT] PHP Fatal error:  require(): Failed opening required '/home/mahirsho/public_html/vendor/autoload.php' (include_path='.:/opt/alt/php73/usr/share/pear') in /home/mahirsho/public_html/index.php on line 24
+[17-Dec-2019 06:07:20 Etc/GMT] PHP Warning:  require(/home/mahirsho/public_html/vendor/autoload.php): failed to open stream: No such file or directory in /home/mahirsho/public_html/index.php on line 24
+[17-Dec-2019 06:07:20 Etc/GMT] PHP Warning:  require(/home/mahirsho/public_html/vendor/autoload.php): failed to open stream: No such file or directory in /home/mahirsho/public_html/index.php on line 24
+[17-Dec-2019 06:07:20 Etc/GMT] PHP Fatal error:  require(): Failed opening required '/home/mahirsho/public_html/vendor/autoload.php' (include_path='.:/opt/alt/php73/usr/share/pear') in /home/mahirsho/public_html/index.php on line 24
+[17-Dec-2019 06:07:34 Etc/GMT] PHP Warning:  require(/home/mahirsho/public_html/vendor/autoload.php): failed to open stream: No such file or directory in /home/mahirsho/public_html/artisan on line 18
+[17-Dec-2019 06:07:34 Etc/GMT] PHP Warning:  require(/home/mahirsho/public_html/vendor/autoload.php): failed to open stream: No such file or directory in /home/mahirsho/public_html/artisan on line 18
+[17-Dec-2019 06:07:34 Etc/GMT] PHP Fatal error:  require(): Failed opening required '/home/mahirsho/public_html/vendor/autoload.php' (include_path='.:/opt/alt/php73/usr/share/pear') in /home/mahirsho/public_html/artisan on line 18
+[17-Dec-2019 06:07:37 Etc/GMT] PHP Warning:  require(/home/mahirsho/public_html/vendor/autoload.php): failed to open stream: No such file or directory in /home/mahirsho/public_html/index.php on line 24
+[17-Dec-2019 06:07:37 Etc/GMT] PHP Warning:  require(/home/mahirsho/public_html/vendor/autoload.php): failed to open stream: No such file or directory in /home/mahirsho/public_html/index.php on line 24
+[17-Dec-2019 06:07:37 Etc/GMT] PHP Fatal error:  require(): Failed opening required '/home/mahirsho/public_html/vendor/autoload.php' (include_path='.:/opt/alt/php73/usr/share/pear') in /home/mahirsho/public_html/index.php on line 24
