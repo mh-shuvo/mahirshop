@@ -37,17 +37,15 @@
 		
 		public function StoreMember(Request $request)
 		{
-			
-			
-			
-			// $request->validate([
-            // 'sponsor_id' => 'required',
-            // 'name' => 'required',
-            // 'username' => 'required',
-            // 'phone' => 'required',
-            // 'user_txn_pin' => 'required',
-            // 'password' => ['required','min:8'],
-            // ]);
+
+			$request->validate([
+            'sponsor_id' => 'required',
+            'name' => 'required',
+            'username' => 'required',
+            'phone' => 'required',
+            'user_txn_pin' => 'required',
+            'password' => ['required','min:8'],
+            ]);
             
             $data['sponsor_id'] = $this->getIdByUsername($request->sponsor_id);
             $data['name'] = $request->name;
@@ -58,18 +56,12 @@
             $data['password'] = $request->password;
 			
 			
-			
-			return MemberTree::whereNotNull('is_premium')->where("sponsor_id",$data['sponsor_id'])->count();
-			
-			// return BoardPlan::where("board_user_id",$data['sponsor_id'])->count();
-			
-			if(!Auth::User()->is_signup_without_payment){
-				if($this->AvaliableTopupBalanceByUser()->topup_avaliable < config('mlm.registration_charge')){
-					return response()->json([
-					'status' => 'errors',
-					'message' => 'TopUp balance not available, you need more '.number_format(config('mlm.registration_charge') - $this->AvaliableTopupBalanceByUser()->topup_avaliable).' Tk'
-					],422);
-				}
+			if(Auth::user()->hasRole('user')){
+				return response()->json([
+				'status' => 'errors',
+				'message' => 'Access Denied'
+				],422);
+				
 			}
 			
 			if(!$this->getUsernameCheck($request->sponsor_id)){
@@ -100,13 +92,6 @@
 				],422);
 			}
 			
-			if(!$this->getPlacementCheck($data['placement_id'],$data['placement_position'])){
-				return response()->json([
-				'status' => 'errors',
-				'message' => 'Placement Position Is Not Available'
-				],422);
-			}
-			
 			$newUser = new User();
 			$newUser->name = $data['name'];
 			$newUser->email = $data['email'];
@@ -125,37 +110,32 @@
 			$newMemberTree->sponsor_id = $data['sponsor_id'];
 			$newMemberTree->save();
 			
-			
-			
-			if(!Auth::User()->is_signup_without_payment){
-				TopupBalance::create([
-				'user_id' => Auth::User()->id,
-				'from_user_id' =>  $newUser->id,
-				'topup_amount' => config('mlm.registration_charge'),
-				'topup_type' => 'user',
-				'topup_flow' => 'out',
-				'topup_details' => 'Office Charge '.config('mlm.registration_charge').' Tk For '.$newUser->username.' Membership ID Card.',
-				'topup_generate_by' => Auth::User()->id,
-				'topup_status' => 'active'
-				]);
-				}else{
-				$newSignup = Auth::User()->is_signup_without_payment;
-				if($newSignup == 1){
-					$newSignup = null;
-					}else{
-					$newSignup = $newSignup - 1;
-				}
-				$newUserSignupUpdate = Auth::User();
-				$newUserSignupUpdate->is_signup_without_payment = $newSignup;
-				$newUserSignupUpdate->save();
-			}
-			
-			new SendSmsController([$newUser->phone],'Welcome to Me Global Marketing Private Limited. Your registration has been successfully and Username is : '.$newUser->username,'Sign-up');
-			
+			// if(!Auth::User()->is_signup_without_payment){
+				// TopupBalance::create([
+				// 'user_id' => Auth::User()->id,
+				// 'from_user_id' =>  $newUser->id,
+				// 'topup_amount' => config('mlm.registration_charge'),
+				// 'topup_type' => 'user',
+				// 'topup_flow' => 'out',
+				// 'topup_details' => 'Office Charge '.config('mlm.registration_charge').' Tk For '.$newUser->username.' Membership ID Card.',
+				// 'topup_generate_by' => Auth::User()->id,
+				// 'topup_status' => 'active'
+				// ]);
+				// }else{
+				// $newSignup = Auth::User()->is_signup_without_payment;
+				// if($newSignup == 1){
+					// $newSignup = null;
+					// }else{
+					// $newSignup = $newSignup - 1;
+				// }
+				// $newUserSignupUpdate = Auth::User();
+				// $newUserSignupUpdate->is_signup_without_payment = $newSignup;
+				// $newUserSignupUpdate->save();
+			// }
 			
 			return response()->json([
 			'status' => 'success',
-			'message' => 'Member Registration Successfully'
+			'message' => 'Member Sign-up Successfully'
 			]);
 		}
 		
