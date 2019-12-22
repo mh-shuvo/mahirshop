@@ -20,12 +20,6 @@
 					<input type="text" name="sponsor_id" class="form-control form-control-sm" placeholder="Sponsor Username" autocomplete="off">
 					<span class="col-form-label sponsor_check_status"></span>
 				</div>
-				
-				<div class="form-group col-sm-4">
-					<label class="control-label">Sponsor Transaction Pin:</label>
-					<input type="password" class="form-control form-control-sm" name="txn_pin" placeholder="Transaction Pin" autocomplete="off">
-					
-				</div>
 			</div>
 		</div>
 	</div>
@@ -64,11 +58,6 @@
 						<label class="control-label">Retype Password</label>
 						<input type="password" name="retype_password" class="form-control form-control-sm" placeholder="Retype Password" autocomplete="off">
 					</div>
-				</div>
-				
-				<div class="form-group col-sm-6">
-					<label class="control-label">New Transaction Pin</label>
-					<input type="password" name="user_txn_pin" class="form-control form-control-sm" placeholder="Transaction Pin" autocomplete="off">
 				</div>
 			</div>			
 			<div class="row">

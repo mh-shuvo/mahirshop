@@ -43,7 +43,6 @@
             'name' => 'required',
             'username' => 'required',
             'phone' => 'required',
-            'user_txn_pin' => 'required',
             'password' => ['required','min:8'],
             ]);
             
@@ -52,7 +51,6 @@
             $data['email'] = $request->email;
             $data['username'] = $request->username;
             $data['phone'] = $request->phone;
-            $data['user_txn_pin'] = $request->user_txn_pin;
             $data['password'] = $request->password;
 			
 			
@@ -71,12 +69,12 @@
 				],422);
 			}
 			
-			if($this->getPhoneCheck($request->phone)){
-				return response()->json([
-				'status' => 'errors',
-				'message' => 'Mobile Number Already Exits'
-				],422);
-			}
+// 			if($this->getPhoneCheck($request->phone)){
+// 				return response()->json([
+// 				'status' => 'errors',
+// 				'message' => 'Mobile Number Already Exits'
+// 				],422);
+// 			}
 			
 			if($this->getUsernameCheck($request->username)){
 				return response()->json([
@@ -85,19 +83,12 @@
 				],422);
 			}
 			
-			if(!$this->getTxnPinCheck($request->txn_pin)){
-				return response()->json([
-				'status' => 'errors',
-				'message' => 'Transaction Pin Is Not Correct. Please Try again'
-				],422);
-			}
 			
 			$newUser = new User();
 			$newUser->name = $data['name'];
 			$newUser->email = $data['email'];
 			$newUser->username = $data['username'];
 			$newUser->phone = $data['phone'];
-			$newUser->txn_pin = $data['user_txn_pin'];
 			$newUser->register_by = Auth::User()->id;
 			$newUser->user_type = 'user';
 			$newUser->password = Hash::make($data['password']);
