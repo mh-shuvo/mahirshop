@@ -4,7 +4,6 @@
 	<div class="card">
 		<div class="card-body">
 			<div class="row">
-				
 				<div class="form-group col-sm-4">
 					<label class="control-label">Signup Package:</label>
 					<select class="form-control form-control-sm" name="select_package">
@@ -93,33 +92,33 @@
 				showLoaderOnConfirm: true,
 				closeOnCancel: false
 			},
-			function(isConfirm) {
-				if (isConfirm) {
-					$('#NewMemberForm').ajaxSubmit({
-						error: formError,
-						success: function (responseText, statusText, xhr, $form) {
-							formSuccess(responseText, statusText, xhr, $form);
-							$('.sponsor_check_status').html('');
-							$('.placement_check_status').html('');
-						},
-						resetForm:true
-					});
-					} else {
-					swal("Cancelled", "You have cancelled your registration successfully", "error");
-				}
-			});
-			
+		function(isConfirm) {
+		if (isConfirm) {
+		$('#NewMemberForm').ajaxSubmit({
+		error: formError,
+		success: function (responseText, statusText, xhr, $form) {
+		formSuccess(responseText, statusText, xhr, $form);
+		$('.sponsor_check_status').html('');
+		$('.placement_check_status').html('');
+		},
+		resetForm:true
+		});
+		} else {
+		swal("Cancelled", "You have cancelled your registration successfully", "error");
+		}
+		});
+		
 		});
 		
 		$(document).on("change keyup",'input[name="sponsor_id"]',function(){
-			usernameCheck($(this),'.sponsor_check_status');
+		usernameCheck($(this),'.sponsor_check_status');
 		});
 		
 		$(document).on("change keyup",'input[name="placement_id"]',function(){
-			usernameCheck($(this),'.placement_check_status');
+		usernameCheck($(this),'.placement_check_status');
 		});
 		
-	})
-</script>
-
-@endsection																																														
+		})
+		</script>
+		
+		@endsection																																																

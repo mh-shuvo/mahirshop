@@ -8,7 +8,12 @@
 	'district' => 'Dhaka'
 	],
 	
-	'sponsor_bonus' => '300',
+	'sponsor_bonus_percentage' => '10',
+	'lavel_1_gen_bonus_percentage' => '16',
+	'lavel_2_gen_bonus_percentage' => '12',
+	'lavel_3_to_20_gen_bonus_percentage' => '4',
+	'gen_bonus_percentage' => '8.5',
+	'bonus_start_from' => '1000',
 	'registration_charge' => '100',
 	'premium_registration_point' => '25',
 	'matching_pv' => '25',
@@ -58,34 +63,34 @@
 	'name' => 'dsm',
 	'condition' => '1000',
 	'condition_type' => 'matching'
-	],
-	'plan5' => [
-	'title' => 'National Sales Manager',
-	'name' => 'nsm',
-	'l_condition' => '10',
-	'r_condition' => '6',
-	'condition_type' => 'dsm'
-	],
-	'plan6' => [
-	'title' => 'Asst. General Manager',
-	'name' => 'agm',
-	'l_condition' => '7',
-	'r_condition' => '4',
-	'condition_type' => 'nsm'
-	],
-	'plan7' => [
-	'title' => 'General Manager',
-	'name' => 'gm',
-	'l_condition' => '4',
-	'r_condition' => '3',
-	'condition_type' => 'agm'
-	],
-	'plan8' => [
-	'title' => 'Executive Director',
-	'name' => 'ed',
-	'l_condition' => '3',
-	'r_condition' => '2',
-	'condition_type' => 'gm'
-	]
+],
+'plan5' => [
+'title' => 'National Sales Manager',
+'name' => 'nsm',
+'l_condition' => '10',
+'r_condition' => '6',
+'condition_type' => 'dsm'
+],
+'plan6' => [
+'title' => 'Asst. General Manager',
+'name' => 'agm',
+'l_condition' => '7',
+'r_condition' => '4',
+'condition_type' => 'nsm'
+],
+'plan7' => [
+'title' => 'General Manager',
+'name' => 'gm',
+'l_condition' => '4',
+'r_condition' => '3',
+'condition_type' => 'agm'
+],
+'plan8' => [
+'title' => 'Executive Director',
+'name' => 'ed',
+'l_condition' => '3',
+'r_condition' => '2',
+'condition_type' => 'gm'
+]
 ],
 ];

@@ -23,12 +23,18 @@
 		}
 		public function upgrade(Request $request)
 		{
+
 			
 			$request->validate([
 			'package_id' => 'required',
-			'txn_pin' => 'required|max:6|min:4'
 			]);
 			
+			return response([
+				'status' => 'success',
+				'message' => 'Your Package ID is'.$request->package_id
+			]);
+
+			exit();
 			if(!$this->getTxnPinCheck($request->txn_pin)){
 				return response()->json([
 				'status' => 'errors',
@@ -91,6 +97,16 @@
 			'status' => 'success',
 			'package_name' => $getPackageTitle,
 			'message' => 'Your account successfully upgrade to Premium'
+			]);
+		}
+		public function renew(Request $request){
+			$request->validate([
+			'package_id' => 'required',
+			]);
+			
+			return response([
+				'status' => 'success',
+				'message' => 'Your Package ID is'.$request->package_id
 			]);
 		}
 		public function AddPackage (Request $request) {

@@ -7,54 +7,61 @@
 @section('content')
 <div class="row">
     <div class="col-lg-4">
-        <div class="bg-image"  style="background-image: url('{{asset("public/backend/assets/media/photos/photo8@2x.jpg")}}');"
+        <div class="bg-image"  style="background-image: url('{{asset("public/assets/images/photo8@2x.jpg")}}');background-position: 100% 100%"
         >
 		<div class="bg-black-50">
 		<div class="content content-full text-center">
 		<div class="my-3">
 		@if(Auth::user()->profile_picture != null)
-		<img class="img-avatar img-avatar-thumb" src="{{asset("public/upload/user")}}/{{Auth::user()->profile_picture}}" alt="">
+		<img class="img-avatar img-avatar-thumb rounded-circle" src="{{asset("public/upload/user")}}/{{Auth::user()->profile_picture}}" alt="" style="height: 220px; width: 250px;">
 		@else
 		<img class="img-avatar img-avatar-thumb" src="{{asset('public/backend/assets/media/avatars/avatar13.jpg')}}" alt="">
 		@endif
 		</div>
-		<h1 class="h2 text-white-75 mb-0">{{Auth::user()->name}}</h1>
-		<span class="text-white-75">{{Auth::user()->phone}}</span><br>
+		<h1 class="h2 text-white mb-0">{{Auth::user()->name}}</h1>
+		<span class="text-white">{{Auth::user()->phone}}</span><br>
 		@hasanyrole('admin|manager|dealer|accountant')
 		@hasrole('admin')
-		<span class="text-white-75">
+		<span class="text-white">
 			SuperAdmin 
 		</span>
 		@endhasrole
 		@hasrole('dealer')
-		<span class="text-white-75">
+		<span class="text-white">
 			Dealer 
 		</span>
 		@endhasrole
 		@hasrole('manager')
-		<span class="text-white-75">
+		<span class="text-white">
 			Manager 
 		</span>
 		@endhasrole
 		@hasrole('accountant')
-		<span class="text-white-75">
+		<span class="text-white">
 			Accountant 
 		</span>
 		@endhasrole
 		@else
 		@if($memberTree->is_premium) 
-		<span class="text-white-75">
+		<span class="text-white">
 			Premium 
 		</span>
 		@else 
-		<span class="text-white-75 freeText">
+		<span class="text-white freeText">
 			Free 
 		</span><br>
-		<span class="text-white-75 upgradeButton">
+		<span class="text-white upgradeButton">
 			<button class="btn btn-sm btn-info" data-toggle="modal" data-target="#packageModal">Upgrade</button>
+		</span>
+		<span class="text-white renewButton">
+			<button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#renewModal">Renew</button>
 		</span>
 		@endif
 		@endhasanyrole
+<span class="text-white upgradeButton">
+			<button class="btn btn-sm btn-info" data-toggle="modal" data-target="#packageModal">Upgrade</button>
+		</span>
+		
 		
 	</div>
 </div>
@@ -321,16 +328,44 @@
 				<div class="modal-body">
 					
 					<div class="form-group">
-						<p class="control-label">Upgrade Required PV: {{config('mlm.premium_registration_point')}}</p>
-						<p class="control-label">Available PV: {{$totalPoint->point_available}}</p>
-					</div>
-					<div class="form-group">
-						<label class="control-label">Transaction Pin:</label>
-						<input type="password" class="form-control" name="txn_pin" placeholder="Transaction Pin" autocomplete="off">
+						<label class="control-label">Upgrade Package:</label>
+						<select class="form-control" name="package_id">
+							<option value="">Select Upgrade Package</option>
+							@foreach(App\Package::where('package_type','upgrade')->get() as $package)
+								<option value="{{$package->id}}">{{$package->title}}</option>
+							@endforeach
+						</select>
 					</div>
 				</div>
 				<div class="modal-footer">
 					<button class="btn  btn-info" type="submit">Upgrade Now</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<div class="modal" id="renewModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Account Renew</h4>
+				<button class="close" data-dismiss="modal">&times;</button>
+			</div>
+			<form action="{{route('package.renew')}}" method="post" id="AccountRenewForm">
+				<div class="modal-body">
+					
+					<div class="form-group">
+						<label class="control-label">Renew Package:</label>
+						<select class="form-control" name="package_id">
+							<option value="">Select Renew Package</option>
+							@foreach(App\Package::where('package_type','renew')->get() as $package)
+								<option value="{{$package->id}}">{{$package->title}}</option>
+							@endforeach
+						</select>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button class="btn  btn-info" type="submit">Renew Now</button>
 				</div>
 			</form>
 		</div>
@@ -348,6 +383,15 @@
 				formSuccess(responseText, statusText, xhr, $form);
 				$('.freeText').html('Premium');
 				$('.upgradeButton').remove();
+			},
+			resetForm:true
+		});
+		$('#AccountRenewForm').ajaxForm({
+			error: formError,
+			success: function (responseText, statusText, xhr, $form) {
+				formSuccess(responseText, statusText, xhr, $form);
+				$('.freeText').html('Premium');
+				$('.renewButton').remove();
 			},
 			resetForm:true
 		});

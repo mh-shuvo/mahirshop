@@ -37,12 +37,13 @@
 		
 		public function StoreMember(Request $request)
 		{
-
+			
 			$request->validate([
             'sponsor_id' => 'required',
             'name' => 'required',
             'username' => 'required',
             'phone' => 'required',
+            'select_package' => 'required',
             'password' => ['required','min:8'],
             ]);
             
@@ -69,13 +70,6 @@
 				],422);
 			}
 			
-// 			if($this->getPhoneCheck($request->phone)){
-// 				return response()->json([
-// 				'status' => 'errors',
-// 				'message' => 'Mobile Number Already Exits'
-// 				],422);
-// 			}
-			
 			if($this->getUsernameCheck($request->username)){
 				return response()->json([
 				'status' => 'errors',
@@ -83,6 +77,14 @@
 				],422);
 			}
 			
+			$getPackage = Package::where("package_type","signup")->find($request->select_package);
+			
+			if(!$getPackage){
+				return response()->json([
+				'status' => 'errors',
+				'message' => 'Inactive Package. Please Try Again...'
+				],422);
+			}
 			
 			$newUser = new User();
 			$newUser->name = $data['name'];
@@ -101,28 +103,19 @@
 			$newMemberTree->sponsor_id = $data['sponsor_id'];
 			$newMemberTree->save();
 			
-			// if(!Auth::User()->is_signup_without_payment){
-				// TopupBalance::create([
-				// 'user_id' => Auth::User()->id,
-				// 'from_user_id' =>  $newUser->id,
-				// 'topup_amount' => config('mlm.registration_charge'),
-				// 'topup_type' => 'user',
-				// 'topup_flow' => 'out',
-				// 'topup_details' => 'Office Charge '.config('mlm.registration_charge').' Tk For '.$newUser->username.' Membership ID Card.',
-				// 'topup_generate_by' => Auth::User()->id,
-				// 'topup_status' => 'active'
-				// ]);
-				// }else{
-				// $newSignup = Auth::User()->is_signup_without_payment;
-				// if($newSignup == 1){
-					// $newSignup = null;
-					// }else{
-					// $newSignup = $newSignup - 1;
-				// }
-				// $newUserSignupUpdate = Auth::User();
-				// $newUserSignupUpdate->is_signup_without_payment = $newSignup;
-				// $newUserSignupUpdate->save();
-			// }
+			$sponsorBonusAmount = (config('mlm.sponsor_bonus_percentage') / 100) * $getPackage->package_value;
+			
+			$sponsorBonusData = new MemberBonus();
+			$sponsorBonusData->bonus_type = 'sponsor';
+			$sponsorBonusData->user_id = $newMemberTree->sponsor_id;
+			$sponsorBonusData->amount = $sponsorBonusAmount;
+			$sponsorBonusData->details = 'You have received '.$sponsorBonusAmount.' TK Sponsor Bonus from '.$newUser->username;
+			$sponsorBonusData->save();
+			
+			if($getPackage->package_value >= config('mlm.bonus_start_from')){
+				$generationBonusAmount = (config('mlm.gen_bonus_percentage') / 100) * $getPackage->package_value;
+				$this->GenarationBonus($generationBonusAmount,$newMemberTree->sponsor_id);
+			}
 			
 			return response()->json([
 			'status' => 'success',
@@ -130,45 +123,35 @@
 			]);
 		}
 		
-		public function generateIds(Request $request)
-		{
-			return;
-			for($i=-100; $i<0; $i++){
-				echo abs($i).'<br>';
-				$newUser = new User();
-				$newUser->name = 'ME Global';
-				$newUser->email = 'mecosmeticspvtltd@gmail.com';
-				$newUser->username = 'meglobal0'.abs($i);
-				$newUser->phone = '000000'.abs($i);
-				$newUser->address = 'Rajshahi';
-				$newUser->city = 24;
-				$newUser->state = 5;
-				$newUser->country = 18;
-				$newUser->post_code = '6000';
-				$newUser->txn_pin = '123456';
-				$newUser->national_id = '123456789100'.abs($i);
-				$newUser->register_by = '1';
-				$newUser->user_type = 'user';
-				$newUser->profile_picture = null;
-				
-				$newUser->password = Hash::make('mepass'.abs($i));
-				$newUser->save();
-				
-				$newUser->assignRole('user');
-				
-				$newMemberTree = new MemberTree();
-				$newMemberTree->user_id = $newUser->id;
-				$newMemberTree->sponsor_id = 1;
-				$newMemberTree->save();
-				
-				MemberTree::where('user_id', ($newUser->id - 1))
-				->update([
-				'r_id' => $newUser->id,
-				]);
-				
+		public function GenarationBonus($bonusAmount,$sponsorId,$count = 1){
+			
+			$currentLavel = $count;
+			$currentLevelBonus = 0;
+			
+			if($count == 1){
+				$currentLevelBonus = (config('mlm.lavel_1_gen_bonus_percentage') / 100) * $bonusAmount;
+				}elseif($count == 2){
+				$currentLevelBonus = (config('mlm.lavel_2_gen_bonus_percentage') / 100) * $bonusAmount;
+				}elseif($count <= 20){
+				$currentLevelBonus = (config('mlm.lavel_3_to_20_gen_bonus_percentage') / 100) * $bonusAmount;
+				}else{
+				return $count;
 			}
-			return;
+			
+			$generationBonusData = new MemberBonus();
+			$generationBonusData->bonus_type = 'generation';
+			$generationBonusData->user_id = $sponsorId;
+			$generationBonusData->amount = $currentLevelBonus;
+			$generationBonusData->details = 'You have received '.$currentLevelBonus.' TK Generation Bonus from '.$currentLavel.' Level ';
+			$generationBonusData->save();
+			
+			$MemberTree = MemberTree::where("user_id",$sponsorId)->first();
+			$count = $count + 1;
+			if($MemberTree && $MemberTree->sponsor_id){
+				$this->GenarationBonus($bonusAmount,$MemberTree->sponsor_id,$count);
+			}
 		}
+		
 		
 		public function UpdateMember(Request $request){
 			

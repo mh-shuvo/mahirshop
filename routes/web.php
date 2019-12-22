@@ -105,6 +105,7 @@
 			Route::get('package/delete/{id}', 'PackageController@PackageDelete')->name('delete.package');
 		});
 		Route::post('package/upgrade','PackageController@upgrade')->name('package.upgrade');
+		Route::post('package/renew','PackageController@renew')->name('package.renew');
 
 		Route::group(['middleware' => ['permission:view order|view account|view dealer_management']], function () {
 			Route::get('/order-received/','SuperadminController@Order')->name('admin.superadmin.order');

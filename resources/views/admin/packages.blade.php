@@ -39,6 +39,7 @@
                                 <select class="form-control form-control-sm" name="package_type" id="package_type">
 									<option value="">Select Package Type</option>
 									<option value="signup">Signup</option>
+									<option value="upgrade">Upgrade</option>
 									<option value="renew">Renew</option>
 								</select>
                                 <span class="messages"></span>
