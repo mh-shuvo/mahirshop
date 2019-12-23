@@ -78,12 +78,20 @@
 			}
 			
 			$getPackage = Package::where("package_type","signup")->find($request->select_package);
-			
 			if(!$getPackage){
 				return response()->json([
 				'status' => 'errors',
 				'message' => 'Inactive Package. Please Try Again...'
 				],422);
+			}
+			
+			if(!Auth::User()->is_signup_without_payment){
+				if($this->AvaliableTopupBalanceByUser()->topup_avaliable < $getPackage->package_value){
+					return response()->json([
+					'status' => 'errors',
+					'message' => 'TopUp balance not available for sign-up, you need more '.number_format($getPackage->package_value - $this->AvaliableTopupBalanceByUser()->topup_avaliable).' Tk'
+					],422);
+				}
 			}
 			
 			$newUser = new User();
@@ -101,6 +109,17 @@
 			$newMemberTree = new MemberTree();
 			$newMemberTree->user_id = $newUser->id;
 			$newMemberTree->sponsor_id = $data['sponsor_id'];
+			
+			
+			if(config('mlm.premium_package_value') <= $getPackage->package_value){
+				$newMemberTree->is_premium = Carbon::now();
+				
+			}
+			
+			if(config('mlm.renew_purchase_value') <= $getPackage->package_value){
+				$newMemberTree->is_renewed = Carbon::now()->add(1, 'month');
+			}
+			
 			$newMemberTree->save();
 			
 			$sponsorBonusAmount = (config('mlm.sponsor_bonus_percentage') / 100) * $getPackage->package_value;
@@ -112,15 +131,105 @@
 			$sponsorBonusData->details = 'You have received '.$sponsorBonusAmount.' TK Sponsor Bonus from '.$newUser->username;
 			$sponsorBonusData->save();
 			
+			if(!Auth::User()->is_signup_without_payment){
+				TopupBalance::create([
+				'user_id' => Auth::User()->id,
+				'from_user_id' =>  $newUser->id,
+				'topup_amount' => $getPackage->package_value,
+				'topup_type' => 'user',
+				'is_order' => true,
+				'topup_flow' => 'out',
+				'topup_details' => 'You have new sign-up with '.$getPackage->package_value.' Tk For '.$newUser->username,
+				'topup_generate_by' => Auth::User()->id,
+				'topup_status' => 'active'
+				]);
+				}else{
+				$newSignup = Auth::User()->is_signup_without_payment;
+				if($newSignup == 1){
+					$newSignup = null;
+					}else{
+					$newSignup = $newSignup - 1;
+				}
+				$newUserSignupUpdate = Auth::User();
+				$newUserSignupUpdate->is_signup_without_payment = $newSignup;
+				$newUserSignupUpdate->save();
+			}
+			
 			if($getPackage->package_value >= config('mlm.bonus_start_from')){
 				$generationBonusAmount = (config('mlm.gen_bonus_percentage') / 100) * $getPackage->package_value;
 				$this->GenarationBonus($generationBonusAmount,$newMemberTree->sponsor_id);
+				
+				// $dailyRepurchaseCashBackCount = MemberTree::whereNull('is_premium')->where("is_renewed"," >= ",Carbon::now())->count();
+				// $dailyRepurchaseCashBack = (config('mlm.re_purchase_daily_cash_back_percentage') / 100) * $getPackage->package_value;
+				// $dailyRepurchaseCashBackAmount = $dailyRepurchaseCashBack / $dailyRepurchaseCashBackCount;
+				
+				$dailyBonusMembers = MemberTree::whereNotNull('is_premium')->where("is_renewed",">=",Carbon::now())->get();
+				if($dailyBonusMembers){
+					$dailyCashBackCount = MemberTree::whereNotNull('is_premium')->where("is_renewed",">=",Carbon::now())->count();
+					$dailyCashBack = (config('mlm.daily_cash_back_percentage') / 100) * $getPackage->package_value;
+					$dailyCashBackAmount = $dailyCashBack / $dailyCashBackCount;
+					
+					foreach($dailyBonusMembers as $dailyBonusMember){
+						$dailyCashBackBonusData = new MemberBonus();
+						$dailyCashBackBonusData->bonus_type = 'daily_cash_back';
+						$dailyCashBackBonusData->user_id = $dailyBonusMember->user_id;
+						$dailyCashBackBonusData->amount = $dailyCashBackAmount;
+						$dailyCashBackBonusData->details = 'You have received '.$dailyCashBackAmount.' TK Daily Cash Back Bonus from '.$newUser->username;
+						$dailyCashBackBonusData->save();
+					}
+				}
+			}
+			
+			$sponsorMemberTree = MemberTree::where("user_id", $data['sponsor_id'])->first();
+			$referralCount = MemberTree::whereNotNull('is_premium')->where("sponsor_id", $data['sponsor_id'])->count();
+			if(!$sponsorMemberTree->designation){
+				if(config('mlm.first_rank_referral') <= $referralCount){
+					$sponsorMemberTree->designation = 'sr';
+					$sponsorMemberTree->save();
+				}
+			}
+			
+			if($sponsorMemberTree->designation){
+				if(config('mlm.club_entry_referral') <= $referralCount){
+					$this->firstBoardEntry($sponsorMemberTree->user_id);
+				}
 			}
 			
 			return response()->json([
 			'status' => 'success',
 			'message' => 'Member Sign-up Successfully'
 			]);
+		}
+		
+		public function BoardUpdate($board = 0){
+			$currentBoard = BoardPlan::where("board_no", $board)->first();
+			$currentboardMember = BoardPlan::where("board_user_id",$currentBoard->user_id)->where("board_no", $board)->count();
+			
+			if($currentboardMember >= 10){
+				$currentBoard->board_no = $currentBoard->board_no + 1;
+				$currentBoard->save();
+				
+				if($board != 6){
+					$this->BoardUpdate($currentBoard->board_no);
+				}
+			}
+		}
+		
+		public function firstBoardEntry($userId){
+			$currentUser = BoardPlan::where("board_no", 0)->first();
+			$currentboardMember = BoardPlan::where("board_user_id",$currentUser->user_id)->where("board_no", 0)->count();
+			if($currentboardMember < 10){
+				$newBoardMember = new BoardPlan();
+				$newBoardMember->user_id = $userId;
+				$newBoardMember->board_user_id = $currentUser->user_id;
+				$newBoardMember->board_no = 0;
+				$newBoardMember->save();
+				$this->BoardUpdate();
+				}else{
+				$this->BoardUpdate();
+				$this->firstBoardEntry($userId);
+			}
+			return;
 		}
 		
 		public function GenarationBonus($bonusAmount,$sponsorId,$count = 1){

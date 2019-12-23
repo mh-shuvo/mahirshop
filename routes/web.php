@@ -17,8 +17,7 @@
 		Route::get('/id-card','AdminController@idCard')->name('admin.id_card');
 
 		Route::get('/my-team','AdminController@myTeam')->name('admin.team');
-		Route::get('/my-team/data/{id}','AdminController@MyTeamList')->name('admin.team.data');
-		Route::get('search/team/{id}', 'AdminController@SearchTeam')->name('admin.search.team');
+		Route::get('/my-team/data','AdminController@MyTeamList')->name('admin.team.data');
 		// withdraw Route
 		Route::get('/withdrow','AdminController@Withdrow')->name('admin.withdrow');
 		//  withdrow route
@@ -152,14 +151,16 @@
 		Route::get('/report/matching_royalty_income', 'ReportController@MatchingRoyaltyIncome')->name('admin.report.matching_royalty_income');
 		Route::get('/report/incentive', 'ReportController@Incentive')->name('admin.report.incentive');
 		Route::get('/report/achiever_royalty_income', 'ReportController@AchieverRoyaltyIncome')->name('admin.report.achiever_royalty_income');
-		Route::get('/report/chairman_club_income', 'ReportController@ChairmanClubIncome')->name('admin.report.chairman_club_income');
-		Route::get('/report/n_s_m_royalty_income', 'ReportController@NSMRoyaltyIncome')->name('admin.report.n_s_m_royalty_income');
-		Route::get('/report/e_d_royalty_income', 'ReportController@EDRoyaltyIncome')->name('admin.report.e_d_royalty_income');
+		Route::get('/report/club_achiver', 'ReportController@ClubAchiver')->name('admin.report.club_achiver');
+		Route::get('/report/generation', 'ReportController@generation')->name('admin.report.generation');
 		Route::get('/report/stockiest_income', 'ReportController@StockiestIncome')->name('admin.report.stockiest_income');
 		Route::get('/report/stockiest_sponsor_income', 'ReportController@StockiestSponsorIncome')->name('admin.report.stockiest_sponsor_income');
-		Route::get('/report/stockiest_royalty_income', 'ReportController@StockiestRoyaltyIncome')->name('admin.report.stockiest_royalty_income');
-		Route::get('report/pv','ReportController@PV')->name('admin.report.pv');
-		Route::get('report/pv/data','ReportController@PVData')->name('admin.report.pv.data');
+		Route::get('report/daily_cash_back','ReportController@DailyCashBack')->name('admin.report.daily_cash_back');
+		Route::get('report/daily_cash_back_re','ReportController@DailyCashBackRe')->name('admin.report.daily_cash_back_re');
+		Route::get('report/signup','ReportController@Signup')->name('admin.report.signup');
+		Route::get('report/signup/data','ReportController@SignupData')->name('admin.report.registrationData');
+		Route::get('report/order','ReportController@Order')->name('admin.report.order');
+		Route::get('report/order/data','ReportController@OrderData')->name('admin.report.orderData');
 
 		Route::get('report/data','ReportController@data')->name('admin.report.data');
 		Route::get('report/pv','ReportController@PV')->name('admin.report.pv');

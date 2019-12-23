@@ -1,11 +1,11 @@
 @extends('layouts.backend')
-@section('title','Incentive Report')
+@section('title','Insentive Bonus Report')
 @section('css')
 
 @endsection
 @section('content')
-<div class="block">
-	<div class="block-content">
+<div class="card">
+	<div class="card-body">
 		<table id="incentiveTable" class="table table-striped table-bordered"></table>
 	</div>
 </div>
@@ -17,7 +17,10 @@
 			$('#incentiveTable').DataTable({
 				processing: true,
 				serverSide: true,
-				ajax: '',
+				ajax:{ 
+					url:'{{route('admin.report.data') }}',
+					data:{type:'incentive'}
+				 },
 				columns: [
 	            { title:'ID', data: 'id' },
 	            { title:'Amount', data: 'amount'},

@@ -10,6 +10,7 @@
 	use App\Point;
 	use App\Product;
 	use App\User;
+	use App\TopupBalance;
 	use App\Dealer;
 	use App\StockManager;
 	use Illuminate\Support\Facades\Auth;
@@ -78,10 +79,9 @@
 			]);
 		}
 		
-		public function transaction()
+		public function generation()
 		{
-			$users = User::where('user_type','user')->get();
-			return view('admin.report.transaction',compact('users'));
+			return view('admin.report.generation');
 		}
 		public function transfered()
 		{
@@ -107,18 +107,11 @@
 		{
 			return view('admin.report.achiever_royalty_income');
 		}
-		public function ChairmanClubIncome()
+		public function ClubAchiver()
 		{
-			return view('admin.report.chairman_club_income');
+			return view('admin.report.club_achiver');
 		}
-		public function NSMRoyaltyIncome()
-		{
-			return view('admin.report.n_s_m_royalty_income');
-		}
-		public function EDRoyaltyIncome()
-		{
-			return view('admin.report.e_d_royalty_income');
-		}
+		
 		public function StockiestIncome()
 		{
 			return view('admin.report.stockiest_income');
@@ -127,19 +120,35 @@
 		{
 			return view('admin.report.stockiest_sponsor_income');
 		}
-		public function StockiestRoyaltyIncome()
+		
+		public function DailyCashBack()
 		{
-		return view('admin.report.stockiest_royalty_income');
+		return view('admin.report.daily_cashback');
 		}
-		public function PV()
+		public function DailyCashBackRe()
 		{
-		return view('admin.report.pv');
+		return view('admin.report.daily_cashback_re');
 		}
-		public function PVData()
+
+		public function Signup()
 		{
-		$data = Point::where('user_id',Auth::user()->id)->get();
-		return Datatables::of($data)
-		->toJSON();
+			return view('admin.report.signup');
 		}
+		public function Order()
+		{
+			return view('admin.report.order');
+		}
+
+		public function SignupData()
+		{
+			$data = User::where('register_by',Auth::user()->id)->get();
+			return Datatables::of($data)->toJSON();
+		}
+		public function OrderData()
+		{
+			$data = TopupBalance::where('user_id',Auth::user()->id)->where('is_order','1')->get();
+			return Datatables::of($data)->toJSON();
+		}
+
 		}
 				

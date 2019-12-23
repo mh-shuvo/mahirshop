@@ -92,7 +92,7 @@
 <div class="col-lg-8">
 	<div class="row">
 		@hasanyrole('user|admin')
-		<div class="col-6 col-md-3 col-lg-6 col-xl-3">
+		<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12">
 			<div class="card">
 				<div class="card-body">
 					<div class="d-flex no-block align-items-center">
@@ -110,7 +110,7 @@
 		</div>
 		@endhasanyrole
 		
-		<div class="col-6 col-md-3 col-lg-6 col-xl-3">
+		<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12">
 			<div class="card">
 				<div class="card-body">
 					<div class="d-flex no-block align-items-center">
@@ -127,7 +127,7 @@
 			</div>
 		</div>
 		
-		<div class="col-6 col-md-3 col-lg-6 col-xl-3">
+		<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12">
 			<div class="card">
 				<div class="card-body">
 					<div class="d-flex no-block align-items-center">
@@ -143,32 +143,31 @@
 				</div>
 			</div>
 		</div>
-	</div>
-	@hasanyrole('user|admin|dealer')
-	
-	
-	<div class="col-6 col-md-3 col-lg-6 col-xl-3">
-		<div class="card">
-			<div class="card-body">
-				<div class="d-flex no-block align-items-center">
-					<div>
-						<i class="mdi mdi-emoticon font-20 text-muted"></i>
-						<p class="font-16 m-b-5">Total Withdrawal</p>
+
+		@hasanyrole('user|admin|dealer')
+		
+		
+		<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12">
+			<div class="card">
+				<div class="card-body">
+					<div class="d-flex no-block align-items-center">
+						<div>
+							<i class="mdi mdi-emoticon font-20 text-muted"></i>
+							<p class="font-16 m-b-5">Total Withdrawal</p>
+						</div>
+						<div class="ml-auto">
+							<h1 class="font-light text-right">{{$withdrawal->withdrawal_amount}} <small>Tk</small></h1>
+						</div>
 					</div>
-					<div class="ml-auto">
-						<h1 class="font-light text-right">{{$withdrawal->withdrawal_amount}} <small>Tk</small></h1>
-					</div>
+					
 				</div>
-				
 			</div>
 		</div>
-	</div>
-	
-	@endhasanyrole
-	<div class="row">
+		@endhasanyrole
+
 		@hasanyrole('user|admin')
 		
-		<div class="col-6 col-md-3 col-lg-6 col-xl-3">
+		<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12">
 			<div class="card">
 				<div class="card-body">
 					<div class="d-flex no-block align-items-center">
@@ -183,15 +182,7 @@
 				</div>
 			</div>
 		</div>
-		
-	</div>
-	<div class="row">
-		
-		
-		
-		
-		
-		<div class="col-6 col-md-3 col-lg-6 col-xl-3">
+		<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12">
 			<div class="card">
 				<div class="card-body">
 					<div class="d-flex no-block align-items-center">
@@ -207,15 +198,12 @@
 				</div>
 			</div>
 		</div>
-		
-	</div>
 	@endhasanyrole
 	@hasanyrole('user|admin|dealer')
-	<div class="row">
 		@hasanyrole('admin|user')
 		
 		
-		<div class="col-6 col-md-3 col-lg-6 col-xl-3">
+		<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12">
 			<div class="card">
 				<div class="card-body">
 					<div class="d-flex no-block align-items-center">
@@ -235,7 +223,7 @@
 		@endhasanyrole
 		
 		
-		<div class="col-6 col-md-3 col-lg-6 col-xl-3">
+		<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12">
 			<div class="card">
 				<div class="card-body">
 					<div class="d-flex no-block align-items-center">
@@ -254,7 +242,7 @@
 		
 		
 		
-		<div class="col-6 col-md-3 col-lg-6 col-xl-3">
+		<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12">
 			<div class="card">
 				<div class="card-body">
 					<div class="d-flex no-block align-items-center">
@@ -270,14 +258,9 @@
 				</div>
 			</div>
 		</div>
-		
-	</div>
 	@endhasanyrole
 	@hasanyrole('user|admin')
-	<div class="row">
-		
-		
-		<div class="col-6 col-md-3 col-lg-6 col-xl-3">
+		<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12">
 			<div class="card">
 				<div class="card-body">
 					<div class="d-flex no-block align-items-center">
@@ -292,11 +275,9 @@
 					
 				</div>
 			</div>
-		</div>
+		</div>		
 		
-		
-		
-		<div class="col-6 col-md-3 col-lg-6 col-xl-3">
+		<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12">
 			<div class="card">
 				<div class="card-body">
 					<div class="d-flex no-block align-items-center">
@@ -312,9 +293,8 @@
 				</div>
 			</div>
 		</div>
-		
-	</div>
 	@endhasanyrole
+</div>
 </div> 
 @hasanyrole('user|admin')
 <div class="modal" id="packageModal">
@@ -343,6 +323,7 @@
 			</form>
 		</div>
 	</div>
+</div>
 </div>
 <div class="modal" id="renewModal">
 	<div class="modal-dialog">

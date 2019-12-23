@@ -18,7 +18,7 @@
 		<link href="{{asset('public/assets/dist/css/style.min.css')}}" rel="stylesheet">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="stylesheet" type="text/css" href="{{asset('public/sweetalert/sweetalert.css')}}">
-		
+		<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
 		<style>
 			.hide{
 			display: none;
@@ -327,15 +327,93 @@
 								</a>
 							</li>
 							
-							@hasanyrole('admin|dealer')
+						{{-- 	@hasanyrole('admin|dealer')
 							<li class="sidebar-item">
 								<a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('admin.superadmin.order')}}" aria-expanded="false">
 									<i class="mdi mdi-cube-send"></i>
 									<span class="hide-menu">Receive Orders</span>
 								</a>
 							</li>
-							@endhasanyrole
+							@endhasanyrole --}}
+							<li class="sidebar-item">
+								<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+									<i class="mdi mdi-av-timer"></i>
+									<span class="hide-menu">Report </span>
+									
+								</a>
+								<ul aria-expanded="false" class="collapse  first-level">
+									@hasanyrole('dealer')
+									<li class="sidebar-item">
+										<a href="{{route('admin.report.stockiest_income')}}" class="sidebar-link">
+											<i class="mdi mdi-adjust"></i>
+											<span class="hide-menu"> Dealer Income </span>
+										</a>
+									</li>
+									@endhasanyrole
+									<li class="sidebar-item">
+										<a href="{{route('admin.report.stockiest_sponsor_income')}}" class="sidebar-link">
+											<i class="mdi mdi-adjust"></i>
+											<span class="hide-menu"> Dealer Sponsor </span>
+										</a>
+									</li>
+									<li class="sidebar-item">
+										<a href="{{route('admin.report.sponsor_income')}}" class="sidebar-link">
+											<i class="mdi mdi-adjust"></i>
+											<span class="hide-menu"> Referral Income </span>
+										</a>
+									</li>
+									{{-- <li class="sidebar-item">
+										<a href="{{route('admin.report.matching_income')}}" class="sidebar-link">
+											<i class="mdi mdi-adjust"></i>
+											<span class="hide-menu"> Matching Income </span>
+										</a>
+									</li>
+									<li class="sidebar-item">
+										<a href="{{route('admin.report.matching_royalty_income')}}" class="sidebar-link">
+											<i class="mdi mdi-adjust"></i>
+											<span class="hide-menu"> Mega Matching </span>
+										</a>
+									</li> --}}
+									<li class="sidebar-item">
+										<a href="{{route('admin.report.achiever_royalty_income')}}" class="sidebar-link">
+											<i class="mdi mdi-adjust"></i>
+											<span class="hide-menu"> Rank Achiever </span>
+										</a>
+									</li>
+									<li class="sidebar-item">
+										<a href="{{route('admin.report.club_achiver')}}" class="sidebar-link">
+											<i class="mdi mdi-adjust"></i>
+											<span class="hide-menu"> Club Achiver </span>
+										</a>
+									</li>
+									<li class="sidebar-item">
+										<a href="{{route('admin.report.daily_cash_back')}}" class="sidebar-link">
+											<i class="mdi mdi-adjust"></i>
+											<span class="hide-menu"> Daily Cash Back </span>
+										</a>
+									</li>
+									<li class="sidebar-item">
+										<a href="{{route('admin.report.generation')}}" class="sidebar-link">
+											<i class="mdi mdi-adjust"></i>
+											<span class="hide-menu"> Generation </span>
+										</a>
+									</li>
+									<li class="sidebar-item">
+										<a href="{{route('admin.report.order')}}" class="sidebar-link">
+											<i class="mdi mdi-adjust"></i>
+											<span class="hide-menu"> Order Report </span>
+										</a>
+									</li>
+									<li class="sidebar-item">
+										<a href="{{route('admin.report.signup')}}" class="sidebar-link">
+											<i class="mdi mdi-adjust"></i>
+											<span class="hide-menu"> Registration </span>
+										</a>
+									</li>
+								</ul>
+							</li>
 						</ul>
+
 					</nav>
 					<!-- End Sidebar navigation -->
 				</div>

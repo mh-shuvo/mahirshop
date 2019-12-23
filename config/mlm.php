@@ -14,11 +14,12 @@
 	'lavel_3_to_20_gen_bonus_percentage' => '4',
 	'gen_bonus_percentage' => '8.5',
 	'bonus_start_from' => '1000',
-	'registration_charge' => '100',
-	'premium_registration_point' => '25',
-	'matching_pv' => '25',
-	'mega_bonus_percentage' => '10',
-	'achiever_royality' => '150',
+	'renew_purchase_value' => '1000',
+	'premium_package_value' => '3000',
+	'daily_cash_back_percentage' => '20',
+	're_purchase_daily_cash_back_percentage' => '20',
+	'first_rank_referral' => '10',
+	'club_entry_referral' => '11',
 	'withdrawal_vat' => '10',
 	'withdrawal_insurance' => '1',
 	
@@ -58,11 +59,11 @@
 	'condition' => '500',
 	'condition_type' => 'matching'
 	],
-	'plan4' => [
-	'title' => 'Divisional Sales Manager',
-	'name' => 'dsm',
-	'condition' => '1000',
-	'condition_type' => 'matching'
+'plan4' => [
+'title' => 'Divisional Sales Manager',
+'name' => 'dsm',
+'condition' => '1000',
+'condition_type' => 'matching'
 ],
 'plan5' => [
 'title' => 'National Sales Manager',

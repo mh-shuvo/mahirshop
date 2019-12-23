@@ -14,81 +14,75 @@
 </div>
 <div class="card">
 	<div class="card-header">
-		<h3 class="card-title">Gen1</h3>
+		<h3 class="card-title">1st Generation (<span id="gen1total"></span>)</h3>
 	</div>
-	<div class="card-body">
-		<button class="btn btn-primary btn-sm">Mehedi Hasan Shuvo</button>
-	</div>
-</div>
-<div class="card">
-	<div class="card-header">
-		<h3 class="card-title">Gen2</h3>
-	</div>
-	<div class="card-body">
-		<button class="btn btn-primary btn-sm">Mehedi Hasan Shuvo</button>
+	<div class="card-body" id="gen1">
+		
 	</div>
 </div>
 <div class="card">
 	<div class="card-header">
-		<h3 class="card-title">Gen3</h3>
+		<h3 class="card-title">2nd Generation (<span id="gen2total"></span>)</h3>
 	</div>
-	<div class="card-body">
-		<button class="btn btn-primary btn-sm">Mehedi Hasan Shuvo</button>
+	<div class="card-body" id="gen2">
 	</div>
 </div>
 @endsection
 
 @section('js')
 <script type="text/javascript">
-	
 	$(document).ready(function(){
 		getTree();
 		
-		
-		function getTree(id = null){
-			if('{{Auth::User()->id}}' <= id || id == null ){
-				$.ajax({
-					type: 'get',
-					url: '{{ url('admin/my-team/data/') }}/'+id ,
-					success: function(data){
-						var rootHtml = '<tr> <td text-center><img class="img-circle teamMember" style="height:80px; width:100ox; cursor:pointer;" data-id="'+data.root_username+'" src="{{asset('public/upload/user')}}/'+ data.root_profile_picture+'"><br> <b>Name:<b> '+data.root_name+'<br><b>Username: </b>'+data.root_username+'</br> <b>Joining Date: </b>'+data.root_registration_date+' </td><td><img class="img-circle teamMember" style="height:80px; width:100ox; cursor:pointer;" data-id="'+data.root_left_username+'" data-root-id="'+data.root_username+'" src="{{asset('public/upload/user')}}/'+data.root_left_profile_picture+'"><br> <b>Name:<b>'+data.root_left_name+'<br><b>Username: </b>'+data.root_left_username+'</br><b>Joining Date: </b>'+data.root_left_registration_date+' </td><td><img class="img-circle teamMember" style="height:80px; width:100ox; cursor:pointer;" data-id="'+data.root_right_username+'" data-root-id="'+data.root_username+'" src="{{asset('public/upload/user')}}/'+data.root_right_profile_picture+'"><br> <b>Name:<b> '+data.root_right_name+'<br><b>Username: </b>'+data.root_right_username+'</br><b>Joining Date: </b>'+data.root_right_registration_date+' </td> <tr>';
-						
-						var leftHtml = '<tr> <td><img class="img-circle teamMember" style="height:80px; width:100ox; cursor:pointer;" data-id="'+data.root_left_username+'" data-root-id="'+data.root_username+'" src="{{asset('public/upload/user')}}/'+data.root_left_profile_picture+'"><br> <b>Name:</b>'+data.root_left_name+'<br><b>Username: </b>'+data.root_left_username+'</br><b>Joining Date: </b>'+data.root_left_registration_date+' </td><td><img class="img-circle teamMember" style= "height:80px; width:100ox; cursor:pointer;" data-id="'+data.left_left_username+'" data-root-id="'+data.root_left_username+'" src="{{asset('public/upload/user')}}/'+data.left_left_profile_picture+'"><br><b>Name: </b> '+data.left_left_name+'<br><b>Username: </b>'+data.left_left_username+'</br><b>Joining Date:</b>'+data.left_left_registration_date+'</td><td><img class="img-circle teamMember" style="height:80px; width:100ox; cursor:pointer;" data-id="'+data.left_right_username+'" data-root-id="'+data.root_left_username+'" src="{{asset('public/upload/user')}}/'+data.left_right_profile_picture+'"><br> <b>Name: </b>'+data.left_right_name+'<br><b>Username: </b>'+data.left_right_username+'</br><b>Joining Date: </b>'+data.left_right_registration_date+' </td> <tr>';
-						
-						var rightHtml = '<tr> <td><img class="img-circle teamMember" style="height:80px; width:100ox; cursor:pointer;" data-id="'+data.root_right_username+'" data-root-id="'+data.root_username+'" src="{{asset('public/upload/user')}}/'+data.root_right_profile_picture+'"><br> <b>Name:<b> '+data.root_right_name+'<br><b>Username: </b>'+data.root_right_username+'</br><b>Joining Date: </b>'+data.root_right_registration_date+' </td><td><img class="img-circle teamMember" style="height:80px; width:100ox; cursor:pointer;" data-id="'+data.right_left_username+'" data-root-id="'+data.root_right_username+'" src="{{asset('public/upload/user')}}/'+data.right_left_profile_picture+'"><br> <b>Name: </b>'+data.right_left_name+'<br><b>Username: </b>'+data.right_left_username+'</br><b>Joining Date: </b>'+data.left_left_registration_date+' </td><td><img class="img-circle teamMember" style="height:80px; width:100ox; cursor:pointer;" data-id="'+data.right_right_username+'" data-root-id="'+data.root_right_username+'" src="{{asset('public/upload/user')}}/'+data.right_right_profile_picture+'"><br> <b>Name: </b>'+data.right_right_name+'<br><b>Username: </b>'+data.right_right_username+'</br><b>Joining Date: </b>'+data.right_right_registration_date+' </td> <tr>';
-						$("#TeamTable").append(rootHtml);
-						$("#TeamTable").append(leftHtml);
-						$("#TeamTable").append(rightHtml);
-					}
-				});
+		function getTree(Id = null){
+			
+			if(Id == null){
+				var Id = '{{Auth::User()->username}}';
 			}
-		}
-		$(document).on('click','.searchBtn',function(event){
-			let u_name = $("#username").val();
+			
 			$.ajax({
 				type: 'get',
-				url: '{{ url('admin/search/team/') }}/'+u_name ,
+				url: '{{ route('admin.team.data') }}',
+				data:{
+					id:Id
+				},
 				success: function(data){
-					$("#TeamTableTbody").html('');
-					getTree(data);
+					if(data.status == 'success'){
+						$("#gen1total").html(data.total_gen_1);
+						$("#gen2total").html(data.total_gen_2);
+						var gen1 = data.gen_1_data;
+						var gen2 = data.gen_2_data;
+						$("#gen1").html('');
+						$.each( gen1, function( key, value ) {
+							var get1html = '<a tabindex="'+key+'" data-id="'+value.users.username+'" class="btn btn-sm btn-primary teamMember" role="button" data-toggle="popover" data-trigger="focus" data-html="true" title="'+value.users.name+'">'+value.users.username+'</a> ';
+							$("#gen1").append(get1html);
+						});
+						
+						$("#gen2").html('');
+						$.each( gen2, function( key, value ) {
+							$.each( value, function( key, value ) {
+								var get1html = '<a tabindex="'+key+'" data-id="'+value.users.username+'" class="btn btn-sm btn-primary teamMember" role="button" data-toggle="popover" data-trigger="focus" data-html="true" title="'+value.users.name+'">'+value.users.username+'</a> ';
+								$("#gen2").append(get1html);
+							});
+						});
+					}
 				}
 			});
-			event.preventDefault();
+		}
+		
+		$(document).on('click','.searchBtn',function(){
+			getTree($("#username").val());
+		});
+		
+		$(document).on('click','.back_button',function(){
+			getTree($(this).data('id'));
 		});
 		
 		$(document).on('keyup','#searchTeam',function(event){
 			if(event.keyCode == 13){
 				if($(this).val()!='')
 				{
-					let u_name = $(this).val();
-					$.ajax({
-						type: 'get',
-						url: '{{ url('admin/search/team/') }}/'+u_name ,
-						success: function(data){
-							$("#TeamTableTbody").html('');
-							getTree(data);
-						}
-					});
+					getTree($(this).val());
 					event.preventDefault();
 				}
 				else{
@@ -98,54 +92,24 @@
 			}
 		});
 		
-		$(document).on('click','.backId',function(event){
-			let u_name = $(this).data('id');
-			$.ajax({
-				type: 'get',
-				url: '{{ url('admin/search/team/') }}/'+u_name ,
-				success: function(data){
-					$("#TeamTableTbody").html('');
-					getTree(data);
-				}
-			});
+		$(document).on('click','.teamMember',function(event){
+			getTree($(this).data('id'));
 			event.preventDefault();
 		});
 		
-		$(document).on("change keyup",'input[name="searchTeam"]',function(){
+		$(document).on("change keyup",'input[name="searchTeam"]',function(event){
 			usernameCheck($(this),'.username_check_status');
-		});
-		
-		$(document).on('click','.teamMember',function(event){
-			let u_name = $(this).data('id');
-			$(".backId").attr("data-id",$(this).data('root-id'));
-			$.ajax({
-				type: 'get',
-				url: '{{ url('admin/search/team/') }}/'+u_name ,
-				success: function(data){
-					$("#TeamTableTbody").html('');
-					getTree(data);
-				}
-			});
 			event.preventDefault();
 		});
 		
 		$(document).on('keyup','#username',function(event){
 			if(event.keyCode == 13){
-				
-				let u_name = $(this).val();
-				$.ajax({
-					type: 'get',
-					url: '{{ url('admin/search/team/') }}/'+u_name ,
-					success: function(data){
-						$("#TeamTableTbody").html('');
-						getTree(data);
-					}
-				});
-				
+				getTree($(this).val());
+				event.preventDefault();
 			}
-			event.preventDefault();
 		});
+		
 	});
 </script>
 
-@endsection				
+@endsection					

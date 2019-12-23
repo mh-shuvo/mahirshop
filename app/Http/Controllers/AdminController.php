@@ -87,151 +87,40 @@
 		{
 			return view('admin.team');
 		}
-		public function MyTeamList($id){
-			if($id == 'null' || $id <= Auth::user()->id){
+		public function MyTeamList(Request $request){
+			
+			
+			if($request->id == 'null'){
 				$id = Auth::user()->id;
-			}
-			
-			
-			$left_name = 'Not Registered';
-			$left_username = 'Not Registered';
-			$left_registration_date = 'Not Registered';
-			$left_profile_picture = 'download.png';
-			$left = null;
-			
-			$right_name = 'Not Registered';
-			$right_username = 'Not Registered';
-			$right_registration_date = 'Not Registered';
-			$right_profile_picture="download.png";
-			$right = null;
-			
-			$left_right_name = 'Not Registered';
-			$left_right_username = 'Not Registered';
-			$left_right_registration_date = 'Not Registered';
-			$left_right_profile_picture='download.png';
-			
-			$left_left_name = 'Not Registered';
-			$left_left_username = 'Not Registered';
-			$left_left_registration_date = 'Not Registered';
-			$left_left_profile_picture = 'download.png';
-			
-			$right_right_name = 'Not Registered';
-			$right_right_username = 'Not Registered';
-			$right_right_registration_date = 'Not Registered';
-			$right_right_profile_picture='download.png';
-			
-			$right_left_name = 'Not Registered';
-			$right_left_username = 'Not Registered';
-			$right_left_registration_date = 'Not Registered';
-			$right_left_profile_picture='download.png';
-			
-			$root = MemberTree::where('user_id',$id)->first();
-			
-			if($root->l_id !=null){
-				$left_name = $root->TeamA->name;
-				$left_username = $root->TeamA->username;
-				$left_registration_date = date_format($root->TeamA->created_at,'d-m-Y');
-				if($root->TeamA->profile_picture){
-					$left_profile_picture = $root->TeamA->profile_picture;
+				}else{
+				$id = $this->getIdByUsername($request->id);
+				if(!$id){
+					return response()->json([
+					"status" => "error"
+					],422);
 				}
-				$left = MemberTree::where('user_id',$root->l_id)->first();
 				
-			}
-			
-			
-			if($root->r_id !=null){
-				$right_name = $root->TeamB->name;
-				$right_username = $root->TeamB->username;
-				$right_registration_date = date_format($root->TeamB->created_at,'d-m-Y');
-				if($root->TeamB->profile_picture){
-					$right_profile_picture = $root->TeamB->profile_picture;
-				}
-				$right = MemberTree::where('user_id',$root->r_id)->first();
-			}
-			
-			if($left){
-				if($left->l_id !=null){
-					$left_left_name = $left->TeamA->name;
-					$left_left_username = $left->TeamA->username;
-					if($left->TeamA->profile_picture){
-						$left_left_profile_picture = $left->TeamA->profile_picture;
-					}
-					$left_left_registration_date = date_format($left->TeamA->created_at,'d-m-Y');
-				}
-				if($left->r_id !=null){
-					$left_right_name = $left->TeamB->name;
-					$left_right_username = $left->TeamB->username;
-					$left_right_registration_date = date_format($left->TeamB->created_at,'d-m-Y');
-					if($left->TeamB->profile_picture){
-						$left_right_profile_picture = $left->TeamB->profile_picture;
-					}
+				if($id && $id <= Auth::user()->id){
+					$id = Auth::user()->id;
 				}
 			}
 			
-			if($right){
-				if($right->l_id !=null){
-					$right_left_name = $right->TeamA->name;
-					$right_left_username = $right->TeamA->username;
-					$right_left_registration_date = date_format($right->TeamA->created_at,'d-m-Y');
-					if($right->TeamA->profile_picture){
-						$right_left_profile_picture = $right->TeamA->profile_picture;
-					}
-				}
-				if($right->r_id !=null){
-					$right_right_name = $right->TeamB->name;
-					$right_right_username = $right->TeamB->username;
-					$right_right_registration_date = date_format($right->TeamB->created_at,'d-m-Y');
-					if($right->TeamB->profile_picture){
-						$right_right_profile_picture = $right->TeamB->profile_picture;
-					}
-				}
+			$gen1Datas = MemberTree::select('user_id','is_premium')->where('sponsor_id',$id)->with(['Users:id,name,username,phone','Sponsor:id,username'])->get();
+			$gen2Datas = [];
+			$totalgen2 = 0;
+			$totalgen1 = count($gen1Datas);
+			foreach($gen1Datas as $gen1Data){
+				$get2alldata = MemberTree::select('user_id','is_premium')->where('sponsor_id',$gen1Data->user_id)->with(['Users:id,name,username,phone','Sponsor:id,username'])->get();
+				$gen2Datas[] = $get2alldata;
+				$totalgen2 += count($get2alldata);
 			}
-			$root_profile_picture = 'upload/user/download.png';
-			if($root->Users->profile_picture){
-				$root_profile_picture = $root->Users->profile_picture;
-			}
-			$root_sponsor_username = 'null';
-			if($root->sponsor_id){
-				if($root->user_id != Auth::user()->id){
-					$root_sponsor_username = $root->Sponsor->username;
-				}
-			}
-			$root_user_registration_date = '';
-			if($root->Users->created_at != null){
-			$root_user_registration_date = date_format($root->Users->created_at,'d-m-Y');
-			}
+			
 			return response()->json([
-			"root_name" => $root->Users->name,
-			"root_sponsor_username" => $root_sponsor_username,
-			"root_profile_picture" => $root_profile_picture,
-			"root_username" => $root->Users->username,
-			"root_registration_date" => $root_user_registration_date,
-			"root_left_name" => $left_name,
-			"root_left_username" => $left_username,
-			"root_left_profile_picture" => $left_profile_picture,
-			"root_right_profile_picture" => $right_profile_picture,
-			"root_left_registration_date" => $left_registration_date,
-			"root_right_name" => $right_name,
-			"root_right_username" => $right_username,
-			"root_right_registration_date" => $right_registration_date,
-			
-			"left_left_name" => $left_left_name,
-			"left_left_username" => $left_left_username,
-			"left_left_registration_date" => $left_left_registration_date,
-			"left_right_name" => $left_right_name,
-			"left_right_username" => $left_right_username,
-			"left_right_registration_date" => $left_right_registration_date,
-			"left_left_profile_picture" => $left_left_profile_picture,
-			"left_right_profile_picture" => $left_right_profile_picture,
-			
-			"right_left_name" => $right_left_name,
-			"right_left_username" => $right_left_username,
-			"right_left_registration_date" => $right_left_registration_date,
-			"right_right_name" => $right_right_name,
-			"right_right_username" => $right_right_username,
-			"right_right_registration_date" => $right_right_registration_date,
-			"right_left_profile_picture" => $right_left_profile_picture,
-			"right_right_profile_picture" => $right_right_profile_picture,
+			"status" => "success",
+			"total_gen_1" => $totalgen1,
+			"total_gen_2" => $totalgen2,
+			"gen_1_data" => $gen1Datas,
+			"gen_2_data" => $gen2Datas
 			]);
 		}
         public function SearchTeam($id)
@@ -295,12 +184,12 @@
 			
 			$user = Auth::user();
 			if($request->hasFile('profile_picture')){
-
+				
 				$old_img = public_path($user->username);
-				 if (file_exists($old_img)) {
+				if (file_exists($old_img)) {
 					@unlink($old_img);
-				   }
-
+				}
+				
 				$document = $request->file('profile_picture');
 				$image = $user->username. '.' . $document->getClientOriginalExtension();
 				Image::make($document)->resize(300,300)->save(public_path('upload/user/'.($image)));
@@ -504,10 +393,10 @@
 		public function orderData()
 		{
 			// if(Auth::user()->user_type == 'dealer'){
-				// $data = Orders::where('order_delivery_from_user_id',Auth::user()->id);
+			// $data = Orders::where('order_delivery_from_user_id',Auth::user()->id);
 			// }	
 			// else{
-				$data = Orders::where('user_id',Auth::user()->id);
+			$data = Orders::where('user_id',Auth::user()->id);
 			// }
 			
 			return Datatables::of($data)
