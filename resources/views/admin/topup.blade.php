@@ -37,10 +37,6 @@
 						<span id="user_name"></span>
 					</div>
 	                <div class="form-group">
-	                	<label class="control-label">Transaction Pin:</label>
-	                	<input type="password" class="form-control" name="txn_pin" placeholder="Transaction Pin" autocomplete="off">
-					</div>
-	                <div class="form-group">
 	                	<button type="submit" class="btn waves-effect waves-light btn-primary btn-outline-primary btn-sm pull-right transferdCupon">Transfered</button>
 					</div>
 				</form>

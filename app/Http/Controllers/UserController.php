@@ -55,13 +55,13 @@
             $data['password'] = $request->password;
 			
 			
-			if(Auth::user()->hasRole('user')){
-				return response()->json([
-				'status' => 'errors',
-				'message' => 'Access Denied'
-				],422);
+// 			if(Auth::user()->hasRole('user')){
+// 				return response()->json([
+// 				'status' => 'errors',
+// 				'message' => 'Access Denied'
+// 				],422);
 				
-			}
+// 			}
 			
 			if(!$this->getUsernameCheck($request->sponsor_id)){
 				return response()->json([

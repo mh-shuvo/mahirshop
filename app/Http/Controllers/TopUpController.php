@@ -45,13 +45,6 @@
 				],422);
 			}
 			
-			if(!$this->getTxnPinCheck($request->txn_pin)){
-				return response()->json([
-				'status' => 'errors',
-				'message' => 'Transaction Pin Is Not Correct. Please Try again'
-				],422);
-			}
-			
 			if(!Auth::user()->hasRole('accountant') && Auth::user()->hasRole('dealer')){
 				
 				$OrderAmount = Orders::where("order_delivery_from_user_id", Auth::User()->id)
