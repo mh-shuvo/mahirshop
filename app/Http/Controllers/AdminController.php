@@ -334,7 +334,7 @@
 			'withdraw_amount' => 'required'
 			]);
 			
-			if($request->withdraw_method == 'cash'){
+			if($request->withdraw_method == 'cash' || $request->withdraw_method == 'topup'){
 				$request->validate([
 				'payment_method' => 'required'
 				]);
@@ -346,9 +346,7 @@
 					$withdrawalData->payment_method_details = $request->account_details;
 				}
 				$withdrawalData->withdrawal_status = 'pending';
-				}elseif($request->withdraw_method == 'topup'){
-				$withdrawalData->withdrawal_status = 'paid';
-			}
+				}
 			
 			$withdrawalVat = (config('mlm.withdrawal_vat') / 100) * $request->withdraw_amount;
 			$withdrawalInsurance = (config('mlm.withdrawal_insurance') / 100) * $request->withdraw_amount;
@@ -367,18 +365,18 @@
 			$withdrawalData->withdrawal_details = $request->withdraw_details;
 			$withdrawalData->save();
 			
-			if($request->withdraw_method == 'topup'){
-				TopupBalance::create([
-				'user_id' => Auth::User()->id,
-				'from_user_id' =>  Auth::User()->id,
-				'topup_amount' => $totalWithdrawalAmount,
-				'topup_type' => 'withdrawal',
-				'topup_flow' => 'in',
-				'topup_details' => 'You have received '.$totalWithdrawalAmount.' Tk TopUp from withdrawal '.$withdrawalData->id,
-				'topup_generate_by' => Auth::User()->id,
-				'topup_status' => 'active'
-				]);
-			}
+// 			if($request->withdraw_method == 'topup'){
+// 				TopupBalance::create([
+// 				'user_id' => Auth::User()->id,
+// 				'from_user_id' =>  Auth::User()->id,
+// 				'topup_amount' => $totalWithdrawalAmount,
+// 				'topup_type' => 'withdrawal',
+// 				'topup_flow' => 'in',
+// 				'topup_details' => 'You have received '.$totalWithdrawalAmount.' Tk TopUp from withdrawal '.$withdrawalData->id,
+// 				'topup_generate_by' => Auth::User()->id,
+// 				'topup_status' => 'active'
+// 				]);
+// 			}
 			
 			return response()->json([
 			'status' => "success",

@@ -159,23 +159,31 @@
 				$generationBonusAmount = (config('mlm.gen_bonus_percentage') / 100) * $getPackage->package_value;
 				$this->GenarationBonus($generationBonusAmount,$newMemberTree->sponsor_id);
 				
+				
 				// $dailyRepurchaseCashBackCount = MemberTree::whereNull('is_premium')->where("is_renewed"," >= ",Carbon::now())->count();
 				// $dailyRepurchaseCashBack = (config('mlm.re_purchase_daily_cash_back_percentage') / 100) * $getPackage->package_value;
 				// $dailyRepurchaseCashBackAmount = $dailyRepurchaseCashBack / $dailyRepurchaseCashBackCount;
 				
-				$dailyBonusMembers = MemberTree::whereNotNull('is_premium')->where("is_renewed",">=",Carbon::now())->get();
+				if($getPackage->package_value >= config('mlm.premium_package_value')){
+				    $dailyBonusMembers = MemberTree::whereNotNull('is_premium')->where("is_renewed",">=",Carbon::now())->get();
+					$dailyPremiumCashBack = (config('mlm.daily_cash_back_percentage') / 100) * $getPackage->package_value;
+					$dailyCashBackAmount = $dailyPremiumCashBack / $dailyBonusMembers->count();
+				}else{
+				    $dailyBonusMembers = MemberTree::where("is_renewed",">=",Carbon::now())->get();
+				    $dailyCashBack = (config('mlm.daily_cash_back_percentage') / 100) * $getPackage->package_value;
+					$dailyCashBackAmount = $dailyCashBack / $dailyBonusMembers->count();
+				}
+
 				if($dailyBonusMembers){
-					$dailyCashBackCount = MemberTree::whereNotNull('is_premium')->where("is_renewed",">=",Carbon::now())->count();
-					$dailyCashBack = (config('mlm.daily_cash_back_percentage') / 100) * $getPackage->package_value;
-					$dailyCashBackAmount = $dailyCashBack / $dailyCashBackCount;
-					
 					foreach($dailyBonusMembers as $dailyBonusMember){
-						$dailyCashBackBonusData = new MemberBonus();
-						$dailyCashBackBonusData->bonus_type = 'daily_cash_back';
-						$dailyCashBackBonusData->user_id = $dailyBonusMember->user_id;
-						$dailyCashBackBonusData->amount = $dailyCashBackAmount;
-						$dailyCashBackBonusData->details = 'You have received '.$dailyCashBackAmount.' TK Daily Cash Back Bonus from '.$newUser->username;
-						$dailyCashBackBonusData->save();
+					    if($dailyCashBackAmount > 0){
+    						$dailyCashBackBonusData = new MemberBonus();
+    						$dailyCashBackBonusData->bonus_type = 'daily_cash_back';
+    						$dailyCashBackBonusData->user_id = $dailyBonusMember->user_id;
+    						$dailyCashBackBonusData->amount = $dailyCashBackAmount;
+    						$dailyCashBackBonusData->details = 'You have received '.number_format($dailyCashBackAmount, 2).' TK Daily Cash Back Bonus from '.$newUser->username;
+    						$dailyCashBackBonusData->save();
+					    }
 					}
 				}
 			}
