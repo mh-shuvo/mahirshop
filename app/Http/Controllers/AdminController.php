@@ -303,13 +303,6 @@
 		public function withdrawSubmit(Request $request)
 		{
 			
-			if(!$this->getTxnPinCheck($request->txn_pin)){
-				return response()->json([
-				'status' => 'errors',
-				'message' => 'Transaction Pin Is Not Correct. Please Try again'
-				],422);
-			}
-			
 			$withdrawal = $this->AvailableBalanceByUser();
 			if($withdrawal->current_balance < $request->withdraw_amount){
 				return response()->json([
@@ -330,53 +323,36 @@
 			$withdrawalData = new Withdrawal();
 			
 			$request->validate([
-			'withdraw_method' => 'required',
+			'payment_method' => 'required',
 			'withdraw_amount' => 'required'
 			]);
 			
-			if($request->withdraw_method == 'cash' || $request->withdraw_method == 'topup'){
+			if($request->payment_method != 'office'){
 				$request->validate([
-				'payment_method' => 'required'
+				'account_number' => 'required'
 				]);
-				$withdrawalData->payment_method = $request->payment_method;
-				if($request->payment_method != 'office'){
-					$request->validate([
-					'account_number' => 'required'
-					]);
-					$withdrawalData->payment_method_details = $request->account_details;
-				}
-				$withdrawalData->withdrawal_status = 'pending';
-				}
+				$withdrawalData->withdrawal_account_no = $request->account_number;
+				$withdrawalData->payment_method_details = $request->account_details;
+			}
+			
 			
 			$withdrawalVat = (config('mlm.withdrawal_vat') / 100) * $request->withdraw_amount;
-			$withdrawalInsurance = (config('mlm.withdrawal_insurance') / 100) * $request->withdraw_amount;
+			$withdrawalCharge = (config('mlm.withdrawal_charge') / 100) * $request->withdraw_amount;
 			
 			
 			
-			$withdrawalCharge = $withdrawalVat + $withdrawalInsurance;
-			$totalWithdrawalAmount = $request->withdraw_amount - $withdrawalCharge;
+			$withdrawalChargeTotal = $withdrawalVat + $withdrawalCharge;
+			$totalWithdrawalAmount = $request->withdraw_amount - $withdrawalChargeTotal;
 			
 			$withdrawalData->user_id = Auth::user()->id;
 			$withdrawalData->withdrawal_amount = $request->withdraw_amount;
-			$withdrawalData->withdrawal_charge = $withdrawalCharge;
+			$withdrawalData->withdrawal_charge = $withdrawalChargeTotal;
 			$withdrawalData->vat_amount = $withdrawalVat;
-			$withdrawalData->insurance_amount = $withdrawalInsurance;
 			$withdrawalData->total_withdrawal_amount = $totalWithdrawalAmount;
 			$withdrawalData->withdrawal_details = $request->withdraw_details;
+			$withdrawalData->payment_method = $request->payment_method;
+			$withdrawalData->withdrawal_status = 'pending';
 			$withdrawalData->save();
-			
-// 			if($request->withdraw_method == 'topup'){
-// 				TopupBalance::create([
-// 				'user_id' => Auth::User()->id,
-// 				'from_user_id' =>  Auth::User()->id,
-// 				'topup_amount' => $totalWithdrawalAmount,
-// 				'topup_type' => 'withdrawal',
-// 				'topup_flow' => 'in',
-// 				'topup_details' => 'You have received '.$totalWithdrawalAmount.' Tk TopUp from withdrawal '.$withdrawalData->id,
-// 				'topup_generate_by' => Auth::User()->id,
-// 				'topup_status' => 'active'
-// 				]);
-// 			}
 			
 			return response()->json([
 			'status' => "success",

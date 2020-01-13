@@ -20,8 +20,8 @@
 	're_purchase_daily_cash_back_percentage' => '20',
 	'first_rank_referral' => '10',
 	'club_entry_referral' => '11',
-	'withdrawal_vat' => '10',
-	'withdrawal_insurance' => '1',
+	'withdrawal_vat' => '2',
+	'withdrawal_charge' => '10',
 	
 	'daily_matching' => '80',
 	'matching_bonus' => '250',
