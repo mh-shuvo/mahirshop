@@ -352,6 +352,22 @@
 		</div>
 	</div>
 </div>
+<div class="modal" id="popupModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">নোটিশ</h4>
+				<button class="close" data-dismiss="modal">&times;</button>
+			</div>
+				<div class="modal-body">
+					<p>১) সম্মানিত সকল সদস্যদের অবগতির জন্য জানানো যাইতেছে। আপনারা যারা কোম্পানি থেকে এজেন্ট নেওয়ার কথা বলে আংশিক টাকা জমা দিয়ে রেখেছেন। আপনার আপনাদের এজেন্টের বাকী টাকা আগামী ২০ তারিখের মধ্যে পরিশোধ করার জন্য আহবান করা হচ্ছে। অন্যথায় এজেন্ট বাতিল বলে গন্য হবে।<br /> ২) যে সকল সদস্যদের নিকট বকেয়া টাকা আছে আপনারা বকেয়া টাকা পরিশোধ করে সঠিক ভাবে বিজনেস করার জন্য আহবান করা হচ্ছে।<br />৩) বিজনেস অফার আগামী 15/01/2020 ইং থেকে 30/01/2020ইং তারিখ পর্যন্ত ১২০০ টাকার ১১ টি আইডি ক্রয় করিলে সাথে সাথে ১টি আইডি একদম ফ্রী।<br />৪) যে লিডার ২২ টি ১২০০ টাকার আইডি সেল করবেন তিনিও একটি আইডি ফ্রী পাবেন।<br />তাই আর দেরি না করে দ্রুত সুযোগ গ্রহন করুন।</p>
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-danger" data-dismiss="modal">Close</button>
+				</div>
+		</div>
+	</div>
+</div>
 @endhasanyrole
 @endsection 
 @section('js')
@@ -376,6 +392,16 @@
 			},
 			resetForm:true
 		});
+		
+		$(document).ready(function(){
+            setTimeout(function(){
+            if(!Cookies.get('modalShown')) {
+            	$("#myModal").modal('show');
+              Cookies.set('modalShown', true);
+            }
+        			
+    },3000);
+ });
 	});
 	@endhasanyrole
 	
