@@ -4,7 +4,6 @@
 /storage/*.key
 /vendor
 log_laravel
-.env
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml

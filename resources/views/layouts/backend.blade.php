@@ -191,7 +191,7 @@
 							</li>
 							
 							
-							<!--li class="sidebar-item">
+							<li class="sidebar-item">
 								<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
                                 <i class="mdi mdi-av-timer"></i>
                                 <span class="hide-menu">Ecommerce </span>
@@ -235,7 +235,7 @@
 								</a>
                                 </li>
 								</ul>
-							</li-->
+							</li>
 							@hasanyrole('admin')
 							<li class="sidebar-item">
 								<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">

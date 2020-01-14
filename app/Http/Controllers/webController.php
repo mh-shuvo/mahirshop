@@ -43,8 +43,9 @@
 			$featured_products = Product::where('product_featured','True')->where('product_status','Active')->get();
 			$featured_products_random = Product::where('product_featured','True')->where('product_status','Active')->inRandomOrder()->limit(3)->get();
 			$products = Product::get();
+			$categorys = Category::all();
 			$rand_products = Product::inRandomOrder()->get();
-			return view ('welcome',compact('banners','featured_products','products','featured_products_random','rand_products'));
+			return view ('welcome',compact('banners','categorys','featured_products','products','featured_products_random','rand_products'));
 		}
 		
 		public function login(){
@@ -52,11 +53,13 @@
 		}
 		
 		public function contactus(){
-			return view ('contactus');
+			$categorys = Category::all();
+			return view ('contactus',compact('categorys'));
 		}
 		
 		public function aboutus(){
-			return view ('aboutus');
+			$categorys = Category::all();
+			return view ('aboutus',compact('categorys'));
 		}
 		
 		public function Shop(){

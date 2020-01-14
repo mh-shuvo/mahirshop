@@ -10,7 +10,23 @@
 		|
 	*/
 
-	Route::get('/','AdminController@index')->name('welcome');
+	Route::get('/','webController@Index')->name('welcome');
+	Route::get('shop','webController@Shop')->name('shop');
+	Route::get('login','webController@Login')->name('login');
+	Route::get('contactus','webController@Contactus')->name('contactus');
+	Route::get('aboutus','webController@Aboutus')->name('aboutus');
+	Route::get('shopping-cart','webController@ShoppingCart')->name('shopping.cart')->middleware('auth');
+	Route::get('checkout','webController@Checkout')->name('checkout')->middleware('auth');
+	Route::get('order-complete/{id}','webController@userOrderComplete')->name('shopping.order.complete')->middleware('auth');
+	Route::get('product/category/{id}', 'webController@ProductByCategory')->name('product.category');
+	Route::get('product/brand/{id}', 'webController@ProductByBrand')->name('product.brand');
+	Route::get('product/{id}', 'webController@SingleProduct')->name('product.single');
+	Route::get('product/cart/update', 'webController@AddProductToCart')->name('product.cart.update');
+	Route::post('cart-submit','webController@CartSubmit')->name('cart.submit');
+	Route::get('dealer/city/{id}','webController@GetDelarsByCityId');
+	Route::get('dealer/union/{id}','webController@GetDelarsByUpazilaId');
+	Route::get('dealer/list/','webController@GetDelarsList')->name('dealer.list');
+	Route::get('dealer/{id}','webController@GetDelarsById');
 
 	Route::prefix('admin')->group(function() {
 		Route::get('/','AdminController@index')->name('admin.index');
