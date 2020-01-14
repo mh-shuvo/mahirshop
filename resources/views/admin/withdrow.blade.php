@@ -26,17 +26,10 @@
 			</div>
             <div class="modal-body">
             	<form id="withdrawForm" action="{{route('admin.withdraw.submit')}}" method="post">
-	                <div class="form-group">
-						<label class="control-label">Withdraw To:</label>
-	                	<select class="form-control" name="withdraw_method" id="withdraw_method">
-	                		<option value="">Select Withdrawal To</option>
-	                		<option value="topup">Topup</option>
-	                		<option value="cash">Payment</option>
-						</select>
-					</div>
-					<div class="withdraw_method_section hide">
+					<div class="withdraw_method_section">
 						<div class="form-group">
 							<label class="control-label">Withdrawal Method:</label>
+							
 							<select class="form-control" name="payment_method" id="payment_method">
 								<option value="office">Cash</option>
 								<option value="bkash">Bkash</option>
@@ -62,10 +55,6 @@
 						<label class="control-label">Withdraw Details:</label>
 	                	<textarea name="withdraw_details" class="form-control"></textarea>
 					</div>
-					<div class="form-group">
-	                	<label class="control-label">Transaction Pin:</label>
-	                	<input type="password" class="form-control" name="txn_pin" placeholder="Transaction Pin" autocomplete="off">
-					</div>
 	                <div class="form-group">
 	                	<button type=" submit" class="btn waves-effect waves-light btn-primary btn-outline-primary btn-sm pull-right">Submit</button>
 					</div>
@@ -88,48 +77,41 @@
 			{title :  'SL.',   data:'id'},
 			{title : 'Method', data: 'payment_method'},
 			{title : 'Amount', data: 'withdrawal_amount'},
+			{title : 'Account No',data: 'withdrawal_account_no'},
 			{title : 'Details',data: 'withdrawal_details'},
 			{title : 'Created At', data: 'created_at'},
-		{title : 'Charge', data: 'withdrawal_charge'},
-		{title : 'Net Amount', data: 'total_withdrawal_amount'},
-		{title : 'Status', data: 'withdrawal_status'},
-		]
+			{title : 'Charge', data: 'withdrawal_charge'},
+			{title : 'Net Amount', data: 'total_withdrawal_amount'},
+			{title : 'Status', data: 'withdrawal_status'},
+			]
 		});
 		
 		$('#withdrawForm').ajaxForm({
-		error: formError,
-		success: function (responseText, statusText, xhr, $form) {
-		formSuccess(responseText, statusText, xhr, $form);
-		$('#WithdrawTable').DataTable().draw(true);
-		},
-		resetForm:true
+			error: formError,
+			success: function (responseText, statusText, xhr, $form) {
+				formSuccess(responseText, statusText, xhr, $form);
+				$('#WithdrawTable').DataTable().draw(true);
+			},
+			resetForm:true
 		});
 		
 		$(document).on("click",'#addWithdraw',function(){
-		$("#WithdrawModal").modal('toggle');
+			$("#WithdrawModal").modal('toggle');
 		});
 		
 		$(document).on('change','#payment_method',function(){
-		let method = $(this).val();
-		
-		$(".account_number_section").addClass('hide');
-		if(method != 'office'){
-		$(".account_number_section").removeClass('hide');
-		}
+			let method = $(this).val();
+			
+			$(".account_number_section").addClass('hide');
+			if(method != 'office'){
+				$(".account_number_section").removeClass('hide');
+			}
 		});
 		
-		$(document).on('change','#withdraw_method',function(){
-		let method = $(this).val();
-		
-		$(".withdraw_method_section").addClass('hide');
-		if(method == 'cash'){
-		$(".withdraw_method_section").removeClass('hide');
-		}
-		});
-		});
-		
-		
-		
-		</script>
-		
-		@endsection					
+	});
+	
+	
+	
+</script>
+
+@endsection					

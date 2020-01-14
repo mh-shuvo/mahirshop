@@ -419,6 +419,7 @@
         },
         {
             "name": "egulias/email-validator",
+<<<<<<< HEAD
             "version": "2.1.14",
             "source": {
                 "type": "git",
@@ -429,6 +430,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/c4b8d12921999d8a561004371701dbc2e05b5ece",
                 "reference": "c4b8d12921999d8a561004371701dbc2e05b5ece",
+=======
+            "version": "2.1.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/egulias/EmailValidator.git",
+                "reference": "834593d5900615639208417760ba6a17299e2497"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/834593d5900615639208417760ba6a17299e2497",
+                "reference": "834593d5900615639208417760ba6a17299e2497",
+>>>>>>> 34ba8ad67abdce2df21325a1bd3331f478fb6a47
                 "shasum": ""
             },
             "require": {
@@ -472,7 +485,11 @@
                 "validation",
                 "validator"
             ],
+<<<<<<< HEAD
             "time": "2020-01-05T14:11:20+00:00"
+=======
+            "time": "2019-12-30T08:14:25+00:00"
+>>>>>>> 34ba8ad67abdce2df21325a1bd3331f478fb6a47
         },
         {
             "name": "erusev/parsedown",
@@ -576,6 +593,7 @@
         },
         {
             "name": "graham-campbell/manager",
+<<<<<<< HEAD
             "version": "v4.4.1",
             "source": {
                 "type": "git",
@@ -586,6 +604,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/GrahamCampbell/Laravel-Manager/zipball/cc229cb30dd3499973dacc17078addd1f6cf1d04",
                 "reference": "cc229cb30dd3499973dacc17078addd1f6cf1d04",
+=======
+            "version": "v4.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GrahamCampbell/Laravel-Manager.git",
+                "reference": "54ade447186d47fc8d64fb4163c3ed0f7210c9e8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-Manager/zipball/54ade447186d47fc8d64fb4163c3ed0f7210c9e8",
+                "reference": "54ade447186d47fc8d64fb4163c3ed0f7210c9e8",
+>>>>>>> 34ba8ad67abdce2df21325a1bd3331f478fb6a47
                 "shasum": ""
             },
             "require": {
@@ -632,7 +662,11 @@
                 "laravel",
                 "manager"
             ],
+<<<<<<< HEAD
             "time": "2020-01-02T15:51:54+00:00"
+=======
+            "time": "2019-12-28T10:42:49+00:00"
+>>>>>>> 34ba8ad67abdce2df21325a1bd3331f478fb6a47
         },
         {
             "name": "guzzlehttp/psr7",
@@ -1201,6 +1235,7 @@
         },
         {
             "name": "league/flysystem",
+<<<<<<< HEAD
             "version": "1.0.63",
             "source": {
                 "type": "git",
@@ -1211,6 +1246,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/8132daec326565036bc8e8d1876f77ec183a7bd6",
                 "reference": "8132daec326565036bc8e8d1876f77ec183a7bd6",
+=======
+            "version": "1.0.62",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/flysystem.git",
+                "reference": "14dd5d7dff5fbc29ca9a2a53ff109760e40d91a0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/14dd5d7dff5fbc29ca9a2a53ff109760e40d91a0",
+                "reference": "14dd5d7dff5fbc29ca9a2a53ff109760e40d91a0",
+>>>>>>> 34ba8ad67abdce2df21325a1bd3331f478fb6a47
                 "shasum": ""
             },
             "require": {
@@ -1281,7 +1328,11 @@
                 "sftp",
                 "storage"
             ],
+<<<<<<< HEAD
             "time": "2020-01-04T16:30:31+00:00"
+=======
+            "time": "2019-12-29T14:46:55+00:00"
+>>>>>>> 34ba8ad67abdce2df21325a1bd3331f478fb6a47
         },
         {
             "name": "league/fractal",
@@ -2551,6 +2602,7 @@
         },
         {
             "name": "spatie/laravel-permission",
+<<<<<<< HEAD
             "version": "3.5.0",
             "source": {
                 "type": "git",
@@ -2561,6 +2613,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/e9c08249ec3c24258531d0f967bd3d5559e0f79e",
                 "reference": "e9c08249ec3c24258531d0f967bd3d5559e0f79e",
+=======
+            "version": "3.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-permission.git",
+                "reference": "fe0573ddb6fd95378eec67e401882564db830312"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/fe0573ddb6fd95378eec67e401882564db830312",
+                "reference": "fe0573ddb6fd95378eec67e401882564db830312",
+>>>>>>> 34ba8ad67abdce2df21325a1bd3331f478fb6a47
                 "shasum": ""
             },
             "require": {
@@ -2615,7 +2679,11 @@
                 "security",
                 "spatie"
             ],
+<<<<<<< HEAD
             "time": "2020-01-07T16:34:21+00:00"
+=======
+            "time": "2019-12-28T13:22:00+00:00"
+>>>>>>> 34ba8ad67abdce2df21325a1bd3331f478fb6a47
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -2757,7 +2825,11 @@
         },
         {
             "name": "symfony/css-selector",
+<<<<<<< HEAD
             "version": "v4.4.2",
+=======
+            "version": "v5.0.2",
+>>>>>>> 34ba8ad67abdce2df21325a1bd3331f478fb6a47
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/css-selector.git",
@@ -3244,7 +3316,11 @@
         },
         {
             "name": "symfony/mime",
+<<<<<<< HEAD
             "version": "v4.4.2",
+=======
+            "version": "v5.0.2",
+>>>>>>> 34ba8ad67abdce2df21325a1bd3331f478fb6a47
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/mime.git",
