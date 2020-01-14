@@ -58,7 +58,7 @@
 		</span>
 		@endif
 		@endhasanyrole
-<span class="text-white upgradeButton">
+		<span class="text-white upgradeButton">
 			<button class="btn btn-sm btn-info" data-toggle="modal" data-target="#packageModal">Upgrade</button>
 		</span>
 		
@@ -143,7 +143,7 @@
 				</div>
 			</div>
 		</div>
-
+		
 		@hasanyrole('user|admin|dealer')
 		
 		
@@ -164,7 +164,7 @@
 			</div>
 		</div>
 		@endhasanyrole
-
+		
 		@hasanyrole('user|admin')
 		
 		<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12">
@@ -198,8 +198,8 @@
 				</div>
 			</div>
 		</div>
-	@endhasanyrole
-	@hasanyrole('user|admin|dealer')
+		@endhasanyrole
+		@hasanyrole('user|admin|dealer')
 		@hasanyrole('admin|user')
 		
 		
@@ -258,8 +258,8 @@
 				</div>
 			</div>
 		</div>
-	@endhasanyrole
-	@hasanyrole('user|admin')
+		@endhasanyrole
+		@hasanyrole('user|admin')
 		<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12">
 			<div class="card">
 				<div class="card-body">
@@ -293,8 +293,8 @@
 				</div>
 			</div>
 		</div>
-	@endhasanyrole
-</div>
+		@endhasanyrole
+	</div>
 </div> 
 @hasanyrole('user|admin')
 <div class="modal" id="packageModal">
@@ -312,7 +312,7 @@
 						<select class="form-control" name="package_id">
 							<option value="">Select Upgrade Package</option>
 							@foreach(App\Package::where('package_type','upgrade')->get() as $package)
-								<option value="{{$package->id}}">{{$package->title}}</option>
+							<option value="{{$package->id}}">{{$package->title}}</option>
 							@endforeach
 						</select>
 					</div>
@@ -340,7 +340,7 @@
 						<select class="form-control" name="package_id">
 							<option value="">Select Renew Package</option>
 							@foreach(App\Package::where('package_type','renew')->get() as $package)
-								<option value="{{$package->id}}">{{$package->title}}</option>
+							<option value="{{$package->id}}">{{$package->title}}</option>
 							@endforeach
 						</select>
 					</div>
