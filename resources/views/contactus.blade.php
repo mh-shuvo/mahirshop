@@ -4,88 +4,65 @@
 
 @endsection
 @section('content')
-	
-	<div class="container">
-		{{-- <div class="row"> --}}
-			      <!-- End header-->
-				  <div class="ogami-breadcrumb">
-					<div class="container">
-					  <ul>
-					  <li> <a class="breadcrumb-link" href="{{route('welcome')}}"> <i class="fas fa-home"></i>Home</a></li>
-					  <li> <a class="breadcrumb-link active" href="{{route('contactus')}}">Contact us</a></li>
-					  </ul>
-					</div>
-				  </div>
-				  <!-- End breadcrumb-->
-				  <div class="contact-us">
-					<div class="container">
-					  <div class="feature map">
-						<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3023.6752502007657!2d-73.992009!3d40.725165!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259851c1e9037%3A0x74407071825a96a4!2sCBGB!5e0!3m2!1sen!2sus!4v1395419817211"></iframe>
-					  </div>
-					  <div class="contact-method">
-						<div class="row">
-						  <div class="col-12 col-md-4">
-							<div class="method-block"><i class="icon_pin_alt"></i>
-							  <div class="method-block_text">
-								<p>60-49 Road 11378 </p>
-								<p>New York</p>
-							  </div>
-							</div>
-						  </div>
-						  <div class="col-12 col-md-4">
-							<div class="method-block"><i class="icon_mail_alt"></i>
-							  <div class="method-block_text">
-								<p> <span>Phone:</span>60-49 Road 11378 </p>
-								<p><span>Mail:</span>info.deercreative@gmail.com</p>
-							  </div>
-							</div>
-						  </div>
-						  <div class="col-12 col-md-4">
-							<div class="method-block"><i class="icon_clock_alt"></i>
-							  <div class="method-block_text">
-								<p> <span>Week Days:</span>10:00 – 22:00</p>
-								<p><span>Sunday:</span>Close</p>
-							  </div>
-							</div>
-						  </div>
-						</div>
-					  </div>
-					  <div class="leave-message">
-						<h1 class="title">Leave Message</h1>
-						<p>Our staff will call back later and answer your questions.</p>
-						<form action="" method="post">
-						  <div class="row">
-							<div class="col-12 col-md-6">
-							  <input class="no-round-input" type="text" placeholder="Name">
-							</div>
-							<div class="col-12 col-md-6">
-							  <input class="no-round-input" type="email" placeholder="Email">
-							</div>
-							<div class="col-12">
-							  <textarea class="textarea-form" name="" cols="30" rows="10" placeholder="Your message"></textarea>
-							</div>
-						  </div>
-						</form>
-					  </div>
-					</div>
-				  </div>
-				  <!-- End contact us-->
-				  <div class="partner">
-					<div class="container">
-					  <div class="partner_block d-flex justify-content-between" data-slick="{&quot;slidesToShow&quot;: 6}">
-						<div class="partner--logo" href=""> <a href="#"><img src="assets/images/partner/partner_01.png" alt="partner logo"></a></div>
-						<div class="partner--logo" href=""> <a href="#"><img src="assets/images/partner/partner_02.png" alt="partner logo"></a></div>
-						<div class="partner--logo" href=""> <a href="#"><img src="assets/images/partner/partner_01.png" alt="partner logo"></a></div>
-						<div class="partner--logo" href=""> <a href="#"><img src="assets/images/partner/partner_02.png" alt="partner logo"></a></div>
-						<div class="partner--logo" href=""> <a href="#"><img src="assets/images/partner/partner_01.png" alt="partner logo"></a></div>
-						<div class="partner--logo" href=""> <a href="#"><img src="assets/images/partner/partner_02.png" alt="partner logo"></a></div>
-						<div class="partner--logo" href=""> <a href=""><img src="assets/images/partner/partner_01.png" alt="partner logo"></a></div>
-					  </div>
-					</div>
-				  </div>
-				  <!-- End partner-->
-		{{-- </div> --}}
+
+<section id="contact-us" style="background-color:#F0F0F0; height: 200px; font-weight: 100%;">
+	<div class="text-center">
+		<h1 style="padding-top:70px;">Contact Us</h1>
 	</div>
+</section>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--contact area start-->
+	<div class="container">
+		<div class="row my-5" >
+			<div class="col-md-6">
+				<h1>Contact Us</h1>
+				<ul class="list-group pt-4">
+					<li class="list-group-item py-3">Address : Corporate Office: 32/8, West Tajmahal Road, Block-C, Mohammadpur, Dhaka-1207, Bangladesh.</li>
+					<li class="list-group-item py-3">8801713041774 , +8801976633202
+					</li>
+					<li class="list-group-item py-3">
+						nutrilifeblobal@gmail.com
+					</li>
+				</ul>
+			</div>
+			<div class="col-md-6">
+				<h1>Tell Us Your Message</h1>
+				<form action="/action_page.php" class="pt-4">
+					<div class="form-group">
+					  <label for="name" class="pb-3">Your Name (Requre):</label>
+					  <input type="text" class="form-control" id="name" placeholder="Enter Your Name" name="name">
+					</div>
+					<div class="form-group">
+						<label for="email" class="pb-3">Email (Requre):</label>
+						<input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+					  </div>
+					  <div class="form-group">
+						<label for="comment" class="pb-3">Comment:</label>
+						<textarea class="form-control" rows="5" id="comment"></textarea>
+					  </div>
+
+					<button type="send" class="btn btn-success">Send</button>
+					<button type="reset" class="btn btn-danger">Reset</button>
+				  </form>
+			</div>
+		</div>
+
+	  </div>
+    <!--contact area end-->
 @endsection
 @section('js')
 

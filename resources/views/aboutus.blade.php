@@ -12,13 +12,14 @@
       <div class="ogami-breadcrumb">
         <div class="container">
           <ul>
-            <li> <a class="breadcrumb-link" href="index.html"> <i class="fas fa-home"></i>Home</a></li>
-            <li> <a class="breadcrumb-link active" href="#">About us</a></li>
+          <li> <a class="breadcrumb-link" href="{{route('welcome')}}"> <i class="fas fa-home"></i>Home</a></li>
+          <li> <a class="breadcrumb-link active" href="{{route(('aboutus'))}}">About us</a></li>
           </ul>
         </div>
       </div>
+
       <!-- End breadcrumb-->
-      <div class="about-us">
+      {{-- <div class="about-us">
         <div class="container">
           <div class="our-story">
             <div class="row">
@@ -189,9 +190,9 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> --}}
       <!-- End about us-->
-      <div class="partner">
+      {{-- <div class="partner">
         <div class="container">
           <div class="partner_block d-flex justify-content-between" data-slick="{&quot;slidesToShow&quot;: 6}">
             <div class="partner--logo" href=""> <a href="#"><img src="assets/images/partner/partner_01.png" alt="partner logo"></a></div>
@@ -203,10 +204,24 @@
             <div class="partner--logo" href=""> <a href=""><img src="assets/images/partner/partner_01.png" alt="partner logo"></a></div>
           </div>
         </div>
-      </div>
+      </div> --}}
       <!-- End partner-->
     </div>
-</div>
+
+    </div>
+    <div class="aboutus" style="height:200px; background-color: #F0F0F0; padding-top:80px; ">
+      <div class="">
+        <h1 class="text-center">About Us</h1>
+      </div>
+
+    </div>
+    <div class="container pb-5">
+      <div class="text-center">
+        <h1 class="py-5" style="color:#88c74a;">At A Glance</h1>
+        <p class="pb-5" style="lin-height:5px;  letter-spacing: 1px;">Welcome to NutriLife Global Ltd. NutriLife Global Ltd. was founded in 2020 and revolutionized the business model known as direct selling. NutriLife Global Ltd. is dedicated to produce supplements that support immune system health, body transformation, and general wellness. Achieve your healthy lifestyle goals with NutriLife Global Ltd. products to help you to lead a healthy life. We strongly believe, after having our products the result will exceed your expectations.</p>
+      </div>
+    </div>
+
 	
 @endsection
 @section('js')

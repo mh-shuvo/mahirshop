@@ -134,8 +134,8 @@
 /************************************
 	Reset
 *************************************/
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+/* html, body, div, span, applet, object, iframe,
+ blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
@@ -169,7 +169,7 @@ a {
     text-decoration: none; }
   a:focus {
     outline: 0;
-    box-shadow: 0; }
+    box-shadow: 0; } */
 
 /************************************
 	Button template
@@ -1850,7 +1850,7 @@ a {
   margin: 30px 0; }
   .ogami-breadcrumb ul {
     padding-top: 30px;
-    border-top: 1px solid #ebebeb; }
+ }
     .ogami-breadcrumb ul li {
       display: inline-block; }
       .ogami-breadcrumb ul li:last-child .breadcrumb-link:after {

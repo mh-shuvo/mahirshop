@@ -9,6 +9,7 @@
 		<!-- include the site stylesheet -->
 		<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,200italic,300,300italic,400italic,600,600italic,700,700italic,900,900italic%7cMontserrat:400,700%7cOxygen:400,300,700' rel='stylesheet' type='text/css'>
 
+
 		<!-- All Style Link-->
 		<link rel="stylesheet" href="{{asset('public/frontend/assets/css/animate.css')}}">
 		<link rel="stylesheet" href="{{asset('public/frontend/assets/css/custom_bootstrap.css')}}">
@@ -19,7 +20,11 @@
 		<link rel="stylesheet" href="{{asset('public/frontend/assets/css/scroll.css')}}">
 		<link rel="stylesheet" href="{{asset('public/frontend/assets/css/scroll.css')}}">
 		<link rel="stylesheet" href="{{asset('public/frontend/assets/css/slick.css')}}">
+
+		<link rel="stylesheet" href="{{asset('public/frontend/assets/css/owl.carousel.min.css')}}">
+		<link rel="stylesheet" href="{{asset('public/frontend/assets/css/owl.theme.default.min.css')}}">
 		<link rel="stylesheet" href="{{asset('public/frontend/assets/css/style.css')}}">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<style type="text/css">
 			.hide{
 			display: none;
@@ -74,7 +79,7 @@
 
 
 	<!-- Top Header Start-->
-	<div class="header-block d-flex align-items-center">
+	<div class="header-block d-flex align-items-center border-bottom">
 	  <div class="ogami-container-fluid">
 		<div class="row">
 		  <div class="col-12 col-md-6">
@@ -95,7 +100,7 @@
 				  </ul>
 				</div>
 			  </div>
-			  <div class="login d-flex"><a href="login.html"><i class="fas fa-user"></i>Login</a></div>
+			<div class="login d-flex"><a href="{{route('login')}}"><i class="fas fa-user"></i>Login</a></div>
 			</div>
 		  </div>
 		</div>
@@ -185,7 +190,7 @@
 	<nav class="navigation navigation_v2 d-flex align-items-center">
 	  <div class="ogami-container-fluid">
 		<div class="row align-items-xxl-center">
-		<div class="col-12 col-xl-6 col-xxxl-1 text-lg-center text-xl-left order-xl-1 order-xxxl-1"><a style="padding-left:15px; font-size:25px; color:green;" class="logo" href="{{route('welcome')}}"><img src="" alt="">MAHIR SHOP</a></div>
+		<div class="col-12 col-xl-6 col-xxxl-1 text-lg-center text-xl-left order-xl-1 order-xxxl-1"><a style="font-size:25px; color:green; text-decoration:none;" class="logo" href="{{route('welcome')}}"><img src="" alt="">MAHIR SHOP</a></div>
 		  <div class="col-12 col-md-12 col-xl-6 col-xxxl-4 order-xl-3 order-xxxl-2">
 			<div class="navigation-filter">
 			  <div class="website-search_v2">
@@ -256,7 +261,7 @@
 					<p>Email: info.deercreative@gmail.com</p>
 				</div>
 				<div class="footer-social">
-					<a class="round-icon-btn" href=""><i class="fab fa-facebook-f"> </i></a><a class="round-icon-btn" href=""><i class="fab fa-twitter"></i></a><a class="round-icon-btn" href=""><i class="fab fa-invision"> </i></a><a class="round-icon-btn" href=""><i class="fab fa-pinterest-p"></i></a></div>
+					<a class="round-icon-btn" href=""><i class="fab fa-facebook-f"> </i></a><a class="round-icon-btn" href=""><i class="fa fa-twitter"></i></a><a class="round-icon-btn" href=""><i class="fab fa-invision"> </i></a><a class="round-icon-btn" href=""><i class="fab fa-pinterest-p"></i></a></div>
 				  </div>
 				  <div class="col-lg-8 col-xl-9">
 					<div class="row no-gutters justify-content-md-center justify-content-lg-between">
@@ -333,6 +338,26 @@
       hoverOnly: true,
   });
 </script>
+<script src="{{asset('public/frontend/assets/js/owl.carousel.min.js')}}"></script>
+<script>
+  $('.coustom_carousell').owlCarousel({
+  loop:true,
+  margin:10,
+  nav:false,
+  autoplay: 1000,
+  responsive:{
+      0:{
+        items:0
+      },
+      600:{
+          items:1
+      },
+      1000:{
+          items:3
+      }
+  }
+});
+</script>
 	
 	<script type="text/javascript">
 		$(document).on('click','.removeCartProduct',function(){
@@ -382,6 +407,8 @@
 			$('.cartCount').html($('.tt-cart-list').find('.cart-row').length);
 			$(".tt-cart-total-price").html(data.price_subtotal)
 		}
+		
+		
 	</script>
 	@yield('js')
 </body>
