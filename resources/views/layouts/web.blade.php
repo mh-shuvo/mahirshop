@@ -90,7 +90,19 @@
 		  </div>
 		  <div class="col-12 col-md-6">
 			<div class="header-right d-flex flex-column flex-md-row justify-content-md-end justify-content-center align-items-center">
-			  <div class="social-link d-flex"><a href=""><i class="fab fa-facebook-f"> </i></a><a href=""><i class="fab fa-twitter"></i></a><a href=""><i class="fab fa-invision"> </i></a><a href=""><i class="fab fa-pinterest-p"> </i></a></div>
+
+				<div class="social_icon d-flex;">
+					<a href="https://www.facebook.com" target="_blank" class="fa fa-facebook"></a>
+					<a href="https://www.twitter.com" target="_blank" class="fa fa-twitter"></a>
+					<a href="https://www.google.com" target="_blank" class="fa fa-google"></a>
+					<a href="https://www.linkedin.com" target="_blank" class="fa fa-linkedin"></a>
+				</div>
+			  	{{-- <div class="social-link d-flex">
+				  <a href=""><i class="fab fa-facebook" style="font-size:20xpx;"></i></a>
+				  <a href=""><i class="fab fa-twitter" style="font-size:20xpx;"></i></a>
+				  <a href=""><i class="fab fa-invision" style="font-size:20xpx;"> </i></a>
+				  <a href=""><i class="fab fa-pinterest-p" style="font-size:20xpx;"> </i></a>
+				</div> --}}
 			  <div class="language">
 				<div class="selected-language"><img src="assets/images/homepage01/usa.jpg" alt="">English<i class="arrow_carrot-down"></i>
 				  <ul class="list-language">
@@ -187,10 +199,28 @@
 
 
 	<!-- Navigarion Bar Start-->
+		<div class="row border-bottom">
+			<div class="col-md-6 col-sm-12 py-4">
+				<div class="logo pl-5">
+				<a href="{{route('welcome')}}" style="font-size:25px; text-decoration:none; color: #88C74A;"><img src="#" alt=""><b>MaHiR sHoP</b></a>
+				</div>
+			</div>
+			<div class="col-md-6 col-sm-12 text-right py-4">
+				<div class="d-flex text-right" style="float:right;">
+					<a href="#" style="color:black; font-size:25px;">
+						<i class="far fa-heart"></i>
+					</a>
+					<a href="#" style="color:black; font-size:25px;">
+						<i class="fas fa-shopping-cart px-3"></i>
+					</a>
+					<a href="#" style="color:black; font-size: 18px; text-decoration:none; padding-top:5px; "><span>$150.00</span></a>
+				</div>
+			</div>
+	</div>
 	<nav class="navigation navigation_v2 d-flex align-items-center">
 	  <div class="ogami-container-fluid">
 		<div class="row align-items-xxl-center">
-		<div class="col-12 col-xl-6 col-xxxl-1 text-lg-center text-xl-left order-xl-1 order-xxxl-1"><a style="font-size:25px; color:green; text-decoration:none;" class="logo" href="{{route('welcome')}}"><img src="" alt="">MAHIR SHOP</a></div>
+
 		  <div class="col-12 col-md-12 col-xl-6 col-xxxl-4 order-xl-3 order-xxxl-2">
 			<div class="navigation-filter">
 			  <div class="website-search_v2">
@@ -230,12 +260,7 @@
 			  </ul>
 			</div>
 		  </div>
-		  <div class="col-4 col-xl-6 col-xxxl-2 order-xl-2 order-xxxl-4">
-			<div class="product-function d-flex align-items-center justify-content-center justify-content-xl-end">
-			  <div id="wishlist"><a class="function-icon icon_heart_alt" href=""></a></div>
-			  <div id="cart"><a class="function-icon icon_bag_alt" href=""><span>$150.00			</span></a></div>
-			</div>
-		  </div>
+	
 		</div>
 	  </div>
 	</nav>
@@ -251,66 +276,82 @@
 <footer>
 	<div class="ogami-container-fluid">
 		<div class="footer-v2_header">
-			<div class="row">
-				<div class="col-12 col-lg-4 col-xl-3 text-sm-center text-lg-left">
-					<div class="footer-logo"><img src="assets/images/logo.png" alt="">
+			<div class="container">
+				<div class="row">
+					<div class="col-12 col-lg-4 col-xl-3 text-sm-center text-lg-left">
+						<div class="footer-logo">
+							<h6 style="padding-top:13px ;font-family:Cera Pro Medium;"><strong>ADDRESS:</strong></h6>
+					</div>
+					<div class="footer-contact">
+						<p>Address: 60-49 Road 11378 New York</p>
+						<p>Phone: +65 11.188.888</p>
+						<p>Email: info.deercreative@gmail.com</p>
+
+					</div>
+              		<div class="social_icon">
+                  		<a href="https://www.facebook.com" target="_blank" class="fa fa-facebook"></a>
+                  		<a href="#" class="fa fa-twitter"></a>
+                  		<a href="#" class="fa fa-google"></a>
+                  		<a href="#" class="fa fa-linkedin"></a>
+              		</div>
 				</div>
-				<div class="footer-contact">
-					<p>Address: 60-49 Road 11378 New York</p>
-					<p>Phone: +65 11.188.888</p>
-					<p>Email: info.deercreative@gmail.com</p>
-				</div>
-				<div class="footer-social">
-					<a class="round-icon-btn" href=""><i class="fab fa-facebook-f"> </i></a><a class="round-icon-btn" href=""><i class="fa fa-twitter"></i></a><a class="round-icon-btn" href=""><i class="fab fa-invision"> </i></a><a class="round-icon-btn" href=""><i class="fab fa-pinterest-p"></i></a></div>
-				  </div>
-				  <div class="col-lg-8 col-xl-9">
-					<div class="row no-gutters justify-content-md-center justify-content-lg-between">
-						  <div class="col-12 col-sm-4 col-lg-4 col-xl-2 col-xxl-3 text-sm-center text-lg-left">
-							<div class="footer-quicklink">
-								<h5>Infomation</h5><a href="about_us.html">About us</a><a href="checkout.html">Check out</a><a href="contact.html">Contact</a><a href="about_us.html">Service</a>
-							</div>
-						  </div>
-						  <div class="col-12 col-sm-4 col-lg-4 col-xl-2 col-xxl-3 text-sm-center text-lg-left">
-							<div class="footer-quicklink">
-							<h5>My Account</h5><a href="{{route('login')}}">My Account</a><a href="contact.html">Contact</a><a href="shop_cart.html">Shopping cart</a><a href="shop_grid+list_3col.html">Shop</a>
-							</div>
-						  </div>
-						  <div class="col-12 col-sm-4 col-lg-4 col-xl-2 col-xxl-3 text-sm-center text-lg-left">
-							<div class="footer-quicklink">
-								<h5>Quick Shop</h5><a href="about_us.html">About us</a><a href="checkout.html">Check out</a><a href="contact.html">Contact</a><a href="about_us.html">Service</a>
-							</div>
-						  </div>
-						  <div class="col-12 col-md-8 col-lg-8 col-xl-6 col-xxl-3 text-sm-center text-lg-left">
-							<div class="newletter newletter_v2">
-								<div class="newletter_text">
-									<h5>Join Our Newsletter Now</h5>
-									<p>Get E-mail updates about our latest shop and special offers.</p>
+					  <div class="col-lg-8 col-xl-9">
+						<div class="row no-gutters justify-content-md-center justify-content-lg-between">
+							  <div class="col-12 col-sm-4 col-lg-4 col-xl-2 col-xxl-3 text-sm-center text-lg-left">
+								<div class="footer-quicklink">
+									<h5>Infomation</h5>
+									<a href="{{route('aboutus')}}">About us</a>
+									<a href="{{route('checkout')}}">Check out</a>
+									<a href="{{route('contactus')}}">Contact</a>
+									<a href="about_us.html">Service</a>
 								</div>
-								<div class="newletter_input">
-									<input class="round-input" type="text" placeholder="Enter your email">
-									<button>Subcribe</button>
+							  </div>
+							  <div class="col-12 col-sm-4 col-lg-4 col-xl-2 col-xxl-3 text-sm-center text-lg-left">
+								<div class="footer-quicklink">
+								<h5>My Account</h5>
+								<a href="{{route('login')}}">My Account</a>
+								<a href="{{route('contactus')}}">Contact</a>
+								<a href="shoppingcart">Shopping cart</a>
+								<a href="{{route('shop')}}">Shop</a>
+							</div>
+							  </div>
+							  <div class="col-12 col-sm-4 col-lg-4 col-xl-2 col-xxl-3 text-sm-center text-lg-left">
+								<div class="footer-quicklink">
+									<h5>Quick Shop</h5>
+								<a href="{{route('aboutus')}}">About us</a>
+									<a href="checkout.html">Check out</a>
+									<a href="{{route('contactus')}}">Contact</a>
+									<a href="about_us.html">Service</a>
+								</div>
+							  </div>
+							  <div class="col-12 col-md-8 col-lg-8 col-xl-6 col-xxl-3 text-sm-center text-lg-left">
+								<div class="newletter newletter_v2">
+									<div class="newletter_text">
+										<h5>Join Our Newsletter Now</h5>
+										<p>Get E-mail updates about our latest shop and special offers.</p>
+									</div>
+									<div class="newletter_input">
+										<input class="round-input" type="text" placeholder="Enter your email">
+										<button>Subcribe</button>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+			
 		</div>
 	</div>
 	<div class="footer-credit">
-		  <div class="ogami-container-fluid">
-			<div class="footer-creadit_block d-flex flex-column flex-md-row justify-content-start 				justify-content-md-between align-items-baseline align-items-md-center">
-				  <p class="author">Copyright © 2019 Ogami - All Rights Reserved.</p>
-				  <img class="payment-method" src="assets/images/payment.png" alt="">
-			</div>
+		  <div class="text-center" style="font-family:Cera Pro Medium; font-size:20px;">
+			<p>Copyright © 2019 <b> MahirShop </b> - All Rights Reserved.</p>  
 		</div>
 	</div>
 </footer>
 <!-- Footer Section End -->
 
-</div><!-- W1 end here -->
-	<span id="back-top" class="fa fa-arrow-up"></span>
-</div>
+
 <!-- include jQuery -->
 <script src="{{asset('public/frontend/js/jquery.js')}}"></script>
 <!-- include jQuery -->

@@ -120,7 +120,7 @@
     <div class="ogami-container-fluid">
       <div class="row">
         <div class="col-12 text-center">
-          <h1 class="title mx-auto">Featured Product</h1>
+          <h1 class="title mx-auto" style="color: #88C74A;">Featured Product</h1>
         </div>
         <div class="col-12">
           <div id="tab">
@@ -162,7 +162,7 @@
 <section style="background-color:#EEEEEE;">
   <div class="container">
       <div class="secotionTitle text-center py-3">
-          <h2 class="pt-3"><span style="font-family: 'Herr Von Muellerhoff', cursive; color:#90CF53; font-style: italic;">MR. Abdur Rahman </span> <br> <span style="letter-spacing: 10px;font-size: 20px;color:#222222;" >Chief Executive Director </span></h2>
+          <h2 class="pt-3"><span style="color:#90CF53;">MR. Abdur Rahman </span> <br> <span style="letter-spacing: 10px;font-size: 20px; color:#222222;" >Chief Executive Director </span></h2>
       </div>
       <div class="row mt-2">
           <div class="col-sm-12 col-xs-12">
@@ -170,7 +170,7 @@
                   <div class="col-sm-4 col-sm-offset-2 col-xs-6 pt-3">
                           <img src="{{asset('public/frontend/assets/images/img1.jpg')}}" class="rounded" alt="R.M. Abdullah Al Foisal" title="R.M. Abdullah Al Foisal" class="img-responsive" style="height: 100%; width: 90%;">
                   </div>
-                  <div class="col-sm-8 col-xs-6" style="position: absolute;left: 33%;">
+                  <div class="col-sm-8 col-xs-6">
                           <i class="fa fa-quote-left" aria-hidden="true"></i>
                           <p>Thank you for visiting us. <b>NutriLife Global Ltd.</b> has the potential to be one of the most exciting stories in recent MLM / network marketing history. NutriLife Global Ltd. believes that all the right elements are in place and the addition of more and more distributor leaders will give them a great deal of momentum. We will create success together at NutriLife Global Ltd only when we work as a team, when we see corporate and field as one entity working toward a common goal. We are your team. <b>We are here to support you.</b> Let’s go make it happen together! Those who join now are in at the right time. You are in position to be very successful with NutriLife Global Ltd.! So please come and join us. YOU WILL WIN!!!! <br>
                           Thank you. <br>
@@ -202,30 +202,30 @@
  <section class="">
   <div class="container py-5">
       <div class="our-farmer ">
-        <h1 class="title green-underline text-center pb-4" style="font-size: 40px; font-family: 'Herr Von Muellerhoff', cursive; text-transform: uppercase; color:#90CF53;">Our Video Gallery</h1>
+        <h1 class="title green-underline text-center pb-4" style="font-size: 35px; text-transform: uppercase; color:#90CF53;">Our Video Gallery</h1>
 
       <div class="container text-center video_gallery">
          <div class="row pb-3">
         <div class="col-md-4 py-3 video_gallery">
-          <iframe width="300" height="150" src="https://www.youtube.com/embed/0MN20GGoITk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe width="300" height="150" src="https://www.youtube.com/embed/gZUSFda_W7k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="col-md-4 py-3">
-           <iframe width="300" height="150" src="https://www.youtube.com/embed/0MN20GGoITk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe width="300" height="150" src="https://www.youtube.com/embed/gZUSFda_W7k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="col-md-4 py-3">
-           <iframe width="300" height="150" src="https://www.youtube.com/embed/0MN20GGoITk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe width="300" height="150" src="https://www.youtube.com/embed/gZUSFda_W7k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
       </div>
 
       <div class="row pb-3">
         <div class="col-sm-6 col-md-4 py-3">
-          <iframe width="300" height="150" src="https://www.youtube.com/embed/0MN20GGoITk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe width="300" height="150" src="https://www.youtube.com/embed/gZUSFda_W7k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="col-sm-6 col-md-4 py-3">
-           <iframe width="300" height="150" src="https://www.youtube.com/embed/0MN20GGoITk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe width="300" height="150" src="https://www.youtube.com/embed/gZUSFda_W7k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="col-sm-6 col-md-4 py-3">
-           <iframe width="300" height="150" src="https://www.youtube.com/embed/0MN20GGoITk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+           <iframe width="300" height="150" src="https://www.youtube.com/embed/gZUSFda_W7k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
       </div>
       </div>
@@ -244,8 +244,8 @@
 <section class="achievers py-5 patternbg">
 
   <div class="container text-center">
-      <h1 class="title green-underline text-center pb-2" style="font-size: 50px; font-family: 'Herr Von Muellerhoff', cursive; text-transform: uppercase; color:#90CF53;">Team</h1>
-      <h4 class="text-uppercase pb-3"  style="font-family: 'Herr Von Muellerhoff', cursive; font-size: 20px;letter-spacing: 10px;">Top Ten</h4>
+      <h1 class="text-center" style="font-size: 40px; text-transform: uppercase; color:#90CF53;">Team</h1>
+      <h4 class="text-uppercase py-5"  style="font-size: 30px;letter-spacing: 10px;">Top Ten</h4>
   </div>
 
   <div class="row">
@@ -254,10 +254,10 @@
           <div class="item">
               <img src="{{asset('public/frontend/assets/images/img1.jpg')}}">
               <div class="container py-2 text-center">
-                  <h4 style="font-size: 15px; text-transform: uppercase; font-family: 'Herr Von Muellerhoff', cursive; text-transform: uppercase; padding-top: 10px;  color:#90CF53;">Sujon Kumer</h4>
-                  <p class="" style="font-size: 12px; text-transform: uppercase; font-family: 'Herr Von Muellerhoff', cursive;
-                  ">CEO</p>
-              </div>
+                <h4 style="font-size: 25px; text-transform: uppercase;  text-transform: uppercase; padding-top: 10px;  color:#90CF53;" class="py-4">Mr. Abdur Rahman</h4>
+                <p class="" style="font-size: 20px; text-transform: uppercase;
+                ">CEO</p>
+            </div>
               <div class="social_icon">
                   <a href="https://www.facebook.com" target="_blank" class="fa fa-facebook"></a>
                   <a href="https://www.twitter.com" target="_blank" class="fa fa-twitter"></a>
@@ -268,10 +268,10 @@
           <div class="item">
               <img src="{{asset('public/frontend/assets/images/img1.jpg')}}">
               <div class="container py-2 text-center">
-                  <h4 style="font-size: 15px; text-transform: uppercase; font-family: 'Herr Von Muellerhoff', cursive; text-transform: uppercase; padding-top: 10px;  color:#90CF53;">Sujon Kumer</h4>
-                  <p class="" style="font-size: 12px; text-transform: uppercase; font-family: 'Herr Von Muellerhoff', cursive;
-                  ">CEO</p>
-              </div>
+                <h4 style="font-size: 25px; text-transform: uppercase;  text-transform: uppercase; padding-top: 10px;  color:#90CF53;" class="py-4">Mr. Abdur Rahman</h4>
+                <p class="" style="font-size: 20px; text-transform: uppercase;
+                ">CEO</p>
+            </div>
               <div class="social_icon">
                   <a href="https://www.facebook.com" target="_blank" class="fa fa-facebook"></a>
                   <a href="#" class="fa fa-twitter"></a>
@@ -282,10 +282,10 @@
           <div class="item">
               <img src="{{asset('public/frontend/assets/images/img1.jpg')}}">
               <div class="container py-2 text-center">
-                  <h4 style="font-size: 15px; text-transform: uppercase; font-family: 'Herr Von Muellerhoff', cursive; text-transform: uppercase; padding-top: 10px;  color:#90CF53;">Sujon Kumer</h4>
-                  <p class="" style="font-size: 12px; text-transform: uppercase; font-family: 'Herr Von Muellerhoff', cursive;
-                  ">CEO</p>
-              </div>
+                <h4 style="font-size: 25px; text-transform: uppercase;  text-transform: uppercase; padding-top: 10px;  color:#90CF53;" class="py-4">Mr. Abdur Rahman</h4>
+                <p class="" style="font-size: 20px; text-transform: uppercase;
+                ">CEO</p>
+            </div>
               <div class="social_icon">
                   <a href="https://www.facebook.com" target="_blank" class="fa fa-facebook"></a>
                   <a href="#" class="fa fa-twitter"></a>
@@ -296,10 +296,10 @@
           <div class="item">
               <img src="{{asset('public/frontend/assets/images/img1.jpg')}}">
               <div class="container py-2 text-center">
-                  <h4 style="font-size: 15px; text-transform: uppercase; font-family: 'Herr Von Muellerhoff', cursive; text-transform: uppercase; padding-top: 10px;  color:#90CF53;">Sujon Kumer</h4>
-                  <p class="" style="font-size: 12px; text-transform: uppercase; font-family: 'Herr Von Muellerhoff', cursive;
-                  ">CEO</p>
-              </div>
+                <h4 style="font-size: 25px; text-transform: uppercase;  text-transform: uppercase; padding-top: 10px;  color:#90CF53;" class="py-4">Mr. Abdur Rahman</h4>
+                <p class="" style="font-size: 20px; text-transform: uppercase;
+                ">CEO</p>
+            </div>
               <div class="social_icon">
                   <a href="https://www.facebook.com" target="_blank" class="fa fa-facebook"></a>
                   <a href="#" class="fa fa-twitter"></a>
@@ -310,10 +310,10 @@
           <div class="item">
               <img src="{{asset('public/frontend/assets/images/img1.jpg')}}">
               <div class="container py-2 text-center">
-                  <h4 style="font-size: 15px; text-transform: uppercase; font-family: 'Herr Von Muellerhoff', cursive; text-transform: uppercase; padding-top: 10px;  color:#90CF53;">Sujon Kumer</h4>
-                  <p class="" style="font-size: 12px; text-transform: uppercase; font-family: 'Herr Von Muellerhoff', cursive;
-                  ">CEO</p>
-              </div>
+                <h4 style="font-size: 25px; text-transform: uppercase;  text-transform: uppercase; padding-top: 10px;  color:#90CF53;" class="py-4">Mr. Abdur Rahman</h4>
+                <p class="" style="font-size: 20px; text-transform: uppercase;
+                ">CEO</p>
+            </div>
               <div class="social_icon">
                   <a href="https://www.facebook.com" target="_blank" class="fa fa-facebook"></a>
                   <a href="#" class="fa fa-twitter"></a>
@@ -324,10 +324,10 @@
           <div class="item">
               <img src="{{asset('public/frontend/assets/images/img1.jpg')}}">
               <div class="container py-2 text-center">
-                  <h4 style="font-size: 15px; text-transform: uppercase; font-family: 'Herr Von Muellerhoff', cursive; text-transform: uppercase; padding-top: 10px;  color:#90CF53;">Sujon Kumer</h4>
-                  <p class="" style="font-size: 12px; text-transform: uppercase; font-family: 'Herr Von Muellerhoff', cursive;
-                  ">CEO</p>
-              </div>
+                <h4 style="font-size: 25px; text-transform: uppercase;  text-transform: uppercase; padding-top: 10px;  color:#90CF53;" class="py-4">Mr. Abdur Rahman</h4>
+                <p class="" style="font-size: 20px; text-transform: uppercase;
+                ">CEO</p>
+            </div>
               <div class="social_icon">
                   <a href="https://www.facebook.com" target="_blank" class="fa fa-facebook"></a>
                   <a href="#" class="fa fa-twitter"></a>

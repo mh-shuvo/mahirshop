@@ -130,7 +130,12 @@
 @font-face {
   font-family: 'Cera Pro Black Italic';
   src: url("../fonts/Cera Pro Bold Italic.otf"); }
-
+ul li{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+}
 /************************************
 	Reset
 *************************************/
@@ -2419,14 +2424,13 @@ a {
 	Header
 *************************************/
 header .header-block {
-  height: auto;
+
   background-color: #f5f5f5;
   padding: 15px; }
   header .header-block .header-left p {
     font-family: "Cera Pro Regular";
     font-size: 16px;
     color: #252525;
-    line-height: 1;
     display: block; }
     header .header-block .header-left p i {
       margin-right: 15px; }
@@ -2434,16 +2438,14 @@ header .header-block {
       margin-right: 0; }
     header .header-block .header-left p:after {
       content: "|";
-      padding: 0 15px;
-      line-height: 1;
+
       color: #ebebeb; }
     header .header-block .header-left p:last-child:after {
       display: none; }
   header .header-block .header-right .social-link a {
     font-family: "Cera Pro Regular";
-    font-size: 16px;
-    color: #252525;
-    line-height: 1;
+    font-size: 25px;
+
     display: inline-block;
     -webkit-transition: 0.3s ease;
     -moz-transition: 0.3s ease;
@@ -2461,7 +2463,7 @@ header .header-block {
   header .header-block .header-right .social-link:after {
     content: "|";
     padding: 0 10px;
-    line-height: 1;
+
     color: #ebebeb; }
   header .header-block .header-right .language .selected-language, header .header-block .header-right .language .selected-language .list-language li {
     font-family: "Cera Pro Regular";
