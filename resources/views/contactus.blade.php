@@ -55,7 +55,7 @@
 						<textarea class="form-control" rows="5" id="comment"></textarea>
 					  </div>
 
-					<button type="send" class="btn btn-success">Send</button>
+					<button type="send" class="btn btn text-light" style="background-color:#88C74A;">Send</button>
 					<button type="reset" class="btn btn-danger">Reset</button>
 				  </form>
 			</div>

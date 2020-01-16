@@ -26,6 +26,86 @@
 		<link rel="stylesheet" href="{{asset('public/frontend/assets/css/style.css')}}">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<style type="text/css">
+
+  .slick-list{
+  height: 585px;;
+  }
+  .slick-track{
+  height: 100%;
+  }
+  .patternbg {
+      background-image: url(public/frontend/assets/img/pattern-1.jpg);
+      background-attachment: fixed;
+      width: 100%;
+      background-size: cover;
+      background-position: center center;
+      height:70%;
+  }
+  .video_gallery .row iframe{
+    transition: transform 1s;
+    border-radius: 10px;
+  }
+  .video_gallery .row iframe:hover{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transform: scale(1.1);
+  }
+   .carousel-inner img {
+      width: 100%;
+      height: 100%;
+    }
+  
+    /*Second Carousel start*/
+  
+  .coustom_carousell .item img{
+      height:160px;
+      width:160px;
+      border-radius: 50%;
+      margin:0 auto;
+  }
+  .coustom_carousell .item:hover img{
+      opacity: 0.8;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  .fa {
+    padding: 10px;
+    font-size: 10px;
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+    border-radius: 50%;
+    transition: transform .6s;
+  }
+  .fa-facebook {
+    background: #3B5998;
+    color: white;
+  
+  }
+  
+  .fa-twitter {
+    background: #55ACEE;
+    color: white;
+  }
+  
+  .fa-google {
+    background: #dd4b39;
+    color: white;
+  }
+  .fa-youtube {
+    background: #dd4b39;
+    color: white;
+  }
+  
+  .fa-linkedin {
+    background: #007bb5;
+    color: white;
+  }
+  .fa:hover{
+      color: #90CF53;
+      opacity: 0.7;
+      transform: scale(1.2);
+  }
+  
 			.hide{
 			display: none;
 			}
@@ -283,9 +363,9 @@
 							<h6 style="padding-top:13px ;font-family:Cera Pro Medium;"><strong>ADDRESS:</strong></h6>
 					</div>
 					<div class="footer-contact">
-						<p>Address: 60-49 Road 11378 New York</p>
-						<p>Phone: +65 11.188.888</p>
-						<p>Email: info.deercreative@gmail.com</p>
+						<p>Address: <br> 60-49 Road 11378 New York</p>
+						<p>Phone: <br> +65 11.188.888</p>
+						<p>Email: <br> info.deercreative@gmail.com</p>
 
 					</div>
               		<div class="social_icon">
