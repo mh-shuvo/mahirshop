@@ -218,7 +218,7 @@
     <div class="container pb-5">
       <div class="text-center">
         <h1 class="py-5" style="color:#88c74a;">At A Glance</h1>
-        <p class="pb-5" style="lin-height:5px;  letter-spacing: 1px;">Welcome to NutriLife Global Ltd. NutriLife Global Ltd. was founded in 2020 and revolutionized the business model known as direct selling. NutriLife Global Ltd. is dedicated to produce supplements that support immune system health, body transformation, and general wellness. Achieve your healthy lifestyle goals with NutriLife Global Ltd. products to help you to lead a healthy life. We strongly believe, after having our products the result will exceed your expectations.</p>
+        <p class="pb-5" style="lin-height:5px;  letter-spacing: 1px;">Welcome to MahirShop Global Ltd. MahirShop Global Ltd. was founded in 2020 and revolutionized the business model known as direct selling. MahirShop Global Ltd. is dedicated to produce supplements that support immune system health, body transformation, and general wellness. Achieve your healthy lifestyle goals with MahirShop Global Ltd. products to help you to lead a healthy life. We strongly believe, after having our products the result will exceed your expectations.</p>
       </div>
     </div>
 
