@@ -5,26 +5,12 @@
 @endsection
 @section('content')
 
-<section id="contact-us" style="background-color:#F0F0F0; height: 200px; font-weight: 100%;">
+<section id="contact-us" style="background-color:#F0F0F0; height: 200px; font-weight: 100%;"class="mt-5">
 	<div class="text-center">
 		<h1 style="padding-top:70px;">Contact Us</h1>
 	</div>
 </section>
 	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <!--contact area start-->
 	<div class="container">
 		<div class="row my-5" >
@@ -35,7 +21,7 @@
 					<li class="list-group-item py-3">8801713041774 , +8801976633202
 					</li>
 					<li class="list-group-item py-3">
-						nutrilifeblobal@gmail.com
+						mahirshop@gmail.com
 					</li>
 				</ul>
 			</div>

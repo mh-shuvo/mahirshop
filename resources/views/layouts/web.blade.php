@@ -6,10 +6,6 @@
 		<!-- set the viewport width and initial-scale on mobile devices -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title> @yield('title')</title>
-		<!-- include the site stylesheet -->
-		<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,200italic,300,300italic,400italic,600,600italic,700,700italic,900,900italic%7cMontserrat:400,700%7cOxygen:400,300,700' rel='stylesheet' type='text/css'>
-
-
 		<!-- All Style Link-->
 		<link rel="stylesheet" href="{{asset('public/frontend/assets/css/animate.css')}}">
 		<link rel="stylesheet" href="{{asset('public/frontend/assets/css/custom_bootstrap.css')}}">
@@ -25,6 +21,7 @@
 		<link rel="stylesheet" href="{{asset('public/frontend/assets/css/owl.theme.default.min.css')}}">
 		<link rel="stylesheet" href="{{asset('public/frontend/assets/css/style.css')}}">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 		<style type="text/css">
 
   .slick-list{
@@ -177,21 +174,7 @@
 					<a href="https://www.google.com" target="_blank" class="fa fa-google"></a>
 					<a href="https://www.linkedin.com" target="_blank" class="fa fa-linkedin"></a>
 				</div>
-			  	{{-- <div class="social-link d-flex">
-				  <a href=""><i class="fab fa-facebook" style="font-size:20xpx;"></i></a>
-				  <a href=""><i class="fab fa-twitter" style="font-size:20xpx;"></i></a>
-				  <a href=""><i class="fab fa-invision" style="font-size:20xpx;"> </i></a>
-				  <a href=""><i class="fab fa-pinterest-p" style="font-size:20xpx;"> </i></a>
-				</div> --}}
-			  <div class="language">
-				<div class="selected-language"><img src="assets/images/homepage01/usa.jpg" alt="">English<i class="arrow_carrot-down"></i>
-				  <ul class="list-language">
-					<li><img src="assets/images/homepage01/usa.jpg" alt="">English</li>
-					<li><img src="assets/images/homepage01/usa.jpg" alt="">Spain</li>
-					<li><img src="assets/images/homepage01/usa.jpg" alt="">Japan</li>
-				  </ul>
-				</div>
-			  </div>
+			  
 			<div class="login d-flex"><a href="{{route('login')}}"><i class="fas fa-user"></i>Login</a></div>
 			</div>
 		  </div>
@@ -311,7 +294,7 @@
 					  <div class="categories-select_box">
 						<ul>
 							@foreach ($categorys as $category )
-						<li><a href="{{$category->id}}">{{$category->category_name}}</a></li>
+						<li><a href="{{url('product/category/')}}/{{$category->id}}">{{ $category->category_name }}</a></li>
 							@endforeach
 						</ul>
 					  </div>
@@ -383,7 +366,6 @@
 									<a href="{{route('aboutus')}}">About us</a>
 									<a href="{{route('checkout')}}">Check out</a>
 									<a href="{{route('contactus')}}">Contact</a>
-									<a href="about_us.html">Service</a>
 								</div>
 							  </div>
 							  <div class="col-12 col-sm-4 col-lg-4 col-xl-2 col-xxl-3 text-sm-center text-lg-left">
@@ -391,17 +373,16 @@
 								<h5>My Account</h5>
 								<a href="{{route('login')}}">My Account</a>
 								<a href="{{route('contactus')}}">Contact</a>
-								<a href="shoppingcart">Shopping cart</a>
+								<a href="{{route('shopping.cart')}}">Shopping cart</a>
 								<a href="{{route('shop')}}">Shop</a>
 							</div>
 							  </div>
 							  <div class="col-12 col-sm-4 col-lg-4 col-xl-2 col-xxl-3 text-sm-center text-lg-left">
 								<div class="footer-quicklink">
 									<h5>Quick Shop</h5>
-								<a href="{{route('aboutus')}}">About us</a>
-									<a href="checkout.html">Check out</a>
+									<a href="{{route('aboutus')}}">About us</a>
+									<a href="{{route('checkout')}}">Check out</a>
 									<a href="{{route('contactus')}}">Contact</a>
-									<a href="about_us.html">Service</a>
 								</div>
 							  </div>
 							  <div class="col-12 col-md-8 col-lg-8 col-xl-6 col-xxl-3 text-sm-center text-lg-left">
@@ -430,15 +411,10 @@
 	</div>
 </footer>
 <!-- Footer Section End -->
+@include('modal.quickview')
+<!-- include jQuery -->
+<script src="{{asset('public/frontend/assets/js/jquery.min.js')}}"></script>
 
-
-<!-- include jQuery -->
-<script src="{{asset('public/frontend/js/jquery.js')}}"></script>
-<!-- include jQuery -->
-<script src="{{asset('public/frontend/js/plugins.js')}}"></script>
-<script type="text/javascript" src="{{asset('public/sweetalert/sweetalert.min.js')}}"></script>
-<!-- include jQuery -->
-<script src="{{asset('public/frontend/js/jquery.main.js')}}"></script>
 <script src="{{ asset('public') }}/js/form.js" ></script>
 <script src="{{ asset('public') }}/js/custom.js" ></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -448,18 +424,13 @@
 <script src="{{asset('public/frontend/assets/js/jquery.easing.js')}}"></script>
 <script src="{{asset('public/frontend/assets/js/jquery.scrollUp.min.js')}}"></script>
 <script src="{{asset('public/frontend/assets/js/jquery.zoom.min.js')}}"></script>
-<script src="{{asset('public/frontend/assets/js/parallax.js')}}"></script>
 <script src="{{asset('public/frontend/assets/js/jquery.fancybox.js')}}"></script>
 <script src="{{asset('public/frontend/assets/js/numscroller-1.0.js')}}"></script>
 <script src="{{asset('public/frontend/assets/js/vanilla-tilt.min.js')}}"></script>
 <script src="{{asset('public/frontend/assets/js/main.js')}}"></script>
-<script>
-  var sence = document.getElementById('img-block')
-  var parallaxInstance = new Parallax(sence, {
-      hoverOnly: true,
-  });
-</script>
+
 <script src="{{asset('public/frontend/assets/js/owl.carousel.min.js')}}"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script>
   $('.coustom_carousell').owlCarousel({
   loop:true,
@@ -528,7 +499,10 @@
 			$('.cartCount').html($('.tt-cart-list').find('.cart-row').length);
 			$(".tt-cart-total-price").html(data.price_subtotal)
 		}
-		
+
+		$(document).on('click', '.quickview', function(event) {
+			$('#productView').modal('toggle');
+		});
 		
 	</script>
 	@yield('js')

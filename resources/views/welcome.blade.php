@@ -86,7 +86,7 @@
 
 <div class="slider slider-hp-2">
 	<div class="ogami-container-fluid">
-	  <div class="slider_wrapper" data-slick="{&quot;swipe&quot;: false, &quot;setting&quot;: &quot;unslick&quot;}">
+	  <div class="slider_wrapper" data-slick="{&quot;swipe&quot;: false, &quot;setting&quot; &quot;unslick&quot;}">
         @foreach($banners as $banner)
 		<div class="slider-block" style="background-image: url({{asset('public')}}/{{$banner->banner_image}});" style="background-size:100% 100%;">
 		  <div class="slider-content">
@@ -172,14 +172,14 @@
                   </div>
                   <div class="col-sm-8 col-xs-6">
                           <i class="fa fa-quote-left" aria-hidden="true"></i>
-                          <p>Thank you for visiting us. <b>NutriLife Global Ltd.</b> has the potential to be one of the most exciting stories in recent MLM / network marketing history. NutriLife Global Ltd. believes that all the right elements are in place and the addition of more and more distributor leaders will give them a great deal of momentum. We will create success together at NutriLife Global Ltd only when we work as a team, when we see corporate and field as one entity working toward a common goal. We are your team. <b>We are here to support you.</b> Let’s go make it happen together! Those who join now are in at the right time. You are in position to be very successful with NutriLife Global Ltd.! So please come and join us. YOU WILL WIN!!!! <br>
+                          <p>Thank you for visiting us. <b>MahirShop Global Ltd.</b> has the potential to be one of the most exciting stories in recent MLM / network marketing history. MahirShop Global Ltd. believes that all the right elements are in place and the addition of more and more distributor leaders will give them a great deal of momentum. We will create success together at MahirShop Global Ltd only when we work as a team, when we see corporate and field as one entity working toward a common goal. We are your team. <b>We are here to support you.</b> Let’s go make it happen together! Those who join now are in at the right time. You are in position to be very successful with MahirShop Global Ltd.! So please come and join us. YOU WILL WIN!!!! <br>
                           Thank you. <br>
                           Warmest Regards,
                           <i class="fa fa-quote-right" aria-hidden="true"></i></p>
                               
                             <p> <b>MR. Abdul Rahman</b> </p>
                             <p><b> Chief Executive Director </b></p>
-                            <p><b> NutriLife Global Ltd </b></p>
+                            <p><b> MahirShop Global Ltd </b></p>
 
                               
                              
