@@ -30,7 +30,9 @@
                   <div class="department_bottom">
                     <ul>
                         @foreach ($categorys as $category)
-                    <li> <a class="department-link" href="{{$category->id}}">{{ $category->category_name}}</a></li>
+                    <li>
+                      <a class="department-link active" href="{{url('product/category/')}}/{{$category->id}}">{{ $category->category_name }}</a>
+                      </li>
                       @endforeach
                     </ul>
                   </div>
@@ -41,7 +43,7 @@
                     <div class="department_bottom">
                         <ul>
                             @foreach ($brands as $brand)
-                        <li> <a class="department-link" href="{{$brand->id}}">{{ $brand->brand_name}}</a></li>
+                        <li> <a class="department-link" href="{{$category->id}}">{{ $category->category_name}}</a></li>
                           @endforeach
                         </ul>
                     </div>
@@ -100,7 +102,7 @@
                         </div>
                       </div>
                     </div>
-                    <!--Using column-->
+                    <!--`ing column-->
                   </div>
 
 
@@ -142,21 +144,6 @@
                       @endforeach
                     </div>
                   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                   <div class="shop-pagination mt-4">
                     <ul>

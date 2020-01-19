@@ -294,7 +294,9 @@
 					  <div class="categories-select_box">
 						<ul>
 							@foreach ($categorys as $category )
-						<li><a href="{{url('product/category/')}}/{{$category->id}}">{{ $category->category_name }}</a></li>
+								<li>
+									<a class="department-link active" href="{{url('product/category/')}}/{{$category->id}}">{{ $category->category_name }}</a>
+								</li>
 							@endforeach
 						</ul>
 					  </div>
