@@ -30,6 +30,7 @@
 
 	Route::prefix('admin')->group(function() {
 		Route::get('/','AdminController@index')->name('admin.index');
+		Route::get('/designation','AdminController@Designation')->name('admin.designation');
 		Route::get('/id-card','AdminController@idCard')->name('admin.id_card');
 
 		Route::get('/my-team','AdminController@myTeam')->name('admin.team');

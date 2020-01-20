@@ -33,6 +33,9 @@
 		{
 			$this->middleware('auth');
 		}
+		public function Designation () {
+			return view('admin.designation');
+		}
 		
 		public function index()
 		{
