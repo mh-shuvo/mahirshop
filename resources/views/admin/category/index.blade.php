@@ -9,7 +9,7 @@
 	<div class="card">
 		<div class="card-header">
 		    <h3 class="card-title">Category List</h3>
-		    <div class="card-options">
+		    <div class="card-options text-right">
 		        <button type="button" class="btn btn-sm btn-outline-primary add_category">Add Category</button>
 		    </div>
 		</div>
@@ -42,6 +42,13 @@
 	                        <label class="col-sm-3 col-form-label">Sort</label>
 	                        <div class="col-sm-9">
 	                            <input type="text" class="form-control form-control-sm" name="categorySort" id="categorySort" placeholder="Enter Category Sort">
+	                            <span class="messages"></span>
+	                        </div>
+	                    </div>
+	                    <div class="form-group row">
+	                        <label class="col-sm-3 col-form-label">Image</label>
+	                        <div class="col-sm-9">
+	                            <input type="file" class="form-control form-control-sm" name="categorylogo" id="categorylogo">
 	                            <span class="messages"></span>
 	                        </div>
 	                    </div>
@@ -88,7 +95,12 @@
 					columns: [
 		            { title:'Serial', data: 'id'},
 		            { title:'Category Name', data: 'category_name'},
-		            // { title:'Category Sort', data: 'category_sort'},
+		            { title:'Category Image', 
+		                orderable:false,
+		                render:function(data,type,row){
+		                    return '<img src="{{asset("public/")}}/'+row.image +'" style="height:40px; width:50px;">';
+		                }
+		            },
 		            { title:'Category Feature', data: 'category_featured'},
 		            { title:'Status', data: 'category_status'},
 		            { title:'Action', data: 'action'},
@@ -117,12 +129,14 @@
 				var category_sort = $(this).attr('category_sort');
 				var category_featured = $(this).attr('category_featured');
 				var category_status = $(this).attr('category_status');
+				var image = $(this).attr('image');
 				$('#CategoryModal').modal('show');
 				$('#categoryId').val(id);
 				$('#categoryName').val(category_name);
 				$('#categorySort').val(category_sort);
 				$('#Featured').val(category_featured);
 				$('#categoryStatus').val(category_status);
+				$('#categorylogo').val(image);
 			});
 
 			$(document).on("click",".categoryDelete", function(){

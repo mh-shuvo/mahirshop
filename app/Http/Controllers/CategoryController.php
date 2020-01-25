@@ -6,11 +6,12 @@ use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 use App\User;
 use App\Category;
+use Image;
 
 class CategoryController extends Controller
 {
     public function data () {
-        $Category = Category::select('id','category_name','category_sort','category_featured', 'category_status');
+        $Category = Category::all();
             return Datatables::of($Category)
             ->addColumn('action', function (Category $data){
                 return '<a href="javascript:vodi(0)" class="btn btn-info btn-sm categoryEdit" id="'.$data->id.'" category_name="'.$data->category_name.'" category_sort="'.$data->category_sort.'" category_featured="'.$data->category_featured.'" category_status="'.$data->category_status.'">Edit</a>
@@ -24,28 +25,54 @@ class CategoryController extends Controller
     }
 
     public function store (Request $request) {
-        $request->validate([
+
+        $message = 'Category Successfully Added';
+
+            $request->validate([
             'categoryName' => 'required',
             'categorySort' => 'required',
             'Featured' => 'required',
             'categoryStatus' => 'required',
-        ]);
+            'categorylogo' => 'required',
+            ]);
 
-        if (!empty($request->categoryId)) {
-            $Category = Category::find($request->categoryId);
-            $message = "Category Updated";
-            } else {
-            $Category = new Category;
-            $message = "Category Saved";
-        }
+            if(isset($request->categoryId)){
+                $message = 'Category Successfully Updated';
+                $Category = Category::find($request->categoryId); 
+                
+                 if($request->hasFile('categorylogo')){
+                    $old_img = public_path($Category->image);
+                    if (file_exists($old_img)) {
+                        @unlink($old_img);
+                    }
+                }
 
-        $Category->user_id = '1';
-        // $Category->user_id = Auth()->user()->id;
-        $Category->category_name = $request->categoryName;
-        $Category->category_sort = $request->categorySort;
-        $Category->category_featured = $request->Featured;
-        $Category->category_status = $request->categoryStatus;
-        $Category->save();
+            }else{
+
+                $Category = new Category;
+                $Category->user_id = Auth()->user()->id;
+
+            }
+
+            if($request->hasFile('categorylogo')){
+                $document = $request->file('categorylogo');
+                $categorylogo = 'upload/categorylogo/'.$request->categoryName.time() . '.' . $document->getClientOriginalExtension();
+                Image::make($document)->resize(500,600)->save(public_path($categorylogo));
+            }
+
+            
+            $Category->category_name = $request->categoryName;
+            $Category->category_sort = $request->categorySort;
+            $Category->category_featured = $request->Featured;
+            $Category->image = $categorylogo;
+            $Category->category_status = $request->categoryStatus;
+            $Category->save();
+
+            
+            return response([
+                "status" => "success",
+                "message" => $message
+            ]);
     }
 
     public function delete (Request $request) {

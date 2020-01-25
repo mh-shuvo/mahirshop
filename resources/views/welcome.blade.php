@@ -9,7 +9,7 @@
   height: 100%;
   }
   .patternbg {
-      background-image: url(public/frontend/assets/img/pattern-1.jpg);
+      background-image: url(public/frontend/assets/images/pattern-1.jpg);
       background-attachment: fixed;
       width: 100%;
       background-size: cover;
@@ -23,6 +23,7 @@
   .video_gallery .row iframe:hover{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     transform: scale(1.1);
+
   }
    .carousel-inner img {
       width: 100%;
@@ -32,87 +33,74 @@
     /*Second Carousel start*/
   
   .coustom_carousell .item img{
-      height:160px;
+      height:202px;
       width:160px;
       border-radius: 50%;
       margin:0 auto;
+      transition: all .4s ease-in-out;
   }
   .coustom_carousell .item:hover img{
       opacity: 0.8;
+      transition: all .6s ease-in-out;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
-  .fa {
-    padding: 10px;
-    font-size: 10px;
-    width: 30px;
-    text-align: center;
-    text-decoration: none;
-    margin: 5px 2px;
-    border-radius: 50%;
-    transition: transform .6s;
-  }
-  .fa-facebook {
-    background: #3B5998;
-    color: white;
-  
-  }
-  
-  .fa-twitter {
-    background: #55ACEE;
-    color: white;
-  }
-  
-  .fa-google {
-    background: #dd4b39;
-    color: white;
-  }
-  .fa-youtube {
-    background: #dd4b39;
-    color: white;
-  }
-  
-  .fa-linkedin {
-    background: #007bb5;
-    color: white;
-  }
-  .fa:hover{
-      color: #90CF53;
-      opacity: 0.7;
-      transform: scale(1.2);
+
+.product_cat_carousel .pro_cat_div{
+  border: 5px solid #90CF53;
+  height: 250px;
+  width: 200px;
+  border-radius: 50%;
+
+}
+.product_cat_carousel .item .pro_cat_div{
+  transition: all .6s ease-in-out;
+  background-color: rgba(144, 207, 83, 0.3);
+}
+.product_cat_carousel .item .pro_cat_div:hover{
+  opacity: 0.8;
+  transition: all .4s ease-in-out;
+  background-color: rgba(144, 207, 83, 0.7);
+}
+.product_cat_carousel .item .pro_cat_div div{
+  transition: all .4s ease-in-out;
+}
+.product_cat_carousel .item .pro_cat_div:hover div{
+  transform: scale(1.1);
+  transition: all .4s ease-in-out;
+}
+
   }
   </style>
 @endsection
 @section('content')
 
-<div class="slider slider-hp-2">
-	<div class="ogami-container-fluid">
-	  <div class="slider_wrapper" data-slick="{&quot;swipe&quot;: false, &quot;setting&quot; &quot;unslick&quot;}">
-        @foreach($banners as $banner)
-		<div class="slider-block" style="background-image: url({{asset('public')}}/{{$banner->banner_image}});" style="background-size:100% 100%;">
-		  <div class="slider-content">
-			<div class="container">
-			  <div class="row align-items-center justify-content-center">
-				<div class="col-12 col-md-5 col-xl-6">
-				  <div class="slider-text d-flex flex-column align-items-center align-items-md-start">
-					<h1>{{$banner->banner_name}}</h1>
-					<h3><span>{{$banner->banner_des}}</span></h3>
-				  </div>
-				</div>
-				<div class="col-12 col-md-6">
-				  <div class="slider-img"><img src="assets/images/homepage01/slider_subbackground_1.png" alt="">
-					<div class="prallax-img">
-					  <div id="img-block"><img class="img" src="assets/images/homepage01/slider_img_1.png" alt="" data-depth="1"></div>
-					</div>
-				  </div>
-				</div>
-			  </div>
-			</div>
-		  </div>
-		</div>
-		@endforeach
-		
-	  </div>
-	</div>
+
+
+<div id="demo" class="carousel slide" data-ride="carousel">
+  <ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li data-target="#demo" data-slide-to="1"></li>
+    <li data-target="#demo" data-slide-to="2"></li>
+  </ul>
+    
+  <div class="carousel-inner">
+    @foreach($banners as $banner)
+    <div class="carousel-item active">
+      <img src="{{asset('public')}}/{{$banner->banner_image}}" alt="Los Angeles" width="1100" height="500">
+      <div class="carousel-caption">
+        <h3>{{$banner->banner_name}}</h3>
+        <p>{{$banner->banner_des}}</p>
+      </div>   
+    </div>
+    @endforeach
+  </div>
+      
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
 </div>
 
 <!-- mt main slider end here -->
@@ -193,59 +181,75 @@
 </section>
 <!-- CEO Details area end -->
 
+    <!-- Product by categoryt area start -->
+    <section class="achievers my-5 pb-5 patternbg">
 
+        <div class="container text-center py-4">
+            <h1 class="title green-underline text-center pb-2" style="font-size: 30px; font-family: 'Herr Von Muellerhoff', cursive; text-transform: uppercase; color:#90CF53;">Product</h1>
+            <h4 class="text-uppercase pb-3"  style="font-family: 'Herr Von Muellerhoff', cursive; font-size: 20px;letter-spacing: 10px;">CATEGORIES</h4>
+        </div>
 
+        <div class="row">
+            <div class="col-md-12 col-sm-12 text-center">
+              <div class="owl-carousel product_cat_carousel">
+              @foreach(App\Category::where('category_status','Active')->get() as $category)
+                @php
+                  $totalProduct = count($category->Product);
+                @endphp
+              <div class="item">
+                    <div class="container text-center pro_cat_div" style="  background-attachment: fixed; width: 55%;
+                      background-size: cover;
+                      background-position: center center; background-image: url('{{asset("public")}}/{{$category->image}}') ;">
+                      <div class="my-4" style="height: 30%; width: 36%; margin: 0 auto;  background-color: #fff; border-radius: 50%; color:#90CF53;">
+                      <h3 class="" style="line-height: 270%;">{{$totalProduct}}</h3>
+                      </div>
+                    <div class="pt-3 text-uppercase">
 
+                      <span style="color:#90CF53; padding: 5px 10px; border-radius: 20px; background-color: #fff">{{$category->category_name}}</span>
+                    </div>
+                    </div>
+                </div>
+              
+              @endforeach
+              </div>
+            </div>
+        </div>
 
-
- <!-- video gallery Start-->
- <section class="">
-  <div class="container py-5">
-      <div class="our-farmer ">
-        <h1 class="title green-underline text-center pb-4" style="font-size: 35px; text-transform: uppercase; color:#90CF53;">Our Video Gallery</h1>
-
-      <div class="container text-center video_gallery">
-         <div class="row pb-3">
-        <div class="col-md-4 py-3 video_gallery">
-          <iframe width="300" height="150" src="https://www.youtube.com/embed/gZUSFda_W7k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-        <div class="col-md-4 py-3">
-          <iframe width="300" height="150" src="https://www.youtube.com/embed/gZUSFda_W7k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-        <div class="col-md-4 py-3">
-          <iframe width="300" height="150" src="https://www.youtube.com/embed/gZUSFda_W7k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-      </div>
-
-      <div class="row pb-3">
-        <div class="col-sm-6 col-md-4 py-3">
-          <iframe width="300" height="150" src="https://www.youtube.com/embed/gZUSFda_W7k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-        <div class="col-sm-6 col-md-4 py-3">
-          <iframe width="300" height="150" src="https://www.youtube.com/embed/gZUSFda_W7k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-        <div class="col-sm-6 col-md-4 py-3">
-           <iframe width="300" height="150" src="https://www.youtube.com/embed/gZUSFda_W7k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-      </div>
-      </div>
-        </div>
-      </div>
-    </div>
+ 
     </section>
-<!-- video gallery end -->
+<!-- product by category area end -->
 
 
+ <!-- video gallery start -->
+    <section class="video_section">
+          <div class="container py-5">
+              <div class="our-farmer ">
+                <h1 class="title green-underline text-center pb-4" style="font-size: 30px; font-family: 'Herr Von Muellerhoff', cursive; text-transform: uppercase; color:#90CF53;">Our Video Gallery</h1>
 
+              <div class="container text-center video_gallery">
+               <div class="row pb-3">
+                @foreach(App\Gallery::where('type','video')->where('status','Active')->get() as $video)
+                @php
+                  $fetch = explode('/',$video->image);
+                  $videoId = $fetch['3'];
+                @endphp
+                <div class="col-md-6 col-sm-6 col-lg-4 py-3 video_gallery">
+                <iframe width="270" height="150" src="https://www.youtube.com/embed/{{$videoId}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+              @endforeach
+              </div>
+              </div>
+                </div>
+              </div>
+          </section>
+<!-- video gallery start -->
 
+<!-- top ten section start -->
+<section class="achievers patternbg my-5">
 
-
-
-<section class="achievers py-5 patternbg">
-
-  <div class="container text-center">
+  <div class="container text-center py-3">
       <h1 class="text-center" style="font-size: 40px; text-transform: uppercase; color:#90CF53;">Team</h1>
-      <h4 class="text-uppercase py-5"  style="font-size: 30px;letter-spacing: 10px;">Top Ten</h4>
+      <h4 class="text-uppercase"  style="font-size: 30px;letter-spacing: 10px;">Top Ten</h4>
   </div>
 
   <div class="row">
@@ -254,86 +258,50 @@
           <div class="item">
               <img src="{{asset('public/frontend/assets/images/img1.jpg')}}">
               <div class="container py-2 text-center">
-                <h4 style="font-size: 25px; text-transform: uppercase;  text-transform: uppercase; padding-top: 10px;  color:#90CF53;" class="py-4">Mr. Abdur Rahman</h4>
+                <h4 style="font-size: 25px; text-transform: uppercase;  text-transform: uppercase; padding-top: 10px;  color:#90CF53;" class="py-2">Mr. Abdur Rahman</h4>
                 <p class="" style="font-size: 20px; text-transform: uppercase;
                 ">CEO</p>
             </div>
-              <div class="social_icon">
-                  <a href="https://www.facebook.com" target="_blank" class="fa fa-facebook"></a>
-                  <a href="https://www.twitter.com" target="_blank" class="fa fa-twitter"></a>
-                  <a href="https://www.google.com" target="_blank" class="fa fa-google"></a>
-                  <a href="https://www.linkedin.com" target="_blank" class="fa fa-linkedin"></a>
-              </div>
           </div>
           <div class="item">
               <img src="{{asset('public/frontend/assets/images/img1.jpg')}}">
               <div class="container py-2 text-center">
-                <h4 style="font-size: 25px; text-transform: uppercase;  text-transform: uppercase; padding-top: 10px;  color:#90CF53;" class="py-4">Mr. Abdur Rahman</h4>
+                <h4 style="font-size: 25px; text-transform: uppercase;  text-transform: uppercase; padding-top: 10px;  color:#90CF53;" class="py-2">Mr. Abdur Rahman</h4>
                 <p class="" style="font-size: 20px; text-transform: uppercase;
                 ">CEO</p>
             </div>
-              <div class="social_icon">
-                  <a href="https://www.facebook.com" target="_blank" class="fa fa-facebook"></a>
-                  <a href="#" class="fa fa-twitter"></a>
-                  <a href="#" class="fa fa-google"></a>
-                  <a href="#" class="fa fa-linkedin"></a>
-              </div>
           </div>
           <div class="item">
               <img src="{{asset('public/frontend/assets/images/img1.jpg')}}">
               <div class="container py-2 text-center">
-                <h4 style="font-size: 25px; text-transform: uppercase;  text-transform: uppercase; padding-top: 10px;  color:#90CF53;" class="py-4">Mr. Abdur Rahman</h4>
+                <h4 style="font-size: 25px; text-transform: uppercase;  text-transform: uppercase; padding-top: 10px;  color:#90CF53;" class="py-2">Mr. Abdur Rahman</h4>
                 <p class="" style="font-size: 20px; text-transform: uppercase;
                 ">CEO</p>
             </div>
-              <div class="social_icon">
-                  <a href="https://www.facebook.com" target="_blank" class="fa fa-facebook"></a>
-                  <a href="#" class="fa fa-twitter"></a>
-                  <a href="#" class="fa fa-google"></a>
-                  <a href="#" class="fa fa-linkedin"></a>
-              </div>
           </div>
           <div class="item">
               <img src="{{asset('public/frontend/assets/images/img1.jpg')}}">
               <div class="container py-2 text-center">
-                <h4 style="font-size: 25px; text-transform: uppercase;  text-transform: uppercase; padding-top: 10px;  color:#90CF53;" class="py-4">Mr. Abdur Rahman</h4>
+                <h4 style="font-size: 25px; text-transform: uppercase;  text-transform: uppercase; padding-top: 10px;  color:#90CF53;" class="py-2">Mr. Abdur Rahman</h4>
                 <p class="" style="font-size: 20px; text-transform: uppercase;
                 ">CEO</p>
             </div>
-              <div class="social_icon">
-                  <a href="https://www.facebook.com" target="_blank" class="fa fa-facebook"></a>
-                  <a href="#" class="fa fa-twitter"></a>
-                  <a href="#" class="fa fa-google"></a>
-                  <a href="#" class="fa fa-linkedin"></a>
-              </div>
           </div>
           <div class="item">
               <img src="{{asset('public/frontend/assets/images/img1.jpg')}}">
               <div class="container py-2 text-center">
-                <h4 style="font-size: 25px; text-transform: uppercase;  text-transform: uppercase; padding-top: 10px;  color:#90CF53;" class="py-4">Mr. Abdur Rahman</h4>
+                <h4 style="font-size: 25px; text-transform: uppercase;  text-transform: uppercase; padding-top: 10px;  color:#90CF53;" class="py-2">Mr. Abdur Rahman</h4>
                 <p class="" style="font-size: 20px; text-transform: uppercase;
                 ">CEO</p>
             </div>
-              <div class="social_icon">
-                  <a href="https://www.facebook.com" target="_blank" class="fa fa-facebook"></a>
-                  <a href="#" class="fa fa-twitter"></a>
-                  <a href="#" class="fa fa-google"></a>
-                  <a href="#" class="fa fa-linkedin"></a>
-              </div>
           </div>
           <div class="item">
               <img src="{{asset('public/frontend/assets/images/img1.jpg')}}">
               <div class="container py-2 text-center">
-                <h4 style="font-size: 25px; text-transform: uppercase;  text-transform: uppercase; padding-top: 10px;  color:#90CF53;" class="py-4">Mr. Abdur Rahman</h4>
+                <h4 style="font-size: 25px; text-transform: uppercase;  text-transform: uppercase; padding-top: 10px;  color:#90CF53;" class="py-2">Mr. Abdur Rahman</h4>
                 <p class="" style="font-size: 20px; text-transform: uppercase;
                 ">CEO</p>
             </div>
-              <div class="social_icon">
-                  <a href="https://www.facebook.com" target="_blank" class="fa fa-facebook"></a>
-                  <a href="#" class="fa fa-twitter"></a>
-                  <a href="#" class="fa fa-google"></a>
-                  <a href="#" class="fa fa-linkedin"></a>
-              </div>
           </div>
          
           </div>
@@ -342,8 +310,76 @@
 
 
 </section>
+<!-- top ten section end -->
 
-  <!-- End feature-products-->
+<!-- our project director area start -->
+<section class="achievers patternbg pt-3 my-5">
+
+  <div class="container text-center">
+      <h1 class="text-center" style="font-size: 40px; text-transform: uppercase; color:#90CF53;">Our Project Director</h1>
+  </div>
+
+  <div class="row">
+      <div class="col-md-12 col-sm-12 text-center">
+        <div class="owl-carousel coustom_carousell">
+          <div class="item">
+              <img src="{{asset('public/frontend/assets/images/img1.jpg')}}">
+              <div class="container py-2 text-center">
+                <h4 style="font-size: 25px; text-transform: uppercase;  text-transform: uppercase; padding-top: 10px;  color:#90CF53;" class="py-2">Mr. Abdur Rahman</h4>
+                <p class="" style="font-size: 20px; text-transform: uppercase;
+                ">CEO</p>
+            </div>
+          </div>
+          <div class="item">
+              <img src="{{asset('public/frontend/assets/images/img1.jpg')}}">
+              <div class="container py-2 text-center">
+                <h4 style="font-size: 25px; text-transform: uppercase;  text-transform: uppercase; padding-top: 10px;  color:#90CF53;" class="py-2">Mr. Abdur Rahman</h4>
+                <p class="" style="font-size: 20px; text-transform: uppercase;
+                ">CEO</p>
+            </div>
+          </div>
+          <div class="item">
+              <img src="{{asset('public/frontend/assets/images/img1.jpg')}}">
+              <div class="container py-2 text-center">
+                <h4 style="font-size: 25px; text-transform: uppercase;  text-transform: uppercase; padding-top: 10px;  color:#90CF53;" class="py-2">Mr. Abdur Rahman</h4>
+                <p class="" style="font-size: 20px; text-transform: uppercase;
+                ">CEO</p>
+            </div>
+          </div>
+          <div class="item">
+              <img src="{{asset('public/frontend/assets/images/img1.jpg')}}">
+              <div class="container py-2 text-center">
+                <h4 style="font-size: 25px; text-transform: uppercase;  text-transform: uppercase; padding-top: 10px;  color:#90CF53;" class="py-2">Mr. Abdur Rahman</h4>
+                <p class="" style="font-size: 20px; text-transform: uppercase;
+                ">CEO</p>
+            </div>
+          </div>
+          <div class="item">
+              <img src="{{asset('public/frontend/assets/images/img1.jpg')}}">
+              <div class="container py-2 text-center">
+                <h4 style="font-size: 25px; text-transform: uppercase;  text-transform: uppercase; padding-top: 10px;  color:#90CF53;" class="py-2">Mr. Abdur Rahman</h4>
+                <p class="" style="font-size: 20px; text-transform: uppercase;
+                ">CEO</p>
+            </div>
+          </div>
+          <div class="item">
+              <img src="{{asset('public/frontend/assets/images/img1.jpg')}}">
+              <div class="container py-2 text-center">
+                <h4 style="font-size: 25px; text-transform: uppercase;  text-transform: uppercase; padding-top: 10px;  color:#90CF53;" class="py-2">Mr. Abdur Rahman</h4>
+                <p class="" style="font-size: 20px; text-transform: uppercase;
+                ">CEO</p>
+            </div>
+          </div>
+         
+          </div>
+      </div>
+  </div>
+
+
+</section>
+<!-- our project direct end -->
+
+
 
 
 @endsection

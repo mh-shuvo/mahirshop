@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 25, 2020 at 10:52 AM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 7.2.4
+-- Generation Time: Jan 25, 2020 at 01:51 PM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -47,8 +47,8 @@ CREATE TABLE `banners` (
 --
 
 INSERT INTO `banners` (`id`, `user_id`, `banner_name`, `banner_des`, `banner_image`, `banner_sort`, `banner_type`, `banner_status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 'First Banenr', 'This is our first banner', NULL, '2', 'Slide', 'Inactive', '2020-01-12 18:00:00', '2020-01-14 04:36:09', NULL),
-(2, 1, 'Title2', 'test', 'upload/banner/1578976539.jpg', '2', 'Slide', 'Active', '2020-01-14 04:35:39', '2020-01-14 04:35:39', NULL);
+(1, 1, 'First Banenr', 'This is our first banner', 'upload/banner/1579955496.jpg', '2', 'Slide', 'Inactive', '2020-01-12 18:00:00', '2020-01-25 12:31:36', NULL),
+(2, 1, 'Title2', 'test', 'upload/banner/1579956327.jpg', '2', 'Slide', 'Active', '2020-01-14 04:35:39', '2020-01-25 12:45:28', NULL);
 
 -- --------------------------------------------------------
 
@@ -90,6 +90,7 @@ CREATE TABLE `brands` (
   `user_id` bigint(20) UNSIGNED DEFAULT NULL,
   `brand_name` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `brand_sort` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `brand_status` enum('Active','Inactive') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -100,10 +101,11 @@ CREATE TABLE `brands` (
 -- Dumping data for table `brands`
 --
 
-INSERT INTO `brands` (`id`, `user_id`, `brand_name`, `brand_sort`, `brand_status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 'Bike', '1', 'Active', '2020-01-14 09:29:16', '2020-01-14 09:29:16', NULL),
-(2, 1, 'Car', '2', 'Active', '2020-01-14 09:29:34', '2020-01-14 09:29:34', NULL),
-(3, 1, 'Track', '3', 'Active', '2020-01-14 09:29:54', '2020-01-14 09:29:54', NULL);
+INSERT INTO `brands` (`id`, `user_id`, `brand_name`, `brand_sort`, `image`, `brand_status`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 'Bike', '1', 'upload/brandlogo/Bike1579954069.jpg', 'Active', '2020-01-14 09:29:16', '2020-01-25 12:07:49', NULL),
+(2, 1, 'Car', '2', 'upload/brandlogo/Car1579955321.jpg', 'Active', '2020-01-14 09:29:34', '2020-01-25 12:28:41', NULL),
+(3, 1, 'Track', '3', 'upload/brandlogo/Track1579955333.jpg', 'Active', '2020-01-14 09:29:54', '2020-01-25 12:28:53', NULL),
+(4, 1, 'test', '4', 'upload/brandlogo/test1579954001.jpg', 'Active', '2020-01-25 12:06:41', '2020-01-25 12:06:41', NULL);
 
 -- --------------------------------------------------------
 
@@ -115,6 +117,7 @@ CREATE TABLE `categories` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `user_id` bigint(20) UNSIGNED DEFAULT NULL,
   `category_name` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `category_sort` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `category_featured` enum('True','False') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `category_status` enum('Active','Inactive') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -127,10 +130,34 @@ CREATE TABLE `categories` (
 -- Dumping data for table `categories`
 --
 
-INSERT INTO `categories` (`id`, `user_id`, `category_name`, `category_sort`, `category_featured`, `category_status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 'Electronics', '1', 'True', 'Active', '2020-01-12 18:00:00', '2020-01-12 18:00:00', NULL),
-(2, 2, 'Seramic', '2', 'True', 'Active', '2020-01-13 18:00:00', '2020-01-13 18:00:00', NULL),
-(3, 3, 'Mechanical', '2', 'True', 'Active', '2020-01-14 18:00:00', '2020-01-14 18:00:00', NULL);
+INSERT INTO `categories` (`id`, `user_id`, `category_name`, `image`, `category_sort`, `category_featured`, `category_status`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 'Electronics', 'upload/categorylogo/Electronics1579954387.jpg', '1', 'True', 'Active', '2020-01-12 18:00:00', '2020-01-25 12:13:07', NULL),
+(2, 2, 'Seramic', 'upload/categorylogo/Seramic1579955404.jpg', '2', 'True', 'Active', '2020-01-13 18:00:00', '2020-01-25 12:30:04', NULL),
+(3, 3, 'Mechanical', 'upload/categorylogo/Mechanical1579955414.jpg', '2', 'True', 'Active', '2020-01-14 18:00:00', '2020-01-25 12:30:15', NULL),
+(4, 1, 'test', 'upload/categorylogo/test1579954378.jpg', '4', 'True', 'Active', '2020-01-25 12:12:59', '2020-01-25 12:12:59', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category_galleries`
+--
+
+CREATE TABLE `category_galleries` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` enum('Active','Inactive') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `category_galleries`
+--
+
+INSERT INTO `category_galleries` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Celebration', 'Active', '2020-01-14 10:44:48', '2020-01-14 10:44:48'),
+(2, 'Event', 'Active', '2020-01-14 10:45:37', '2020-01-14 10:45:37'),
+(3, 'Monthly Metting', 'Active', '2020-01-19 06:27:57', '2020-01-19 06:28:09');
 
 -- --------------------------------------------------------
 
@@ -603,6 +630,33 @@ INSERT INTO `divisions` (`id`, `name`, `bn_name`, `sort`, `created_at`, `updated
 (6, 'Rangpur', 'রংপুর', '7', NULL, NULL, NULL),
 (7, 'Sylhet', 'সিলেট', '5', NULL, NULL, NULL),
 (8, 'Mymensingh', 'ময়মনসিংহ', '8', NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `galleries`
+--
+
+CREATE TABLE `galleries` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `gal_cat_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `desc` text COLLATE utf8mb4_unicode_ci,
+  `type` enum('image','video') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` enum('Active','Inactive') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `galleries`
+--
+
+INSERT INTO `galleries` (`id`, `gal_cat_id`, `title`, `desc`, `type`, `image`, `status`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Celebrate Birthday of Zia', NULL, 'image', 'upload/gallery/Celebrate Birthday of Zia1579952657.jpg', 'Active', '2020-01-14 10:48:07', '2020-01-25 11:44:17'),
+(2, 2, 'Attending on Half Month Meeting January 2020', NULL, 'video', 'https://youtu.be/w0YxylKDMKw', 'Active', '2020-01-14 10:49:46', '2020-01-14 11:25:51'),
+(3, 3, 'February', 'February Meeting', 'video', 'https://youtu.be/9hTYp-908P0', 'Active', '2020-01-19 06:32:42', '2020-01-19 06:32:42');
 
 -- --------------------------------------------------------
 
@@ -13358,6 +13412,12 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `category_galleries`
+--
+ALTER TABLE `category_galleries`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `countries`
 --
 ALTER TABLE `countries`
@@ -13391,6 +13451,12 @@ ALTER TABLE `districts`
 -- Indexes for table `divisions`
 --
 ALTER TABLE `divisions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `galleries`
+--
+ALTER TABLE `galleries`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -13549,12 +13615,18 @@ ALTER TABLE `board_plans`
 -- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `category_galleries`
+--
+ALTER TABLE `category_galleries`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
@@ -13592,6 +13664,12 @@ ALTER TABLE `districts`
 --
 ALTER TABLE `divisions`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `galleries`
+--
+ALTER TABLE `galleries`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `incentive_settings`

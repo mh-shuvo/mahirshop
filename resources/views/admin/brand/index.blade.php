@@ -9,7 +9,7 @@
 <div class="card">
 	<div class="card-header">
 		<h3 class="card-title">Brand List</h3>
-		<div class="card-options">
+		<div class="card-options text-right">
 			<button type="button" class="btn btn-sm btn-outline-primary add_brand">Add Brand</button>
 		</div>
 	</div>
@@ -37,6 +37,13 @@
                         <label class="col-sm-3 col-form-label">Brand</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control form-control-sm" name="brandName" id="brandName" placeholder="Enter Brand Name">
+                            <span class="messages"></span>
+						</div>
+					</div>
+					<div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Image</label>
+                        <div class="col-sm-9">
+                            <input type="file" class="form-control form-control-sm" name="brandlogo" id="brandlogo" >
                             <span class="messages"></span>
 						</div>
 					</div>
@@ -79,7 +86,12 @@
 			columns: [
             { title:'Serial', data: 'id'},
             { title:'Brand Name', data: 'brand_name'},
-            // { title:'Brand Sort', data: 'brand_sort'},
+            { title:'Brand Image', 
+                orderable:false,
+                render:function(data,type,row){
+                    return '<img src="{{asset("public/")}}/'+row.image +'" style="height:40px; width:50px;">';
+                }
+            },
             { title:'Status', data: 'brand_status'},
             { title:'Action', data: 'action'},
 			]
@@ -108,12 +120,17 @@
 		var brand_name = $(this).attr('brand_name');
 		var brand_sort = $(this).attr('brand_sort');
 		var status = $(this).attr('status');
+		var image = $(this).attr('image');
 		$('#BrandModal').modal('show');
 		$("#brand_id").val(id);
 		$("#brandName").val(brand_name);
 		$("#brandSort").val(brand_sort);
 		$("#brandStatus").val(status);
+		$("#brandlogo").val(image);
 	});
+
+
+
 	
 	$(document).on("click",".brandDelete", function(){
 		var Id = $(this).attr('id');

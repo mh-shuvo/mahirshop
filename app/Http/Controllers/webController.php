@@ -61,6 +61,16 @@
 			$categorys = Category::all();
 			return view ('aboutus',compact('categorys'));
 		}
+
+		public function Gallery(){
+			$categorys = Category::all();
+			return view('gallery',compact('categorys'));
+		}
+
+		public function Achivers(){
+			$categorys = Category::all();
+			return view('achivers',compact('categorys'));
+		}
 		
 		public function Shop(){
 			$products = Product::where('product_status','Active')->paginate(9);

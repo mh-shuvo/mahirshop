@@ -15,6 +15,8 @@
 	Route::get('login','webController@Login')->name('login');
 	Route::get('contactus','webController@Contactus')->name('contactus');
 	Route::get('aboutus','webController@Aboutus')->name('aboutus');
+	Route::get('gallery','webController@Gallery')->name('gallery');
+	Route::get('achivers','webController@Achivers')->name('achivers');
 	Route::get('shopping-cart','webController@ShoppingCart')->name('shopping.cart')->middleware('auth');
 	Route::get('checkout','webController@Checkout')->name('checkout')->middleware('auth');
 	Route::get('order-complete/{id}','webController@userOrderComplete')->name('shopping.order.complete')->middleware('auth');
@@ -88,6 +90,22 @@
 			Route::get('/product/banner/edit/{id}','BannerController@edit')->name('admin.banner.edit');
 			Route::post('/product/banner/store', 'BannerController@AddBanner')->name('add.banner');
 			Route::get('/product/banner/data', 'BannerController@data')->name('admin.banner.data');
+
+			
+			/* Category Gallery Route Start*/
+			Route::get('/gallery/category','GalleryController@index')->name('category.gallery.index');
+			Route::post('/gallery/category/store','GalleryController@store')->name('category.gallery.store');
+			Route::get('/gallery/category/data','GalleryController@data')->name('category.gallery.data');
+			Route::get('/gallery/category/delete','GalleryController@delete')->name('category.gallery.delete');
+			/*Category Gallery Route End*/
+
+			/*Gallery Route Start*/
+			Route::get('/gallery','GalleryController@galleryIndex')->name('gallery.index');
+			Route::post('/gallery/add','GalleryController@galleryStore')->name('gallery.store');
+
+			Route::get('/gallery/data','GalleryController@galleryData')->name('gallery.data');
+			Route::get('/gallery/delete','GalleryController@gallerydelete')->name('gallery.delete');
+			/*Gallery Route End*/
 		});
 
 		/*Superadmin*/
