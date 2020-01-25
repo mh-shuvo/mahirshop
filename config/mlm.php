@@ -21,7 +21,7 @@
 	'first_rank_referral' => '10',
 	'club_entry_referral' => '11',
 	'withdrawal_vat' => '2',
-	'withdrawal_charge' => '8',
+	'withdrawal_charge' => '10',
 	
 	'daily_matching' => '80',
 	'matching_bonus' => '250',
