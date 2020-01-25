@@ -92,39 +92,163 @@
 		}
 		public function MyTeamList(Request $request){
 			
-			
 			if($request->id == 'null'){
 				$id = Auth::user()->id;
+				$back_username = Auth::user()->username;
 				}else{
 				$id = $this->getIdByUsername($request->id);
 				if(!$id){
 					return response()->json([
 					"status" => "error"
-					],422);
+					]);
 				}
 				
 				if($id && $id <= Auth::user()->id){
 					$id = Auth::user()->id;
+					$back_username = Auth::user()->username;
+					}else{
+					$backId = MemberTree::where('r_id',$id)
+					->orWhere('l_id', $id)
+					->first();
+					$back_username = $backId->Users->username;
 				}
 			}
 			
-			$gen1Datas = MemberTree::select('user_id','is_premium')->where('sponsor_id',$id)->with(['Users:id,name,username,phone','Sponsor:id,username'])->get();
-			$gen2Datas = [];
-			$totalgen2 = 0;
-			$totalgen1 = count($gen1Datas);
-			foreach($gen1Datas as $gen1Data){
-				$get2alldata = MemberTree::select('user_id','is_premium')->where('sponsor_id',$gen1Data->user_id)->with(['Users:id,name,username,phone','Sponsor:id,username'])->get();
-				$gen2Datas[] = $get2alldata;
-				$totalgen2 += count($get2alldata);
+			$left_name = 'Not Registered';
+			$left_username = 'Not Registered';
+			$left_registration_date = 'Not Registered';
+			$left_profile_picture = 'download.png';
+			$left = null;
+			
+			$right_name = 'Not Registered';
+			$right_username = 'Not Registered';
+			$right_registration_date = 'Not Registered';
+			$right_profile_picture="download.png";
+			$right = null;
+			
+			$left_right_name = 'Not Registered';
+			$left_right_username = 'Not Registered';
+			$left_right_registration_date = 'Not Registered';
+			$left_right_profile_picture='download.png';
+			
+			$left_left_name = 'Not Registered';
+			$left_left_username = 'Not Registered';
+			$left_left_registration_date = 'Not Registered';
+			$left_left_profile_picture = 'download.png';
+			
+			$right_right_name = 'Not Registered';
+			$right_right_username = 'Not Registered';
+			$right_right_registration_date = 'Not Registered';
+			$right_right_profile_picture='download.png';
+			
+			$right_left_name = 'Not Registered';
+			$right_left_username = 'Not Registered';
+			$right_left_registration_date = 'Not Registered';
+			$right_left_profile_picture='download.png';
+			
+			$root = MemberTree::where('user_id',$id)->first();
+			
+			if($root->l_id !=null){
+				$left_name = $root->TeamA->name;
+				$left_username = $root->TeamA->username;
+				$left_registration_date = date_format($root->TeamA->created_at,'d-m-Y');
+				if($root->TeamA->profile_picture){
+					$left_profile_picture = $root->TeamA->profile_picture;
+				}
+				$left = MemberTree::where('user_id',$root->l_id)->first();
+				
 			}
+			
+			
+			if($root->r_id !=null){
+				$right_name = $root->TeamB->name;
+				$right_username = $root->TeamB->username;
+				$right_registration_date = date_format($root->TeamB->created_at,'d-m-Y');
+				if($root->TeamB->profile_picture){
+					$right_profile_picture = $root->TeamB->profile_picture;
+				}
+				$right = MemberTree::where('user_id',$root->r_id)->first();
+			}
+			
+			if($left){
+				if($left->l_id !=null){
+					$left_left_name = $left->TeamA->name;
+					$left_left_username = $left->TeamA->username;
+					if($left->TeamA->profile_picture){
+						$left_left_profile_picture = $left->TeamA->profile_picture;
+					}
+					$left_left_registration_date = date_format($left->TeamA->created_at,'d-m-Y');
+				}
+				if($left->r_id !=null){
+					$left_right_name = $left->TeamB->name;
+					$left_right_username = $left->TeamB->username;
+					$left_right_registration_date = date_format($left->TeamB->created_at,'d-m-Y');
+					if($left->TeamB->profile_picture){
+						$left_right_profile_picture = $left->TeamB->profile_picture;
+					}
+				}
+			}
+			
+			if($right){
+				if($right->l_id !=null){
+					$right_left_name = $right->TeamA->name;
+					$right_left_username = $right->TeamA->username;
+					$right_left_registration_date = date_format($right->TeamA->created_at,'d-m-Y');
+					if($right->TeamA->profile_picture){
+						$right_left_profile_picture = $right->TeamA->profile_picture;
+					}
+				}
+				if($right->r_id !=null){
+					$right_right_name = $right->TeamB->name;
+					$right_right_username = $right->TeamB->username;
+					$right_right_registration_date = date_format($right->TeamB->created_at,'d-m-Y');
+					if($right->TeamB->profile_picture){
+						$right_right_profile_picture = $right->TeamB->profile_picture;
+					}
+				}
+			}
+			
+			if($root->Users->profile_picture){
+				$root_user_profile = $root->Users->profile_picture;
+				}else{
+				$root_user_profile = 'download.png';
+			}
+			
 			
 			return response()->json([
 			"status" => "success",
-			"total_gen_1" => $totalgen1,
-			"total_gen_2" => $totalgen2,
-			"gen_1_data" => $gen1Datas,
-			"gen_2_data" => $gen2Datas
-			]);
+			"root_name" => $root->Users->name,
+			"root_profile_picture" => $root_user_profile,
+			"root_username" => $root->Users->username,
+			"root_registration_date" => date_format($root->created_at,'d-m-Y'),
+			"root_left_name" => $left_name,
+			"root_left_username" => $left_username,
+			"root_left_profile_picture" => $left_profile_picture,
+			"root_left_registration_date" => $left_registration_date,
+			"root_right_name" => $right_name,
+			"root_right_username" => $right_username,
+			"root_right_profile_picture" => $right_profile_picture,
+			"root_right_registration_date" => $right_registration_date,
+			
+			"left_left_name" => $left_left_name,
+			"left_left_username" => $left_left_username,
+			"left_left_registration_date" => $left_left_registration_date,
+			"left_right_name" => $left_right_name,
+			"left_right_username" => $left_right_username,
+			"left_right_registration_date" => $left_right_registration_date,
+			"left_left_profile_picture" => $left_left_profile_picture,
+			"left_right_profile_picture" => $left_right_profile_picture,
+			
+			"right_left_name" => $right_left_name,
+			"right_left_username" => $right_left_username,
+			"right_left_registration_date" => $right_left_registration_date,
+			"right_right_name" => $right_right_name,
+			"right_right_username" => $right_right_username,
+			"right_right_registration_date" => $right_right_registration_date,
+			"right_left_profile_picture" => $right_left_profile_picture,
+			"right_right_profile_picture" => $right_right_profile_picture,
+			"back_username" => $back_username,
+			]);			
 		}
         public function SearchTeam($id)
         {   

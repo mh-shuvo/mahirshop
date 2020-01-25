@@ -11,6 +11,7 @@
 		<div class="row">
 			<div class="col-sm-12">
 				<a href="{{route('admin.superadmin.member.create')}}" class="btn btn-primary btn-sm pull-right"> <i class="fa fa-plus"></i> New Member</a>
+				<a href="javascript:void(0)" class="btn btn-primary btn-sm placement_transfer_model"> <i class="fa fa-plus"></i> Placement Change</a>
 			</div>
 		</div>
 	</div>
@@ -111,7 +112,7 @@
 								<input type="text" name="phone" id="phone" class="form-control" placeholder="Phone">
 							</div>
 							
-		
+							
 							<div class="form-group">
 								<label class="control-label">Country</label>
 								<select class="form-control" name="country" id="country">
@@ -172,7 +173,7 @@
 								<label class="control-label">Post Code</label>
 								<input type="text" name="post_code" id="post_code" class="form-control" placeholder="Post Code">
 							</div>
-
+							
 							<div class="form-group">
 								<label class="control-label">Father Name</label>
 								<input type="text" name="father_name" id="father_name" class="form-control form-control-sm" placeholder="Father Name">
@@ -266,6 +267,46 @@
 		</div>
 	</div>
 </div>
+
+<div class="modal fade" id="PlacementTransferModal" tabindex="-1" role="dialog">
+	<div class="modal-dialog">
+        <div class="modal-content ">
+            <div class="modal-header">
+            	<h4>Placement Change</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="fa fa-remove"></span></button>
+			</div>
+            <div class="modal-body">
+            	<form id="placementForm" action="{{route('admin.superadmin.placement')}}" method="post">
+	                <div class="form-group">
+						<label class="control-label">Username:</label>
+	                	<input type="text" name="username" placeholder="Username" class="form-control" autocomplete="off">
+						<span class="col-form-label username_check_status"></span>
+					</div>
+					<div class="form-group">
+						<label class="control-label">Placement Username:</label>
+	                	<input type="text" name="placement_username" placeholder="Placement Username" class="form-control" autocomplete="off">
+						<span class="col-form-label placement_username_check_status"></span>
+					</div>
+					<div class="form-group">
+						<label class="control-label"> Team Select</label>
+						<br>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" name="placement_position" id="placement_position" value="A">
+							<label class="form-check-label" for="placement_position">Team A</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" name="placement_position" id="placement_position" value="B">
+							<label class="form-check-label" for="placement_position">Team B</label>
+						</div>
+					</div>
+	                <div class="form-group">
+	                	<button type="submit" class="btn waves-effect waves-light btn-primary btn-outline-primary btn-sm pull-right transferdCupon">Change</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
 @endsection
 
 @section('js')
@@ -333,7 +374,7 @@
 				}
 			});
 		});
-
+		
 		$(document).on('click','.changeBannedStatus',function(){
 			let Id = $(this).data('id');
 			$.ajax({
@@ -348,12 +389,24 @@
 			});
 		});
 		
+		$('#placementForm').ajaxForm({
+			error: formError,
+			success: function (responseText, statusText, xhr, $form) {
+				formSuccess(responseText, statusText, xhr, $form);
+			},
+			resetForm:true
+		});
+		
 		$('#UpdateMember').ajaxForm({
 			error: formError,
 			success: function (responseText, statusText, xhr, $form) {
 				formSuccess(responseText, statusText, xhr, $form);
 			},
 			resetForm:false
+		});
+		
+		$(document).on("click",'.placement_transfer_model',function(){
+			$("#PlacementTransferModal").modal('toggle');
 		});
 		
 		// Image Rendering
@@ -383,6 +436,14 @@
 				$(".MembersTable").DataTable().draw(true)
 			},
 			resetForm: false
+		});
+		
+		$(document).on("change keyup",'input[name="placement_username"]',function(){
+			usernameCheck($(this),'.placement_username_check_status');
+		});
+		
+		$(document).on("change keyup",'input[name="username"]',function(){
+			usernameCheck($(this),'.username_check_status');
 		});
 	});
 </script>

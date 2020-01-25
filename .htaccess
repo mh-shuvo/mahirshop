@@ -5,11 +5,7 @@ Options -MultiViews -Indexes
 
 Options -MultiViews -Indexes
 
-
-
 RewriteEngine On
-
-
 
 # Handle Authorization Header
 
@@ -31,7 +27,7 @@ RewriteRule ^ %1 [L,R=301]
 
 # Handle Front Controller...
 
-RewriteCond %{REQUEST_URI} !(\.css|\.js|\.png|\.jpg|\.gif|robots\.txt)$ [NC]
+RewriteCond %{REQUEST_URI} !(\.css|\.js|\.png|\.ico|\.woff|\.woff2|\.ttf|\.jpg|\.gif|robots\.txt)$ [NC]
 
 RewriteCond %{REQUEST_FILENAME} !-d
 
@@ -45,8 +41,10 @@ RewriteCond %{REQUEST_FILENAME} !-d
 
 RewriteCond %{REQUEST_FILENAME} !-f
 
+
+
 RewriteCond %{REQUEST_URI} !^/public/
 
-RewriteRule ^(css|js|images)/(.*)$ public/$1/$2 [L,NC]
+RewriteRule ^(.*)$ public/$1 [L]
 
 </IfModule>
