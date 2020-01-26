@@ -64,7 +64,7 @@
 
 
 
-@section('js')
+@section('extra_js')
 <script type="text/javascript">
     /*Porduct Modal Start*/
       
@@ -86,7 +86,7 @@
             $("#brand_id").html(res.brand_id);
             $("#category_id").html(res.category_id);
             
-            $("#modal_box").modal("show");
+            $("#productView").modal("show");
           }
         });  
       });
