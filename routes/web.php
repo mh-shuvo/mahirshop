@@ -21,6 +21,7 @@
 	Route::get('checkout','webController@Checkout')->name('checkout')->middleware('auth');
 	Route::get('order-complete/{id}','webController@userOrderComplete')->name('shopping.order.complete')->middleware('auth');
 	Route::get('product/category/{id}', 'webController@ProductByCategory')->name('product.category');
+	Route::get('get_product/', 'webController@GetProductById')->name('product.get');
 	Route::get('product/brand/{id}', 'webController@ProductByBrand')->name('product.brand');
 	Route::get('product/{id}', 'webController@SingleProduct')->name('product.single');
 	Route::get('product/cart/update', 'webController@AddProductToCart')->name('product.cart.update');

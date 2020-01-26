@@ -450,6 +450,10 @@
 
 <script src="{{ asset('public') }}/js/form.js" ></script>
 <script src="{{ asset('public') }}/js/custom.js" ></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="{{asset('public/frontend/assets/js/jquery-ui.min.js')}}"></script>
 <script src="{{asset('public/frontend/assets/js/jquery.countdown.min.js')}}"></script>
@@ -461,9 +465,6 @@
 <script src="{{asset('public/frontend/assets/js/numscroller-1.0.js')}}"></script>
 <script src="{{asset('public/frontend/assets/js/vanilla-tilt.min.js')}}"></script>
 <script src="{{asset('public/frontend/assets/js/main.js')}}"></script>
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-		  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-		  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
 <script src="{{asset('public/frontend/assets/js/owl.carousel.min.js')}}"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
