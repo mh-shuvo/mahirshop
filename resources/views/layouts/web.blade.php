@@ -21,87 +21,96 @@
 		<link rel="stylesheet" href="{{asset('public/frontend/assets/css/owl.theme.default.min.css')}}">
 		<link rel="stylesheet" href="{{asset('public/frontend/assets/css/style.css')}}">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+		 
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 		<style type="text/css">
 
-  .slick-list{
-  height: 585px;;
-  }
-  .slick-track{
-  height: 100%;
-  }
-  .patternbg {
-      background-image: url(public/frontend/assets/img/pattern-1.jpg);
-      background-attachment: fixed;
-      width: 100%;
-      background-size: cover;
-      background-position: center center;
-      height:70%;
-  }
-  .video_gallery .row iframe{
-    transition: transform 1s;
-    border-radius: 10px;
-  }
-  .video_gallery .row iframe:hover{
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    transform: scale(1.1);
-  }
-   .carousel-inner img {
-      width: 100%;
-      height: 100%;
-    }
-  
-    /*Second Carousel start*/
-  
-  .coustom_carousell .item img{
-      height:160px;
-      width:160px;
-      border-radius: 50%;
-      margin:0 auto;
-  }
-  .coustom_carousell .item:hover img{
-      opacity: 0.8;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  }
-  .fa {
-    padding: 10px;
-    font-size: 10px;
-    width: 30px;
-    text-align: center;
-    text-decoration: none;
-    margin: 5px 2px;
-    border-radius: 50%;
-    transition: transform .6s;
-  }
-  .fa-facebook {
-    background: #3B5998;
-    color: white;
-  
-  }
-  
-  .fa-twitter {
-    background: #55ACEE;
-    color: white;
-  }
-  
-  .fa-google {
-    background: #dd4b39;
-    color: white;
-  }
-  .fa-youtube {
-    background: #dd4b39;
-    color: white;
-  }
-  
-  .fa-linkedin {
-    background: #007bb5;
-    color: white;
-  }
-  .fa:hover{
-      color: #90CF53;
-      opacity: 0.7;
-      transform: scale(1.2);
-  }
+		  .slick-list{
+		  height: 585px;;
+		  }
+		  .slick-track{
+		  height: 100%;
+		  }
+		.patternbg {
+		      background-image: url(public/frontend/assets/images/pattern-1.jpg);
+		      background-attachment: fixed;
+		      width: 100%;
+		      background-size: cover;
+		      background-position: center center;
+		      height:70%;
+		  }
+		  .video_gallery .row iframe{
+		    transition: transform 1s;
+		    border-radius: 10px;
+		  }
+		  .video_gallery .row iframe:hover{
+		    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		    transform: scale(1.1);
+		  }
+		   .carousel-inner img {
+		      width: 100%;
+		      height: 100%;
+		    }
+		  
+		    /*Second Carousel start*/
+		  
+		    /*Second Carousel start*/
+		    .owl-carousel .item{
+		      padding:20px 0px;
+		    }
+		    .owl-carousel .item img{
+		        height:202px;
+		      width:160px;
+		        border-radius: 50%;
+		        transition: all .4s ease-in-out;
+		        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		        margin:0 auto;
+		    }
+		    .owl-carousel .item:hover img{
+		        opacity: 0.8;
+		        transition: all .6s ease-in-out;
+		        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		    }
+		  .fa {
+		    padding: 10px;
+		    font-size: 10px;
+		    width: 30px;
+		    text-align: center;
+		    text-decoration: none;
+		    margin: 5px 2px;
+		    border-radius: 50%;
+		    transition: transform .6s;
+		  }
+		  .fa-facebook {
+		    background: #3B5998;
+		    color: white;
+		  
+		  }
+		  
+		  .fa-twitter {
+		    background: #55ACEE;
+		    color: white;
+		  }
+		  
+		  .fa-google {
+		    background: #dd4b39;
+		    color: white;
+		  }
+		  .fa-youtube {
+		    background: #dd4b39;
+		    color: white;
+		  }
+		  
+		  .fa-linkedin {
+		    background: #007bb5;
+		    color: white;
+		  }
+		  .fa:hover{
+		      color: #90CF53;
+		      opacity: 0.7;
+		      transform: scale(1.2);
+		  }
   
 			.hide{
 			display: none;
@@ -314,7 +323,7 @@
 			  </div>
 			</div>
 		  </div>
-		  <div class="col-8 col-xl-6 col-xxxl-5 order-xl-4 order-xxxl-3">
+		  <div class="col-12 pb-4 col-xl-6 col-xxxl-5 order-xl-4 order-xxxl-3">
 			<div class="navgition-menu d-flex align-items-center justify-content-center justify-content-xl-center">
 			  <ul class="mb-0">
 				
@@ -322,6 +331,8 @@
 				<li class="toggleable"><a class="menu-item" href="{{route('shop')}}">Our Product</a></li>
 				<li class="toggleable"><a class="menu-item" href="{{route('aboutus')}}">Aboutus</a></li>
 				<li class="toggleable"><a class="menu-item" href="{{route('contactus')}}">Contactus</a></li>
+				<li class="toggleable"><a class="menu-item" href="{{route('gallery')}}">Gallery</a></li>
+				<li class="toggleable"><a class="menu-item" href="{{ route('achivers')}}">Achivers</a></li>
 			  </ul>
 			</div>
 		  </div>
@@ -336,6 +347,26 @@
 @yield('content')
 
 
+<!-- logo area start -->
+    <section class="achievers patternbg mt-5">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 text-center">
+              <div class="container text-center pt-3">
+            <h1 class="title green-underline text-center pb-2" style="font-size: 30px; font-family: 'Herr Von Muellerhoff', cursive; text-transform: uppercase; color:#90CF53;">Our Brands</h1>
+        </div>
+              <div class="owl-carousel coustom_carousel_brand">
+                @foreach(App\Brand::all() as $brand)
+                <div class="item">
+                    <img src="{{asset('public')}}/{{$brand->image}}">
+                </div>
+                @endforeach
+                </div>
+            </div>
+        </div>
+
+ 
+    </section>
+<!-- logo area end -->
 
 <!-- Footer Section Start -->
 <footer>
@@ -430,6 +461,9 @@
 <script src="{{asset('public/frontend/assets/js/numscroller-1.0.js')}}"></script>
 <script src="{{asset('public/frontend/assets/js/vanilla-tilt.min.js')}}"></script>
 <script src="{{asset('public/frontend/assets/js/main.js')}}"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+		  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
 <script src="{{asset('public/frontend/assets/js/owl.carousel.min.js')}}"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -453,6 +487,66 @@
 });
 </script>
 	
+<script>
+  $('.coustom_carousel_brand').owlCarousel({
+  loop:true,
+  margin:10,
+  nav:false,
+  autoplay: 1000,
+  responsive:{
+      0:{
+        items:0
+      },
+      600:{
+          items:1
+      },
+      1000:{
+          items:5
+      }
+  }
+});
+</script>
+<script>
+  $('.product_cat_carousel').owlCarousel({
+  loop:true,
+  margin:10,
+  nav:false,
+  autoplay: 1000,
+  responsive:{
+      0:{
+        items:0
+      },
+      600:{
+          items:1
+      },
+      1000:{
+          items:3
+      }
+  }
+});
+</script>
+<script>
+  $('.owl-carousel').owlCarousel({
+  loop:true,
+  margin:10,
+  nav:false,
+  autoplay: 1000,
+  responsive:{
+      0:{
+        items:0
+      },
+      600:{
+          items:1
+      },
+      1000:{
+          items:3
+      },
+      1500:{
+          items:5
+      }
+  }
+});
+</script>		
 	<script type="text/javascript">
 		$(document).on('click','.removeCartProduct',function(){
 			let id = $(this).data('product_id');
