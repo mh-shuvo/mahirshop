@@ -133,8 +133,7 @@
                       <button class="add-to-wishlist round-icon-btn hide"> <i class="icon_heart_alt"></i></button>
                       <button class="add-to-cart round-icon-btn">  <i class="icon_bag_alt"></i></button>
                       <button class="add-to-compare round-icon-btn hide"> <i class="fas fa-random"></i></button>
-                      <button class=" round-icon-btn"> <i class="far fa-eye"></i>
-                        <!-- <a href="javascript:void(0)" class="quickview" data-id="" data-original-title="" title=""></a> -->
+                      <button class="quickview round-icon-btn" data-id="{{$product->id}}"> <i class="far fa-eye"></i>
                       </button>
                     </div>
                   </div>
@@ -199,9 +198,8 @@
                   $totalProduct = count($category->Product);
                 @endphp
               <div class="item">
-                    <div class="container text-center pro_cat_div" style="  background-attachment: fixed; width: 55%;
-                      background-size: cover;
-                      background-position: center center; background-image: url('{{asset("public")}}/{{$category->image}}') ;">
+                    <div class="container text-center pro_cat_div" style="background-attachment: fixed; width: 55%;
+                      background-size: cover; background-position: center center; background-image: url('{{asset("public")}}/{{$category->image}}')">
                       <div class="my-4" style="height: 30%; width: 36%; margin: 0 auto;  background-color: #fff; border-radius: 50%; color:#90CF53;">
                       <h3 class="" style="line-height: 270%;">{{$totalProduct}}</h3>
                       </div>

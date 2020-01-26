@@ -447,9 +447,6 @@
 @include('modal.quickview')
 <!-- include jQuery -->
 <script src="{{asset('public/frontend/assets/js/jquery.min.js')}}"></script>
-
-<script src="{{ asset('public') }}/js/form.js" ></script>
-<script src="{{ asset('public') }}/js/custom.js" ></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
@@ -468,6 +465,8 @@
 
 <script src="{{asset('public/frontend/assets/js/owl.carousel.min.js')}}"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="{{ asset('public') }}/js/form.js" ></script>
+<script src="{{ asset('public') }}/js/custom.js" ></script>
 <script>
   $('.coustom_carousell').owlCarousel({
   loop:true,
@@ -597,11 +596,9 @@
 			$(".tt-cart-total-price").html(data.price_subtotal)
 		}
 
-		$(document).on('click', '.quickview', function(event) {
-			$('#productView').modal('toggle');
-		});
 		
 	</script>
 	@yield('js')
+	@yield('extra_js')
 </body>
 </html>	
