@@ -112,7 +112,7 @@
                         @foreach ($products as $product)
                       <div class="col-6 col-md-4">
                         <div class="product">
-                        <div class="product-img_block"><a class="product-img" href="shop_detail.html"><img src="{{asset('public/frontend/assets/images/img1.jpg')}}"alt=""></a>
+                        <div class="product-img_block"><a class="product-img" href="shop_detail.html"><img src="{{asset('public')}}/{{$product->product_image}}"alt=""></a>
                             <button class="quickview no-round-btn smooth">Quick view</button>
                           </div>
                           <div class="product-info_block">
@@ -120,25 +120,26 @@
                           <h3 class="product-price py-3">{{$product->product_discount_price}} 
                           <del>{{$product->product_base_price}}</del>
                             </h3>
-                            <h5 class="product-rated"><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star-half"></i><span>(5)</span></h5>
+                            <!-- <h5 class="product-rated"><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star-half"></i><span>(5)</span></h5>
                             <p class="product-describe">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor niam</p>
                             <h5 class="product-avaiable">Avability: <span>5 In stock</span></h5>
-                            <button class="add-to-wishlist button-borderless"><i class="icon_heart_alt"></i></button>
+                            <button class="add-to-wishlist button-borderless"><i class="icon_heart_alt"></i></button> -->
                           </div>
                           <div class="product-select">
                             <button class="add-to-wishlist round-icon-btn hide"> <i class="icon_heart_alt"></i></button>
-                            <button class="add-to-cart round-icon-btn">  <i class="icon_bag_alt"></i></button>
-                            <button class="add-to-compare round-icon-btn"> <i class="fas fa-random"></i></button>
-                            <button class="quickview round-icon-btn"> <i class="far fa-eye"></i></button>
+                            <button class="add-to-cart round-icon-btn hide">  <i class="icon_bag_alt"></i></button>
+                            <button class="add-to-compare round-icon-btn hide"> <i class="fas fa-random"></i></button>
+                            <button class="quickview round-icon-btn" data-id="{{$product->id}}"> <i class="far fa-eye"></i>
+                            </button>
                           </div>
-                          <div class="product-select_list">
+                          <!-- <div class="product-select_list">
                             <p class="delivery-status">Free delivery</p>
                             <h3 class="product-price"> 
                               <del>$35.00</del>$14.00
                             </h3>
                             <button class="add-to-cart normal-btn outline">Add to Cart</button>
                             <button class="add-to-compare normal-btn outline">+ Add to Compare</button>
-                          </div>
+                          </div> -->
                         </div>
                       </div>
                       @endforeach

@@ -17,7 +17,7 @@
                       <div class="tab-pane fade show active" id="tab1" role="tabpanel" >
                         <div class="modal_tab_img">
                           <a href="javascript:void(0)">
-                            <img src="{{asset('public/image-not-found.png')}}" id="product_image" style="height: 100px; width: 150px;">
+                            <img src="{{asset('public/image-not-found.png')}}" id="product_image" style="height: 200px; width: 170px;">
                           </a>    
                         </div>
                       </div>
@@ -29,26 +29,26 @@
                     <div class="modal_title mb-10 ">
                       <h2 class="float-left pr-2">Name: </h2>
                       <h2 id="product_name"></h2> 
-                    </div><br>
+                    </div>
                     <div class="variants_selects">
                       <div class="variants_size">
                         <lebel class="float-left pr-2 text-uppercase width-bold">Brand Name: </lebel>
                         <p id="brand_id"> </p>
-                      </div><br>
+                      </div>
                       <div class="variants_color">
                         <lebel class="float-left pr-2 width-bold text-uppercase">Category Name: </lebel>
                         <p id="category_id"> </p>
-                      </div><br>
+                      </div>
                     </div> 
                     <div class="modal_price mb-10">
                       <lebel class="float-left width-bold  pr-2 bold text-uppercase">PRICE: </lebel>
                       <span class="new_price" id="product_discount_price"> </span> TK    
-                      <span class="old_price" id="product_base_price"> </span>    
-                    </div><br>
+                      <del><span class="old_price" id="product_base_price"> </span>TK</del>    
+                    </div> <br>
                     <div class="modal_description mb-15" >
                       <lebel class="float-left width-bold  pr-2 text-uppercase text-bold">DESCRIPTION: </lebel>
                       <p id="product_des"> </p>    
-                    </div> <br>   
+                    </div>
                   </div>    
                 </div>    
               </div>     
@@ -56,7 +56,6 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>

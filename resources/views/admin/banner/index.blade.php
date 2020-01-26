@@ -7,7 +7,7 @@
 
 @section('content')
 <div class="card">
-		<div class="card-header">
+		<div class="card-header text-right">
 		<a href="{{route('admin.banner.create')}}" class="btn btn-sm btn-primary"> <i class="fa fa-plus"></i> Banner</a>
 		</div>
 		<div class="card-body">

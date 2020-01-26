@@ -77,7 +77,7 @@
             <div class="row">
                 <div class="col-12">
                    <div class=" text-center">
-                    <h1 style="font-size: 50px;  text-transform: uppercase; font-family: 'Herr Von Muellerhoff', cursive; text-transform: uppercase; padding-top: 20px;  color:#90CF53;">Achivers</h1>
+                    <h1 style="font-size: 50px;  text-transform: uppercase; font-family: 'Herr Von Muellerhoff', cursive; text-transform: uppercase; padding-top: 20px;  color:#000;">Achivers</h1>
                    </div>
                  </div>
                </div>
@@ -90,7 +90,7 @@
               <div>
                   <button class="btn btn-default filter-button" data-filter="all">All</button>
                   @foreach(App\Designation::where('status','active')->get() as $row)
-              <button class="btn btn-default filter-button" data-filter="designation_{{$row->id}}">@php echo strtoupper($row->designation_name); @endphp</button>
+              <button class="btn btn-dark filter-button" data-filter="designation_{{$row->id}}">@php echo strtoupper($row->designation_name); @endphp</button>
                   @endforeach
               </div>
               </div>

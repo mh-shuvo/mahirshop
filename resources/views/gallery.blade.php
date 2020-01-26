@@ -5,7 +5,7 @@
 @section('content')
 	
     <!--breadcrumbs area start-->
-    <div class="breadcrumbs_area">
+   <!--  <div class="breadcrumbs_area">
         <div class="">   
             <div class="row">
                 <div class="col-12">
@@ -15,7 +15,7 @@
                 </div>
             </div>
         </div>         
-    </div>
+    </div> -->
     <!--breadcrumbs area end-->
     
     <!--about section area -->
@@ -24,7 +24,7 @@
             <div class="row">
                 <div class="col-12">
                    <div class=" text-center">
-                    <h1 style="font-size: 30px;  text-transform: uppercase; font-family: 'Herr Von Muellerhoff', cursive; text-transform: uppercase; padding-top: 20px;  color:#90CF53;">Gallery</h1>
+                    <h1 style="font-size: 30px;  text-transform: uppercase; font-family: 'Herr Von Muellerhoff', cursive; text-transform: uppercase; padding-top: 20px;  color:#000;">Gallery</h1>
                    </div>
                  </div>
                </div>
@@ -34,11 +34,11 @@
        <section>
           <div class="container">
               <div class="text-center">
-                <div>
+                <div class="py-5">
                     <button class="btn btn-default filter-button" data-filter="all">All</button>
 
                     @foreach(App\CategoryGallery::where('status','Active')->get() as $row)
-                        <button class="btn btn-default filter-button" data-filter="{{$row->id}}">{{$row->name}}</button>
+                        <button class="btn btn-dark filter-button" data-filter="{{$row->id}}">{{$row->name}}</button>
                     @endforeach
 
 

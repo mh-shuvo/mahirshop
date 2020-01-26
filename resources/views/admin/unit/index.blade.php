@@ -9,8 +9,8 @@
 	<div class="card">
 		<div class="card-card">
 		    <h3 class="card-title">Unit List</h3>
-		    <div class="card-options">
-		        <button type="button" class="btn btn-sm btn-outline-primary add_unit">Add Unit</button>
+		    <div class="card-options text-right pr-2">
+		        <button type="button" class="btn btn-sm btn-primary add_unit">Add Unit</button>
 		    </div>
 		</div>
 		<div class="card-body">

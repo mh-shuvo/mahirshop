@@ -274,10 +274,10 @@
 		<div class="row border-bottom">
 			<div class="col-md-6 col-sm-12 py-4">
 				<div class="logo pl-5">
-				<a href="{{route('welcome')}}" style="font-size:25px; text-decoration:none; color: #88C74A;"><img src="#" alt=""><b>MaHiR sHoP</b></a>
+				<a href="{{route('welcome')}}" style="font-size:25px; text-decoration:none; color: #88C74A;"><!-- <img src="#" alt=""> --><b>MaHiR sHoP</b></a>
 				</div>
 			</div>
-			<div class="col-md-6 col-sm-12 text-right py-4">
+			<div class="col-md-6 col-sm-12 text-right py-4 hide">
 				<div class="d-flex text-right" style="float:right;">
 					<a href="#" style="color:black; font-size:25px;">
 						<i class="far fa-heart"></i>
@@ -352,7 +352,7 @@
         <div class="row">
             <div class="col-md-12 col-sm-12 text-center">
               <div class="container text-center pt-3">
-            <h1 class="title green-underline text-center pb-2" style="font-size: 30px; font-family: 'Herr Von Muellerhoff', cursive; text-transform: uppercase; color:#90CF53;">Our Brands</h1>
+            <h1 class="title green-underline text-center pb-2" style="font-size: 30px; font-family: 'Herr Von Muellerhoff', cursive; text-transform: uppercase; color:#EEEEEE;">Our Brands</h1>
         </div>
               <div class="owl-carousel coustom_carousel_brand">
                 @foreach(App\Brand::all() as $brand)
