@@ -493,5 +493,17 @@
 		{
 			return Optimus::connection('main')->decode($id);
 		}
+		public function GetProductById(Request $request)
+		{
+			$result = Product::where('id', $request->product_id)->first();
+			if (!file_exists(public_path($result->product_image)) || $result->product_image == null) {
+				$result->product_image = 'image-not-found.png';
+			}
+			$result->category_id = $result->Category->category_name;
+			$result->brand_id = $result->Brand->brand_name;
+			return response([
+			'data' => $result
+			]);
+		}
 		
 	}

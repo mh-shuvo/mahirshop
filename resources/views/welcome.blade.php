@@ -124,16 +124,18 @@
                 @foreach($featured_products as $product)
                 <div class="col-6 col-md-4 col-lg-3 col-xxl-2">
                 <div class="product borderless"><a class="product-img" href="shop_detail.html"><img src="{{asset('public/frontend/assets/images/img1.jpg')}}" alt=""></a>
-                    <h5 class="product-type">Oranges</h5>
-                    <h3 class="product-name">Pure Pineapple</h3>
-                    <h3 class="product-price">$14.00 
-                      <del>$35.00</del>
+                    <h5 class="product-type">{{$product->category->category_name}}</h5>
+                    <h3 class="product-name">{{$product->product_name}}</h3>
+                    <h3 class="product-price">{{$product->product_discount_price}} TK 
+                      <del>{{$product->product_base_price}} TK</del>
                     </h3>
                     <div class="product-select">
                       <button class="add-to-wishlist round-icon-btn hide"> <i class="icon_heart_alt"></i></button>
                       <button class="add-to-cart round-icon-btn">  <i class="icon_bag_alt"></i></button>
                       <button class="add-to-compare round-icon-btn hide"> <i class="fas fa-random"></i></button>
-                      <button class="quickview round-icon-btn"> <i class="far fa-eye"></i></button>
+                      <button class=" round-icon-btn"> <i class="far fa-eye"></i>
+                        <!-- <a href="javascript:void(0)" class="quickview" data-id="" data-original-title="" title=""></a> -->
+                      </button>
                     </div>
                   </div>
                 </div>
