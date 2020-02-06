@@ -33,10 +33,10 @@
 	{
 		use UserTrait,TopupTrait,StockTrait,PointTrait;
 		
-		public function __construct()
-		{
-			$this->middleware('auth');
-		}
+		// public function __construct()
+		// {
+		// 	$this->middleware('auth');
+		// }
 		
 		public function index(){
 			$banners = Banner::where('banner_type','Slide')->where('banner_status','active')->get();
