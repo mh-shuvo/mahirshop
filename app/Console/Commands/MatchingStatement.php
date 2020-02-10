@@ -175,12 +175,12 @@
 			}
 			
 			// if($totalMatching['matching_l'] > 0 && $totalMatching['matching_r'] > 0 && $getMember->last_matching < Carbon::now()->format('Y-m-d') ){
-			if($totalMatching['matching_l'] > 0 && $totalMatching['matching_r'] > 0){
+			if($totalMember['premium_l'] > 0 && $totalMember['premium_r'] > 0){
 				$totalMachingCount = 0;
-				if($totalMatching['matching_l'] >= $totalMatching['matching_r']){
-					$totalMachingCount= $totalMatching['matching_r'];
-					}elseif($totalMatching['matching_l'] <= $totalMatching['matching_r']){
-					$totalMachingCount= $totalMatching['matching_l'];
+				if($totalMember['premium_l'] >= $totalMember['premium_r']){
+					$totalMachingCount= $totalMember['premium_r'];
+					}elseif($totalMember['premium_l'] <= $totalMember['premium_r']){
+					$totalMachingCount= $totalMember['premium_l'];
 				}
 				
 				// Flashing Condition
@@ -190,6 +190,7 @@
 					$newMatching = $totalMachingCount;
 				}
 				
+				$newMatching = $this->matchingCount($newMatching,config('mlm.matching_target'));
 				
 				if($newMatching > 0){
 					if($newMatching >= config('mlm.daily_matching')){
@@ -199,7 +200,7 @@
 					}
 					
 					// Matching Bonus
-					if($matchingBonush > 0){
+					if($matchingBonush > 3){
 						$matchingBonushAmount = $matchingBonush * config('mlm.matching_bonus');
 						$memberBonusData = new MemberBonus();
 						$memberBonusData->bonus_type = 'matching';
@@ -208,59 +209,49 @@
 						$memberBonusData->details = 'You have received '.$matchingBonushAmount.' TK for '.$matchingBonush.' Matching Bonus';
 						$memberBonusData->save();
 						
-						// Mega Matching Bonus
-						$megaMatchingBonus = (config('mlm.mega_bonus_percentage') / 100) * $matchingBonushAmount;
-						if($getMember['sponsor_id']){
-							$memberBonusData = new MemberBonus();
-							$memberBonusData->bonus_type = 'mega_matching';
-							$memberBonusData->user_id = $getMember['sponsor_id'];
-							$memberBonusData->amount = $megaMatchingBonus;
-							$memberBonusData->details = 'You have received '.$megaMatchingBonus.' TK Mega Matching Bonus from '.$getMember->Sponsor->username;
-							$memberBonusData->save();
-						}
+						$getMember->paid_matching = $totalMachingCount + $getMember['paid_matching'];
+						$getMember->total_matching = $totalMachingCount;
+						$getMember->last_matching = Carbon::now();
+						$checkUpdate = true;
 					}
-					$getMember->paid_matching = $matchingBonush + $getMember['paid_matching'];
-					$getMember->total_matching = $totalMachingCount;
-					$getMember->last_matching = Carbon::now();
-					$checkUpdate = true;
 				}
 				
 				//Designation Upgrade
-				if(config('mlm.incentives.plan0.condition') <= $totalMachingCount){
-					$i = -1;
-					foreach(config('mlm.incentives') as $key => $value){
-						if($i == -1){
-							$planName = null;
-							}else{
-							$planName = config('mlm.incentives.plan'.$i.'.name');
-						}
-						
-						if($getMember['designation'] == $planName && $value['condition_type'] == 'matching' && $value['condition'] <= $totalMachingCount){
-							$getMember->designation = $value['name'];
-							$getMember->incentive_start_from = Carbon::now();
-							
-							$designationData = new Designation();
-							$designationData->user_id = $getMember['user_id'];
-							$designationData->designation_title = $value['title'];
-							$designationData->designation_name = $value['name'];
-							$designationData->status = 'active';
-							$designationData->save();
-							$checkUpdate = true;
-							}elseif($getMember['designation'] == $value['condition_type'] && $this->getRatioCheck($totalPlanL[$planName], $totalPlanR[$planName],$value['l_condition'],$value['r_condition'])){
-							$getMember->designation = $value['name'];
-							$getMember->incentive_start_from = Carbon::now();
-							
-							$designationData = new Designation();
-							$designationData->user_id = $getMember['user_id'];
-							$designationData->designation_title = $value['title'];
-							$designationData->designation_name = $value['name'];
-							$designationData->status = 'active';
-							$designationData->save();
-							$checkUpdate = true;
-						}
-						$i++;
-					}
-				}
+				// if(config('mlm.incentives.plan0.condition') <= $totalMachingCount){
+				// $i = -1;
+				// foreach(config('mlm.incentives') as $key => $value){
+				// if($i == -1){
+				// $planName = null;
+				// }else{
+				// $planName = config('mlm.incentives.plan'.$i.'.name');
+				// }
+				
+				// if($getMember['designation'] == $planName && $value['condition_type'] == 'matching' && $value['condition'] <= $totalMachingCount){
+				// $getMember->designation = $value['name'];
+				// $getMember->incentive_start_from = Carbon::now();
+				
+				// $designationData = new Designation();
+				// $designationData->user_id = $getMember['user_id'];
+				// $designationData->designation_title = $value['title'];
+				// $designationData->designation_name = $value['name'];
+				// $designationData->status = 'active';
+				// $designationData->save();
+				// $checkUpdate = true;
+				// }elseif($getMember['designation'] == $value['condition_type'] && $this->getRatioCheck($totalPlanL[$planName], $totalPlanR[$planName],$value['l_condition'],$value['r_condition'])){
+				// $getMember->designation = $value['name'];
+				// $getMember->incentive_start_from = Carbon::now();
+				
+				// $designationData = new Designation();
+				// $designationData->user_id = $getMember['user_id'];
+				// $designationData->designation_title = $value['title'];
+				// $designationData->designation_name = $value['name'];
+				// $designationData->status = 'active';
+				// $designationData->save();
+				// $checkUpdate = true;
+				// }
+				// $i++;
+				// }
+				// }
 			}
 			
 			$totalMemberDetails = [
@@ -279,6 +270,19 @@
 			
 			return $totalMemberDetails;
 			
+		}
+		
+		
+		private function matchingCount($value,$compareValue,$count = 0){
+			if($value >= $compareValue){
+				$count++;
+				$compareValues = $compareValue * $count + $compareValue;
+				if($value >= $compareValues){
+					$count = $this->matchingCount($value,$compareValue,$count);
+				}
+			}
+			
+			return $count;
 		}
 		
 		private function getRatioCheck($lMember, $rMember,$lCondition,$rCondition){

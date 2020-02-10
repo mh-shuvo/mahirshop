@@ -24,7 +24,8 @@
 	'withdrawal_charge' => '10',
 	
 	'daily_matching' => '80',
-	'matching_bonus' => '250',
+	'matching_bonus' => '300',
+	'matching_target' => '3',
 	
 	'dealer_bonus_pv' => '25',
 	'dealer_bonus' => '250',

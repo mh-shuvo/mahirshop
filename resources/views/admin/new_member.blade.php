@@ -4,7 +4,7 @@
 	<div class="card">
 		<div class="card-body">
 			<div class="row">
-				<div class="form-group col-sm-4">
+				<div class="form-group col-sm-3">
 					<label class="control-label">Signup Package:</label>
 					<select class="form-control form-control-sm" name="select_package">
 						<option>Select Package</option>
@@ -13,11 +13,27 @@
 						@endforeach
 					</select>
 				</div>
-				
-				<div class="form-group col-sm-4">
+				<div class="form-group col-sm-3">
 					<label class="control-label"> Sponsor Username</label>
 					<input type="text" name="sponsor_id" class="form-control form-control-sm" placeholder="Sponsor Username" autocomplete="off">
 					<span class="col-form-label sponsor_check_status"></span>
+				</div>
+				<div class="form-group col-sm-3">
+					<label class="control-label">Placement Username:</label>
+					<input type="text" name="placement_username" placeholder="Placement Username" class="form-control" autocomplete="off">
+					<span class="col-form-label placement_username_check_status"></span>
+				</div>
+				<div class="form-group col-sm-3">
+					<label class="control-label"> Team Select</label>
+					<br>
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio" name="placement_position" id="placement_position" value="A">
+						<label class="form-check-label" for="placement_position">Team A</label>
+					</div>
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio" name="placement_position" id="placement_position" value="B">
+						<label class="form-check-label" for="placement_position">Team B</label>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -99,7 +115,7 @@
 						success: function (responseText, statusText, xhr, $form) {
 							formSuccess(responseText, statusText, xhr, $form);
 							$('.sponsor_check_status').html('');
-							$('.placement_check_status').html('');
+							$('.placement_username_check_status').html('');
 						},
 						resetForm:true
 					});
@@ -114,11 +130,11 @@
 			usernameCheck($(this),'.sponsor_check_status');
 		});
 		
-		$(document).on("change keyup",'input[name="placement_id"]',function(){
-			usernameCheck($(this),'.placement_check_status');
+		$(document).on("change keyup",'input[name="placement_username"]',function(){
+			usernameCheck($(this),'.placement_username_check_status');
 		});
 		
 	})
 </script>
 
-@endsection																																																
+@endsection																																																											

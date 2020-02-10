@@ -31,8 +31,21 @@
 		
 		public function CreateMember()
 		{
+		return  $this->matchingCount(4,3);
 			$packages = Package::where("package_type","signup")->get();
 			return view('admin.new_member',compact('packages'));
+		}
+		
+		private function matchingCount($value,$compareValue,$count = 0){
+			if($value >= $compareValue){
+				$count++;
+				$compareValues = $compareValue * $count + $compareValue;
+				if($value >= $compareValues){
+					$count = $this->matchingCount($value,$compareValue,$count);
+				}
+			}
+			
+			return $count;
 		}
 		
 		public function changePlacement(Request $request)
@@ -82,27 +95,20 @@
 			$request->validate([
             'sponsor_id' => 'required',
             'name' => 'required',
-            'username' => 'required',
-            'phone' => 'required',
-            'select_package' => 'required',
-            'password' => ['required','min:8'],
-            ]);
-            
-            $data['sponsor_id'] = $this->getIdByUsername($request->sponsor_id);
-            $data['name'] = $request->name;
-            $data['email'] = $request->email;
-            $data['username'] = $request->username;
-            $data['phone'] = $request->phone;
-            $data['password'] = $request->password;
+			'username' => 'required',
+			'phone' => 'required',
+			'select_package' => 'required',
+			'password' => ['required','min:8'],
+			]);
 			
-			
-			// 			if(Auth::user()->hasRole('user')){
-			// 				return response()->json([
-			// 				'status' => 'errors',
-			// 				'message' => 'Access Denied'
-			// 				],422);
-			
-			// 			}
+			$data['sponsor_id'] = $this->getIdByUsername($request->sponsor_id);
+			$data['name'] = $request->name;
+			$data['email'] = $request->email;
+			$data['username'] = $request->username;
+			$data['phone'] = $request->phone;
+			$data['password'] = $request->password;
+			$data['placement_id'] = $this->getIdByUsername($request->placement_username);
+			$data['placement_position'] = $request->placement_position;
 			
 			if(!$this->getUsernameCheck($request->sponsor_id)){
 				return response()->json([
@@ -135,6 +141,19 @@
 				}
 			}
 			
+			if($data['placement_position'] == 'A'){
+				$data['placement_position'] = 'l_id';
+				}else{
+				$data['placement_position'] = 'r_id';
+			}
+			
+			if(!$this->getPlacementCheck($data['placement_id'],$data['placement_position'])){
+				return response()->json([
+				'status' => 'errors',
+				'message' => 'Placement Position Is Not Available'
+				],422);
+			}
+			
 			$newUser = new User();
 			$newUser->name = $data['name'];
 			$newUser->email = $data['email'];
@@ -151,7 +170,6 @@
 			$newMemberTree->user_id = $newUser->id;
 			$newMemberTree->sponsor_id = $data['sponsor_id'];
 			
-			
 			if(config('mlm.premium_package_value') <= $getPackage->package_value){
 				$newMemberTree->is_premium = Carbon::now();
 				
@@ -162,6 +180,11 @@
 			}
 			
 			$newMemberTree->save();
+			
+			MemberTree::where('user_id', $data['placement_id'])
+			->update([
+            $data['placement_position'] => $newUser->id,
+			]);
 			
 			$sponsorBonusAmount = (config('mlm.sponsor_bonus_percentage') / 100) * $getPackage->package_value;
 			
@@ -206,24 +229,24 @@
 				// $dailyRepurchaseCashBackAmount = $dailyRepurchaseCashBack / $dailyRepurchaseCashBackCount;
 				
 				if($getPackage->package_value >= config('mlm.premium_package_value')){
-				    $dailyBonusMembers = MemberTree::whereNotNull('is_premium')->where("is_renewed",">=",Carbon::now())->get();
+					$dailyBonusMembers = MemberTree::whereNotNull('is_premium')->where("is_renewed",">=",Carbon::now())->get();
 					$dailyPremiumCashBack = (config('mlm.daily_cash_back_percentage') / 100) * $getPackage->package_value;
 					$dailyCashBackAmount = $dailyPremiumCashBack / $dailyBonusMembers->count();
 					}else{
-				    $dailyBonusMembers = MemberTree::where("is_renewed",">=",Carbon::now())->get();
-				    $dailyCashBack = (config('mlm.daily_cash_back_percentage') / 100) * $getPackage->package_value;
+					$dailyBonusMembers = MemberTree::where("is_renewed",">=",Carbon::now())->get();
+					$dailyCashBack = (config('mlm.daily_cash_back_percentage') / 100) * $getPackage->package_value;
 					$dailyCashBackAmount = $dailyCashBack / $dailyBonusMembers->count();
 				}
 				
 				if($dailyBonusMembers){
 					foreach($dailyBonusMembers as $dailyBonusMember){
-					    if($dailyCashBackAmount > 0){
-    						$dailyCashBackBonusData = new MemberBonus();
-    						$dailyCashBackBonusData->bonus_type = 'daily_cash_back';
-    						$dailyCashBackBonusData->user_id = $dailyBonusMember->user_id;
-    						$dailyCashBackBonusData->amount = $dailyCashBackAmount;
-    						$dailyCashBackBonusData->details = 'You have received '.number_format($dailyCashBackAmount, 2).' TK Daily Cash Back Bonus from '.$newUser->username;
-    						$dailyCashBackBonusData->save();
+						if($dailyCashBackAmount > 0){
+							$dailyCashBackBonusData = new MemberBonus();
+							$dailyCashBackBonusData->bonus_type = 'daily_cash_back';
+							$dailyCashBackBonusData->user_id = $dailyBonusMember->user_id;
+							$dailyCashBackBonusData->amount = $dailyCashBackAmount;
+							$dailyCashBackBonusData->details = 'You have received '.number_format($dailyCashBackAmount, 2).' TK Daily Cash Back Bonus from '.$newUser->username;
+							$dailyCashBackBonusData->save();
 						}
 					}
 				}
