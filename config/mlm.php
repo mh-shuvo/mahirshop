@@ -8,12 +8,12 @@
 	'district' => 'Dhaka'
 	],
 	
-	'sponsor_bonus_percentage' => '10',
+	'sponsor_bonus_percentage' => '5',
 	'lavel_1_gen_bonus_percentage' => '16',
 	'lavel_2_gen_bonus_percentage' => '12',
 	'lavel_3_to_20_gen_bonus_percentage' => '4',
 	'gen_bonus_percentage' => '8.5',
-	'bonus_start_from' => '1000',
+	'bonus_start_from' => '200',
 	'renew_purchase_value' => '1000',
 	'premium_package_value' => '3000',
 	'daily_cash_back_percentage' => '20',

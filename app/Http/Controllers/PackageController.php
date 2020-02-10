@@ -21,19 +21,19 @@
 		public function Packages(){
 			return view('admin.packages');
 		}
+		
+		
 		public function upgrade(Request $request)
 		{
-
-			
 			$request->validate([
 			'package_id' => 'required',
 			]);
 			
 			return response([
-				'status' => 'success',
-				'message' => 'Your Package ID is'.$request->package_id
+			'status' => 'success',
+			'message' => 'Your Package ID is'.$request->package_id
 			]);
-
+			
 			exit();
 			if(!$this->getTxnPinCheck($request->txn_pin)){
 				return response()->json([
@@ -81,7 +81,7 @@
 				$checkUpdate = true;
 				$getPackageTitle = 'Designation : '.$designationData->designation_title.' ('.$getPackage->title.')';
 			}
-
+			
 			Point::create([
 			'user_id' => $getMember->id,
 			'from_user_id' =>  $getMember->id,
@@ -99,16 +99,18 @@
 			'message' => 'Your account successfully upgrade to Premium'
 			]);
 		}
+		
 		public function renew(Request $request){
 			$request->validate([
 			'package_id' => 'required',
 			]);
 			
 			return response([
-				'status' => 'success',
-				'message' => 'Your Package ID is'.$request->package_id
+			'status' => 'success',
+			'message' => 'Your Package ID is'.$request->package_id
 			]);
 		}
+		
 		public function AddPackage (Request $request) {
 			
 			$request->validate([
@@ -144,27 +146,26 @@
 		
 		public function PackageList()
 		{
-		
-		$Package = Package::orderBy('id','desc')->get();
-		
-		$data = Datatables::of($Package)
-		->addColumn('action', function (Package $Package){
-		return '<a href="javascript:void(0)" class="btn btn-info btn-sm packageEdit" package_id="'.$Package->id.'" title="'.$Package->title.'" package_type="'.$Package->package_type.'" package_value="'.$Package->package_value.'" package_details="'.$Package->package_details.'" is_default="'.$Package->is_default.'" package_status="'.$Package->package_status.'">Edit</a>
-		<a href="javascript:void(0)" class="btn btn-danger btn-sm packageDelete" package_id="'.$Package->id.'">Delete</a>';
-		})
-		
-		->toJson();
-		return $data;
+			
+			$Package = Package::orderBy('id','desc')->get();
+			
+			$data = Datatables::of($Package)
+			->addColumn('action', function (Package $Package){
+				return '<a href="javascript:void(0)" class="btn btn-info btn-sm packageEdit" package_id="'.$Package->id.'" title="'.$Package->title.'" package_type="'.$Package->package_type.'" package_value="'.$Package->package_value.'" package_details="'.$Package->package_details.'" is_default="'.$Package->is_default.'" package_status="'.$Package->package_status.'">Edit</a>
+				<a href="javascript:void(0)" class="btn btn-danger btn-sm packageDelete" package_id="'.$Package->id.'">Delete</a>';
+			})
+			
+			->toJson();
+			return $data;
 		}
 		public function PackageDelete($id)
 		{
-		$data = Package::find($id);
-		$data->delete();
-		
-		return response([
-		"status" => "Success"
-		]);
+			$data = Package::find($id);
+			$data->delete();
+			
+			return response([
+			"status" => "Success"
+			]);
 		}
 		
-		}
-				
+	}

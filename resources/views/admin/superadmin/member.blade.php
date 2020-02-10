@@ -11,7 +11,7 @@
 		<div class="row">
 			<div class="col-sm-12">
 				<a href="{{route('admin.superadmin.member.create')}}" class="btn btn-primary btn-sm pull-right"> <i class="fa fa-plus"></i> New Member</a>
-				<a href="javascript:void(0)" class="btn btn-primary btn-sm placement_transfer_model"> <i class="fa fa-plus"></i> Placement Change</a>
+				<a href="javascript:void(0)" class="btn btn-primary btn-sm placement_transfer_model"> <i class="fa fa-plus"></i> Renew Account</a>
 			</div>
 		</div>
 	</div>
@@ -272,32 +272,19 @@
 	<div class="modal-dialog">
         <div class="modal-content ">
             <div class="modal-header">
-            	<h4>Placement Change</h4>
+            	<h4>Renew Manualy</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="fa fa-remove"></span></button>
 			</div>
             <div class="modal-body">
-            	<form id="placementForm" action="{{route('admin.superadmin.placement')}}" method="post">
+            	<form id="renewForm" action="{{route('admin.superadmin.placement')}}" method="post">
 	                <div class="form-group">
 						<label class="control-label">Username:</label>
 	                	<input type="text" name="username" placeholder="Username" class="form-control" autocomplete="off">
 						<span class="col-form-label username_check_status"></span>
 					</div>
 					<div class="form-group">
-						<label class="control-label">Placement Username:</label>
-	                	<input type="text" name="placement_username" placeholder="Placement Username" class="form-control" autocomplete="off">
-						<span class="col-form-label placement_username_check_status"></span>
-					</div>
-					<div class="form-group">
-						<label class="control-label"> Team Select</label>
-						<br>
-						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="radio" name="placement_position" id="placement_position" value="A">
-							<label class="form-check-label" for="placement_position">Team A</label>
-						</div>
-						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="radio" name="placement_position" id="placement_position" value="B">
-							<label class="form-check-label" for="placement_position">Team B</label>
-						</div>
+						<label class="control-label">Renew For (Month):</label>
+	                	<input type="number" name="renew_for" placeholder="Renew For" class="form-control" autocomplete="off">
 					</div>
 	                <div class="form-group">
 	                	<button type="submit" class="btn waves-effect waves-light btn-primary btn-outline-primary btn-sm pull-right transferdCupon">Change</button>
@@ -323,9 +310,9 @@
 			{ title:'Phone', data: 'phone'},
 			{ title:'Transaction Pin', data: 'txn_pin'},
 			{ title:'Sponsor', data: 'sponsor'},
-			{ title:'Premium Status', data: 'premium'},
+			{ title:'Renew Date', data: 'is_renewed'},
 			{ title:'Banned Status', data: 'is_banned'},
-			{ title:'Signup Without Fees', data: 'is_signup_without_payment'},
+			{ title:'Purchase Package Value', data: 'package_value'},
 			{ title:'Joining Date', data: 'created_at'},
 			{ title:'User Type', data: 'user_type'},
 			{ title:'Action', data: 'action'},
@@ -389,7 +376,7 @@
 			});
 		});
 		
-		$('#placementForm').ajaxForm({
+		$('#renewForm').ajaxForm({
 			error: formError,
 			success: function (responseText, statusText, xhr, $form) {
 				formSuccess(responseText, statusText, xhr, $form);
@@ -410,7 +397,7 @@
 		});
 		
 		// Image Rendering
-        function readURL(input,el) {
+		function readURL(input,el) {
 			if (input.files && input.files[0]) {
 				var reader = new FileReader();
 				reader.onload = function(e) {
@@ -421,8 +408,8 @@
 			}
 		}
 		
-        $("#profile_picture").change(function() {
-            readURL(this,'#image');
+		$("#profile_picture").change(function() {
+			readURL(this,'#image');
 		});
 		$(document).on('click','.FreeSignup',function(){
 			let Id = $(this).data('id');
@@ -448,4 +435,4 @@
 	});
 </script>
 
-@endsection
+@endsection				

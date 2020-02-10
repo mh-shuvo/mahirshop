@@ -201,13 +201,25 @@
 					
 					// Matching Bonus
 					if($matchingBonush > 3){
-						$matchingBonushAmount = $matchingBonush * config('mlm.matching_bonus');
-						$memberBonusData = new MemberBonus();
-						$memberBonusData->bonus_type = 'matching';
-						$memberBonusData->user_id = $getMember['user_id'];
-						$memberBonusData->amount = $matchingBonushAmount;
-						$memberBonusData->details = 'You have received '.$matchingBonushAmount.' TK for '.$matchingBonush.' Matching Bonus';
-						$memberBonusData->save();
+						if($getMember->package_value >= '3000'){
+							$matchingBonushTotal= 300;
+							}elseif($getMember->package_value >= '1600'){
+							$matchingBonushTotal = 200;
+							}elseif($getMember->package_value >= '500'){
+							$matchingBonushTotal = 100;
+							}elseif($getMember->package_value >= '200'){
+							$matchingBonushTotal = null;
+						}
+						
+						if($matchingBonushTotal){
+							$matchingBonushAmount = $matchingBonush * $matchingBonushTotal;
+							$memberBonusData = new MemberBonus();
+							$memberBonusData->bonus_type = 'matching';
+							$memberBonusData->user_id = $getMember['user_id'];
+							$memberBonusData->amount = $matchingBonushAmount;
+							$memberBonusData->details = 'You have received '.$matchingBonushAmount.' TK for '.$matchingBonush.' Matching Bonus';
+							$memberBonusData->save();
+						}
 						
 						$getMember->paid_matching = $totalMachingCount + $getMember['paid_matching'];
 						$getMember->total_matching = $totalMachingCount;
@@ -275,31 +287,32 @@
 		
 		private function matchingCount($value,$compareValue,$count = 0){
 			if($value >= $compareValue){
-				$count++;
-				$compareValues = $compareValue * $count + $compareValue;
-				if($value >= $compareValues){
-					$count = $this->matchingCount($value,$compareValue,$count);
-				}
+			$count++;
+			$compareValues = $compareValue * $count + $compareValue;
+			if($value >= $compareValues){
+			$count = $this->matchingCount($value,$compareValue,$count);
+			}
 			}
 			
 			return $count;
-		}
-		
-		private function getRatioCheck($lMember, $rMember,$lCondition,$rCondition){
+			}
+			
+			private function getRatioCheck($lMember, $rMember,$lCondition,$rCondition){
 			$totalMember = $lMember + $rMember;
 			$totalCondition = $lCondition + $rCondition;
 			if($totalCondition <= $totalMember){
-				if($lMember > $rMember){
-					if($lMember >= $lCondition && $rMember >= $rCondition){
-						return true;
-					}
-					}else{
-					if($rMember >= $lCondition && $lMember >= $rCondition){
-						return true;
-					}
-				}
+			if($lMember > $rMember){
+			if($lMember >= $lCondition && $rMember >= $rCondition){
+			return true;
+			}
+			}else{
+			if($rMember >= $lCondition && $lMember >= $rCondition){
+			return true;
+			}
+			}
 			}
 			return false;
-		}
-		
-	}
+			}
+			
+			}
+						

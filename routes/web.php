@@ -128,7 +128,7 @@
 		});
 
 		Route::group(['middleware' => ['role:admin']], function () {
-			Route::post('/superadmin/placement-transfer/','UserController@changePlacement')->name('admin.superadmin.placement');
+			Route::post('/superadmin/renew-manual/','SuperadminController@renewAccount')->name('admin.superadmin.placement');
 			Route::get('/superadmin/report/','SuperadminController@report')->name('admin.superadmin.report');
 			Route::get('/superadmin/report/data/','SuperadminController@reportData')->name('admin.superadmin.report.data');
 			Route::get('/superadmin/topup','SuperadminController@topup')->name('admin.superadmin.topup');

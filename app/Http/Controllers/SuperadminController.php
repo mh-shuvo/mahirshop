@@ -15,6 +15,7 @@
 	use Illuminate\Support\Facades\Validator;
 	use Illuminate\Support\Facades\Auth;
 	use Yajra\Datatables\Datatables;
+	use Illuminate\Support\Carbon;
 	use App\Country;
 	use App\Orders;
 	use App\StockManager;
@@ -65,6 +66,22 @@
 			->toJSON();
 		}
 		
+		public function renewAccount(Request $request)
+		{
+			$request->id = $this->getIdByUsername($request->username);
+			
+			MemberTree::where('user_id', $request->id)
+			->update([
+            'is_renewed' => Carbon::now()->add($request->renew_for, 'month'),
+			]);
+			
+			return response()->json([
+			'status' => 'success',
+			'message' => 'You Have Renewed for '.$request->renew_for.' Month Successfully'
+			]);
+			
+		}
+		
 		public function member()
 		{
 			$districts = Districts::all();
@@ -91,12 +108,12 @@
 				return '<div class="dropdown-info dropdown open">
 				<button class="btn btn-sm btn-success dropdown-toggle waves-effect waves-light " type="button" id="dropdown-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Action</button>
 				<div class="dropdown-menu" aria-labelledby="dropdown-4" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-				<a class="dropdown-item waves-light waves-effect ViewMember" data-id="'.$user->id.'" href="javascript:void(0)">View</a>
-				<a class="dropdown-item waves-light waves-effect changeBannedStatus" data-id="'.$user->id.'" href="javaScript:void(0)">Change Banned Status</a>
-				<a class="dropdown-item waves-light waves-effect changePremiumStatus" data-id="'.$user->id.'" href="javaScript:void(0)">Change Premium Status</a>
-				<a class="dropdown-item waves-light waves-effect FreeSignup" data-id="'.$user->id.'" href="javaScript:void(0)">Free Signup</a>
-				</div>
-				</div>';
+			<a class="dropdown-item waves-light waves-effect ViewMember" data-id="'.$user->id.'" href="javascript:void(0)">View</a>
+			<a class="dropdown-item waves-light waves-effect changeBannedStatus" data-id="'.$user->id.'" href="javaScript:void(0)">Change Banned Status</a>
+			<a class="dropdown-item waves-light waves-effect changePremiumStatus" data-id="'.$user->id.'" href="javaScript:void(0)">Change Premium Status</a>
+			<a class="dropdown-item waves-light waves-effect FreeSignup" data-id="'.$user->id.'" href="javaScript:void(0)">Free Signup</a>
+			</div>
+			</div>';
 			})
 			
 			->addColumn('sponsor',function($user){
@@ -106,13 +123,8 @@
 					return 'System';
 				}
 			})
-			->addColumn('is_signup_without_payment',function($user){
-				if(empty($user->is_signup_without_payment)){
-					return 'No';
-				}
-				else{
-					return 'Free Signup : '.$user->is_signup_without_payment;
-				}
+			->addColumn('package_value',function($user){
+				return $user->MemberTree->package_value;
 			})
 			->addColumn('is_banned',function($user){
 				if($user->is_banned == null){
@@ -122,12 +134,9 @@
 					return $user->is_banned;
 				}
 			})
-			->addColumn('premium',function($user){
-				if( empty($user->MemberTree->is_premium)){
-					return "Basic Member";
-					}else{
-					return "{$user->MemberTree->is_premium}";
-				}
+			->addColumn('is_renewed',function($user){
+				return $user->MemberTree->is_renewed;
+				
 			})
 			->toJson();
 		}
@@ -426,16 +435,16 @@
 					}
 					
 					if($companyBonus > 0 ){
-    					$getCompany = Dealer::where('dealer_type','company')->first();
-    					$companyBonusData = new MemberBonus();
-    					$companyBonusData->bonus_type = 'stockist';
-    					$companyBonusData->user_id = $getCompany->user_id;
-    					$companyBonusData->from_user_id = $orderData->order_delivery_from_user_id;
-    					$companyBonusData->amount = $companyBonus;
-    					$companyBonusData->bonus_pv = $newStockistPV;
-    					$companyBonusData->status = 'active';
-    					$companyBonusData->details = 'You have received '.$companyBonus.' TK Stockist Bonus for '.$newStockistPV.' PV Sales Commission from '.Auth::User()->username.' dealer';
-    					$companyBonusData->save();
+						$getCompany = Dealer::where('dealer_type','company')->first();
+						$companyBonusData = new MemberBonus();
+						$companyBonusData->bonus_type = 'stockist';
+						$companyBonusData->user_id = $getCompany->user_id;
+						$companyBonusData->from_user_id = $orderData->order_delivery_from_user_id;
+						$companyBonusData->amount = $companyBonus;
+						$companyBonusData->bonus_pv = $newStockistPV;
+						$companyBonusData->status = 'active';
+						$companyBonusData->details = 'You have received '.$companyBonus.' TK Stockist Bonus for '.$newStockistPV.' PV Sales Commission from '.Auth::User()->username.' dealer';
+						$companyBonusData->save();
 					}
 				}
 				

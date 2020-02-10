@@ -31,7 +31,6 @@
 		
 		public function CreateMember()
 		{
-		return  $this->matchingCount(4,3);
 			$packages = Package::where("package_type","signup")->get();
 			return view('admin.new_member',compact('packages'));
 		}
@@ -220,8 +219,8 @@
 			}
 			
 			if($getPackage->package_value >= config('mlm.bonus_start_from')){
-				$generationBonusAmount = (config('mlm.gen_bonus_percentage') / 100) * $getPackage->package_value;
-				$this->GenarationBonus($generationBonusAmount,$newMemberTree->sponsor_id);
+				// $generationBonusAmount = (config('mlm.gen_bonus_percentage') / 100) * $getPackage->package_value;
+				// $this->GenarationBonus($generationBonusAmount,$newMemberTree->sponsor_id);
 				
 				
 				// $dailyRepurchaseCashBackCount = MemberTree::whereNull('is_premium')->where("is_renewed"," >= ",Carbon::now())->count();
@@ -229,24 +228,42 @@
 				// $dailyRepurchaseCashBackAmount = $dailyRepurchaseCashBack / $dailyRepurchaseCashBackCount;
 				
 				if($getPackage->package_value >= config('mlm.premium_package_value')){
-					$dailyBonusMembers = MemberTree::whereNotNull('is_premium')->where("is_renewed",">=",Carbon::now())->get();
-					$dailyPremiumCashBack = (config('mlm.daily_cash_back_percentage') / 100) * $getPackage->package_value;
-					$dailyCashBackAmount = $dailyPremiumCashBack / $dailyBonusMembers->count();
-					}else{
+					
+					$checkMemberPackage = MemberTree::where("is_renewed",">=",Carbon::now())
+					->selectRaw("(COALESCE(count(CASE WHEN `package_value` <= '200' THEN id END), 0)) AS `package_200`")
+					->selectRaw("(COALESCE(count(CASE WHEN `package_value` <= '500' AND `package_value` > '200' THEN id END), 0)) AS `package_500`")
+					->selectRaw("(COALESCE(count(CASE WHEN `package_value` <= '1600' AND `package_value` > '500' THEN id END), 0)) AS `package_1600`")
+					->selectRaw("(COALESCE(count(CASE WHEN `package_value` <= '3000' AND `package_value` > '1600' THEN id END), 0)) AS `package_3000`")
+					->first();
+					
 					$dailyBonusMembers = MemberTree::where("is_renewed",">=",Carbon::now())->get();
+					
 					$dailyCashBack = (config('mlm.daily_cash_back_percentage') / 100) * $getPackage->package_value;
-					$dailyCashBackAmount = $dailyCashBack / $dailyBonusMembers->count();
-				}
-				
-				if($dailyBonusMembers){
-					foreach($dailyBonusMembers as $dailyBonusMember){
-						if($dailyCashBackAmount > 0){
-							$dailyCashBackBonusData = new MemberBonus();
-							$dailyCashBackBonusData->bonus_type = 'daily_cash_back';
-							$dailyCashBackBonusData->user_id = $dailyBonusMember->user_id;
-							$dailyCashBackBonusData->amount = $dailyCashBackAmount;
-							$dailyCashBackBonusData->details = 'You have received '.number_format($dailyCashBackAmount, 2).' TK Daily Cash Back Bonus from '.$newUser->username;
-							$dailyCashBackBonusData->save();
+					$dailyCashBackAmountP200 = ((10 / 100) * $dailyCashBack) / $checkMemberPackage->package_200;
+					$dailyCashBackAmountP500 = ((15 / 100) * $dailyCashBack) / $checkMemberPackage->package_500;
+					$dailyCashBackAmountP1600 = ((25 / 100) * $dailyCashBack) / $checkMemberPackage->package_1600;
+					$dailyCashBackAmountP3000 = ((50 / 100) * $dailyCashBack) / $checkMemberPackage->package_3000;
+					
+					if($dailyBonusMembers){
+						foreach($dailyBonusMembers as $dailyBonusMember){
+							if($dailyCashBack > 0){
+								if($dailyBonusMember->package_value >= '3000'){
+									$dailyCashBackAmount = $dailyCashBackAmountP3000;
+									}elseif($dailyBonusMember->package_value >= '1600'){
+									$dailyCashBackAmount = $dailyCashBackAmountP1600;
+									}elseif($dailyBonusMember->package_value >= '500'){
+									$dailyCashBackAmount = $dailyCashBackAmountP500;
+									}elseif($dailyBonusMember->package_value >= '200'){
+									$dailyCashBackAmount = $dailyCashBackAmountP200;
+								}
+								
+								$dailyCashBackBonusData = new MemberBonus();
+								$dailyCashBackBonusData->bonus_type = 'daily_cash_back';
+								$dailyCashBackBonusData->user_id = $dailyBonusMember->user_id;
+								$dailyCashBackBonusData->amount = $dailyCashBackAmount;
+								$dailyCashBackBonusData->details = 'You have received '.number_format($dailyCashBackAmount, 2).' TK Daily Cash Back Bonus from '.$newUser->username;
+								$dailyCashBackBonusData->save();
+							}
 						}
 					}
 				}
@@ -280,43 +297,43 @@
 			if($currentboardMember >= 10){
 				$currentBoard->board_no = $currentBoard->board_no + 1;
 				$currentBoard->save();
-				
-				if($board != 6){
-					$this->BoardUpdate($currentBoard->board_no);
-				}
+			
+			if($board != 6){
+			$this->BoardUpdate($currentBoard->board_no);
 			}
-		}
-		
-		public function firstBoardEntry($userId){
+			}
+			}
+			
+			public function firstBoardEntry($userId){
 			$currentUser = BoardPlan::where("board_no", 0)->first();
 			$currentboardMember = BoardPlan::where("board_user_id",$currentUser->user_id)->where("board_no", 0)->count();
 			if($currentboardMember < 10){
-				$newBoardMember = new BoardPlan();
-				$newBoardMember->user_id = $userId;
-				$newBoardMember->board_user_id = $currentUser->user_id;
-				$newBoardMember->board_no = 0;
-				$newBoardMember->save();
-				$this->BoardUpdate();
-				}else{
-				$this->BoardUpdate();
-				$this->firstBoardEntry($userId);
+			$newBoardMember = new BoardPlan();
+			$newBoardMember->user_id = $userId;
+			$newBoardMember->board_user_id = $currentUser->user_id;
+			$newBoardMember->board_no = 0;
+			$newBoardMember->save();
+			$this->BoardUpdate();
+			}else{
+			$this->BoardUpdate();
+			$this->firstBoardEntry($userId);
 			}
 			return;
-		}
-		
-		public function GenarationBonus($bonusAmount,$sponsorId,$count = 1){
+			}
+			
+			public function GenarationBonus($bonusAmount,$sponsorId,$count = 1){
 			
 			$currentLavel = $count;
 			$currentLevelBonus = 0;
 			
 			if($count == 1){
-				$currentLevelBonus = (config('mlm.lavel_1_gen_bonus_percentage') / 100) * $bonusAmount;
-				}elseif($count == 2){
-				$currentLevelBonus = (config('mlm.lavel_2_gen_bonus_percentage') / 100) * $bonusAmount;
-				}elseif($count <= 20){
-				$currentLevelBonus = (config('mlm.lavel_3_to_20_gen_bonus_percentage') / 100) * $bonusAmount;
-				}else{
-				return $count;
+			$currentLevelBonus = (config('mlm.lavel_1_gen_bonus_percentage') / 100) * $bonusAmount;
+			}elseif($count == 2){
+			$currentLevelBonus = (config('mlm.lavel_2_gen_bonus_percentage') / 100) * $bonusAmount;
+			}elseif($count <= 20){
+			$currentLevelBonus = (config('mlm.lavel_3_to_20_gen_bonus_percentage') / 100) * $bonusAmount;
+			}else{
+			return $count;
 			}
 			
 			$generationBonusData = new MemberBonus();
@@ -329,25 +346,25 @@
 			$MemberTree = MemberTree::where("user_id",$sponsorId)->first();
 			$count = $count + 1;
 			if($MemberTree && $MemberTree->sponsor_id){
-				$this->GenarationBonus($bonusAmount,$MemberTree->sponsor_id,$count);
+			$this->GenarationBonus($bonusAmount,$MemberTree->sponsor_id,$count);
 			}
-		}
-		
-		
-		public function UpdateMember(Request $request){
+			}
+			
+			
+			public function UpdateMember(Request $request){
 			
 			$data = User::find($request->user_id);
 			
 			$profile_picture = $data->profile_picture;
 			
 			if($request->hasFile('profile_picture')){
-				$old_img = public_path('upload/user/'.$data->profile_picture);
-				if (file_exists($old_img)) {
-					@unlink($old_img);
-				}
-				$document = $request->file('profile_picture');
-				$profile_picture= $data->username. '.' . $document->getClientOriginalExtension();
-				Image::make($document)->resize(300,200)->save(public_path('upload/user/'.$profile_picture));
+			$old_img = public_path('upload/user/'.$data->profile_picture);
+			if (file_exists($old_img)) {
+			@unlink($old_img);
+			}
+			$document = $request->file('profile_picture');
+			$profile_picture= $data->username. '.' . $document->getClientOriginalExtension();
+			Image::make($document)->resize(300,200)->save(public_path('upload/user/'.$profile_picture));
 			}
 			$data->name = $request->name;
 			$data->email = $request->email;
@@ -360,7 +377,7 @@
 			$data->profile_picture = $request->profile_picture;
 			
 			if(!empty($request->password)){
-				$data->txn_pin = $request->user_txn_pin;
+			$data->txn_pin = $request->user_txn_pin;
 			}
 			$data->national_id = $request->national_id;
 			$data->register_by = $request->national_id;
@@ -369,17 +386,17 @@
 			$data->nomine_name = $request->nomine_name;
 			
 			if($request->user_type == 'admin' ||  $request->user_type == 'accountant' || $request->user_type == 'manager'){
-				$data ->user_type = $request ->user_type ;
-				$data ->upazila = $request ->upazila;
-				$data ->user_union = $request ->user_union;
+			$data ->user_type = $request ->user_type ;
+			$data ->upazila = $request ->upazila;
+			$data ->user_union = $request ->user_union;
 			}
 			else{
-				$data->user_type = 'user';
+			$data->user_type = 'user';
 			}
 			
 			$data->profile_picture = $profile_picture;
 			if(!empty($request->password)){
-				$data->password = Hash::make($request->password);
+			$data->password = Hash::make($request->password);
 			}
 			
 			$data->save();
@@ -387,6 +404,7 @@
 			'status' => 'success',
 			'message' => 'Member Updated Successfully'
 			]);
-		}
-		
-	}
+			}
+			
+			}
+						
