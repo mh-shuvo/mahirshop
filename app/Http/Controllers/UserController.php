@@ -31,16 +31,15 @@
 		
 		public function CreateMember()
 		{
-			$dailyBonusMembers = MemberTree::get();
-			foreach($dailyBonusMembers as $dailyBonusMember){
-				$totalAmount = TopupBalance::where("from_user_id", $dailyBonusMember->user_id)
-				->selectRaw("(COALESCE(SUM(CASE WHEN `topup_flow` = 'out' AND `is_order` IS NOT NULL THEN topup_amount END), 0)) AS `topup_out`")
-				->first();
-				$dailyBonusMember->package_value = $totalAmount->topup_out;
-				$dailyBonusMember->save();
-			}
-			
-			
+			// $dailyBonusMembers = MemberTree::get();
+			// foreach($dailyBonusMembers as $dailyBonusMember){
+				// $totalAmount = TopupBalance::where("from_user_id", $dailyBonusMember->user_id)
+				// ->selectRaw("(COALESCE(SUM(CASE WHEN `topup_flow` = 'out' AND `is_order` IS NOT NULL THEN topup_amount END), 0)) AS `topup_out`")
+				// ->first();
+				// $dailyBonusMember->package_value = $totalAmount->topup_out;
+				// $dailyBonusMember->save();
+			// }
+
 			$packages = Package::where("package_type","signup")->get();
 			return view('admin.new_member',compact('packages'));
 		}
