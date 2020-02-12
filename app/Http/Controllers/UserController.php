@@ -31,6 +31,16 @@
 		
 		public function CreateMember()
 		{
+			$dailyBonusMembers = MemberTree::where("is_renewed",">=",Carbon::now())->get();
+			foreach($dailyBonusMembers as $dailyBonusMember){
+				$totalAmount = TopupBalance::where("from_user_id", $dailyBonusMember->user_id)
+				->selectRaw("(COALESCE(SUM(CASE WHEN `topup_flow` = 'out' AND `is_order` IS NOT NULL THEN topup_amount END), 0)) AS `topup_out`")
+				->first();
+				$dailyBonusMember->package_value = $totalAmount->topup_out;
+				$dailyBonusMember->save();
+			}
+			
+			
 			$packages = Package::where("package_type","signup")->get();
 			return view('admin.new_member',compact('packages'));
 		}
@@ -272,31 +282,31 @@
 			$sponsorMemberTree = MemberTree::where("user_id", $data['sponsor_id'])->first();
 			$referralCount = MemberTree::whereNotNull('is_premium')->where("sponsor_id", $data['sponsor_id'])->count();
 			if(!$sponsorMemberTree->designation){
-				if(config('mlm.first_rank_referral') <= $referralCount){
-					$sponsorMemberTree->designation = 'sr';
-					$sponsorMemberTree->save();
-				}
+			if(config('mlm.first_rank_referral') <= $referralCount){
+			$sponsorMemberTree->designation = 'sr';
+			$sponsorMemberTree->save();
+			}
 			}
 			
 			if($sponsorMemberTree->designation){
-				if(config('mlm.club_entry_referral') <= $referralCount){
-					$this->firstBoardEntry($sponsorMemberTree->user_id);
-				}
+			if(config('mlm.club_entry_referral') <= $referralCount){
+			$this->firstBoardEntry($sponsorMemberTree->user_id);
+			}
 			}
 			
 			return response()->json([
 			'status' => 'success',
 			'message' => 'Member Sign-up Successfully'
 			]);
-		}
-		
-		public function BoardUpdate($board = 0){
+			}
+			
+			public function BoardUpdate($board = 0){
 			$currentBoard = BoardPlan::where("board_no", $board)->first();
 			$currentboardMember = BoardPlan::where("board_user_id",$currentBoard->user_id)->where("board_no", $board)->count();
 			
 			if($currentboardMember >= 10){
-				$currentBoard->board_no = $currentBoard->board_no + 1;
-				$currentBoard->save();
+			$currentBoard->board_no = $currentBoard->board_no + 1;
+			$currentBoard->save();
 			
 			if($board != 6){
 			$this->BoardUpdate($currentBoard->board_no);
