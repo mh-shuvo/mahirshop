@@ -31,7 +31,7 @@
 		
 		public function CreateMember()
 		{
-			$dailyBonusMembers = MemberTree::where("is_renewed",">=",Carbon::now())->get();
+			$dailyBonusMembers = MemberTree::get();
 			foreach($dailyBonusMembers as $dailyBonusMember){
 				$totalAmount = TopupBalance::where("from_user_id", $dailyBonusMember->user_id)
 				->selectRaw("(COALESCE(SUM(CASE WHEN `topup_flow` = 'out' AND `is_order` IS NOT NULL THEN topup_amount END), 0)) AS `topup_out`")
