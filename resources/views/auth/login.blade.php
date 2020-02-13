@@ -42,8 +42,8 @@
             <div class="auth-box">
                 <div id="loginform">
                     <div class="logo">
-                        <span class="db"><img src="{{asset('public/assets/images/logo-icon.png')}}" alt="logo" /></span>
-                        <h5 class="font-medium m-b-20">Sign In to Admin</h5>
+                        <span class="db"><img src="{{asset('public/frontend/assets/images/logo.png')}}"  style="height: 20%; width: 20%;" alt="logo" /></span>
+                        <h5 class="font-medium m-b-20 pt-3">Sign In to Admin</h5>
                     </div>
                     <!-- Form -->
                     <div class="row">

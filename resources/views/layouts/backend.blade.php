@@ -51,13 +51,12 @@
 									<!-- Dark Logo icon -->
 									<img src="{{asset('public/assets/images/logo-icon.png')}}" alt="homepage" class="dark-logo" />
 									<!-- Light Logo icon -->
-									<img src="{{asset('public/assets/images/logo-light-icon.png')}}" alt="homepage" class="light-logo" />
 								</b>
 								<!--End Logo icon -->
 								<!-- Logo text -->
-								<span class="logo-text">
+								<span class="logo-text text-white">
 									<!-- dark Logo text -->
-									<img src="{{asset('public/assets/images/logo-text.png')}}" alt="homepage" class="dark-logo" />
+									<img src="{{asset('public/frontend/assets/images/logo.png')}}"  style="height: 20%; width: 20%;" alt="logo" />
 									<!-- Light Logo text -->
 									MahirShop
 								</span>
@@ -328,8 +327,6 @@
 									
 								</ul>
 							</li>
-
-
 							<li class="sidebar-item">
 								<a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('admin.topup')}}" aria-expanded="false">
 									<i class="mdi mdi-cube-send"></i>
@@ -448,9 +445,7 @@
 			<script src="{{asset('public/assets/dist/js/pages/dashboards/dashboard1.js')}}"></script>
 			<!-- DataTables -->
 			<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
-			
 			<script type="text/javascript" src="{{asset('public/sweetalert/sweetalert.min.js')}}"></script>
-			
 			<script src="{{ asset('public') }}/js/form.js" ></script>
 			<script src="{{ asset('public') }}/js/custom.js" ></script>
 			<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
@@ -482,7 +477,6 @@
 							}
 						});
 					};
-					
 				});
 			</script>
 			@yield('js')

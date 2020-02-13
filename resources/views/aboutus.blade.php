@@ -19,11 +19,9 @@
         <p class="pb-5" style="lin-height:5px;  letter-spacing: 1px;">Welcome to MahirShop Global Ltd. MahirShop Global Ltd. was founded in 2020 and revolutionized the business model known as direct selling. MahirShop Global Ltd. is dedicated to produce supplements that support immune system health, body transformation, and general wellness. Achieve your healthy lifestyle goals with MahirShop Global Ltd. products to help you to lead a healthy life. We strongly believe, after having our products the result will exceed your expectations.</p>
       </div>
     </div>
-
         <div class="container">
-          
 <!-- sels area start -->
-    <section class="achievers py-3 ">
+    <section class="achievers py-3  hide">
 
         <div class="container text-center">
             <h1 class="title green-underline text-center pb-2" style="font-size: 30px; font-family: 'Herr Von Muellerhoff', cursive; text-transform: uppercase; color:#000;">sale</h1>
@@ -92,7 +90,7 @@
 
 
 <!-- management area start -->
-    <section class="achievers py-3 ">
+    <section class="achievers py-3 hide">
 
         <div class="container text-center">
             <h1 class="title green-underline text-center pb-2" style="font-size: 30px; font-family: 'Herr Von Muellerhoff', cursive; text-transform: uppercase; color:#000;">Management</h1>
