@@ -50,7 +50,6 @@
   height: 250px;
   width: 200px;
   border-radius: 50%;
-
 }
 .product_cat_carousel .item .pro_cat_div{
   transition: all .6s ease-in-out;

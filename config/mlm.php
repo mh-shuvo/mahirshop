@@ -2,9 +2,9 @@
 	
 	return [
 	'company' => [
-	'name' => 'Me Global Private Limited',
-	'phone' => '01911',
-	'address' => 'Dhaka',
+	'name' => 'Mahirshop Limited',
+	'phone' => '+8801822919879',
+	'address' => 'Dhaka,Paltan',
 	'district' => 'Dhaka'
 	],
 	
