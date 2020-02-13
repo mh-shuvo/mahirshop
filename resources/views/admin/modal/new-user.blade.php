@@ -31,7 +31,7 @@
 								<label class="control-label"> Dealer Type</label>
 								<select class="form-control form-control-sm" name="dealer_type">
 									<option value="">Select Dealer Type</option>
-									<option value="company">Company</option>
+									<option value="division">Division</option>
 									<option value="district">District</option>
 									<option value="upazila">Upazila</option>
 									<option value="union">Union</option>
@@ -46,13 +46,13 @@
 								<input type="text" name="phone" class="form-control form-control-sm" placeholder="Phone">
 							</div>
 							<div class="form-group">
-										<label class="control-label">Father Name</label>
-										<input type="text" name="father_name" id="father_name" class="form-control form-control-sm" placeholder="Father Name">
-									</div>
-									<div class="form-group">
-											<label class="control-label">Nomine Name</label>
-											<input type="text" name="nomine_name" id="nomine_name" class="form-control form-control-sm" placeholder="Nomine Name">
-										</div>
+								<label class="control-label">Father Name</label>
+								<input type="text" name="father_name" id="father_name" class="form-control form-control-sm" placeholder="Father Name">
+							</div>
+							<div class="form-group">
+								<label class="control-label">Nomine Name</label>
+								<input type="text" name="nomine_name" id="nomine_name" class="form-control form-control-sm" placeholder="Nomine Name">
+							</div>
 							<div class="form-group">
 								<label class="control-label">Country</label>
 								<select class="form-control form-control-sm" name="country">
@@ -78,10 +78,6 @@
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label class="control-label">New Transaction Pin:</label>
-								<input type="password" class="form-control" name="user_txn_pin" placeholder="Transaction Pin" autocomplete="off">
-							</div>
-							<div class="form-group">
 								<label class="control-label">Profile Picture</label>
 								<input type="file" name="profile_picture" class="form-control form-control-sm form-control form-control-sm-file" accept="">
 							</div>
@@ -96,9 +92,9 @@
 								<input type="text" name="national_id" class="form-control form-control-sm" placeholder="National Id">
 							</div>
 							<div class="form-group">
-										<label class="control-label">Mother Name</label>
-										<input type="text" name="mother_name" id="mother_name" class="form-control form-control-sm" placeholder="Mother Name">
-									</div>
+								<label class="control-label">Mother Name</label>
+								<input type="text" name="mother_name" id="mother_name" class="form-control form-control-sm" placeholder="Mother Name">
+							</div>
 							<div class="form-group">
 								<label class="control-label">Post Code</label>
 								<input type="text" name="post_code" class="form-control form-control-sm" placeholder="Post Code">
@@ -133,26 +129,22 @@
 						
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label class="control-label">Username</label>
+								<label class="control-label">New Dealer Username</label>
 								<input type="text" name="username" class="form-control form-control-sm" placeholder="Username" autocomplete="off">
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label class="control-label">Password</label>
+								<label class="control-label">New Dealer Password</label>
 								<input type="password" name="password" class="form-control form-control-sm" placeholder="Password">
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label class="control-label">Retype Password</label>
+								<label class="control-label">New Dealer Retype Password</label>
 								<input type="password" name="retype_password" class="form-control form-control-sm" placeholder="Retype Password">
 							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label class="control-label">Your Transaction Pin:</label>
-						<input type="password" class="form-control" name="txn_pin" placeholder="Transaction Pin" autocomplete="off">
 					</div>
 					<div class="row">
 						<div class="col-sm-2 offset-sm-5">
@@ -168,4 +160,4 @@
 			</div>
 		</div>
 	</div>
-</div>
+	</div>								

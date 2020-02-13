@@ -108,12 +108,12 @@
 				return '<div class="dropdown-info dropdown open">
 				<button class="btn btn-sm btn-success dropdown-toggle waves-effect waves-light " type="button" id="dropdown-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Action</button>
 				<div class="dropdown-menu" aria-labelledby="dropdown-4" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-			<a class="dropdown-item waves-light waves-effect ViewMember" data-id="'.$user->id.'" href="javascript:void(0)">View</a>
-			<a class="dropdown-item waves-light waves-effect changeBannedStatus" data-id="'.$user->id.'" href="javaScript:void(0)">Change Banned Status</a>
-			<a class="dropdown-item waves-light waves-effect changePremiumStatus" data-id="'.$user->id.'" href="javaScript:void(0)">Change Premium Status</a>
-			<a class="dropdown-item waves-light waves-effect FreeSignup" data-id="'.$user->id.'" href="javaScript:void(0)">Free Signup</a>
-			</div>
-			</div>';
+				<a class="dropdown-item waves-light waves-effect ViewMember" data-id="'.$user->id.'" href="javascript:void(0)">View</a>
+				<a class="dropdown-item waves-light waves-effect changeBannedStatus" data-id="'.$user->id.'" href="javaScript:void(0)">Change Banned Status</a>
+				<a class="dropdown-item waves-light waves-effect changePremiumStatus" data-id="'.$user->id.'" href="javaScript:void(0)">Change Premium Status</a>
+				<a class="dropdown-item waves-light waves-effect FreeSignup" data-id="'.$user->id.'" href="javaScript:void(0)">Free Signup</a>
+				</div>
+				</div>';
 			})
 			
 			->addColumn('sponsor',function($user){

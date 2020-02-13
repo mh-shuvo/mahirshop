@@ -28,12 +28,12 @@
 	'matching_target' => '3',
 	
 	'dealer_bonus_pv' => '25',
-	'dealer_bonus' => '250',
-	'dealer_company_bonus' => '300',
-	'dealer_district_bonus' => '250',
-	'dealer_upazila_bonus' => '200',
-	'dealer_union_bonus' => '150',
-	'dealer_sponsor_bonus' => '50',
+	'dealer_bonus' => '5',
+	'dealer_division_bonus' => '1',
+	'dealer_district_bonus' => '1',
+	'dealer_upazila_bonus' => '1',
+	'dealer_union_bonus' => '1',
+	'dealer_sponsor_bonus' => '1',
 	
 	'incentives' => [
 	'plan0' => [
@@ -52,14 +52,14 @@
 	'title' => 'Regional Sales Manager',
 	'name' => 'rsm',
 	'condition' => '250',
-	'condition_type' => 'matching'
-	],
-	'plan3' => [
-	'title' => 'Zonal Sales Manager',
-	'name' => 'zsm',
-	'condition' => '500',
-	'condition_type' => 'matching'
-	],
+'condition_type' => 'matching'
+],
+'plan3' => [
+'title' => 'Zonal Sales Manager',
+'name' => 'zsm',
+'condition' => '500',
+'condition_type' => 'matching'
+],
 'plan4' => [
 'title' => 'Divisional Sales Manager',
 'name' => 'dsm',

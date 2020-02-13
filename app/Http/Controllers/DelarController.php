@@ -69,7 +69,6 @@
             'email' => 'required',
             'username' => 'required',
             'phone' => 'required',
-            'txn_pin' => 'required',
             'national_id' => 'required',
             'password' => ['required','min:8'],
 			]);
@@ -83,10 +82,8 @@
             $data['state'] = $request->state;
             $data['country'] = $request->country;
             $data['post_code'] = $request->post_code;
-            $data['user_txn_pin'] = $request->user_txn_pin;
             $data['national_id'] =$request->national_id;
             $data['password'] = $request->password;
-			
 			$data['father_name'] = $request->father_name;
             $data['mother_name'] = $request->mother_name;
             $data['nomine_name'] = $request->nomine_name;
@@ -109,24 +106,10 @@
 				}
 			}
 			
-			if($this->getPhoneCheck($data['phone'])){
-				return response()->json([
-				'status' => 'errors',
-				'message' => 'Mobile Number Already Exits'
-				],422);
-			}
-			
 			if($this->getUsernameCheck($data['username'])){
 				return response()->json([
 				'status' => 'errors',
 				'message' => 'Username Already Exits'
-				],422);
-			}
-			
-			if(!$this->getTxnPinCheck($request->txn_pin)){
-				return response()->json([
-				'status' => 'errors',
-				'message' => 'Transaction Pin Is Not Correct. Please Try again'
 				],422);
 			}
 			
@@ -140,7 +123,6 @@
 			$newUser->state = $data['state'];
 			$newUser->country = $data['country'];
 			$newUser->post_code = $data['post_code'];
-			$newUser->txn_pin = $data['user_txn_pin'];
 			$newUser->national_id = $data['national_id'];
 			$newUser->register_by = Auth::user()->id;
 			$newUser->father_name = $data['father_name'];
@@ -182,13 +164,9 @@
 				$newDealer->save();
 			}
 			
-			new SendSmsController([$newUser->phone],'Welcome to Me Global Marketing Private Limited. Your '.$request->signup_type.' registration has been successfully and Username is : '.$newUser->username,'Sign-up');
-			
-			
 			return response()->json([
 			'status' => 'success',
 			'message' => 'User Registration Successfully'
 			]);
-			}
 		}
-		
+	}

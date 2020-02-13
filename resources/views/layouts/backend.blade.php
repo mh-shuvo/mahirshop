@@ -177,6 +177,7 @@
 									<span class="hide-menu">Dashboard</span>
 								</a>
 							</li>
+							@hasanyrole('admin|user')
 							<li class="sidebar-item">
 								<a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('admin.superadmin.member.create')}}" aria-expanded="false">
 									<i class="mdi mdi-cube-send"></i>
@@ -196,7 +197,7 @@
 								</a>
 							</li>
 							
-							
+							@hasanyrole('admin')
 							<li class="sidebar-item">
 								<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
 									<i class="mdi mdi-av-timer"></i>
@@ -311,7 +312,6 @@
 									</li>
 								</ul>
 							</li>
-							
 							<li class="sidebar-item">
 								<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
 									<i class="mdi mdi-av-timer"></i>
@@ -334,8 +334,8 @@
 									
 								</ul>
 							</li>
-							
-							
+							@endhasanyrole
+							@endhasanyrole
 							<li class="sidebar-item">
 								<a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('admin.topup')}}" aria-expanded="false">
 									<i class="mdi mdi-cube-send"></i>
