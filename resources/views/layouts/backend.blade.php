@@ -199,47 +199,47 @@
 							
 							<li class="sidebar-item">
 								<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
-                                <i class="mdi mdi-av-timer"></i>
-                                <span class="hide-menu">Ecommerce </span>
-								
+									<i class="mdi mdi-av-timer"></i>
+									<span class="hide-menu">Ecommerce </span>
+									
 								</a>
 								<ul aria-expanded="false" class="collapse  first-level">
-                                <li class="sidebar-item">
-								<a href="{{route('admin.product.create')}}" class="sidebar-link">
-								<i class="mdi mdi-adjust"></i>
-								<span class="hide-menu"> Add Product </span>
-								</a>
-                                </li>
-                                <li class="sidebar-item">
-								<a href="{{route('admin.product')}}" class="sidebar-link">
-								<i class="mdi mdi-adjust"></i>
-								<span class="hide-menu"> Product List </span>
-								</a>
-                                </li>
-                                <li class="sidebar-item">
-								<a href="{{route('admin.brand.index')}}" class="sidebar-link">
-								<i class="mdi mdi-adjust"></i>
-								<span class="hide-menu"> Brand </span>
-								</a>
-                                </li>
-                                <li class="sidebar-item">
-								<a href="{{route('admin.category.index')}}" class="sidebar-link">
-								<i class="mdi mdi-adjust"></i>
-								<span class="hide-menu"> Category </span>
-								</a>
-                                </li>
-                                <li class="sidebar-item">
-								<a href="{{route('admin.unit.index')}}" class="sidebar-link">
-								<i class="mdi mdi-adjust"></i>
-								<span class="hide-menu"> Unit </span>
-								</a>
-                                </li>
-                                <li class="sidebar-item">
-								<a href="{{route('admin.banner')}}" class="sidebar-link">
-								<i class="mdi mdi-adjust"></i>
-								<span class="hide-menu"> Banner </span>
-								</a>
-                                </li>
+									<li class="sidebar-item">
+										<a href="{{route('admin.product.create')}}" class="sidebar-link">
+											<i class="mdi mdi-adjust"></i>
+											<span class="hide-menu"> Add Product </span>
+										</a>
+									</li>
+									<li class="sidebar-item">
+										<a href="{{route('admin.product')}}" class="sidebar-link">
+											<i class="mdi mdi-adjust"></i>
+											<span class="hide-menu"> Product List </span>
+										</a>
+									</li>
+									<li class="sidebar-item">
+										<a href="{{route('admin.brand.index')}}" class="sidebar-link">
+											<i class="mdi mdi-adjust"></i>
+											<span class="hide-menu"> Brand </span>
+										</a>
+									</li>
+									<li class="sidebar-item">
+										<a href="{{route('admin.category.index')}}" class="sidebar-link">
+											<i class="mdi mdi-adjust"></i>
+											<span class="hide-menu"> Category </span>
+										</a>
+									</li>
+									<li class="sidebar-item">
+										<a href="{{route('admin.unit.index')}}" class="sidebar-link">
+											<i class="mdi mdi-adjust"></i>
+											<span class="hide-menu"> Unit </span>
+										</a>
+									</li>
+									<li class="sidebar-item">
+										<a href="{{route('admin.banner')}}" class="sidebar-link">
+											<i class="mdi mdi-adjust"></i>
+											<span class="hide-menu"> Banner </span>
+										</a>
+									</li>
 								</ul>
 							</li>
 							<li class="sidebar-item">
@@ -286,6 +286,12 @@
 										</a>
 									</li>
 									<li class="sidebar-item">
+										<a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('packages')}}" aria-expanded="false">
+											<i class="mdi mdi-cube-send"></i>
+											<span class="hide-menu">Package</span>
+										</a>
+									</li>
+									<li class="sidebar-item">
 										<a href="{{route('admin.report.sales')}}" class="sidebar-link">
 											<i class="mdi mdi-adjust"></i>
 											<span class="hide-menu"> Sales Report </span>
@@ -305,7 +311,7 @@
 									</li>
 								</ul>
 							</li>
-
+							
 							<li class="sidebar-item">
 								<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
 									<i class="mdi mdi-av-timer"></i>
@@ -328,8 +334,8 @@
 									
 								</ul>
 							</li>
-
-
+							
+							
 							<li class="sidebar-item">
 								<a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('admin.topup')}}" aria-expanded="false">
 									<i class="mdi mdi-cube-send"></i>
@@ -342,25 +348,6 @@
 									<span class="hide-menu">Withdraw</span>
 								</a>
 							</li>
-							<li class="sidebar-item">
-								<a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('admin.order')}}" aria-expanded="false">
-									<i class="mdi mdi-cube-send"></i>
-									<span class="hide-menu">Orders</span>
-								</a>
-							</li>
-							<li class="sidebar-item">
-								<a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('admin.superadmin.order')}}" aria-expanded="false">
-									<i class="mdi mdi-cube-send"></i>
-									<span class="hide-menu">Receive Orders</span>
-								</a>
-							</li>
-							<li class="sidebar-item">
-								<a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('packages')}}" aria-expanded="false">
-									<i class="mdi mdi-cube-send"></i>
-									<span class="hide-menu">Package</span>
-								</a>
-							</li>
-							
 						</ul>
 					</nav>
 					<!-- End Sidebar navigation -->

@@ -14,7 +14,7 @@
 	'lavel_3_to_20_gen_bonus_percentage' => '4',
 	'gen_bonus_percentage' => '8.5',
 	'bonus_start_from' => '200',
-	'renew_purchase_value' => '1000',
+	'renew_purchase_value' => '200',
 	'premium_package_value' => '3000',
 	'daily_cash_back_percentage' => '20',
 	're_purchase_daily_cash_back_percentage' => '20',
