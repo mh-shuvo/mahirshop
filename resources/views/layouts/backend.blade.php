@@ -51,13 +51,12 @@
 									<!-- Dark Logo icon -->
 									<img src="{{asset('public/assets/images/logo-icon.png')}}" alt="homepage" class="dark-logo" />
 									<!-- Light Logo icon -->
-									<img src="{{asset('public/assets/images/logo-light-icon.png')}}" alt="homepage" class="light-logo" />
 								</b>
 								<!--End Logo icon -->
 								<!-- Logo text -->
-								<span class="logo-text">
+								<span class="logo-text text-white">
 									<!-- dark Logo text -->
-									<img src="{{asset('public/assets/images/logo-text.png')}}" alt="homepage" class="dark-logo" />
+									<img src="{{asset('public/frontend/assets/images/logo.png')}}"  style="height: 20%; width: 20%;" alt="logo" />
 									<!-- Light Logo text -->
 									MahirShop
 								</span>
@@ -371,107 +370,105 @@
 							</div>
 							<div class="col-7 align-self-center">
 								<div class="d-flex align-items-center justify-content-end">
-									<nav aria-label="breadcrumb">
-										<ol class="breadcrumb">
-											<li class="breadcrumb-item">
-												<a href="{{route('home')}}">Home</a>
-											</li>
-											<li class="breadcrumb-item active" aria-current="page">@yield('title')</li>
-										</ol>
-									</nav>
+								<nav aria-label="breadcrumb">
+								<ol class="breadcrumb">
+								<li class="breadcrumb-item">
+								<a href="{{route('home')}}">Home</a>
+								</li>
+								<li class="breadcrumb-item active" aria-current="page">@yield('title')</li>
+								</ol>
+								</nav>
 								</div>
-							</div>
-						</div>
-					</div>
-					<!-- ============================================================== -->
-					<!-- End Bread crumb and right sidebar toggle -->
-					<!-- ============================================================== -->
-					<!-- ============================================================== -->
-					<!-- Container fluid  -->
-					<!-- ============================================================== -->
-					<div class="container-fluid">
-						@yield('content')
-					</div>
-					<!-- ============================================================== -->
-					<!-- End Container fluid  -->
-					<!-- ============================================================== -->
-					<!-- ============================================================== -->
-					<!-- footer -->
-					<!-- ============================================================== -->
-					<footer class="footer text-center">
-						All Rights Reserved by MahirShop. Designed and Developed by
-						<a href="https://quickoutsourceit.com">Quick Outsource IT</a>.
-					</footer>
-					<!-- ============================================================== -->
-					<!-- End footer -->
-					<!-- ============================================================== -->
-				</div>
-				<!-- ============================================================== -->
-				<!-- End Page wrapper  -->
-				<!-- ============================================================== -->
-			</div>
-			<!-- ============================================================== -->
-			<!-- End Wrapper -->
-			<!-- All Jquery -->
-			<!-- ============================================================== -->
-			<script src="{{asset('public/assets/libs/jquery/dist/jquery.min.js')}}"></script>
-			<!-- Bootstrap tether Core JavaScript -->
-			<script src="{{asset('public/assets/libs/popper.js/dist/umd/popper.min.js')}}"></script>
-			<script src="{{asset('public/assets/libs/bootstrap/dist/js/bootstrap.min.js')}}"></script>
-			<!-- apps -->
-			<script src="{{asset('public/assets/dist/js/app.min.js')}}"></script>
-			<script src="{{asset('public/assets/dist/js/app.init.js')}}"></script>
-			<script src="{{asset('public/assets/dist/js/app-style-switcher.js')}}"></script>
-			<!-- slimscrollbar scrollbar JavaScript -->
-			<script src="{{asset('public/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js')}}"></script>
-			<script src="{{asset('public/assets/extra-libs/sparkline/sparkline.js')}}"></script>
-			<!--Wave Effects -->
-			<script src="{{asset('public/assets/dist/js/waves.js')}}"></script>
-			<!--Menu sidebar -->
-			<script src="{{asset('public/assets/dist/js/sidebarmenu.js')}}"></script>
-			<!--Custom JavaScript -->
-			<script src="{{asset('public/assets/dist/js/custom.min.js')}}"></script>
-			<!--This page JavaScript -->
-			<script src="{{asset('public/assets/dist/js/pages/dashboards/dashboard1.js')}}"></script>
-			<!-- DataTables -->
-			<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
-			
-			<script type="text/javascript" src="{{asset('public/sweetalert/sweetalert.min.js')}}"></script>
-			
-			<script src="{{ asset('public') }}/js/form.js" ></script>
-			<script src="{{ asset('public') }}/js/custom.js" ></script>
-			<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-			<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.0/js.cookie.js"></script>
-			<script type="text/javascript">
-				$(document).ready(function() {
-					usernameCheck = function(element,elementStatus){
-						element.ajaxSubmit({
-							error: formError,
-							method: 'post',
-							dataType: 'json',
-							data : {
+								</div>
+								</div>
+								</div>
+								<!-- ============================================================== -->
+								<!-- End Bread crumb and right sidebar toggle -->
+								<!-- ============================================================== -->
+								<!-- ============================================================== -->
+								<!-- Container fluid  -->
+								<!-- ============================================================== -->
+								<div class="container-fluid">
+								@yield('content')
+								</div>
+								<!-- ============================================================== -->
+								<!-- End Container fluid  -->
+								<!-- ============================================================== -->
+								<!-- ============================================================== -->
+								<!-- footer -->
+								<!-- ============================================================== -->
+								<footer class="footer text-center">
+								All Rights Reserved by MahirShop. Designed and Developed by
+								<a href="https://quickoutsourceit.com">Quick Outsource IT</a>.
+								</footer>
+								<!-- ============================================================== -->
+								<!-- End footer -->
+								<!-- ============================================================== -->
+								</div>
+								<!-- ============================================================== -->
+								<!-- End Page wrapper  -->
+								<!-- ============================================================== -->
+								</div>
+								<!-- ============================================================== -->
+								<!-- End Wrapper -->
+								<!-- All Jquery -->
+								<!-- ============================================================== -->
+								<script src="{{asset('public/assets/libs/jquery/dist/jquery.min.js')}}"></script>
+								<!-- Bootstrap tether Core JavaScript -->
+								<script src="{{asset('public/assets/libs/popper.js/dist/umd/popper.min.js')}}"></script>
+								<script src="{{asset('public/assets/libs/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+								<!-- apps -->
+								<script src="{{asset('public/assets/dist/js/app.min.js')}}"></script>
+								<script src="{{asset('public/assets/dist/js/app.init.js')}}"></script>
+								<script src="{{asset('public/assets/dist/js/app-style-switcher.js')}}"></script>
+								<!-- slimscrollbar scrollbar JavaScript -->
+								<script src="{{asset('public/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js')}}"></script>
+								<script src="{{asset('public/assets/extra-libs/sparkline/sparkline.js')}}"></script>
+								<!--Wave Effects -->
+								<script src="{{asset('public/assets/dist/js/waves.js')}}"></script>
+								<!--Menu sidebar -->
+								<script src="{{asset('public/assets/dist/js/sidebarmenu.js')}}"></script>
+								<!--Custom JavaScript -->
+								<script src="{{asset('public/assets/dist/js/custom.min.js')}}"></script>
+								<!--This page JavaScript -->
+								<script src="{{asset('public/assets/dist/js/pages/dashboards/dashboard1.js')}}"></script>
+								<!-- DataTables -->
+								<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+								<script type="text/javascript" src="{{asset('public/sweetalert/sweetalert.min.js')}}"></script>
+								<script src="{{ asset('public') }}/js/form.js" ></script>
+								<script src="{{ asset('public') }}/js/custom.js" ></script>
+								<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+								<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+								<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+								<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.0/js.cookie.js"></script>
+								<script type="text/javascript">
+								$(document).ready(function() {
+								usernameCheck = function(element,elementStatus){
+								element.ajaxSubmit({
+								error: formError,
+								method: 'post',
+								dataType: 'json',
+								data : {
 								username : element.val()
-							},
-							url : '{{route('admin.member_check')}}',
-							success: function (responseText) {
+								},
+								url : '{{route('admin.member_check')}}',
+								success: function (responseText) {
 								$(elementStatus).html('');
 								element.removeClass( "form-control-success" );
 								element.removeClass( "form-control-danger" );
 								if(responseText.status == 'success'){
-									element.addClass( "form-control-success" );
-									$(elementStatus).html(responseText.message);
-									}else if(responseText.status == 'errors'){
-									element.addClass( "form-control-danger" );
-									$(elementStatus).html(responseText.message);
+								element.addClass( "form-control-success" );
+								$(elementStatus).html(responseText.message);
+								}else if(responseText.status == 'errors'){
+								element.addClass( "form-control-danger" );
+								$(elementStatus).html(responseText.message);
 								}
-							}
-						});
-					};
-					
-				});
-			</script>
-			@yield('js')
-		</body>
-	</html>
+								}
+								});
+								};
+								});
+								</script>
+								@yield('js')
+								</body>
+								</html>
+																

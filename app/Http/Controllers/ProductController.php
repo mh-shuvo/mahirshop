@@ -121,8 +121,6 @@
 		{
 			$product = Product::find($id);
 			$product->delete();
-			return response()->json([
-			'message' => 'Product Successfully Deleted'
-			]);
+			return back()->with('message' ,'Product Successfully Deleted');
 		}
 	}

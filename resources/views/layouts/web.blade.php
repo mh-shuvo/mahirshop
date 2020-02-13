@@ -60,8 +60,8 @@
 		      padding:20px 0px;
 		    }
 		    .owl-carousel .item img{
-		        height:202px;
-		      width:160px;
+		      height:40%;
+		      width:40%;
 		        border-radius: 50%;
 		        transition: all .4s ease-in-out;
 		        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -162,36 +162,31 @@
 
 <!-- Header section Start -->
 <header>
-
-
 	<!-- Top Header Start-->
 	<div class="header-block d-flex align-items-center border-bottom">
 	  <div class="ogami-container-fluid">
 		<div class="row">
 		  <div class="col-12 col-md-6">
 			<div class="header-left d-flex flex-column flex-md-row align-items-center">
-			  <p class="d-flex align-items-center"><i class="fas fa-envelope"></i>info.deercreative@gmail.com</p>
-			  <p class="d-flex align-items-center"><i class="fas fa-phone"></i>+65 11.188.888</p>
+			  <p class="d-flex align-items-center"><i class="fas fa-envelope"></i>mdtajulislamriad01@gmail.com</p>
+			  <p class="d-flex align-items-center"><i class="fas fa-phone"></i>+8801822919879</p>
 			</div>
 		  </div>
 		  <div class="col-12 col-md-6">
 			<div class="header-right d-flex flex-column flex-md-row justify-content-md-end justify-content-center align-items-center">
-
 				<div class="social_icon d-flex;">
 					<a href="https://www.facebook.com" target="_blank" class="fa fa-facebook"></a>
 					<a href="https://www.twitter.com" target="_blank" class="fa fa-twitter"></a>
 					<a href="https://www.google.com" target="_blank" class="fa fa-google"></a>
 					<a href="https://www.linkedin.com" target="_blank" class="fa fa-linkedin"></a>
 				</div>
-			  
-			<div class="login d-flex"><a href="{{route('login')}}"><i class="fas fa-user"></i>Login</a></div>
+			<div class="login d-flex pl-2"><a href="{{route('login')}}"><i class="fas fa-user"></i>Login</a></div>
 			</div>
 		  </div>
 		</div>
 	  </div>
 	</div>
 	<!-- Top Header End-->
-
 
 	<!-- Mobile Device-->
 	{{-- <div id="mobile-menu">
@@ -269,12 +264,11 @@
 	</div> --}}
 	<!-- Mobile Device-->
 
-
 	<!-- Navigarion Bar Start-->
 		<div class="row border-bottom">
 			<div class="col-md-6 col-sm-12 py-4">
 				<div class="logo pl-5">
-				<a href="{{route('welcome')}}" style="font-size:25px; text-decoration:none; color: #88C74A;"><!-- <img src="#" alt=""> --><b>MaHiR sHoP</b></a>
+				<a href="{{route('welcome')}}" style="font-size:25px; text-decoration:none; color: #88C74A;"><img style="height: 10%; width: 10%; " src="{{asset('public/frontend/assets/images/logo.png')}}" alt=""></a>
 				</div>
 			</div>
 			<div class="col-md-6 col-sm-12 text-right py-4 hide">
@@ -292,7 +286,6 @@
 	<nav class="navigation navigation_v2 d-flex align-items-center">
 	  <div class="ogami-container-fluid">
 		<div class="row align-items-xxl-center">
-
 		  <div class="col-12 col-md-12 col-xl-6 col-xxxl-4 order-xl-3 order-xxxl-2">
 			<div class="navigation-filter">
 			  <div class="website-search_v2">
@@ -363,8 +356,6 @@
                 </div>
             </div>
         </div>
-
- 
     </section>
 <!-- logo area end -->
 
@@ -379,9 +370,9 @@
 							<h6 style="padding-top:13px ;font-family:Cera Pro Medium;"><strong>ADDRESS:</strong></h6>
 					</div>
 					<div class="footer-contact">
-						<p>Address: <br> 60-49 Road 11378 New York</p>
-						<p>Phone: <br> +65 11.188.888</p>
-						<p>Email: <br> info.deercreative@gmail.com</p>
+						<p>Address: <br>Paltan, Dhaka, Bangladesh.</p>
+						<p>Phone: <br> +8801822919879</p>
+						<p>Email: <br> mdtajulislamriad01@gmail.com</p>
 
 					</div>
               		<div class="social_icon">
@@ -450,7 +441,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="{{asset('public/frontend/assets/js/jquery-ui.min.js')}}"></script>
 <script src="{{asset('public/frontend/assets/js/jquery.countdown.min.js')}}"></script>
@@ -462,7 +452,6 @@
 <script src="{{asset('public/frontend/assets/js/numscroller-1.0.js')}}"></script>
 <script src="{{asset('public/frontend/assets/js/vanilla-tilt.min.js')}}"></script>
 <script src="{{asset('public/frontend/assets/js/main.js')}}"></script>
-
 <script src="{{asset('public/frontend/assets/js/owl.carousel.min.js')}}"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="{{ asset('public') }}/js/form.js" ></script>

@@ -17,11 +17,12 @@
 			<div class="col-md-6">
 				<h1>Contact Us</h1>
 				<ul class="list-group pt-4">
-					<li class="list-group-item py-3">Address : Corporate Office: 32/8, West Tajmahal Road, Block-C, Mohammadpur, Dhaka-1207, Bangladesh.</li>
-					<li class="list-group-item py-3">8801713041774 , +8801976633202
+					<li class="list-group-item py-3">Address : Paltan, Dhaka, Bangladesh.</li>
+					<li class="list-group-item py-3">
+						+8801822919879
 					</li>
 					<li class="list-group-item py-3">
-						mahirshop@gmail.com
+						mdtajulislamriad01@gmail.com
 					</li>
 				</ul>
 			</div>

@@ -50,7 +50,6 @@
   height: 250px;
   width: 200px;
   border-radius: 50%;
-
 }
 .product_cat_carousel .item .pro_cat_div{
   transition: all .6s ease-in-out;
@@ -74,36 +73,29 @@
 @endsection
 @section('content')
 
-
-<!-- Slider start -->
-<div id="demo" class="carousel slide" data-ride="carousel">
-  <ul class="carousel-indicators">
-    <li data-target="#demo" data-slide-to="0" class="active"></li>
-    <li data-target="#demo" data-slide-to="1"></li>
-    <li data-target="#demo" data-slide-to="2"></li>
-  </ul>
-    
-  <div class="carousel-inner">
-    @foreach($banners as $banner)
-    <div class="carousel-item active">
-      <img src="{{asset('public')}}/{{$banner->banner_image}}" alt="Los Angeles" width="1100" height="500">
-      <div class="carousel-caption">
-        <h3>{{$banner->banner_name}}</h3>
-        <p>{{$banner->banner_des}}</p>
-      </div>   
-    </div>
-    @endforeach
-  </div>
-      
-  <a class="carousel-control-prev" href="#demo" data-slide="prev">
-    <span class="carousel-control-prev-icon"></span>
-  </a>
-  <a class="carousel-control-next" href="#demo" data-slide="next">
-    <span class="carousel-control-next-icon"></span>
-  </a>
-</div>
-
-<!-- slider  -->
+ <div class="slider slider_v2">
+        <div class="full-fluid">
+          <div class="slider_wrapper">
+          @foreach($banners as $banner)
+            <div class="slider-block" style="height:100%; width:100%; background-image: url('{{asset("public")}}/{{$banner->banner_image}}')">
+              <div class="slider-content"> 
+                <div class="container">
+                  <div class="row align-items-center">
+                    <div class="col-12">
+                      <div class="slider-text d-flex flex-column align-items-center">
+                       <a class="normal-btn coffee my-3" href="{{route('shop')}}" data-animation="fadeInUp" data-delay=".4s">{{$banner->banner_name}}</a><br>
+                       <a class="normal-btn coffee"href="{{route('shop')}}" data-animation="fadeInUp" data-delay=".4s">{{$banner->banner_des}}</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+             @endforeach
+          </div>
+        </div>
+      </div>
+      <!-- End slider-->
 
     <!-- mt main slider end here -->
     <div class="feature-products feature-products_v2 pb-5">
@@ -124,8 +116,8 @@
                 <div id="tab-1">
                   <div class="row no-gutters-sm">
                     @foreach($featured_products as $product)
-                    <div class="col-6 col-md-4 col-lg-3 col-xxl-2">
-                    <div class="product borderless"><a class="product-img" href="shop_detail.html"><img src="{{asset('public')}}/{{$product->product_image}}" alt=""></a>
+                    <div class="col-6 col-md-4 col-lg-3 col-xxl-2" >
+                    <div class="product borderless" style="border:1px solid #ebebeb;"><a class="product-img" href="javascript:void(0)"><img  class="quickview" data-id="{{$product->id}}" src="{{asset('public')}}/{{$product->product_image}}" alt=""></a>
                         <h5 class="product-type">{{$product->category->category_name}}</h5>
                         <h3 class="product-name">{{$product->product_name}}</h3>
                         <h3 class="product-price">{{$product->product_discount_price}} TK 
@@ -153,29 +145,23 @@
     <section style="background-color:#EEEEEE;">
       <div class="container">
           <div class="secotionTitle text-center py-3">
-              <h2 class="pt-3"><span style="color:#90CF53;">MR. Abdur Rahman </span> <br> <span style="letter-spacing: 10px;font-size: 20px; color:#222222;" >Chief Executive Director </span></h2>
+              <h2 class="pt-3"><span style="color:#90CF53; text-transform: uppercase;">Md Tajul Islam Riad</span> <br> <span style="letter-spacing: 10px;font-size: 20px; color:#222222;" >Managing Directo</span></h2>
           </div>
           <div class="row mt-2">
-              <div class="col-sm-12 col-xs-12">
+              <div class="col-md-12 col-sm-12 col-xs-12">
                   <div class="row mb-5" style="position: relative;">
-                      <div class="col-sm-4 col-sm-offset-2 col-xs-6 pt-3">
-                              <img src="{{asset('public/frontend/assets/images/img1.jpg')}}" class="rounded" alt="R.M. Abdullah Al Foisal" title="R.M. Abdullah Al Foisal" class="img-responsive" style="height: 100%; width: 90%;">
+                      <div class="col-md-4 col-sm-6  col-xs-6 pt-3">
+                              <img src="{{asset('public/frontend/assets/images/img1.jpg')}}" class="rounded" alt="R.M. Abdullah Al Foisal" title="R.M. Abdullah Al Foisal" class="img-responsive" style="height: 100%; width: 103%;">
                       </div>
-                      <div class="col-sm-8 col-xs-6">
+                      <div class=" col-md-8 col-sm-6 col-xs-6">
                               <i class="fa fa-quote-left" aria-hidden="true"></i>
                               <p>Thank you for visiting us. <b>MahirShop Global Ltd.</b> has the potential to be one of the most exciting stories in recent MLM / network marketing history. MahirShop Global Ltd. believes that all the right elements are in place and the addition of more and more distributor leaders will give them a great deal of momentum. We will create success together at MahirShop Global Ltd only when we work as a team, when we see corporate and field as one entity working toward a common goal. We are your team. <b>We are here to support you.</b> Let’s go make it happen together! Those who join now are in at the right time. You are in position to be very successful with MahirShop Global Ltd.! So please come and join us. YOU WILL WIN!!!! <br>
                               Thank you. <br>
                               Warmest Regards,
                               <i class="fa fa-quote-right" aria-hidden="true"></i></p>
-                                  
-                                <p> <b>MR. Abdul Rahman</b> </p>
-                                <p><b> Chief Executive Director </b></p>
+                                <p> <b>Md Tajul Islam Riad</b> </p>
+                                <p><b> Managing Director </b></p>
                                 <p><b> MahirShop Global Ltd </b></p>
-
-                                  
-                                 
-                                  
-
                           </div>
                   </div>
               </div>
@@ -247,13 +233,11 @@
 <!-- video gallery start -->
 
     <!-- top ten section start -->
-    <section class="achievers patternbg my-5">
-
+    <section class="achievers patternbg my-5 hide">
       <div class="container text-center py-3">
           <h1 class="text-center" style="font-size: 40px; text-transform: uppercase; color:#EEEEEE;">Team</h1>
           <h4 class="text-uppercase"  style="font-size: 30px;letter-spacing: 10px; color:#EEEEEE;">Top Ten</h4>
       </div>
-
       <div class="row">
           <div class="col-md-12 col-sm-12 text-center">
             <div class="owl-carousel coustom_carousell">
@@ -309,18 +293,14 @@
               </div>
           </div>
       </div>
-
-
     </section>
     <!-- top ten section end -->
 
     <!-- our project director area start -->
-    <section class="achievers patternbg pt-3 my-5">
-
+    <section class="achievers patternbg pt-3 my-5 hide">
       <div class="container text-center">
           <h1 class="text-center" style="font-size: 40px; text-transform: uppercase; color:#EEEEEE;">Our Project Director</h1>
       </div>
-
       <div class="row">
           <div class="col-md-12 col-sm-12 text-center">
             <div class="owl-carousel coustom_carousell">

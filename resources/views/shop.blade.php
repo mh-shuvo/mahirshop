@@ -49,19 +49,17 @@
                     </div>
                   </div>
 
-
                 <div class="shop-sidebar_tag">
                   <div class="tag_top mini-tab-title underline">
                     <h2 class="title">Product tag</h2>
                   </div>
-                  <div class="tag_bottom"><a class="tag-btn" href="shop_grid+list_3col.html">organic</a><a      class="tag-btn" href="shop_grid+list_3col.html">vegatable</a><a class="tag-btn" href="shop_grid+list_3col.html">fruits</a><a class="tag-btn" href="shop_grid+list_3col.html">fresh meat</a><a class="tag-btn" href="shop_grid+list_3col.html">fastfood</a><a class="tag-btn" href="shop_grid+list_3col.html">natural</a>
-                  
+                  <div class="tag_bottom">
+                    <a class="tag-btn" href="shop_grid+list_3col.html">Not Found!</a>
+                    <a class="tag-btn" href="shop_grid+list_3col.html">Not Found!</a><a class="tag-btn" href="shop_grid+list_3col.html">Not Found!</a><a class="tag-btn" href="shop_grid+list_3col.html">Not Found!</a><a class="tag-btn" href="shop_grid+list_3col.html">Not Found!</a><a class="tag-btn" href="shop_grid+list_3col.html">Not Found!</a>
                 </div>
                 </div>
                 </div>
-
               </div>
-              
               <div class="filter-sidebar--background" style="display: none"></div>
             </div>
             <div class="col-xl-9">
