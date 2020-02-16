@@ -1,5 +1,5 @@
 @extends('layouts.backend')
-@section('title','Stockiest Sponsor Income Report')
+@section('title','Dealer Sponsor Income Report')
 @section('css')
 
 @endsection

@@ -202,7 +202,7 @@
 						<div class="d-flex no-block align-items-center">
 							<div>
 								<i class="mdi mdi-emoticon font-20 text-muted"></i>
-								<p class="font-16 m-b-5">Stockist Sponsor Bonus</p>
+								<p class="font-16 m-b-5">Dealer Sponsor Bonus</p>
 							</div>
 							<div class="ml-auto">
 								<h1 class="font-light text-right">{{$totalBonus->stockist_sponsor}} <small>Tk</small></h1>
@@ -223,10 +223,10 @@
 						<div class="d-flex no-block align-items-center">
 							<div>
 								<i class="mdi mdi-emoticon font-20 text-muted"></i>
-								<p class="font-16 m-b-5">Matching Royalty Income</p>
+								<p class="font-16 m-b-5">Matching Income</p>
 							</div>
 							<div class="ml-auto">
-								<h1 class="font-light text-right">{{$totalBonus->mega_matching}} <small>Tk</small></h1>
+								<h1 class="font-light text-right">{{$totalBonus->matching}} <small>Tk</small></h1>
 							</div>
 						</div>
 						
