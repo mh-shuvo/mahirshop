@@ -43,7 +43,13 @@
 		
 		public function handle()
 		{
-			$totalMembers = MemberTree::all();
+			// $totalMembers = MemberTree::all();
+			// foreach($totalMembers as $totalMember){
+				// if($totalMember->package_value >= config('mlm.matching_start_from')){
+					// $totalMember->is_valid = Carbon::now();
+					// $totalMember->save();
+				// }
+			// }
 			$this->info(json_encode($this->getCount(MemberTree::first()->user_id)));
 		}
 		
@@ -67,9 +73,9 @@
 			$checkUpdate = false;
 			
 			foreach(config('mlm.incentives') as $value){
-				$totalPlan[$value['name']] = 0;
-				$totalPlanL[$value['name']] = 0;
-				$totalPlanR[$value['name']] = 0;
+			$totalPlan[$value['name']] = 0;
+			$totalPlanL[$value['name']] = 0;
+			$totalPlanR[$value['name']] = 0;
 			}
 			
 			
@@ -77,11 +83,11 @@
 			{
 				$lId = $this->getCount($getMember['l_id']);
 				
-				if($lId['is_valid'] != null){
+				if($lId['is_premium'] != null){
 					$totalMatching['matching_l'] += $lId['matching']['matching_total'] + 1;
 				}
 				
-				if($lId['is_valid'] == null){
+				if($lId['is_premium'] == null){
 					$totalMatching['matching_l'] = $lId['matching']['matching_total'];
 				}
 				
@@ -108,11 +114,11 @@
 			{
 				$rId =$this->getCount($getMember['r_id']);
 				
-				if($rId['is_valid'] != null){
+				if($rId['is_premium'] != null){
 					$totalMatching['matching_r'] += $rId['matching']['matching_total'] + 1;
 				}
 				
-				if($rId['is_valid'] == null){
+				if($rId['is_premium'] == null){
 					$totalMatching['matching_r'] = $rId['matching']['matching_total'];
 				}
 				
@@ -287,32 +293,31 @@
 		
 		private function matchingCount($value,$compareValue,$count = 0){
 			if($value >= $compareValue){
-			$count++;
-			$compareValues = $compareValue * $count + $compareValue;
-			if($value >= $compareValues){
-			$count = $this->matchingCount($value,$compareValue,$count);
-			}
+				$count++;
+				$compareValues = $compareValue * $count + $compareValue;
+				if($value >= $compareValues){
+					$count = $this->matchingCount($value,$compareValue,$count);
+				}
 			}
 			
 			return $count;
-			}
-			
-			private function getRatioCheck($lMember, $rMember,$lCondition,$rCondition){
+		}
+		
+		private function getRatioCheck($lMember, $rMember,$lCondition,$rCondition){
 			$totalMember = $lMember + $rMember;
 			$totalCondition = $lCondition + $rCondition;
 			if($totalCondition <= $totalMember){
-			if($lMember > $rMember){
-			if($lMember >= $lCondition && $rMember >= $rCondition){
-			return true;
-			}
-			}else{
-			if($rMember >= $lCondition && $lMember >= $rCondition){
-			return true;
-			}
-			}
+				if($lMember > $rMember){
+					if($lMember >= $lCondition && $rMember >= $rCondition){
+						return true;
+					}
+					}else{
+					if($rMember >= $lCondition && $lMember >= $rCondition){
+						return true;
+					}
+				}
 			}
 			return false;
-			}
-			
-			}
-						
+		}
+		
+	}

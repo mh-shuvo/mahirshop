@@ -198,6 +198,10 @@
 				$newMemberTree->is_premium = Carbon::now();
 			}
 			
+			if($totalAmount->package_topup >= config('mlm.matching_start_from')){
+				$newMemberTree->is_valid = Carbon::now();
+			}
+			
 			if(config('mlm.renew_purchase_value') <= $getPackage->package_value){
 				$newMemberTree->is_renewed = Carbon::now()->add(1, 'month');
 			}
@@ -264,6 +268,11 @@
 			$totalAmount = TopupBalance::where("from_user_id", $getMember->user_id)
 			->selectRaw("(COALESCE(SUM(CASE WHEN `topup_flow` = 'out' AND `is_order` IS NOT NULL THEN topup_amount END), 0)) AS `package_topup`")
 			->first();
+			
+			if($totalAmount->package_topup >= config('mlm.matching_start_from')){
+				$getMember->is_valid = Carbon::now();
+				
+			}
 			
 			if($totalAmount->package_topup >= config('mlm.premium_package_value')){
 				$getMember->is_premium = Carbon::now();

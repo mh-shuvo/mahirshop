@@ -13,6 +13,7 @@
 	'lavel_2_gen_bonus_percentage' => '12',
 	'lavel_3_to_20_gen_bonus_percentage' => '4',
 	'gen_bonus_percentage' => '8.5',
+	'matching_start_from' => '500',
 	'bonus_start_from' => '200',
 	'renew_purchase_value' => '200',
 	'premium_package_value' => '3000',

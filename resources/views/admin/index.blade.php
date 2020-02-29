@@ -235,7 +235,7 @@
 			</div>
 			
 			@endhasanyrole
-
+			
 			<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12">
 				<div class="card">
 					<div class="card-body">
@@ -305,114 +305,183 @@
 			</div>
 			@endhasanyrole
 		</div>
-	</div> 
-	@hasanyrole('user|admin')
-	<div class="modal" id="packageModal">
+		@hasanyrole('user|admin')
+		<div class="row">
+			<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12">
+				<div class="card">
+					<div class="card-body">
+						<div class="d-flex no-block align-items-center">
+							<div>
+								<i class="mdi mdi-emoticon font-20 text-muted"></i>
+								<p class="font-16 m-b-5">Total Matching</p>
+							</div>
+							<div class="ml-auto">
+								<h1 class="font-light text-right">@if($memberTree->total_matching) {{$memberTree->total_matching}} @else 0 @endif</h1>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12">
+				<div class="card">
+					<div class="card-body">
+						<div class="d-flex no-block align-items-center">
+							<div>
+								<i class="mdi mdi-emoticon font-20 text-muted"></i>
+								<p class="font-16 m-b-5">Team A</p>
+							</div>
+							<div class="ml-auto">
+								<h1 class="font-light text-right">@if($memberTree->l_matching) {{$memberTree->l_matching}} @else 0 @endif</h1>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12">
+				<div class="card">
+					<div class="card-body">
+						<div class="d-flex no-block align-items-center">
+							<div>
+								<i class="mdi mdi-emoticon font-20 text-muted"></i>
+								<p class="font-16 m-b-5">Team B</p>
+							</div>
+							<div class="ml-auto">
+								<h1 class="font-light text-right">@if($memberTree->r_matching) {{$memberTree->r_matching}} @else 0 @endif</h1>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12">
+				<div class="card">
+					<div class="card-body">
+						<div class="d-flex no-block align-items-center">
+							<div>
+								<i class="mdi mdi-emoticon font-20 text-muted"></i>
+								<p class="font-16 m-b-5">Carry Forward</p>
+							</div>
+							<div class="ml-auto">
+								<h1 class="font-light text-right">{{abs($memberTree->l_matching - $memberTree->r_matching)}}</h1>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			@endhasanyrole
+		</div> 
+		@hasanyrole('user|admin')
+		<div class="modal" id="packageModal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">Upgrade</h4>
+						<button class="close" data-dismiss="modal">&times;</button>
+					</div>
+					<form action="{{route('package.upgrade')}}" method="post" id="PackageUpgradeForm">
+						<div class="modal-body">
+							
+							<div class="form-group">
+								<label class="control-label">Upgrade Package:</label>
+								<select class="form-control" name="package_id">
+									<option value="">Select Upgrade Package</option>
+									@foreach(App\Package::where('package_type','upgrade')->get() as $package)
+									<option value="{{$package->id}}">{{$package->title}}</option>
+									@endforeach
+								</select>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button class="btn  btn-info" type="submit">Upgrade Now</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal" id="renewModal">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h4 class="modal-title">Upgrade</h4>
+					<h4 class="modal-title">Re-Purchase</h4>
 					<button class="close" data-dismiss="modal">&times;</button>
 				</div>
-				<form action="{{route('package.upgrade')}}" method="post" id="PackageUpgradeForm">
+				<form action="{{route('package.renew')}}" method="post" id="AccountRenewForm">
 					<div class="modal-body">
 						
 						<div class="form-group">
-							<label class="control-label">Upgrade Package:</label>
+							<label class="control-label">Re-Purchase Package:</label>
 							<select class="form-control" name="package_id">
-								<option value="">Select Upgrade Package</option>
-								@foreach(App\Package::where('package_type','upgrade')->get() as $package)
+								<option value="">Select Re-Purchase Package</option>
+								@foreach(App\Package::where('package_type','renew')->get() as $package)
 								<option value="{{$package->id}}">{{$package->title}}</option>
 								@endforeach
 							</select>
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button class="btn  btn-info" type="submit">Upgrade Now</button>
+						<button class="btn  btn-info" type="submit">Renew Now</button>
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
-</div>
-<div class="modal" id="renewModal">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h4 class="modal-title">Re-Purchase</h4>
-				<button class="close" data-dismiss="modal">&times;</button>
-			</div>
-			<form action="{{route('package.renew')}}" method="post" id="AccountRenewForm">
+	<div class="modal" id="popupModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">নোটিশ</h4>
+					<button class="close" data-dismiss="modal">&times;</button>
+				</div>
 				<div class="modal-body">
-					
-					<div class="form-group">
-						<label class="control-label">Re-Purchase Package:</label>
-						<select class="form-control" name="package_id">
-							<option value="">Select Re-Purchase Package</option>
-							@foreach(App\Package::where('package_type','renew')->get() as $package)
-							<option value="{{$package->id}}">{{$package->title}}</option>
-							@endforeach
-						</select>
-					</div>
+					<p>১) সম্মানিত সকল সদস্যদের অবগতির জন্য জানানো যাইতেছে। আপনারা যারা কোম্পানি থেকে এজেন্ট নেওয়ার কথা বলে আংশিক টাকা জমা দিয়ে রেখেছেন। আপনার আপনাদের এজেন্টের বাকী টাকা আগামী ২০ তারিখের মধ্যে পরিশোধ করার জন্য আহবান করা হচ্ছে। অন্যথায় এজেন্ট বাতিল বলে গন্য হবে।<br /> ২) যে সকল সদস্যদের নিকট বকেয়া টাকা আছে আপনারা বকেয়া টাকা পরিশোধ করে সঠিক ভাবে বিজনেস করার জন্য আহবান করা হচ্ছে।<br />৩) বিজনেস অফার আগামী 15/01/2020 ইং থেকে 30/01/2020ইং তারিখ পর্যন্ত ১২০০ টাকার ১১ টি আইডি ক্রয় করিলে সাথে সাথে ১টি আইডি একদম ফ্রী।<br />৪) যে লিডার ২২ টি ১২০০ টাকার আইডি সেল করবেন তিনিও একটি আইডি ফ্রী পাবেন।<br />তাই আর দেরি না করে দ্রুত সুযোগ গ্রহন করুন।</p>
 				</div>
 				<div class="modal-footer">
-					<button class="btn  btn-info" type="submit">Renew Now</button>
+					<button class="btn btn-danger" data-dismiss="modal">Close</button>
 				</div>
-			</form>
-		</div>
-	</div>
-</div>
-<div class="modal" id="popupModal">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h4 class="modal-title">নোটিশ</h4>
-				<button class="close" data-dismiss="modal">&times;</button>
-			</div>
-			<div class="modal-body">
-				<p>১) সম্মানিত সকল সদস্যদের অবগতির জন্য জানানো যাইতেছে। আপনারা যারা কোম্পানি থেকে এজেন্ট নেওয়ার কথা বলে আংশিক টাকা জমা দিয়ে রেখেছেন। আপনার আপনাদের এজেন্টের বাকী টাকা আগামী ২০ তারিখের মধ্যে পরিশোধ করার জন্য আহবান করা হচ্ছে। অন্যথায় এজেন্ট বাতিল বলে গন্য হবে।<br /> ২) যে সকল সদস্যদের নিকট বকেয়া টাকা আছে আপনারা বকেয়া টাকা পরিশোধ করে সঠিক ভাবে বিজনেস করার জন্য আহবান করা হচ্ছে।<br />৩) বিজনেস অফার আগামী 15/01/2020 ইং থেকে 30/01/2020ইং তারিখ পর্যন্ত ১২০০ টাকার ১১ টি আইডি ক্রয় করিলে সাথে সাথে ১টি আইডি একদম ফ্রী।<br />৪) যে লিডার ২২ টি ১২০০ টাকার আইডি সেল করবেন তিনিও একটি আইডি ফ্রী পাবেন।<br />তাই আর দেরি না করে দ্রুত সুযোগ গ্রহন করুন।</p>
-			</div>
-			<div class="modal-footer">
-				<button class="btn btn-danger" data-dismiss="modal">Close</button>
 			</div>
 		</div>
 	</div>
-</div>
-@endhasanyrole
-@endsection 
-@section('js')
-<script type="text/javascript">
-	@hasanyrole('user|admin')
-	$(document).ready(function() {
-		$('#PackageUpgradeForm').ajaxForm({
-			error: formError,
-			success: function (responseText, statusText, xhr, $form) {
-				formSuccess(responseText, statusText, xhr, $form);
-				$('.freeText').html('Premium');
-			},
-			resetForm:true
-		});
-		$('#AccountRenewForm').ajaxForm({
-			error: formError,
-			success: function (responseText, statusText, xhr, $form) {
-				formSuccess(responseText, statusText, xhr, $form);
-				$('.freeText').html('Premium');
-				$('.renewButton').remove();
-			},
-			resetForm:true
-		});
-		
-		$(document).ready(function(){
-            setTimeout(function(){
-				if(!Cookies.get('modalShown')) {
-					$("#myModal").modal('show');
-					Cookies.set('modalShown', true);
-				}
-				
-			},3000);
-		});
-	});
 	@endhasanyrole
-	
-</script>
-@endsection																																															
+	@endsection 
+	@section('js')
+	<script type="text/javascript">
+		@hasanyrole('user|admin')
+		$(document).ready(function() {
+			$('#PackageUpgradeForm').ajaxForm({
+				error: formError,
+				success: function (responseText, statusText, xhr, $form) {
+					formSuccess(responseText, statusText, xhr, $form);
+					$('.freeText').html('Premium');
+				},
+				resetForm:true
+			});
+			$('#AccountRenewForm').ajaxForm({
+				error: formError,
+				success: function (responseText, statusText, xhr, $form) {
+					formSuccess(responseText, statusText, xhr, $form);
+					$('.freeText').html('Premium');
+					$('.renewButton').remove();
+				},
+				resetForm:true
+			});
+			
+			$(document).ready(function(){
+				setTimeout(function(){
+					if(!Cookies.get('modalShown')) {
+						$("#myModal").modal('show');
+						Cookies.set('modalShown', true);
+					}
+					
+				},3000);
+			});
+		});
+		@endhasanyrole
+		
+	</script>
+@endsection																																																							
