@@ -8,6 +8,7 @@
 	use App\MemberTree;
 	use App\User;
 	use App\Dealer;
+	use App\MemberBonus;
 	use App\TopupBalance;
 	use App\Traits\UserTrait;
 	use App\Traits\TopupTrait;
@@ -72,8 +73,6 @@
 			
 			if(Auth::user()->hasRole('dealer')){
 				$memberData = MemberTree::where('user_id',Auth::User()->id)->first();
-				
-				
 				$unionBonus = (config('mlm.dealer_union_bonus') / 100) * $request->transfer_amount;
 				$upazilaBonus = (config('mlm.dealer_upazila_bonus') / 100) * $request->transfer_amount;
 				$districtBonus = (config('mlm.dealer_district_bonus') / 100) * $request->transfer_amount;
