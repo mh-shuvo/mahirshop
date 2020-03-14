@@ -363,7 +363,7 @@
 						$sponsorMemberTree->save();
 						
 						$designationData = new Designation();
-						$designationData->user_id = $getMember['user_id'];
+						$designationData->user_id = $sponsorId;
 						$designationData->designation_title = config('mlm.incentives.plan0.title');
 						$designationData->designation_name = config('mlm.incentives.plan0.name');
 						$designationData->status = 'active';

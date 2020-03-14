@@ -39,45 +39,45 @@
 	
 	'incentives' => [
 	'plan0' => [
-	'title' => 'SR',
+	'title' => 'Sales Representative',
 	'name' => 'sr',
 	'condition' => '20',
 	'condition_type' => 'matching'
 	],
 	'plan1' => [
-	'title' => 'Area Sales Manager',
-	'name' => 'asm',
+	'title' => 'Marketing Executive',
+	'name' => 'me',
 	'condition' => '100',
 	'condition_type' => 'matching'
 	],
 	'plan2' => [
-	'title' => 'Regional Sales Manager',
-	'name' => 'rsm',
+	'title' => 'Senior Marketing Executive',
+	'name' => 'sme',
 	'condition' => '250',
 	'condition_type' => 'matching'
 	],
 	'plan3' => [
-	'title' => 'Zonal Sales Manager',
-	'name' => 'zsm',
+	'title' => 'Assistant Manager',
+	'name' => 'am',
 	'condition' => '500',
 	'condition_type' => 'matching'
 	],
 	'plan4' => [
-	'title' => 'Divisional Sales Manager',
-	'name' => 'dsm',
+	'title' => 'Deputy Manager',
+	'name' => 'dm',
 	'condition' => '1000',
 	'condition_type' => 'matching'
 	],
 	'plan5' => [
-	'title' => 'National Sales Manager',
-	'name' => 'nsm',
+	'title' => 'Manager',
+	'name' => 'm',
 	'l_condition' => '10',
 	'r_condition' => '6',
 	'condition_type' => 'dsm'
 	],
 	'plan6' => [
-	'title' => 'Asst. General Manager',
-	'name' => 'agm',
+	'title' => 'Senior Manager',
+	'name' => 'sm',
 	'l_condition' => '7',
 	'r_condition' => '4',
 	'condition_type' => 'nsm'
