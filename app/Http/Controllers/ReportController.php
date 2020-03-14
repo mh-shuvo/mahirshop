@@ -7,6 +7,7 @@
 	use App\Traits\UserTrait;
 	use App\Traits\StockTrait;
 	use App\MemberBonus;
+	use App\MemberTree;
 	use App\Point;
 	use App\Product;
 	use App\User;
@@ -123,13 +124,13 @@
 		
 		public function DailyCashBack()
 		{
-		return view('admin.report.daily_cashback');
+			return view('admin.report.daily_cashback');
 		}
 		public function DailyCashBackRe()
 		{
-		return view('admin.report.daily_cashback_re');
+			return view('admin.report.daily_cashback_re');
 		}
-
+		
 		public function Signup()
 		{
 			return view('admin.report.signup');
@@ -138,7 +139,7 @@
 		{
 			return view('admin.report.order');
 		}
-
+		
 		public function SignupData()
 		{
 			$data = User::where('register_by',Auth::user()->id)->get();
@@ -149,6 +150,41 @@
 			$data = TopupBalance::where('user_id',Auth::user()->id)->where('is_order','1')->get();
 			return Datatables::of($data)->toJSON();
 		}
-
+		
+		public function SponsoreList()
+		{
+			return view('admin.report.sponsor_list');
 		}
+		
+		public function SponsoreListData()
+		{
+			$data = MemberTree::where('sponsor_id',Auth::user()->id)->whereNotNull('sponsor_id')->get();
+			
+			return Datatables::of($data)
+			->addColumn('name',function($data){
+				return $data->sponsor_id ? $data->Sponsor->name : '';
+			})
+			->addColumn('username',function($data){
+				return $data->sponsor_id ? $data->Sponsor->username: '';
+			})
+			->addColumn('created_at',function($data){
+				return $data->sponsor_id ? $data->Sponsor->created_at : '';
+			})
+			->addColumn('status',function($data){
 				
+				if( $data->sponsor_id){
+					if($data->Sponsor->is_premium !=null){
+						return $data->Sponsor->is_premium;
+					}
+					else{
+						return 'Member';
+					}
+				}
+				else{
+					return '';
+				}
+			})
+			->toJSON();
+		}
+		
+	}

@@ -194,6 +194,8 @@
 		Route::get('report/signup/data','ReportController@SignupData')->name('admin.report.registrationData');
 		Route::get('report/order','ReportController@Order')->name('admin.report.order');
 		Route::get('report/order/data','ReportController@OrderData')->name('admin.report.orderData');
+		Route::get('report/sponsor-list/','ReportController@SponsoreList')->name('admin.report.sponsor_list');
+		Route::get('report/sponsor-list/data','ReportController@SponsoreListData')->name('admin.report.sponsor_list.data');
 		
 		Route::get('report/data','ReportController@data')->name('admin.report.data');
 		Route::get('report/pv','ReportController@PV')->name('admin.report.pv');

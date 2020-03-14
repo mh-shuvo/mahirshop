@@ -47,9 +47,14 @@
 			// foreach($totalMembers as $totalMember){
 				// if($totalMember->package_value >= config('mlm.matching_start_from')){
 					// $totalMember->is_valid = Carbon::now();
+					// $totalMember->l_matching = null;
+					// $totalMember->r_matching = null;
+					// $totalMember->total_matching = null;
+					// $totalMember->paid_matching = null;
 					// $totalMember->save();
 				// }
 			// }
+
 			$this->info(json_encode($this->getCount(MemberTree::first()->user_id)));
 		}
 		
@@ -73,9 +78,9 @@
 			$checkUpdate = false;
 			
 			foreach(config('mlm.incentives') as $value){
-			$totalPlan[$value['name']] = 0;
-			$totalPlanL[$value['name']] = 0;
-			$totalPlanR[$value['name']] = 0;
+				$totalPlan[$value['name']] = 0;
+				$totalPlanL[$value['name']] = 0;
+				$totalPlanR[$value['name']] = 0;
 			}
 			
 			
@@ -83,11 +88,11 @@
 			{
 				$lId = $this->getCount($getMember['l_id']);
 				
-				if($lId['is_premium'] != null){
+				if($lId['is_valid'] != null){
 					$totalMatching['matching_l'] += $lId['matching']['matching_total'] + 1;
 				}
 				
-				if($lId['is_premium'] == null){
+				if($lId['is_valid'] == null){
 					$totalMatching['matching_l'] = $lId['matching']['matching_total'];
 				}
 				
@@ -114,11 +119,11 @@
 			{
 				$rId =$this->getCount($getMember['r_id']);
 				
-				if($rId['is_premium'] != null){
+				if($rId['is_valid'] != null){
 					$totalMatching['matching_r'] += $rId['matching']['matching_total'] + 1;
 				}
 				
-				if($rId['is_premium'] == null){
+				if($rId['is_valid'] == null){
 					$totalMatching['matching_r'] = $rId['matching']['matching_total'];
 				}
 				
@@ -181,12 +186,12 @@
 			}
 			
 			// if($totalMatching['matching_l'] > 0 && $totalMatching['matching_r'] > 0 && $getMember->last_matching < Carbon::now()->format('Y-m-d') ){
-			if($totalMember['premium_l'] > 0 && $totalMember['premium_r'] > 0){
+			if($totalMatching['matching_l'] > 0 && $totalMatching['matching_r'] > 0){
 				$totalMachingCount = 0;
-				if($totalMember['premium_l'] >= $totalMember['premium_r']){
-					$totalMachingCount= $totalMember['premium_r'];
-					}elseif($totalMember['premium_l'] <= $totalMember['premium_r']){
-					$totalMachingCount= $totalMember['premium_l'];
+				if($totalMatching['matching_l'] >= $totalMatching['matching_r']){
+					$totalMachingCount= $totalMatching['matching_r'];
+					}elseif($totalMatching['matching_l'] <= $totalMatching['matching_r']){
+					$totalMachingCount= $totalMatching['matching_l'];
 				}
 				
 				// Flashing Condition
@@ -198,15 +203,17 @@
 				
 				$newMatching = $this->matchingCount($newMatching,config('mlm.matching_target'));
 				
+				$newMatchingCount = $newMatching * config('mlm.matching_target');
+				
 				if($newMatching > 0){
 					if($newMatching >= config('mlm.daily_matching')){
 						$matchingBonush = config('mlm.daily_matching');
 						}else{
 						$matchingBonush = $newMatching;
 					}
-					
+					$newPaidMatchingCount = $matchingBonush * config('mlm.matching_target');
 					// Matching Bonus
-					if($matchingBonush > 3){
+					if($matchingBonush > 0){
 						if($getMember->package_value >= '3000'){
 							$matchingBonushTotal= 300;
 							}elseif($getMember->package_value >= '1600'){
@@ -227,8 +234,10 @@
 							$memberBonusData->save();
 						}
 						
-						$getMember->paid_matching = $totalMachingCount + $getMember['paid_matching'];
-						$getMember->total_matching = $totalMachingCount;
+						if(!$getMember['paid_matching']) $getMember['paid_matching'] = 0;
+						
+						$getMember->paid_matching = $newPaidMatchingCount + $getMember['paid_matching'];
+						$getMember->total_matching = $newMatchingCount;
 						$getMember->last_matching = Carbon::now();
 						$checkUpdate = true;
 					}

@@ -150,7 +150,7 @@
 									</div>
 									
 								</div>
-							</li>
+								</li>
 							<!-- ============================================================== -->
 							<!-- User profile and search -->
 							<!-- ============================================================== -->
@@ -356,6 +356,12 @@
 								<ul aria-expanded="false" class="collapse  first-level">
 									
 									
+									<li class="sidebar-item">
+										<a href="{{route('admin.report.sponsor_list')}}" class="sidebar-link">
+											<i class="mdi mdi-adjust"></i>
+											<span class="hide-menu"> Sponsor List </span>
+										</a>
+									</li>
 									<li class="sidebar-item">
 										<a href="{{route('admin.report.sponsor_income')}}" class="sidebar-link">
 											<i class="mdi mdi-adjust"></i>

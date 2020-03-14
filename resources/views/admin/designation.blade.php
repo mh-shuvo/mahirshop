@@ -22,7 +22,7 @@
 	                    </tr>
 	                </thead>
 	                <tbody class="text-center">
-	                	@foreach(App\Designation::all() as $row)
+	                	@foreach(App\Designation::where('user_id',Auth::id())->get() as $row)
 	                		<tr>
 	                			<td>{{$row->id}}</td>
 	                			<td>{{$row->designation_title}}</td>

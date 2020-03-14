@@ -527,9 +527,6 @@
 				],422);
 			}
 			
-			
-			
-			
 			$withdrawalData = new Withdrawal();
 			
 			$request->validate([
