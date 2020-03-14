@@ -23,6 +23,7 @@
 	'club_entry_referral' => '11',
 	'withdrawal_vat' => '2',
 	'withdrawal_charge' => '10',
+	'withdrawal_topup_percentage' => '10',
 	
 	'daily_matching' => '80',
 	'matching_bonus' => '300',
@@ -38,8 +39,8 @@
 	
 	'incentives' => [
 	'plan0' => [
-	'title' => 'Territory Sales Officer',
-	'name' => 'tso',
+	'title' => 'SR',
+	'name' => 'sr',
 	'condition' => '20',
 	'condition_type' => 'matching'
 	],
@@ -53,47 +54,47 @@
 	'title' => 'Regional Sales Manager',
 	'name' => 'rsm',
 	'condition' => '250',
-'condition_type' => 'matching'
-],
-'plan3' => [
-'title' => 'Zonal Sales Manager',
-'name' => 'zsm',
-'condition' => '500',
-'condition_type' => 'matching'
-],
-'plan4' => [
-'title' => 'Divisional Sales Manager',
-'name' => 'dsm',
-'condition' => '1000',
-'condition_type' => 'matching'
-],
-'plan5' => [
-'title' => 'National Sales Manager',
-'name' => 'nsm',
-'l_condition' => '10',
-'r_condition' => '6',
-'condition_type' => 'dsm'
-],
-'plan6' => [
-'title' => 'Asst. General Manager',
-'name' => 'agm',
-'l_condition' => '7',
-'r_condition' => '4',
-'condition_type' => 'nsm'
-],
-'plan7' => [
-'title' => 'General Manager',
-'name' => 'gm',
-'l_condition' => '4',
-'r_condition' => '3',
-'condition_type' => 'agm'
-],
-'plan8' => [
-'title' => 'Executive Director',
-'name' => 'ed',
-'l_condition' => '3',
-'r_condition' => '2',
-'condition_type' => 'gm'
-]
-],
-];
+	'condition_type' => 'matching'
+	],
+	'plan3' => [
+	'title' => 'Zonal Sales Manager',
+	'name' => 'zsm',
+	'condition' => '500',
+	'condition_type' => 'matching'
+	],
+	'plan4' => [
+	'title' => 'Divisional Sales Manager',
+	'name' => 'dsm',
+	'condition' => '1000',
+	'condition_type' => 'matching'
+	],
+	'plan5' => [
+	'title' => 'National Sales Manager',
+	'name' => 'nsm',
+	'l_condition' => '10',
+	'r_condition' => '6',
+	'condition_type' => 'dsm'
+	],
+	'plan6' => [
+	'title' => 'Asst. General Manager',
+	'name' => 'agm',
+	'l_condition' => '7',
+	'r_condition' => '4',
+	'condition_type' => 'nsm'
+	],
+	'plan7' => [
+	'title' => 'General Manager',
+	'name' => 'gm',
+	'l_condition' => '4',
+	'r_condition' => '3',
+	'condition_type' => 'agm'
+	],
+	'plan8' => [
+	'title' => 'Executive Director',
+	'name' => 'ed',
+	'l_condition' => '3',
+	'r_condition' => '2',
+	'condition_type' => 'gm'
+	]
+	],
+	];

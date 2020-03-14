@@ -80,6 +80,7 @@
 			{title : 'Account No',data: 'withdrawal_account_no'},
 			{title : 'Details',data: 'withdrawal_details'},
 			{title : 'Created At', data: 'created_at'},
+			{title : 'Re-Purchase Amount', data: 'topup_amount'},
 			{title : 'Charge', data: 'withdrawal_charge'},
 			{title : 'Net Amount', data: 'total_withdrawal_amount'},
 			{title : 'Status', data: 'withdrawal_status'},

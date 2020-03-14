@@ -465,21 +465,36 @@
 			
 			$withdrawalVat = (config('mlm.withdrawal_vat') / 100) * $request->withdraw_amount;
 			$withdrawalCharge = (config('mlm.withdrawal_charge') / 100) * $request->withdraw_amount;
+			$withdrawalToTopup = (config('mlm.withdrawal_topup_percentage') / 100) * $request->withdraw_amount;
 			
 			
 			
 			$withdrawalChargeTotal = $withdrawalVat + $withdrawalCharge;
 			$totalWithdrawalAmount = $request->withdraw_amount - $withdrawalChargeTotal;
 			
+			$totalWithdrawalAmount = $totalWithdrawalAmount - $withdrawalToTopup;
+			
 			$withdrawalData->user_id = Auth::user()->id;
 			$withdrawalData->withdrawal_amount = $request->withdraw_amount;
 			$withdrawalData->withdrawal_charge = $withdrawalChargeTotal;
 			$withdrawalData->vat_amount = $withdrawalVat;
+			$withdrawalData->topup_amount = $withdrawalToTopup;
 			$withdrawalData->total_withdrawal_amount = $totalWithdrawalAmount;
 			$withdrawalData->withdrawal_details = $request->withdraw_details;
 			$withdrawalData->payment_method = $request->payment_method;
 			$withdrawalData->withdrawal_status = 'pending';
 			$withdrawalData->save();
+			
+			TopupBalance::create([
+			'user_id' => Auth::User()->id,
+			'from_user_id' =>  Auth::User()->id,
+			'topup_amount' => $withdrawalToTopup,
+			'topup_type' => 'withdrawal',
+			'topup_flow' => 'in',
+			'topup_details' => 'You have received '.$withdrawalToTopup.' Tk Re-Purchase TopUp from withdrawal '.$withdrawalData->id,
+			'topup_generate_by' => Auth::User()->id,
+			'topup_status' => 'active'
+			]);
 			
 			return response()->json([
 			'status' => "success",

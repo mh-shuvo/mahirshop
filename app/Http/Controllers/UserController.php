@@ -10,6 +10,7 @@
 	use App\Traits\UserTrait;
 	use App\TopupBalance;
 	use App\Point;
+	use App\Designation;
 	use App\Traits\MemberTreeTrait;
 	use App\Traits\TopupTrait;
 	use App\Traits\PointTrait;
@@ -360,6 +361,13 @@
 					if(config('mlm.first_rank_referral') <= $referralCount){
 						$sponsorMemberTree->designation = 'sr';
 						$sponsorMemberTree->save();
+						
+						$designationData = new Designation();
+						$designationData->user_id = $getMember['user_id'];
+						$designationData->designation_title = config('mlm.incentives.plan0.title');
+						$designationData->designation_name = config('mlm.incentives.plan0.name');
+						$designationData->status = 'active';
+						$designationData->save();
 					}
 				}
 				
